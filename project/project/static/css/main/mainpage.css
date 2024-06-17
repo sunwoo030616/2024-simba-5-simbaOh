@@ -27,3 +27,119 @@
   display: flex;
   background-color: #D4EDE7;
 }
+
+.btn_list {
+  display: flex;
+}
+
+.btn_rec {
+
+}
+
+.btn_rho {
+
+}
+
+.btn_cir {
+
+}
+
+.text_set {
+  display: flex;
+  text-align: center;
+}
+
+.singup_list {
+  display: flex;
+}
+
+
+
+
+
+
+/* 폰트 설정 */
+
+.font_CORE {
+  font-family: "VITRO CORE OTF";
+  font-size: 2rem; /* 32px */
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.font_PRIDE {
+  font-family: "VITRO PRIDE OTF";
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.text_sub {
+  color: #000;
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Pretendard;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.text_point {
+  color: #359287;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Pretendard;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.content{
+  height: 1.875rem; /* 30px */
+  flex-shrink: 0;
+  color: #7E7E7E;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.count {
+  height: 1.875rem; /* 30px */
+  flex-shrink: 0;
+  color: #000;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.875rem; /* 30px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+
+
+
+
+
+
+
+/* 색상 설정 */
+
+.color_D4 {
+  color: #D4EDE7;
+}
+
+.color_F {
+  color: #FFF;
+}
+
+.color_28 {
+  color: #28464E;
+}
+
+/* 아이콘 설정 */
