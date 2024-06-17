@@ -9,4 +9,4 @@ urlpatterns = [
     path('start', mentor_start, name='mentor_start'),
     path('list', mentor_list, name='mentor_list'),
     path('info', mentor_info, name='mentor_info'),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
