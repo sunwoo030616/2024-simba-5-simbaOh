@@ -1,17 +1,17 @@
-/* signup page - CSS */
-    /* .container{
+    .container {
         display: flex;
         flex-direction: column;
         width: 100%;
         gap: 10px;
 
-        @media (max-width: 1050px) {
+        @media (max-width: 430px) {
             align-items: start;
         }
-        @media (min-width: 1051px) {
+        @media (min-width: 431px) {
             align-items: center;
         } 
-    } */
+    }
+
     .line2{
       width: 640px;
   height: 1px;
@@ -106,7 +106,7 @@
   justify-content: center;
   align-items: flex-start;
   align-self: stretch;
-  margin-bottom: 20px;
+  
   }
   
   .same{
@@ -164,4 +164,5 @@ font-size: 15px;
 font-style: normal;
 font-weight: 400;
 line-height: 16px; /* 106.667% */
+align-items: flex-start;
   }
