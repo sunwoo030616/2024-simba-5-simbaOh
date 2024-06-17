@@ -1,0 +1,29 @@
+/* main page - CSS */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 0.625rem; /* 10px */
+
+  @media (max-width: 430px) {
+    align-items: start;
+  }
+  @media (min-width: 431px) {
+    align-items: center;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 1050px;
+  align-items: flex-start;
+}
+
+.body {
+  display: flex;
+  background-color: #D4EDE7;
+}
