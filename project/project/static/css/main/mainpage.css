@@ -19,14 +19,17 @@
 .main {
   display: flex;
   flex-direction: column;
-  width: 430px;
-  align-items: flex-start;
+  width: 26.875rem; /* 430px */
+  align-items: center;
+  background-color: #D4EDE7;
+  padding-bottom: 0.625rem; /* 10px */
 }
 
 .body {
   display: flex;
+  width: 25rem; /* 400px */
   flex-direction: column;
-  background-color: #D4EDE7;
+  gap: 2.5rem; /* 40px */
 }
 
 .btn_list {
@@ -58,14 +61,22 @@
   text-align: center;
 }
 
+.text_dongguk {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .singup_list {
   display: flex;
+  height: fit-content;
 }
 
 .signup_detail {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px 10px 10px 10px;
 }
 
 .content {
@@ -108,14 +119,8 @@
   line-height: normal;
 }
 
-.text_donkkuk {
-  display: flex;
-  justify-content: center;
-}
-
 .text_sub {
   color: #000;
-  text-align: center;
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: Pretendard;
   font-size: 30px;
@@ -136,7 +141,6 @@
 
 .content{
   height: 1.875rem; /* 30px */
-  flex-shrink: 0;
   color: #7E7E7E;
   text-align: center;
   font-family: Pretendard;
@@ -148,7 +152,6 @@
 
 .count {
   height: 1.875rem; /* 30px */
-  flex-shrink: 0;
   color: #000;
   text-align: center;
   font-family: Pretendard;
@@ -195,8 +198,6 @@
   line-height: normal;
 }
 
-
-
 /* 색상 설정 */
 
 .color_D4 {
@@ -212,3 +213,4 @@
 }
 
 /* 아이콘 설정 */
+
