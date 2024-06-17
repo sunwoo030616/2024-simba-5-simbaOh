@@ -97,6 +97,11 @@
   line-height: normal;
 }
 
+.text_donkkuk {
+  display: flex;
+  justify-content: center;
+}
+
 .text_sub {
   color: #000;
   text-align: center;
@@ -142,10 +147,42 @@
   line-height: normal;
 }
 
+.webname_bold {
+  color: #1E3D46;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: STHupo;
+  font-size: 1.875rem; /* 30px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 
+.font_400 {
+  color: #717171;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 
+.font_500 {
+  color: #717171;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
 
-
+.font_200 {
+  color: #717171;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+}
 
 
 
