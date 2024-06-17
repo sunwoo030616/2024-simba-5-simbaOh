@@ -1,0 +1,120 @@
+{% extends 'base.html' %} 
+{% block content %} 
+{% load static %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/accounts/signup.css'%}"
+/>
+
+<div class="container">
+  <div class='container2'>
+    <div class='container-top'>
+      <h2 class='signup-main'>회원가입</h2>
+      <form action="{% url 'accounts:signup' %}" method="post">
+        {% csrf_token %}
+        <div class="line"></div>
+        <div class='inputlist'>
+
+          <div class='realname1'>
+          <label class='user' for='username2'>이름</label>
+          <input class='same2' placeholder="이름 입력" type='text' name='user_name' id='user_name' required />
+          <div class='inputlist_text'>이름을 정확하게 입력해주세요</div>
+          </div>
+
+          <div class='birth1'>
+          <label class='user' for='birth2'>생년월일</label>
+          <input class='same2' placeholder="YYYYMMDD" type='text' name='user_birth' id='user_birth' required />
+          <div class='inputlist_text'>생년월일을 숫자만 입력해주세요</div>
+          </div>
+
+          <div class='phone1'>
+          <label class='user' for='phone2'>휴대폰 번호</label>
+          <input class='same2' placeholder="'-' 제외하고 숫자만 입력" type='text' name='user_phone' id='user_phone' required />
+          <div class='inputlist_text'>휴대폰 번호를 13자리 숫자만 입력해주세요</div>
+          </div>
+          
+          <div class='id'>
+          <label class='user' for="username">아이디</label>
+          <input class='same2' placeholder="4-20자리 이메일 입력" type='text' name='username' id='username' required />
+          <div class='inputlist_text'>아이디를 입력해주세요</div>
+          </div>
+
+          <div class='ps'>
+          <label class='user' for="username">비밀번호</label>
+            <div class='frame33'>
+              <input class='same' placeholder="최소 13자리 이상, 대소문자 구분 입력" type='password' name='password' id='password' required/>
+            </div>
+          <div class='inputlist_text'>비밀번호를 입력해주세요</div>
+          </div>
+          
+
+          <div class='ps2'>
+            <label class='user' for="username">비밀번호 확인</label>
+            <div class='frame33'>
+              <input class='same' placeholder="비밀번호 재입력" type='password' name='password2' id='password2' required/>
+              <div class='please2' style="color: #FA622F;"></div>
+            </div>
+            <div class='inputlist_text'>동일한 비밀번호를 입력해주세요</div>
+          </div>
+
+          <div class="line2"></div>
+
+          <button class='submit' type='submit' id='submit'>입력 완료</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const password2Input = document.getElementById('password2');
+    const submitButton = document.getElementById('submit');
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@!?-])[A-Za-z\d@!?-]{8,}$/;
+    const errorDiv = document.querySelector('.please2');
+
+    function validatePassword() {
+      const password = passwordInput.value;
+      return passwordPattern.test(password);
+    }
+
+    function validateForm() {
+      const usernameValid = usernameInput.value.trim() !== '';
+      const passwordValid = validatePassword();
+      const passwordsMatch = passwordInput.value === password2Input.value;
+
+      if (password2Input.value.length > 0 && !passwordsMatch) {
+        errorDiv.textContent = "비밀번호가 일치하지 않습니다!";
+      } else {
+        errorDiv.textContent = "";
+      }
+
+      return usernameValid && passwordValid && passwordsMatch;
+    }
+
+    function updateSubmitButton() {
+      if (validateForm()) {
+        submitButton.disabled = false;
+        submitButton.style.backgroundColor = "#5e0080";
+        submitButton.style.color = "#ffffff";
+      } else {
+        submitButton.disabled = true;
+        submitButton.style.backgroundColor = "";
+        submitButton.style.color = "";
+      }
+    }
+
+    usernameInput.addEventListener('input', updateSubmitButton);
+    passwordInput.addEventListener('input', updateSubmitButton);
+    password2Input.addEventListener('input', updateSubmitButton);
+  });
+</script>
+
+{% if error %}
+<div style="color: red">{{ error }}</div>
+{% endif %}
+{% endblock %}
