@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/accounts/finishjoin.css' %}"
+/>
+
+  <div class='container2'>
+    <div class='container-top'>  
+      
+      <div class="image-button">
+        <a href="{% url 'main' %}" class="btn-main">
+          <img src="{% static "images/Group 1399.png" %}" alt="Main으로 가기" width='50px'>
+        </a>
+      </div>
+
+      <div class='welcome-main'>
+        {% if user_name %}
+          <p>{{ user_name }}님, 회원가입이 <br> 정상적으로 완료되었습니다.</p>
+        {% else %}
+          <p>회원가입을 축하드립니다.</p>
+        {% endif %}
+      </div>
+      
+    </div>
+  </div>
+
+{% endblock %}

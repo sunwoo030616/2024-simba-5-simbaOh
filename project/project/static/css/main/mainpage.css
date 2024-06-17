@@ -33,15 +33,15 @@
 }
 
 .btn_rec {
-
+  display: flex;
 }
 
 .btn_rho {
-
+  display: flex;
 }
 
 .btn_cir {
-
+  display: flex;
 }
 
 .text_set {
@@ -53,8 +53,29 @@
   display: flex;
 }
 
+.signup_detail {
+  display: flex;
+}
 
+.content {
+  color: #7E7E7E;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 
+.count {
+  color: #000;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.875rem; /* 30px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
 
 
 
