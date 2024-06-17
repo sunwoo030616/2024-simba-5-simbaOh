@@ -1,0 +1,85 @@
+{% extends 'base.html' %} 
+{% block content %} 
+{% load static %}
+
+<link
+rel="stylesheet"
+type="text/css"
+href="{% static 'css/accounts/login.css'%}"
+/>
+
+<div class="container">
+  <div class='container2'>
+    <div class='container-top'>
+      <h2 class='signup-main'>로그인</h2>
+      <form id="loginForm" action="{% url 'accounts:login' %}" method="post">
+        {% csrf_token %}
+        <div class='inputlist'>
+          <div class='id'>
+            <input class='same' placeholder="아이디를 입력해주세요" type='text' name='username' id='username' required />
+          </div>
+          <div class='ps'>
+            <div class='frame33'>
+              <input class='same' placeholder="비밀번호를 입력해주세요" type='password' name='password' id='password' required/>
+              <div class='please'></div>
+            </div>
+          </div>
+          <button class='submit' type='submit' id='loginButton' disabled>로그인</button>
+
+          <div class='search'>
+          <button class='submit2' type='button' id='signupButton'>아이디 찾기</button>
+          <button class='submit2' type='button' id='signupButton'>비밀번호 찾기</button>
+          <button class='submit2' type='button' id='signupButton'>회원가입</button>
+          </div class='search'>
+
+          <div class='midbar'>
+            <hr class='hrline'>
+            <span class='hrtext'>소셜 계정 로그인</span>
+            <hr class='hrline'>
+          </div>
+          <img src="{% static 'images/image 38.png' %}" alt='google' width='50px'>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const usernameInput = document.getElementById('username');
+  const passwordInput = document.getElementById('password');
+  const loginButton = document.getElementById('loginButton');
+  const signupButton = document.getElementById('signupButton');
+
+  function validateLoginForm() {
+    const usernameValid = usernameInput.value.trim() !== '';
+    const passwordValid = passwordInput.value.trim() !== '';
+    return usernameValid && passwordValid;
+  }
+
+  function updateLoginButton() {
+    if (validateLoginForm()) {
+      loginButton.disabled = false;
+      loginButton.style.backgroundColor = "#5e0080";
+      loginButton.style.color = "#ffffff";
+    } else {
+      loginButton.disabled = true;
+      loginButton.style.backgroundColor = "";
+      loginButton.style.color = "";
+    }
+  }
+
+  usernameInput.addEventListener('input', updateLoginButton);
+  passwordInput.addEventListener('input', updateLoginButton);
+
+  signupButton.addEventListener('click', function() {
+    window.location.href = "{% url 'accounts:signup' %}";
+  });
+});
+</script>
+
+
+{% if error %}
+<div style="color: red">{{ error }}</div>
+{% endif %}
+{% endblock %}
