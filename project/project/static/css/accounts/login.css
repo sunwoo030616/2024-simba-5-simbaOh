@@ -184,3 +184,17 @@ flex: 1 0 0;
   margin: 0 10px; 
   white-space: nowrap;
 }
+.submit3{
+  width: 80px;
+  color: #808080;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+.search{
+  display: inline-flex;
+align-items: flex-start;
+gap: 15px;
+}
