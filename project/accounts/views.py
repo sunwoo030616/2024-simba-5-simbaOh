@@ -26,30 +26,29 @@ def logout(request):
 
 def signup(request):
     if request.method == 'POST':
+        user_id = request.POST.get('user_id')
+        user_pw = request.POST.get('user_pw')
         if request.POST['user_pw'] == request.POST['confirm']:
-            user = User.objects.create_user(
-                username=request.POST['user_id'],
-                password=request.POST['user_pw']
-            )
-            user_name = request.POST['user_name']
-            user_phone = request.POST['user_phone']
-            user_birth = request.POST['user_birth']
-            user_major = request.POST['user_major']
-            user_profile = request.POST['user_profile']
-            user_enroll = request.POST['user_enroll']
-            
-            
-            profile = Profile(user=user,
-                              user_name=user_name,
-                              user_phone=user_phone,
-                              user_birth=user_birth,
-                              user_major=user_major,
-                              user_profile=user_profile,
-                              user_enroll=user_enroll,
-                              )
-            profile.save()
+                if User.objects.filter(username=user_id).exists():
+                    return render(request, 'accounts/signup.html', {'error': 'Username already exists'})
+                user = User.objects.create_user(
+                    username=request.POST['user_id'],
+                    password=request.POST['user_pw']
+                )
+                user_name = request.POST['user_name']
+                user_phone = request.POST['user_phone']
+                user_birth = request.POST['user_birth']
+                
+    
+                
+                profile = Profile(user=user,
+                                user_name=user_name,
+                                user_phone=user_phone,
+                                user_birth=user_birth,
+                                )
+                profile.save()
 
-            auth.login(request, user)
-            return redirect('/')
+                auth.login(request, user)
+                return redirect('main:mainpage')
         
     return render(request, 'accounts/signup.html')
