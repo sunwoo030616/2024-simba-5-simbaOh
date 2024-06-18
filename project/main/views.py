@@ -38,4 +38,4 @@ def mentor_reg(request):
         new_mentor.mentor_at = timezone.now()
 
         new_mentor.save()
-        return redirect('main:list', new_mentor.id)
+        return redirect('main:mentor_list')

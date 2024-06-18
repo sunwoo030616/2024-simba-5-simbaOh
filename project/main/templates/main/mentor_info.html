@@ -1,6 +1,7 @@
 {% extends 'base.html' %} 
-{% block content %} 
 {% load static %}
+{% block content %} 
+
 
 <link
   rel="stylesheet"
@@ -9,7 +10,7 @@
 />
 
 
-<form action="{% url 'main:mentor-info' %}" method="post">
+<form action="{% url 'main:mentor-info' mentor.id %}" method="post">
   {% csrf_token %}
 
 
@@ -19,4 +20,6 @@
 {% if error %}
 <div style="color: red">{{ error }}</div>
 {% endif %}
+
+</form>
 {% endblock %}
