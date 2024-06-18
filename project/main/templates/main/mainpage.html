@@ -8,18 +8,30 @@
 <div class="screen">
   <div class="main">
     <div class="body">
-      <div class="btn_list">
-        <div class="btn_rec">
-          <p class="text_set font_CORE color_D4">멘토</p>
-          <p class="text_set font_PRIDE color_D4">동문선배가 다 모였다!<br>궁금한 기업에 대해<br>물어봐</p>
+      <div class="small_nav">
+        <div class="left">
+          <img src="{% static 'images/profile_key.png' %}" width="32px">
         </div>
+        <div class="right">
+          <img src="{% static 'images/ci_bell.png' %}" width="32px">
+          <img src="{% static 'images/entypo_menu.png' %}" width="32px">
+        </div>
+      </div>
+      <div class="btn_list">
+        <a href="/start" class="btn_rec">
+          <img src="{% static 'images/btn_rec.png' %}" width="50%">
+          <p class="text_set1 font_CORE color_D4">멘토</p>
+          <p class="text_set2 font_PRIDE color_D4">동문선배가 다 모였다!<br>궁금한 기업에 대해<br>물어봐</p>
+        </a>
         <div class="btn_rho">
-          <p class="text_set font_CORE color_28">커뮤니티</p>
-          <p class="text_set font_PRIDE color_28">자유게시반<br>취업 정보</p>
+          <img src="{% static 'images/btn_rho.png' %}" width="300px">
+          <p class="text_set3 font_CORE color_28">커뮤니티</p>
+          <p class="text_set4 font_PRIDE color_28">자유게시반<br>취업 정보</p>
         </div>
         <div class="btn_cir">
-          <p class="text_set font_CORE color_F">커리어</p>
-          <p class="text_set font_PRIDE color_F">채용, 취업, 교육<br>프로그램</p>
+          <img src="{% static 'images/btn_cir.png' %}" width="50%">
+          <p class="text_set5 font_CORE color_F">커리어</p>
+          <p class="text_set6 font_PRIDE color_F">채용, 취업, 교육<br>프로그램</p>
         </div>
       </div>
       <div class="text_dongguk">
@@ -28,22 +40,22 @@
       </div>
       <div class="signup_list">
         <div class="signup_detail">
-          <img src="" alt="">
+          <img src="{% static 'images/signup1.png' %}" width="30%">
           <p class="content">가입한 취트키 멤버</p>
           <p class="count">33,109 명</p>
         </div>
         <div class="signup_detail">
-          <img src="" alt="">
+          <img src="{% static 'images/signup2.png' %}" width="30%">
           <p class="content">등록된 멘토</p>
           <p class="count">10,597 명</p>
         </div>
         <div class="signup_detail">
-          <img src="" alt="">
+          <img src="{% static 'images/signup3.png' %}" width="30%">
           <p class="content">이루어진 멘토링</p>
           <p class="count">6,388 번</p>
         </div>
         <div class="signup_detail">
-          <img src="" alt="">
+          <img src="{% static 'images/signup4.png' %}" width="30%">
           <p class="content">작성된 게시글</p>
           <p class="count">9,251 개</p>
         </div>
