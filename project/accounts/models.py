@@ -7,8 +7,7 @@ class Profile(models.Model):
     user_name = models.CharField(max_length=50)
     user_phone = models.CharField(max_length=50)
     user_birth = models.DateField()
-    user_major = models.CharField(max_length=100, blank=True)
+    user_major = models.CharField(max_length=100, blank=True, null=True)
     user_profile=models.ImageField(upload_to='images/', null=True, blank=True)
-    user_enroll= models.CharField(max_length=50, blank=True)
-    updated_at=models.DateTimeField()
+    user_enroll= models.CharField(max_length=50, blank=True, null=True)
 
