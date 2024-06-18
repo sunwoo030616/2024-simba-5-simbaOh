@@ -13,7 +13,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return render(request, 'main:mainpage')
+            return redirect('main:mainpage')
         else:
             return render(request, 'accounts/login.html')
 
@@ -26,9 +26,6 @@ def logout(request):
 
 def signup(request):
     if request.method == 'POST':
-        user_id = request.POST['user_id']
-        user_pw = request.POST['user_pw']
-
         if request.POST['user_pw'] == request.POST['confirm']:
             user = User.objects.create_user(
                 username=request.POST['user_id'],
@@ -37,13 +34,19 @@ def signup(request):
             user_name = request.POST['user_name']
             user_phone = request.POST['user_phone']
             user_birth = request.POST['user_birth']
-
             user_major = request.POST['user_major']
-            user_profile = request.FILES.get('user_profile')
+            user_profile = request.POST['user_profile']
             user_enroll = request.POST['user_enroll']
             
             
-            profile = Profile(user=user, user_name=user_name,  user_phone=user_phone,  user_birth=user_birth, user_major=user_major, user_profile=user_profile,user_enroll=user_enroll, )
+            profile = Profile(user=user,
+                              user_name=user_name,
+                              user_phone=user_phone,
+                              user_birth=user_birth,
+                              user_major=user_major,
+                              user_profile=user_profile,
+                              user_enroll=user_enroll,
+                              )
             profile.save()
 
             auth.login(request, user)
