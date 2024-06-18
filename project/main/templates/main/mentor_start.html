@@ -17,10 +17,25 @@
     {% comment %} <a href="{% url 'main:mentor-enroll' %}" class="submit1">멘토 등록하기</a> {% endcomment %}
   </div>
 
+<<<<<<< HEAD
+<div class="container">min</div>
+
+<a href="{% url 'main:mentor-list' %}">
+  <img src="{% static 'images/Mask group.png' %}" alt='but' width='20px' height='20px'>
+</a>
+
+
+
+{% if error %}
+<div style="color: red">{{ error }}</div>
+{% endif %}
+{% endblock %}
+=======
   <div class='cheatkey'>
     <img class='cheatkeyimages' src={% static "images/Group 1410-2.png" %}>
     <div class='cheatkeymessage'>CHEAT KEY</div>
   </div>
+>>>>>>> 070f1a31b1e3a0bebb12cb6ec4684c9f33897d85
 
   <div class='ment1'>세심한 멘토링 및 취업 정보를 전해주는<br>
     <div class='ment2'>동국인을 위한 매칭 커리어 플랫폼</div>
