@@ -9,36 +9,55 @@ href="{% static 'css/accounts/login.css'%}"
 />
 
 <div class="container">
-  <div class='container2'>
+  <div class='container2'> 
     <div class='container-top'>
-      <h2 class='signup-main'>로그인</h2>
+
+      <div class="small_nav">
+        <div class="left">
+          <img src="{% static 'images/profile_key.png' %}" width="32px">
+        </div>
+        <div class="right">
+          <img src="{% static 'images/ci_bell.png' %}" width="32px">
+          <img src="{% static 'images/entypo_menu.png' %}" width="32px">
+        </div>
+      </div>
+
+      {% comment %} <h2 class='signup-main'>로그인</h2> {% endcomment %}
       <form id="loginForm" action="{% url 'accounts:login' %}" method="post">
         {% csrf_token %}
+
         <div class='inputlist'>
-          <div class='id'>
-            <input class='same' placeholder="아이디를 입력해주세요" type='text' name='user_id' id='user_id' required />
-          </div>
-          <div class='ps'>
-            <div class='frame33'>
-              <input class='same' placeholder="비밀번호를 입력해주세요" type='password' name='user_pw' id='user_pw' required/>
-              <div class='please'></div>
+            <div class='id'>
+              <input class='same' placeholder="    아이디를 입력해주세요." type='text' name='user_id' id='user_id' required />
             </div>
-          </div>
-          <button class='submit' type='submit' id='loginButton' disabled>로그인</button>
 
-          <div class='search'> 
-          <button class='submit3' type='button' id='signupButton2'>아이디 찾기</button>
-          <button class='submit3' type='button' id='signupButton2'>비밀번호 찾기</button>
-          <button class='submit3' type='button' id='signupButton'>회원가입</button>
-          </div class='search'>
+            <div class='id'>
+                <input class='same' placeholder="    비밀번호를 입력해주세요." type='password' name='user_pw' id='user_pw' required/>
+            </div>
+            <div class='auto'>
+              <label  for='check'>
+                <input type='checkbox' name='check_group' id='check' checked/>
+                자동 로그인
+              </label>
+            </div>
 
-          <div class='midbar'>
-            <hr class='hrline'>
-            <span class='hrtext'>소셜 계정 로그인</span>
-            <hr class='hrline'>
-          </div>
-          <img src="{% static 'images/image 38.png' %}" alt='google' width='50px'>
+            <button class='submit' type='submit' id='loginButton' disabled>로그인</button>
+
+            <div class='search'> 
+              <button class='submit3' type='button'>아이디 찾기</button>
+              <button class='submit3' type='button'>비밀번호 찾기</button>
+              <button class='submit3' type='button' id='signupButton'>회원가입</button>
+            </div class='search'>
+
+            <div class='midbar'>
+                <div class='line'></div>
+                <span class='hrtext'>소셜 계정 로그인</span>
+                <div class='line'></div>
+            </div>
+
+            <img src="{% static 'images/image 38.png' %}" alt='google' width='50px'>
         </div>
+
       </form>
     </div>
   </div>

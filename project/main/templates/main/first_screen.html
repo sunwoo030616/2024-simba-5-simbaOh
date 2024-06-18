@@ -11,15 +11,23 @@
     <div class="body">
       <img class="background" src="{% static 'images/background_box.png' %}">
       <img class="logo" src="{% static 'images/mainlogo.png' %}">
-      <p>Welcome to<br>CHEAT KEY</p>
-      <p>취트키</p>
-      <p>동국대학교 커리어 플랫폼</p>
-      <p>동문 현직자에게 멘토링, 취업과 교육정보<br>커리어의 모든 것을 담았다.</p>
-      <div class="row">
-        <p>취트키</p>
-        <p>로 가장 최적의 루트로 취업하자!</p>
+      <div class="first">
+        <p class="font1 color_1E">Welcome to<br><br><br>CHEAT KEY</p>
+        <p class="font2 color_1E">취트키</p>
       </div>
-
+      <p class="font3 color_24">동국대학교 커리어 플랫폼</p>
+      <div class="second">
+        <p class="font4 color_6E">동문 현직자에게 멘토링, 취업과 교육정보</p>
+        <p class="font4 color_6E">커리어의 모든 것을 담았다.</p>
+        <div class="row">
+          <p class="font5 color_0C">취트키</p>
+          <p class="font4 color_6E">로 가장 최적의 루트로 취업하자!</p>
+        </div>
+      </div>
+      <a href="{% url 'accounts:login' %}" class="space_bar">
+        <img src="{% static 'images/spacebar.png' %}" width="100%">
+        <p class="font_translate font6 color_white">LOGIN TO START</p>
+      </a>
     </div>
   </div>
 </div>

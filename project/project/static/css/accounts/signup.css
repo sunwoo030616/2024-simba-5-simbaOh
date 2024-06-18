@@ -1,3 +1,7 @@
+    
+    /* 비밀번호, 비밀번호 확인 사이즈 조정 수정 및 회원가입 좌측 아이콘 위치 수정 필요 */
+
+
     .container {
         display: flex;
         flex-direction: column;
