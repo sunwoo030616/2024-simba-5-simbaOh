@@ -1,4 +1,4 @@
-/* first screen page - CSS */
+/* intro page - CSS */
 
 .screen {
   display: flex;
@@ -20,7 +20,9 @@
   display: flex;
   flex-direction: column;
   width: 26.875rem; /* 430px */
+  height: 932px;
   align-items: center;
+  justify-content: center;
   background-color: #D4EDE7;
   padding-bottom: 0.625rem; /* 10px */
 }
@@ -29,31 +31,33 @@
   display: flex;
   width: 25rem; /* 400px */
   flex-direction: column;
-  align-items: center;
 }
 
-.background {
+.center {
   display: flex;
-  width: 100%;
-  transform: translateY(3.25rem);
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
-.logo {
-  width: 6.25rem; /* 100px */
-}
 
 
 
 
 /* 폰트 설정 */
 
-.font1 {
-  font-feature-settings: 'clig' off, 'liga' off;
-  font-family: STHupo;
+.font_center_big {
   font-size: 3.125rem; /* 50px */
-  font-style: normal;
+  font-family: STHupo;
   font-weight: 400;
-  line-height: normal;
+  word-wrap: break-word;
+}
+
+.font_center_small {
+  font-size: 1.875rem; /* 30px */
+  font-family: VITRO CORE OTF;
+  font-weight: 900;
+  word-wrap: break-word;
 }
 
 
@@ -61,18 +65,6 @@
 
 .color_1E {
   color: #1E3D46;
-}
-
-.color_black {
-  color: #24252C;
-}
-
-.color_6E {
-  color: #6E6A7C;
-}
-
-.color_0C {
-  color: #0C9D7A;
 }
 
 /* 아이콘 설정 */
