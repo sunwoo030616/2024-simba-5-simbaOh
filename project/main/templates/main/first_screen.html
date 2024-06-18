@@ -2,12 +2,28 @@
 <link 
   rel="stylesheet"
   type="text/css"
-  href="{% static 'css/main/firstcreen.css'%}"
+  href="{% static 'css/main/firstscreen.css'%}"
 />
 
 
 <div class="screen">
   <div class="main">
-    
+    <div class="body">
+      <img class="background" src="{% static 'images/background_box.png' %}">
+      <img class="logo" src="{% static 'images/mainlogo.png' %}">
+      <p>Welcome to<br>CHEAT KEY</p>
+      <p>취트키</p>
+      <p>동국대학교 커리어 플랫폼</p>
+      <p>동문 현직자에게 멘토링, 취업과 교육정보<br>커리어의 모든 것을 담았다.</p>
+      <div class="row">
+        <p>취트키</p>
+        <p>로 가장 최적의 루트로 취업하자!</p>
+      </div>
+
+    </div>
   </div>
 </div>
+
+
+
+{% endblock %}
