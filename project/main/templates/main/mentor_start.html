@@ -8,13 +8,23 @@
   href="{% static 'css/main/mentor_start.css'%}"
 />
 
+
+<form action="{% url 'main:mentor-start' %}" method="post">
+  {% csrf_token %}
+
+
 <div class="container">min</div>
 
-        <form action="{% url 'main:mentor-start' %}" method="post">
-          {% csrf_token %}
+<a href="{% url 'main:mentor-list' %}">
+  <img src="{% static 'images/Mask group.png' %}" alt='but' width='20px' height='20px'>
+</a>
 
 
-          {% if error %}
-          <div style="color: red">{{ error }}</div>
-          {% endif %}
-          {% endblock %}
+
+    {% if error %}
+    <div style="color: red">{{ error }}</div>
+    {% endif %}
+    {% endblock %}
+
+
+

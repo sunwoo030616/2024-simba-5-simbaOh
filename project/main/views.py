@@ -17,11 +17,11 @@ def mentor_start(request):
 
 def mentor_list(request):
     mentors = Mentor.objects.all()
-    return render(request, 'mentor_list.html', {'mentors' : mentors})
+    return render(request, 'main/mentor_list.html', {'mentors' : mentors})
 
 def mentor_info(request, id):
     mentor = get_object_or_404(Mentor, pk = id)
-    return render(request, 'mentor_info.html', {'mentor' : mentor})
+    return render(request, 'main/mentor_info.html', {'mentor' : mentor})
 
 def mentor_reg(request):
     if request.user.is_authenticated:
