@@ -1,18 +1,23 @@
-{% extends 'base.html' %} 
-{% block content %} 
-{% load static %}
-
+{% extends 'base.html' %} {% block content %} {% load static %}
 <link
   rel="stylesheet"
   type="text/css"
   href="{% static 'css/main/mentor_start.css'%}"
 />
-
-
 <form action="{% url 'main:mentor-start' %}" method="post">
   {% csrf_token %}
 
+<div class='container'>
+  <div class='pictureandsubmit'>
+    <img class="picture" src="{% static 'images/Rectangle 3406.png' %}">
+    <p class='textbig'>현직자 동문 멘토에게 <br>매칭 받아보세요 </p>
+    <p class='textsmall'>취트키에서 매칭 평균 만족도는 9.3점!</p>
+    <a href="{% url 'main:mentor-list' %}" class="submit">멘토 리스트보기</a>
+    <a class="submit1">멘토 등록하기</a>
+    {% comment %} <a href="{% url 'main:mentor-enroll' %}" class="submit1">멘토 등록하기</a> {% endcomment %}
+  </div>
 
+<<<<<<< HEAD
 <div class="container">min</div>
 
 <a href="{% url 'main:mentor-list' %}">
@@ -25,6 +30,33 @@
 <div style="color: red">{{ error }}</div>
 {% endif %}
 {% endblock %}
+=======
+  <div class='cheatkey'>
+    <img class='cheatkeyimages' src={% static "images/Group 1410-2.png" %}>
+    <div class='cheatkeymessage'>CHEAT KEY</div>
+  </div>
+>>>>>>> 070f1a31b1e3a0bebb12cb6ec4684c9f33897d85
+
+  <div class='ment1'>세심한 멘토링 및 취업 정보를 전해주는<br>
+    <div class='ment2'>동국인을 위한 매칭 커리어 플랫폼</div>
+  </div>
+
+  <div class='picture'>
+    <div class='picture1'>
+      <img class='picture1_1' src={% static "images/Group 1411.png" %}>
+    </div>
+    <div class='picture2'>
+      <img class='picture2_2' src={% static "images/Group 1411-2.png" %}>
+    </div>
+    <div class='picture3'>
+      <img class='picture3_3' src={% static "images/Group 1411-3.png" %}>
+    </div>
+  </div>
+
+</div>
 
 
-
+{% if error %}
+<div style="color: red">{{ error }}</div>
+{% endif %}
+{% endblock %}
