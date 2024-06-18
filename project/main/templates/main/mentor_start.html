@@ -1,0 +1,20 @@
+{% extends 'base.html' %} 
+{% block content %} 
+{% load static %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/main/mentor_start.css'%}"
+/>
+
+<div class="container">min</div>
+
+        <form action="{% url 'main:mentor-start' %}" method="post">
+          {% csrf_token %}
+
+
+          {% if error %}
+          <div style="color: red">{{ error }}</div>
+          {% endif %}
+          {% endblock %}
