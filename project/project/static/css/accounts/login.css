@@ -11,13 +11,13 @@
       align-items: center;
   } 
 }
-  .container2{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 430px;
-    height: 850px;
-    background: #D4EDE7;
+.container2{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 430px;
+  height: 850px;
+  background: #D4EDE7;
 }
 .inputlist{
   display: flex;
