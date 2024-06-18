@@ -87,7 +87,6 @@ line-height: 24px;
 
 .id{
   display: flex;
-/* padding: 10px 20px; */
 justify-content: center;
 align-items: flex-start;
 align-self: stretch;
@@ -110,9 +109,9 @@ font-style: normal;
 font-weight: 500;
 line-height: 24px;
 flex-shrink: 0;
-
 }
-.id.placeholder{
+
+.same.placeholder{
   color: #9D9D9D;
 }
 
@@ -149,26 +148,30 @@ margin-bottom: 32px;
 .midbar {
   display: flex;
   align-items: center;
-  text-align: center;
-  margin: 20px 0;
+  justify-content: center;
+  margin: 10px 0;
+  gap: 10px;
 }
 
-.hrline {
-  flex: 1;
-  border: none;
-  border-top: 1px solid #000;
+.line {
+  flex-grow: 1;
+  height: 1px;
+  width:81px;
+  background: #000;
 }
 
 .hrtext {
-  margin: 0 10px; 
   white-space: nowrap;
   color: #1E3D46;
-font-family: "Noto Sans KR";
-font-size: 15px;
-font-style: normal;
-font-weight: 400;
-line-height: 24px; /* 160% */
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  white-space: nowrap;
+  padding: 0 7px;
 }
+
 .submit3{
   width: 120px;
   color: #808080;
