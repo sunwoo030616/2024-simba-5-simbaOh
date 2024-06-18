@@ -11,7 +11,7 @@
 <div class="screen">
   <div class="main">
     <div class="body">
-      <form class="control" action="{% url 'main:mentor-list' %}" method="POST">
+      <form class="control" action="{% url 'main:mentor_list' %}" method="POST">
         {% csrf_token %}
         <div class="search_bar_zone">
           <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" id="search">
@@ -39,6 +39,18 @@
           </div>
         </div>
       </form>
+      <div class="container">
+        <h1>멘토 리스트</h1>
+        <ul>
+            {% for mentor in mentors %}
+            <li>
+                <a href="{% url 'main:mentor_info' mentor.id %}">
+                    {{ mentor.mentor_company }} - {{ mentor.mentor_dept }}: {{ mentor.mentor_intro }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
     </div>
   </div>
 </div>
