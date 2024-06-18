@@ -1,0 +1,81 @@
+/* mentor list page - CSS */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 0.625rem; /* 10px */
+
+  @media (max-width: 430px) {
+    align-items: start;
+  }
+  @media (min-width: 431px) {
+    align-items: center;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 26.875rem; /* 430px */
+  align-items: center;
+  padding-bottom: 0.625rem; /* 10px */
+}
+
+.body {
+  display: flex;
+  width: 25rem; /* 400px */
+  flex-direction: column;
+  gap: 2.5rem; /* 40px */
+  align-items: center;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem; /* 32px */
+  width: 100%;
+}
+
+.search_bar_zone {
+  display: flex;
+  width: 100%;
+  height: 2rem;
+  align-items: center;
+
+  background-color: #F3F3F3;
+
+  border: 1px solid #F3F3F3;
+  border-radius: 1.25rem; /* 20px */
+}
+
+.filter {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding-top: 0.5rem; /* 8px */
+  gap: 0.25rem; /* 4px */
+  width: 22.5rem; /* 360 px */
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-content: space-between;
+}
+
+/* input[type="checkbox"] {
+  display: none;
+} */
+
+
+/* 폰트 설정 */
+
+
+/* 색상 설정 */
+
+
+/* 아이콘 설정 */
