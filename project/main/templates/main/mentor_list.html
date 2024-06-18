@@ -11,7 +11,7 @@
 <div class="screen">
   <div class="main">
     <div class="body">
-      <form class="control" action="{% url 'main:mentor_list' %}" method="POST">
+      <form class="control" action="{% url 'main:mentor-list' %}" method="POST">
         {% csrf_token %}
         <div class="search_bar_zone">
           <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" id="search">

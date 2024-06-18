@@ -9,7 +9,7 @@
 />
 
 
-<form action="{% url 'main:mentor_info' num=mentor.id %}" method="post">
+<form action="{% url 'main:mentor-info' mentor.id %}" method="post">
   {% csrf_token %}
 
 
