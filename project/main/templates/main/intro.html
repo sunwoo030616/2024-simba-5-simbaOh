@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<link 
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/main/intro.css'%}"
+/>
+
+<meta http-equiv="refresh" content="3; url=/first-screen">
+
+<div class="screen">
+  <div class="main">
+    <div class="body">
+      <div class="center">
+        <img src="{% static 'images/mainlogo.png' %}" width="100px" style="padding-bottom: 32px;">
+        <p class="font_center_big color_1E">CHEAT KET</p>
+        <p class="font_center_small color_1E">취트키</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

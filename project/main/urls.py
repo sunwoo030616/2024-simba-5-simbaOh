@@ -5,7 +5,9 @@ from .views import *
 
 app_name = "main"
 urlpatterns = [
-    path('', mainpage, name='mainpage'),
+    path('', intro, name='intro'),
+    path('first-screen', first_screen, name='first-screen'),
+    path('mainpage', mainpage, name='mainpage'),
     path('start', mentor_start, name='mentor_start'),
     path('list', mentor_list, name='mentor_list'),
     path('info', mentor_info, name='mentor_info'),
