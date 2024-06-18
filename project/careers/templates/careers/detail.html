@@ -1,0 +1,9 @@
+<h3>{{info.title}}</h3>
+작성자 : {{info.writer}}
+위치 : {{info.location}}
+
+<hr/>
+<p>{{info.body}}</p>
+<a href="{% url 'edit' info.id %}">글 수정하기</a>
+<a href="{% url 'delete' info.id %}">삭제하기</a>
+<br>
