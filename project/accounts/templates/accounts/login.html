@@ -21,7 +21,7 @@ href="{% static 'css/accounts/login.css'%}"
           <img src="{% static 'images/entypo_menu.png' %}" width="32px">
         </div>
       </div>
-
+      
       {% comment %} <h2 class='signup-main'>로그인</h2> {% endcomment %}
       <form id="loginForm" action="{% url 'accounts:login' %}" method="post">
         {% csrf_token %}
