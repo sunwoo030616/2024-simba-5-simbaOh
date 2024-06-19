@@ -2,10 +2,9 @@
 {% load static %}
 
 {% block content %}
-<form action="{% url 'main:mentor-enroll' %}" method="POST" enctype="multipart/form-data">
+<form action="{% url 'main:mentor-create' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <p>test_company : <input type="text" name="mentor_company" id=""></p>
-    <!-- <p>작성자 : <input type="text" name="writer"></p> -->
 
     <p>test_부서 : <input type="text" name="mentor_dept"></p>
     <p>test_직무 : <input type="text" name="mentor_work"></p>

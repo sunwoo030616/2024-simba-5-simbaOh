@@ -29,7 +29,6 @@ def mentor_info(request, id):
 
 
 def mentor_create(request):
-    if request.user.is_authenticated:
         new_mentor = Mentor()
 
         new_mentor.mentor_name = request.user
@@ -45,6 +44,3 @@ def mentor_create(request):
 
         new_mentor.save()
         return redirect('main:mentor-list')
-    else:
-        return redirect('main:mentor-start')
-    
