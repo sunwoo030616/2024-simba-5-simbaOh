@@ -14,10 +14,11 @@ href="{% static 'css/accounts/login.css'%}"
 
       <div class="small_nav">
         <div class="left">
-          <img src="{% static 'images/profile_key.png' %}" width="32px">
+          <a href="{% url 'main:first-screen' %}">
+            <img src="{% static 'images/Mask group.png' %}" width="32px">
+          </a>
         </div>
         <div class="right">
-          <img src="{% static 'images/ci_bell.png' %}" width="32px">
           <img src="{% static 'images/entypo_menu.png' %}" width="32px">
         </div>
       </div>

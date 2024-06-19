@@ -6,11 +6,12 @@ from .views import *
 app_name = "main"
 urlpatterns = [
     path('', intro, name='intro'),
-    path('first-screen', first_screen, name='first_screen'),
+    path('first-screen', first_screen, name='first-screen'),
     path('mainpage', mainpage, name='mainpage'),
     path('mentor-start', mentor_start, name='mentor-start'),
     path('mentor-list/', mentor_list, name='mentor-list'),
     path('mentor-info/<int:id>/', mentor_info, name='mentor-info'),
     path('mentor-enroll', mentor_enroll, name='mentor-enroll'),
     path('mentor-create', mentor_create, name="mentor-create"),
+    path('mentor-ask', mentor_ask, name='mentor-ask'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

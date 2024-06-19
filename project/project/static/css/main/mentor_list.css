@@ -34,7 +34,7 @@
 .control {
   display: flex;
   flex-direction: column;
-  padding-top: 2rem; /* 32px */
+  padding-top: 3rem; /* 48px */
   width: 100%;
 }
 

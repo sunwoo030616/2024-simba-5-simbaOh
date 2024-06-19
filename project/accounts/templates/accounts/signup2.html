@@ -11,8 +11,7 @@
 <div class="container"> 
   <div class='container2'>
     <div class='container3'>
-
-      <div class='imagesmask' style="padding-top: 90px;">
+      <div class='imagesmask' style="padding-top: 48px;">
         <div class="left"></div>
         <div class="middle">
           <h2 class='signup-main'>회원가입</h2>
@@ -24,10 +23,12 @@
         <div class='finish1'>
           <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2' id='finish1_2'>60%</div>
         </div>
-        <div class='linefinish'></div>
+        <div class='linefinish'>
+          <div class='linefinish2' id='linefinish2'></div>
+        </div>
       </div>
 
-      <div class='linefinish2' id='linefinish2'></div>
+      
 
       <form action="{% url 'accounts:signup2' %}" method="post" id='signup-form'>
         {% csrf_token %}
