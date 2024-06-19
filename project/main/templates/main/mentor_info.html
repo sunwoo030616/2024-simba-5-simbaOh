@@ -14,7 +14,18 @@
   {% csrf_token %}
 
 
-<div class="container">min cute</div>
+</form>
+<div class="container">
+  <h1>멘토 정보</h1>
+  <div class="mentor-profile">
+    <h2>{{ mentor.mentor_company }}</h2>
+    <p>{{ mentor.mentor_dept }}</p>
+    <p>{{ mentor.mentor_work }}</p>
+    <p>{{ mentor.mentor_intro }}</p>
+    <p>{{ mentor.mentor_year }}</p>
+    <p>{{ mentor.mentor_at }}</p>
+  </div>
+</div>
 
 
 {% if error %}

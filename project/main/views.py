@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Mentor
 
 
+
 def intro(request):
     return render(request, 'main/intro.html')
 
@@ -23,6 +24,7 @@ def mentor_info(request, id):
     mentor = get_object_or_404(Mentor, pk = id)
     return render(request, 'main/mentor_info.html', {'mentor' : mentor})
 
+
 def mentor_reg(request):
     if request.user.is_authenticated:
         new_mentor = Mentor()
@@ -38,4 +40,5 @@ def mentor_reg(request):
         new_mentor.mentor_at = timezone.now()
 
         new_mentor.save()
-        return redirect('main:mentor_list')
+        return redirect('main:list', new_mentor.id)
+    
