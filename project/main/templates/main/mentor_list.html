@@ -18,50 +18,76 @@
         </div>
         <div class="filter">
           <div class="row">
-            <label for="checkbox1"><input type="checkbox" name="checkbox1" id="checkbox1">인사/노무</label>
-            <label for="checkbox2"><input type="checkbox" name="checkbox2" id="checkbox2">IT개발/데이터</label>
-            <label for="checkbox3"><input type="checkbox" name="checkbox3" id="checkbox3">디자인</label>
-            <label for="checkbox4"><input type="checkbox" name="checkbox4" id="checkbox4">영상/판매/무역</label>
+            <input type="checkbox" name="checkbox1" id="checkbox1" class="ckb_white">
+            <label for="checkbox1">인사/노무</label>
+            <input type="checkbox" name="checkbox2" id="checkbox2" class="ckb_white">
+            <label for="checkbox2">IT개발/데이터</label>
+            <input type="checkbox" name="checkbox3" id="checkbox3" class="ckb_white">
+            <label for="checkbox3">디자인</label>
+            <input type="checkbox" name="checkbox4" id="checkbox4" class="ckb_white">
+            <label for="checkbox4">영상/판매/무역</label>
           </div>
           <div class="row">
-            <label for="checkbox5"><input type="checkbox" name="checkbox5" id="checkbox5">상품기획/MD</label>
-            <label for="checkbox6"><input type="checkbox" name="checkbox6" id="checkbox6">서비스</label>
-            <label for="checkbox7"><input type="checkbox" name="checkbox7" id="checkbox7">생산</label>
-            <label for="checkbox8"><input type="checkbox" name="checkbox8" id="checkbox8">의료</label>
-            <label for="checkbox9"><input type="checkbox" name="checkbox9" id="checkbox9">건설/건축</label>
+            <input type="checkbox" name="checkbox5" id="checkbox5" class="ckb_white">
+            <label for="checkbox5">상품기획/MD</label>
+            <input type="checkbox" name="checkbox6" id="checkbox6" class="ckb_white">
+            <label for="checkbox6">서비스</label>
+            <input type="checkbox" name="checkbox7" id="checkbox7" class="ckb_white">
+            <label for="checkbox7">생산</label>
+            <input type="checkbox" name="checkbox8" id="checkbox8" class="ckb_white">
+            <label for="checkbox8">의료</label>
+            <input type="checkbox" name="checkbox9" id="checkbox9" class="ckb_white">
+            <label for="checkbox9">건설/건축</label>
           </div>
           <div class="row">
-            <label for="checkbox10"><input type="checkbox" name="checkbox10" id="checkbox10">연구/R&D</label>
-            <label for="checkbox11"><input type="checkbox" name="checkbox11" id="checkbox11">교육</label>
-            <label for="checkbox12"><input type="checkbox" name="checkbox12" id="checkbox12">금융/보험</label>
-            <label for="checkbox13"><input type="checkbox" name="checkbox13" id="checkbox13">미디어/스포츠</label>
-            <label for="checkbox14"><input type="checkbox" name="checkbox14" id="checkbox14">교육</label>
+            <input type="checkbox" name="checkbox10" id="checkbox10" class="ckb_white">
+            <label for="checkbox10">연구/R&D</label>
+            <input type="checkbox" name="checkbox11" id="checkbox11" class="ckb_white">
+            <label for="checkbox11">교육</label>
+            <input type="checkbox" name="checkbox12" id="checkbox12" class="ckb_white">
+            <label for="checkbox12">금융/보험</label>
+            <input type="checkbox" name="checkbox13" id="checkbox13" class="ckb_white">
+            <label for="checkbox13">미디어/스포츠</label>
+            <input type="checkbox" name="checkbox14" id="checkbox14" class="ckb_white">
+            <label for="checkbox14">교육</label>
           </div>
         </div>
       </form>
       <div class="mento_text color_28 font_1">멘토 리스트</div>
       <div class="mento_list">
         {% for mentor in mentors %}
-        <a href="mentor/{{mentor.id}}">
-
+        <a href="{% url 'main:mentor-info' mentor.id %}">
+          <div class="mentor_card">
+            <div>
+              SAMSUNG
+              
+            </div> 
+            <div>
+              SW개발
+              
+            </div> 
+            <img src="" alt="">
+              
+            <div>
+              홍길동 멘토
+              
+            </div> 
+            <div>
+              경영정보학과
+             
+            </div> 
+            <div>
+              IT개발/데이터
+              
+            </div> 
+          </div>
         </a>
-        <div class="mentor_card"></div>
         {% endfor %}
       </div>
     </div>
   </div>
 </div>
 
-<!-- <div>
-  <ul>
-    {% for mentor in mentors %}
-    <li>
-        <a href="{% url 'main:mentor_info' mentor.id %}">
-            {{ mentor.mentor_company }} - {{ mentor.mentor_dept }}: {{ mentor.mentor_intro }}
-        </a>
-    </li>
-    {% endfor %}
-  </ul>
-</div> -->
+
 
 {% endblock %}
