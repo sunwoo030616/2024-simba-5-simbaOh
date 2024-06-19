@@ -7,10 +7,10 @@
 <div class="container"> 
   <div class='container2'>
     <div class='container3'>
-      <div class='imagesmask' style="padding-top: 90px;">
+      <div class='imagesmask' style="padding-top: 48px;">
         <div class="left">
           <a href="{% url 'accounts:login' %}">
-            <img src="{% static 'images/Mask group.png' %}" alt='but' width='36px'>
+            <img src="{% static 'images/Mask group.png' %}" alt='but' width='32px'>
           </a>
         </div>
         <div class="right">
@@ -20,12 +20,12 @@
       </div>
 
       <div class='linefinish2' id='linefinish2'></div>
-
+      
       <div class='finish'>
         <div class='finish1'>
           <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2'>30%</div>
         </div>
-        <div class='linefinish'></div>
+        <div class='linefinish'><div class='linefinish2' id='linefinish2'></div></div>
       </div>
 
       <form action="{% url 'accounts:signup' %}" method="post" id="signup-form">
