@@ -8,6 +8,16 @@
   {% csrf_token %}
 
 <div class='container'>
+  <div class="small_nav">
+    <div class="left">
+      <a href="{% url 'main:mainpage' %}">
+        <img src="{% static 'images/profile_key.png' %}" width="32px">
+      </a>
+    </div>
+    <div class="right">
+      <img src="{% static 'images/entypo_menu.png' %}" width="32px">
+    </div>
+  </div>
   <div class='pictureandsubmit'>
     <img class="picture" src="{% static 'images/Rectangle 3406.png' %}">
     <p class='textbig'>현직자 동문 멘토에게 <br>매칭 받아보세요 </p>
@@ -97,6 +107,17 @@
     <div class='icon1'>🎬<div class='icon1_2'>대한 극장 7,000원 영화 관람<br>메가박스 동문점 3천원 할인</div></div>
     <div class='icon1'>☕<div class='icon1_2'>뚜레쥬르 제일제당사옥점 15% 할인<br>할리스 충무로역점 20% 할인</div></div>
     <div class='icon1'>🗂️<div class='icon1_2'>마이크로소프트 오피스 무료 이용<br>구글 드라이브 용량 무제한</div></div>
+  </div>
+  <div class="credit" style="margin-top: 2rem;">
+    <div class="webname">
+      <p class="webname_bold">CHEAT KEY</p>
+      <p class="font_400">취트키 CHEAT KEY</p>
+    </div>
+    <div class="maker">
+      <p class="font_500">Product Designer | 구도욱<br>Front End | 오태준, 최민<br>Back End | 박선우, 황채현</p>
+    </div>
+    <div class="instayoutube_icon"></div>
+    <div class="copyright font_200">Copyright ⓒ 2024 심바오 Team. All Rights Reserved.</div>
   </div>
 </div>
 
