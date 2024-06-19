@@ -22,7 +22,7 @@
 
       <div class='finish'>
         <div class='finish1'>
-          <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2'>100%</div>
+          <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2' id='finish1_2'>100%</div>
         </div>
         <div class='linefinish'><div class='linefinish2' id='linefinish2'></div></div>
       </div>
@@ -76,7 +76,8 @@
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@!?-])[A-Za-z\d@!?-]{8,}$/;
     const errorDiv = document.querySelector('.please2');
 
-    lineFinish2.style.display = 'none'; // 처음에는 보이지 않게 설정
+    lineFinish2.style.display = 'none';
+    finish1_2.style.display='none';
 
     function validatePassword() {
       const password = passwordInput.value;
@@ -103,11 +104,13 @@
         submitButton.style.backgroundColor = "#28464E";
         submitButton.style.color = "#ffffff";
         lineFinish2.style.display = 'block'; 
+        finish1_2.style.display='block';
       } else {
         submitButton.disabled = true;
         submitButton.style.backgroundColor = "";
         submitButton.style.color = "";
         lineFinish2.style.display = 'none';
+        finish1_2.style.display='none';
       }
     }
 
