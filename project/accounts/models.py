@@ -9,5 +9,12 @@ class Profile(models.Model):
     user_birth = models.DateField()
     user_major = models.CharField(max_length=100, blank=True, null=True)
     user_profile=models.ImageField(upload_to='images/', null=True, blank=True)
-    user_enroll= models.CharField(max_length=50, blank=True, null=True)
+    ENROLL_CHOICES = [
+        ('재학', '재학'),
+        ('휴학', '휴학'),
+        ('졸업', '졸업'),
+        ('교직원', '교직원'),
+    ]
+    
+    user_enroll= models.CharField(max_length=50, blank=True, null=True, choices=ENROLL_CHOICES)
 
