@@ -29,7 +29,7 @@
 
       
 
-      <form action="{% url 'accounts:signup3' %}" method="post">
+      <form action="{% url 'accounts:signup3' %}" method="post" id='signup-form'>
         {% csrf_token %}
         <div class='inputlist'>
           <div class='id'>
@@ -102,12 +102,12 @@
         submitButton.disabled = false;
         submitButton.style.backgroundColor = "#28464E";
         submitButton.style.color = "#ffffff";
-        lineFinish2.style.display = 'block'; // '다음' 버튼이 활성화될 때 보이게 설정
+        lineFinish2.style.display = 'block'; 
       } else {
         submitButton.disabled = true;
         submitButton.style.backgroundColor = "";
         submitButton.style.color = "";
-        lineFinish2.style.display = 'none'; // '다음' 버튼이 비활성화될 때 숨김
+        lineFinish2.style.display = 'none';
       }
     }
 
@@ -124,7 +124,7 @@
       if (submitButton.disabled) {
         return;
       }
-      this.action = "{% url 'accounts:login' %}";
+      this.action = "{% url 'main:mainpage' %}";
       this.submit();
     });
   });
