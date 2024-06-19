@@ -34,7 +34,7 @@ def signup(request):
         request.session['user_phone'] = user_phone
         request.session['user_birth'] = user_birth
 
-        return redirect('signup2')
+        return redirect('accounts:signup2')
     return render(request, 'accounts/signup.html')
 
 def signup2(request):
@@ -47,7 +47,7 @@ def signup2(request):
         request.session['user_enroll'] = user_enroll
         request.session['user_profile'] = user_profile
 
-        return redirect('signup3')
+        return redirect('accounts:signup3')
 
     return render(request, 'accounts/signup2.html')
 
