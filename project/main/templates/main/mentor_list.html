@@ -39,22 +39,28 @@
           </div>
         </div>
       </form>
-      <div class="container">
-        <h1>멘토 리스트</h1>
-        <ul>
-            {% for mentor in mentors %}
-            <li>
-                <a href="{% url 'main:mentor_info' mentor.id %}">
-                    {{ mentor.mentor_company }} - {{ mentor.mentor_dept }}: {{ mentor.mentor_intro }}
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
+      <div class="mento_text color_28 font_1">멘토 리스트</div>
+      <div class="mento_list">
+        {% for mentor in mentors %}
+        <a href="% url 'main:mentor-info' mentor.id %">
+          <div class="mentor_card"></div>
+        </a>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </div>
 
-
+<!-- <div>
+  <ul>
+    {% for mentor in mentors %}
+    <li>
+        <a href="{% url 'main:mentor_info' mentor.id %}">
+            {{ mentor.mentor_company }} - {{ mentor.mentor_dept }}: {{ mentor.mentor_intro }}
+        </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div> —>
 
 {% endblock %}
