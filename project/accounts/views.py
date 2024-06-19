@@ -41,7 +41,7 @@ def signup2(request):
     if request.method == 'POST':
         user_major = request.POST['user_major']
         user_enroll = request.POST['user_enroll']
-        user_profile = request.FILES['user_profile']
+        user_profile = request.FILES.get('user_profile')
 
         request.session['user_major'] = user_major
         request.session['user_enroll'] = user_enroll
@@ -72,6 +72,7 @@ def signup3(request):
                 username=request.POST['user_id'],
                 password=request.POST['user_pw']                
                 )
+            
             profile = Profile(
                 user=user,
                 user_name=user_name,
