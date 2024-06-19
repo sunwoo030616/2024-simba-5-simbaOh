@@ -14,13 +14,22 @@
       <div class='imagesmask' style="padding-top: 90px;">
         <div class="left">
           <a href="{% url 'accounts:login' %}">
-            <img src="{% static 'images/Mask group.png' %}" alt='but' width='20px' height='20px'>
+            <img src="{% static 'images/Mask group.png' %}" alt='but' width='36px'>
           </a>
         </div>
         <div class="right">
           <h2 class='signup-main'>회원가입</h2>
         </div>
-        <div></div>
+        <div style="width:36px;"></div>
+      </div>
+
+      <div class='linefinish2' id='linefinish2'></div>
+      
+      <div class='finish'>
+        <div class='finish1'>
+          <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2'>30%</div>
+        </div>
+        <div class='linefinish'></div>
       </div>
 
       <form action="{% url 'accounts:signup' %}" method="post">
@@ -44,34 +53,12 @@
             <input class='same' placeholder="'-' 제외하고 숫자만 입력" type='text' name='user_phone' id='user_phone' required />
             <div class='inputlist_text'>휴대폰 번호를 13자리 숫자만 입력해주세요</div>
           </div>
-          
-          <div class='id'>
-            <label class='user' for="user_id">아이디</label>
-            <input class='same' placeholder="4-20자리 이메일 입력" type='text' name='user_id' id='user_id' required />
-            <div class='inputlist_text'>아이디를 입력해주세요</div>  
-          </div>
-          
-
-          <div class='ps'>
-            <label class='user' for="user_pw">비밀번호</label>
-            <input class='same' placeholder="최소 13자리 이상, 대소문자 구분 입력" type='password' name='user_pw' id='user_pw' required/>
-            <div class='inputlist_text'>비밀번호를 입력해주세요</div>
-          </div>
-          
-          
-
-          <div class='ps2'>
-            <label class='user' for="confirm">비밀번호 확인</label>
-            <input class='same' placeholder="비밀번호 재입력" type='password' name='confirm' id='confirm' required/>
-            <div class='please2' style="color: #FA622F;"></div>
-            <div class='inputlist_text'>동일한 비밀번호를 입력해주세요</div>
-          </div>
         
-        
+          <div class='submitcenter'>
+            <button class='submit1' type='submit' id='submit1'>이전</button>
+            <button class='submit2' type='submit' id='submit'>다음</button>
+          </div>
 
-          
-
-          <button class='submit' type='submit' id='submit'>입력 완료</button>
         </div>
       </form>
     </div>
