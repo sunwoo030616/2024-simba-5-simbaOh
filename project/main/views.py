@@ -28,7 +28,7 @@ def mentor_info(request, id):
     return render(request, 'main/mentor_info.html', {'mentor' : mentor})
 
 
-def mentor_creat(request):
+def mentor_create(request):
     if request.user.is_authenticated:
         new_mentor = Mentor()
 
@@ -44,5 +44,7 @@ def mentor_creat(request):
         new_mentor.mentor_at = timezone.now()
 
         new_mentor.save()
-        return redirect('main:mentor_list')
+        return redirect('main:mentor-list')
+    else:
+        return redirect('main:mentor-start')
     
