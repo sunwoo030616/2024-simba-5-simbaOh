@@ -28,7 +28,7 @@
   display: flex;
   width: 25rem; /* 400px */
   flex-direction: column;
-  gap: 2.5rem; /* 40px */
+  gap: 1.25rem; /* 20px */
 }
 
 .control {
@@ -161,7 +161,7 @@ input[type="checkbox"]:checked + label {
 
 .mentor_card_name_font {
   font-family: Pretendard;
-  font-size: 0.8125; /* 13px */
+  font-size: 0.8125rem; /* 13px */
   font-style: normal;
   font-weight: 700;
   line-height: 1.3125rem; /* 21px */
@@ -179,11 +179,16 @@ input[type="checkbox"]:checked + label {
 
 .mentor_card_work_font{
   font-family: Pretendard;
-  font-size: 0.8125; /* 13px */
+  font-size: 0.8125rem; /* 13px */
   font-style: normal;
   font-weight: 400;
   line-height: 1.3125rem; /* 21px */
   letter-spacing: -0.32px;
+}
+
+.image_set {
+  display: flex;
+  border-radius: 50px;
 }
 
 
