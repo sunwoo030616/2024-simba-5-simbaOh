@@ -1,0 +1,274 @@
+/* main page - CSS */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 0.625rem; /* 10px */
+
+  @media (max-width: 430px) {
+    align-items: start;
+  }
+  @media (min-width: 431px) {
+    align-items: center;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 26.875rem; /* 430px */
+  align-items: center;
+  background-color: #D4EDE7;
+  padding-bottom: 0.625rem; /* 10px */
+}
+
+.body {
+  display: flex;
+  width: 25rem; /* 400px */
+  flex-direction: column;
+  gap: 2.5rem; /* 40px */
+}
+
+.small_nav {
+  display: flex;
+  width: 100%;
+  height: 2rem; /* 32px */
+  padding-top: 3rem; /* 48px */
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.left {
+  display: flex;
+}
+
+.right {
+  display: flex;
+}
+
+.btn_list {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem; /* 16px */
+}
+
+.btn_rec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-25%, -20%);
+}
+
+.btn_rho {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(60%, 10%);
+}
+
+.btn_cir {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-15%, 0%);
+}
+
+.text_set1 {
+  display: flex;
+  position: absolute;
+  text-align: center;
+  transform: translateY(50%);
+}
+
+.text_set2 {
+  display: flex;
+  position: absolute;
+  text-align: center;
+  transform: translateY(100%);
+}
+
+.text_set3 {
+  display: flex;
+  position: absolute;
+  text-align: center;
+  transform: translate(-10%, 220%);
+}
+
+.text_set4 {
+  display: flex;
+  position: absolute;
+  text-align: center;
+  transform: translate(-10%, 300%);
+}
+
+.text_set5 {
+  display: flex;
+  position: absolute;
+  text-align: center;
+  transform: translateY(100%);
+}
+
+.text_set6 {
+  display: flex;
+  position: absolute;
+  text-align: center;
+  transform: translateY(180%);
+}
+
+.text_dongguk {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup_list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* 32px */
+}
+
+.signup_detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  color: #7E7E7E;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.count {
+  color: #000;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.875rem; /* 30px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+
+
+/* 폰트 설정 */
+
+.font_CORE {
+  font-family: "VITRO CORE OTF";
+  font-size: 2rem; /* 32px */
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.font_PRIDE {
+  font-family: "VITRO PRIDE OTF";
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.text_sub {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Pretendard;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.text_point {
+  color: #359287;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Pretendard;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.content{
+  height: 1.875rem; /* 30px */
+  color: #7E7E7E;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.count {
+  height: 1.875rem; /* 30px */
+  color: #000;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.875rem; /* 30px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.webname_bold {
+  color: #1E3D46;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: STHupo;
+  font-size: 1.875rem; /* 30px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.font_400 {
+  color: #717171;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.font_500 {
+  color: #717171;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.font_200 {
+  color: #717171;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+}
+
+/* 색상 설정 */
+
+.color_D4 {
+  color: #D4EDE7;
+}
+
+.color_F {
+  color: #FFF;
+}
+
+.color_28 {
+  color: #28464E;
+}
+
+/* 아이콘 설정 */
+

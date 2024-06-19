@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>포트폴리오 편집</title>
+</head>
+<body>
+    <h1>포트폴리오 편집</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="title">제목:</label>
+        <input type="text" id="title" name="title" value="{{ portfolio.title }}"><br>
+
+        <label for="introduction">소개:</label>
+        <textarea id="introduction" name="introduction">{{ portfolio.introduction }}</textarea><br>
+
+        <label for="education">학력:</label>
+        <textarea id="education" name="education">{{ portfolio.education }}</textarea><br>
+
+        <label for="experience">경력:</label>
+        <textarea id="experience" name="experience">{{ portfolio.experience }}</textarea><br>
+
+        <label for="projects">프로젝트:</label>
+        <textarea id="projects" name="projects">{{ portfolio.projects }}</textarea><br>
+
+        <label for="certifications">자격증/수상:</label>
+        <textarea id="certifications" name="certifications">{{ portfolio.certifications }}</textarea><br>
+
+        <button type="submit">저장하기</button>
+    </form>
+</body>
+</html>

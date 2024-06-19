@@ -1,0 +1,94 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %} 
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/main/mentor_info.css'%}"
+/>
+
+<div class="screen">
+  <div class="main">
+    <div class="body">
+      <div class="nav">
+        <div class="left">
+          <a href="{% url 'main:mentor-list' %}">
+            <img src="{% static 'images/arrow-24.png' %}" width='36px' height='36px'>
+          </a>
+        </div>
+        <div class="color_28 title_text">
+          멘토 정보
+        </div>
+        <div style="width: 36px;"></div>
+      </div>
+      <p class="color_28 title_text">멘토 프로필</p>
+      <div class="mentor_card_wrap">
+        <div class="mentor_card">
+          <div class="mentor_card_comp_font color_00">
+            {{mentor.mentor_company}}
+          </div> 
+          <div class="mentor_card_dept_font color_00">
+            {{mentor.mentor_dept}}
+          </div> 
+          <div class="centering">
+            {% if mentor.mentor_image %}
+              <img src="{{ mentor.image.url }}" alt="">
+            {% else %}
+              <img src="{% static 'images/arrow-24.png' %}" width='75px' height='75px'>
+            {% endif %}
+            <div class="mentor_card_name_font color_00">
+              {{mentor.mentor_name}}
+            </div> 
+            <div class="mentor_card_major_font color_00">
+              {{mentor.mentor_major}}
+            </div> 
+            <div class="mentor_card_work_font color_9D">
+              {{mentor.mentor_work}}
+            </div>
+            
+
+            <!-- button 관련 바꾸어야함 뜨질 않아 ㅠ -->
+            <div class="row"> 
+              {% if request.user != user %}
+                {% if request.user.profile in user.profile.followers.all %}
+                  <a class="follow_btn" href="{% url 'users:follow' user.id %}">
+                    <button type="button" class="btn_follow">팔로우</button>
+                  </a>
+                {% else %}
+                  <a class="follow_btn" href="{% url 'users:follow' user.id %}">
+                    <button type="button" class="">언팔로우</button>
+                  </a>
+                {% endif %}
+              {% endif %}
+              <a class="mentoring" href="">멘토링 신청</a>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form action="{% url 'main:mentor-info' mentor.id %}" method="post">
+  {% csrf_token %}
+
+
+</form>
+<div class="container">
+  <h1>멘토 정보</h1>
+  <div class="mentor-profile">
+    <h2>{{ mentor.mentor_company }}</h2>
+    <p>{{ mentor.mentor_dept }}</p>
+    <p>{{ mentor.mentor_work }}</p>
+    <p>{{ mentor.mentor_intro }}</p>
+    <p>{{ mentor.mentor_year }}</p>
+    <p>{{ mentor.mentor_at }}</p>
+  </div>
+</div>
+
+
+
+</form>
+{% endblock %}
