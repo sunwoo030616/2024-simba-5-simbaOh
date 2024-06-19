@@ -23,7 +23,7 @@
 
       <div class='finish'>
         <div class='finish1'>
-          <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2'>30%</div>
+          <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2' id='finish1_2'>30%</div>
         </div>
         <div class='linefinish'></div>
       </div>
@@ -68,8 +68,10 @@
     const phoneInput = document.getElementById('user_phone');
     const submitButton = document.getElementById('submit');
     const lineFinish2 = document.getElementById('linefinish2');
+    const finish1_2 = document.getElementById('finish1_2');
 
     lineFinish2.style.display = 'none';
+    finish1_2.style.display = 'none';
 
     function validateForm() {
       const nameValid = nameInput.value.trim() !== '';
@@ -85,11 +87,13 @@
         submitButton.style.backgroundColor = "#28464E";
         submitButton.style.color = "#ffffff";
         lineFinish2.style.display = 'block'; 
+        finish1_2.style.display = 'block';
       } else {
         submitButton.disabled = true;
         submitButton.style.backgroundColor = "";
         submitButton.style.color = "";
         lineFinish2.style.display = 'none'; 
+        finish1_2.style.display = 'none';
       }
     }
 
