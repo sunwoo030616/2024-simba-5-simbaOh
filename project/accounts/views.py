@@ -89,8 +89,8 @@ def signup3(request):
 
     return render(request, 'accounts/signup3.html')
 
-def finish_signup(request):
-    return render(request, 'accounts/finish-signup.html')
+def finishjoin(request):
+    return render(request, 'accounts/finishjoin.html')
 
 # def signup(request):
 #     if request.method == 'POST':
