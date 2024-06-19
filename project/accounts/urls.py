@@ -10,4 +10,4 @@ urlpatterns = [
     path('signup/', signup, name="signup"),
     path('signup2/', signup2, name="signup2"),
     path('signup3/', signup3, name="signup3"),
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
