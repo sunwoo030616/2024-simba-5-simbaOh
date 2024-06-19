@@ -177,7 +177,15 @@
     /* top: 25.6%;
       left: 33.9%; */
     }
-
+    .move{
+        color: #28464E;
+        font-family: Pretendard;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        display: flex;
+    }
     .submitcenter{
         display:flex;
         flex-direction: row;
@@ -188,7 +196,7 @@
     
     }
     .submit1{
-        background: #28464E;
+        background: rgba(40, 70, 78, 0.30);
         display: flex;
         flex-direction: column;
         width: 181px;

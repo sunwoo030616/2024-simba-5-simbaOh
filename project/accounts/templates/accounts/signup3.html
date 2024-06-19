@@ -122,14 +122,12 @@
       window.location.href = "{% url 'accounts:signup2' %}";
     });
 
-    document.getElementById('signup-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      if (submitButton.disabled) {
-        return;
+    submitButton.addEventListener('click', function() {
+      if (validateForm()) {
+        window.location.href = "{% url 'main:mainpage' %}";
       }
-      this.action = "{% url 'main:mainpage' %}";
-      this.submit();
     });
+
   });
 </script>
 
