@@ -20,6 +20,12 @@ def mentor_list(request):
     mentors = Mentor.objects.all()
     return render(request, 'main/mentor_list.html', {'mentors' : mentors})
 
+<<<<<<< HEAD
+=======
+def mentor_enroll(request):
+    return render(request, 'main/mentor_enroll.html')
+
+>>>>>>> 1033093e077a7620ee536bf7113fc4132eb18d8c
 def mentor_info(request, id):
     mentor = get_object_or_404(Mentor, pk = id)
     return render(request, 'main/mentor_info.html', {'mentor' : mentor})
@@ -40,5 +46,5 @@ def mentor_reg(request):
         new_mentor.mentor_at = timezone.now()
 
         new_mentor.save()
-        return redirect('main:list', new_mentor.id)
+        return redirect('main:mentor-list', new_mentor.id)
     
