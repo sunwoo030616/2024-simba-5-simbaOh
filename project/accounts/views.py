@@ -38,6 +38,7 @@ def signup(request):
                 user_name = request.POST['user_name']
                 user_phone = request.POST['user_phone']
                 user_birth = request.POST['user_birth']
+                user_enroll = request.POST['user_enroll']
                 
     
                 
@@ -45,6 +46,7 @@ def signup(request):
                                 user_name=user_name,
                                 user_phone=user_phone,
                                 user_birth=user_birth,
+                                user_enroll=user_enroll
                                 )
                 profile.save()
 
