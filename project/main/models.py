@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Mentor(models.Model):
+    # mentor_name = models.OneToOneField(User, on_delete=models.CASCADE)
+
     mentor_company = models.CharField(max_length=50)
     mentor_dept = models.CharField(max_length=50)
     mentor_work = models.CharField(max_length=50)
