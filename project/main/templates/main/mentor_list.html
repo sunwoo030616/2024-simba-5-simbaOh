@@ -65,15 +65,19 @@
               {{mentor.mentor_dept}}
             </div> 
             <div class="centering">
-              <img src="" alt="">
+              {% if mentor.mentor_image %}
+                <img class="image_set" src="{{ mentor.image.url }}" width="50px" height="50px">
+              {% else %}
+                <img class="image_set" src="{% static 'images/signup1.png' %}" width='50px' height='50px'>
+              {% endif %}
               <div class="mentor_card_name_font color_00">
-                이름
+                {{mentor.mentor_name}}
               </div> 
               <div class="mentor_card_major_font color_00">
-                학과
+                {{mentor.mentor_major}}
               </div> 
-              <div class="mentor_card_work_font color_00">
-                세부직무
+              <div class="mentor_card_work_font color_9D">
+                {{mentor.mentor_work}}
               </div> 
             </div>
           </div>
