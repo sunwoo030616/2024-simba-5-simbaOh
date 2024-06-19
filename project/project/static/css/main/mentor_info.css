@@ -95,6 +95,10 @@ label {
   background-color: #1E3E46;
 }
 
+.circuling {
+  border-radius: 3.125rem; /* 50px */
+}
+
 
 
 
@@ -103,7 +107,7 @@ label {
 
 .title_text {
   font-family: "noto Sans KR";
-  font-size: 1.25rem; /* 20px */
+  font-size: 1.5rem; /* 24px */
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -111,7 +115,7 @@ label {
 
 .mentor_card_comp_font {
   font-family: "Noto Sans KR";
-  font-size: 1rem; /* 16px */
+  font-size: 1.25rem; /* 20px */
   font-style: normal;
   font-weight: 700;
   line-height: 1.3125rem; /* 21px */
@@ -120,7 +124,7 @@ label {
 
 .mentor_card_dept_font {
   font-family: "Noto Sans KR";
-  font-size: 0.75rem; /* 12px */
+  font-size: 1rem; /* 16px */
   font-style: normal;
   font-weight: 500;
   line-height: 1.3125rem; /* 21px */
@@ -129,7 +133,7 @@ label {
 
 .mentor_card_name_font {
   font-family: Pretendard;
-  font-size: 0.9375rem; /* 15px */
+  font-size: 1.25rem; /* 20px */
   font-style: normal;
   font-weight: 700;
   line-height: 1.3125rem; /* 21px */
@@ -138,7 +142,7 @@ label {
 
 .mentor_card_major_font {
   font-family: Pretendard;
-  font-size: 0.8125rem; /* 13px */
+  font-size: 0.75rem; /* 12px */
   font-style: normal;
   font-weight: 400;
   line-height: 1.3125rem; /* 21px */
@@ -147,7 +151,16 @@ label {
 
 .mentor_card_work_font{
   font-family: Pretendard;
-  font-size: 0.8125; /* 13px */
+  font-size: 0.75rem; /* 12px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.context_text {
+  font-family: Pretendard;
+  font-size: 1rem; /* 16px */
   font-style: normal;
   font-weight: 400;
   line-height: 1.3125rem; /* 21px */

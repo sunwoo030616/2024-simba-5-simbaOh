@@ -45,5 +45,9 @@ def mentor_create(request):
         new_mentor.save()
         return redirect('main:mentor-list')
 
+<<<<<<< HEAD
 def mentor_ask(request):
     return render(request, 'main/mentor_ask.html')
+=======
+
+>>>>>>> 509426d45bf1994b8eb46519842a1a1be4be9ad5
