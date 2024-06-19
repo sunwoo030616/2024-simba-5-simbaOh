@@ -84,10 +84,15 @@ label {
   display: flex;
   padding: 0.5rem; /* 8px */
   font-size: 1rem; /* 16px */
-  color: #FFF;
-  background-color: #1E3D46;
+  color: #1E3D46;
+  background-color: white;
   border: 1px solid #A4DACD;
   border-radius: 0.625rem; /* 10px */
+}
+
+input[type="checkbox"]:checked + label {
+  color: white;
+  background-color: #1E3D46;
 }
 
 .mento_text {
