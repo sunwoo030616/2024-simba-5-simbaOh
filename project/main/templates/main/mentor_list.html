@@ -44,7 +44,7 @@
         <ul>
             {% for mentor in mentors %}
             <li>
-                <a href="{% url 'main:mentor_info' mentor.id %}">
+                <a href="{% url 'main:mentor-info' mentor.id %}">
                     {{ mentor.mentor_company }} - {{ mentor.mentor_dept }}: {{ mentor.mentor_intro }}
                 </a>
             </li>

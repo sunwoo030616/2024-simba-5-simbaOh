@@ -28,10 +28,11 @@ def mentor_info(request, id):
     return render(request, 'main/mentor_info.html', {'mentor' : mentor})
 
 
-def mentor_reg(request):
+def mentor_creat(request):
     if request.user.is_authenticated:
         new_mentor = Mentor()
 
+        new_mentor.mentor_name = request.user
 
         new_mentor.mentor_company = request.POST['mentor_company']
         new_mentor.mentor_dept = request.POST['mentor_dept']
@@ -43,5 +44,5 @@ def mentor_reg(request):
         new_mentor.mentor_at = timezone.now()
 
         new_mentor.save()
-        return redirect('main:mentor-list', new_mentor.id)
+        return redirect('main:mentor_list')
     
