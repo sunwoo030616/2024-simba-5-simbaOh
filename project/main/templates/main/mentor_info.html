@@ -14,13 +14,13 @@
       <div class="nav">
         <div class="left">
           <a href="{% url 'main:mentor-list' %}">
-            <img src="{% static 'images/arrow-24.png' %}" width='36px' height='36px'>
+            <img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
           </a>
         </div>
         <div class="color_28 title_text">
           멘토 정보
         </div>
-        <div style="width: 36px;"></div>
+        <div style="width: 32px;"></div>
       </div>
       <p class="color_28 title_text">멘토 프로필</p>
       <div class="mentor_card_wrap">
@@ -33,9 +33,9 @@
           </div> 
           <div class="centering">
             {% if mentor.mentor_image %}
-              <img src="{{ mentor.image.url }}" alt="">
+              <img class="circuling" src="{{ mentor.image.url }}" alt="">
             {% else %}
-              <img src="{% static 'images/arrow-24.png' %}" width='75px' height='75px'>
+              <img class="circuling" src="{% static 'images/arrow-24.png' %}" width='75px' height='75px'>
             {% endif %}
             <div class="mentor_card_name_font color_00">
               {{mentor.mentor_name}}
@@ -48,7 +48,7 @@
             </div>
             
 
-            <!-- button 관련 바꾸어야함 뜨질 않아 ㅠ -->
+            <!-- button 관련 바꾸어야함 뜨질 않아 -->
             <div class="row"> 
               {% if request.user != user %}
                 {% if request.user.profile in user.profile.followers.all %}
@@ -67,24 +67,16 @@
           </div>
         </div>
       </div>
+      <p class="color_28 title_text">한 줄 소개</p>
+      <p class="color_00 context_text"></p>
+      <p class="color_28 title_text">멘토 소개</p>
+      <p class="color_00 context_text"></p>
+      <p class="color_28 title_text">멘토 이력</p>
+      <p class="color_00 context_text"></p>
+      <p class="color_28 title_text">멘토 자격증 / 어학 성적</p>
+      <p class="color_00 context_text"></p>
+      <!-- 태그로 가져와야함 -->
     </div>
-  </div>
-</div>
-
-<form action="{% url 'main:mentor-info' mentor.id %}" method="post">
-  {% csrf_token %}
-
-
-</form>
-<div class="container">
-  <h1>멘토 정보</h1>
-  <div class="mentor-profile">
-    <h2>{{ mentor.mentor_company }}</h2>
-    <p>{{ mentor.mentor_dept }}</p>
-    <p>{{ mentor.mentor_work }}</p>
-    <p>{{ mentor.mentor_intro }}</p>
-    <p>{{ mentor.mentor_year }}</p>
-    <p>{{ mentor.mentor_at }}</p>
   </div>
 </div>
 

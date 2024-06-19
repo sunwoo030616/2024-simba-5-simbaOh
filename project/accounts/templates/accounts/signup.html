@@ -2,28 +2,33 @@
 {% block content %} 
 {% load static %}
 
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/accounts/signup.css'%}"
-/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/accounts/signup.css' %}" />
 
 <div class="container"> 
   <div class='container2'>
     <div class='container3'>
-      <div class='imagesmask' style="padding-top: 90px;">
+      <div class='imagesmask' style="padding-top: 48px;">
         <div class="left">
           <a href="{% url 'accounts:login' %}">
-            <img src="{% static 'images/Mask group.png' %}" alt='but' width='20px' height='20px'>
+            <img src="{% static 'images/Mask group.png' %}" alt='but' width='32px'>
           </a>
         </div>
         <div class="right">
           <h2 class='signup-main'>회원가입</h2>
         </div>
-        <div></div>
+        <div style="width:36px;"></div>
       </div>
 
-      <form action="{% url 'accounts:signup' %}" method="post">
+      
+
+      <div class='finish'>
+        <div class='finish1'>
+          <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2'>30%</div>
+        </div>
+        <div class='linefinish'><div class='linefinish2' id='linefinish2'></div></div>
+      </div>
+
+      <form action="{% url 'accounts:signup' %}" method="post" id="signup-form">
         {% csrf_token %}
         <div class='inputlist'>
 
@@ -44,34 +49,12 @@
             <input class='same' placeholder="'-' 제외하고 숫자만 입력" type='text' name='user_phone' id='user_phone' required />
             <div class='inputlist_text'>휴대폰 번호를 13자리 숫자만 입력해주세요</div>
           </div>
-          
-          <div class='id'>
-            <label class='user' for="user_id">아이디</label>
-            <input class='same' placeholder="4-20자리 이메일 입력" type='text' name='user_id' id='user_id' required />
-            <div class='inputlist_text'>아이디를 입력해주세요</div>  
-          </div>
-          
-
-          <div class='ps'>
-            <label class='user' for="user_pw">비밀번호</label>
-            <input class='same' placeholder="최소 13자리 이상, 대소문자 구분 입력" type='password' name='user_pw' id='user_pw' required/>
-            <div class='inputlist_text'>비밀번호를 입력해주세요</div>
-          </div>
-          
-          
-
-          <div class='ps2'>
-            <label class='user' for="confirm">비밀번호 확인</label>
-            <input class='same' placeholder="비밀번호 재입력" type='password' name='confirm' id='confirm' required/>
-            <div class='please2' style="color: #FA622F;"></div>
-            <div class='inputlist_text'>동일한 비밀번호를 입력해주세요</div>
-          </div>
         
-        
+          <div class='submitcenter'>
+            <button class='submit1' type='button' id='prev'>이전</button>
+            <button class='submit2' type='button' id='submit'>다음</button>
+          </div>
 
-          
-
-          <button class='submit' type='submit' id='submit'>입력 완료</button>
         </div>
       </form>
     </div>
@@ -80,30 +63,20 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    const usernameInput = document.getElementById('user_id');
-    const passwordInput = document.getElementById('user_pw');
-    const password2Input = document.getElementById('confirm');
+    const nameInput = document.getElementById('user_name');
+    const birthInput = document.getElementById('user_birth');
+    const phoneInput = document.getElementById('user_phone');
     const submitButton = document.getElementById('submit');
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@!?-])[A-Za-z\d@!?-]{8,}$/;
-    const errorDiv = document.querySelector('.please2');
+    const lineFinish2 = document.getElementById('linefinish2');
 
-    function validatePassword() {
-      const password = passwordInput.value;
-      return passwordPattern.test(password);
-    }
+    lineFinish2.style.display = 'none';
 
     function validateForm() {
-      const usernameValid = usernameInput.value.trim() !== '';
-      const passwordValid = validatePassword();
-      const passwordsMatch = passwordInput.value === password2Input.value;
+      const nameValid = nameInput.value.trim() !== '';
+      const birthValid = /^[0-9]{8}$/.test(birthInput.value.trim());
+      const phoneValid = /^[0-9]{10,13}$/.test(phoneInput.value.trim());
 
-      if (password2Input.value.length > 0 && !passwordsMatch) {
-        errorDiv.textContent = "비밀번호가 일치하지 않습니다!";
-      } else {
-        errorDiv.textContent = "";
-      }
-
-      return usernameValid && passwordValid && passwordsMatch;
+      return nameValid && birthValid && phoneValid;
     }
 
     function updateSubmitButton() {
@@ -111,16 +84,32 @@
         submitButton.disabled = false;
         submitButton.style.backgroundColor = "#28464E";
         submitButton.style.color = "#ffffff";
+        lineFinish2.style.display = 'block'; 
       } else {
         submitButton.disabled = true;
         submitButton.style.backgroundColor = "";
         submitButton.style.color = "";
+        lineFinish2.style.display = 'none'; 
       }
     }
 
-    usernameInput.addEventListener('input', updateSubmitButton);
-    passwordInput.addEventListener('input', updateSubmitButton);
-    password2Input.addEventListener('input', updateSubmitButton);
+    nameInput.addEventListener('input', updateSubmitButton);
+    birthInput.addEventListener('input', updateSubmitButton);
+    phoneInput.addEventListener('input', updateSubmitButton);
+
+    submitButton.addEventListener('click', function() {
+      if (validateForm()) {
+        window.location.href = "{% url 'accounts:signup2' %}";
+      }
+    });
+
+    document.getElementById('signup-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      if (submitButton.disabled) {
+        return;
+      }
+      this.submit();
+    });
   });
 </script>
 

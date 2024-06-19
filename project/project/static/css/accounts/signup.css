@@ -49,6 +49,7 @@
         font-style: normal;
         font-weight: 700;
         line-height: normal;
+        /* padding-right: 40px; */
             }
 
     .user{
@@ -136,5 +137,93 @@
         font-weight: 400;
         line-height: 16px; /* 111.111% */
     }
+
+    .finish{
+        padding-top: 15px;
+        width:395px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding-left: 4px;
+        color: #28464E;
+        font-family: Pretendard;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+    .finish1{
+        display: flex;
+        width: 395px;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-bottom: 10px;
+    }
+    .linefinish{
+        width: 395px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 30px 30px 30px 30px;
+    background: #FFF;
+    }
+    
+    .linefinish2{
+    width: 120px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 30px 0px 0px 30px;
+    background: #00C3AD;
+    position: absolute;
+    /* top: 25.6%;
+      left: 33.9%; */
+    }
+
+    .submitcenter{
+        display:flex;
+        flex-direction: row;
+        width:100%;
+        justify-content: space-around;
+        padding-top: 130px;
+        padding-bottom: 20px;
+    
+    }
+    .submit1{
+        background: #28464E;
+        display: flex;
+        flex-direction: column;
+        width: 181px;
+        height: 51px;
+        /* padding: 17px 100px; */
+        justify-content: center;
+        align-items: center;
+        /* gap: 10px; */
+        color: #FFF;
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 22px;
+        border-radius: 8px;
+    }
+    .submit2{
+        display: flex;
+    width: 181px;
+    height: 51px;
+      /* padding: 17px 100px; */
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: rgba(40, 70, 78, 0.30);
+    color: #FFF;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
+      line-height: 22px; /* 110% */
+    }
+    
     
     
