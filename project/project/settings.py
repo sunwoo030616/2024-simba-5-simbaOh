@@ -132,3 +132,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# settings.py
+
+# 기본 세션 엔진 설정
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # 데이터베이스 세션
+
+# 세션 쿠키 설정 (필요에 따라 설정 가능)
+SESSION_COOKIE_NAME = 'sessionid'
+SESSION_COOKIE_AGE = 1209600  # 2주 (초 단위)
+SESSION_COOKIE_SECURE = False  # HTTPS를 사용할 때 True로 설정
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
