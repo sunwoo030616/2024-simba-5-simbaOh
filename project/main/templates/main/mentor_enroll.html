@@ -2,14 +2,18 @@
 {% load static %}
 
 {% block content %}
-<form action="{% url 'main:mentor-enroll' %}" method="POST" enctype="multipart/form-data">
+<form action="{% url 'main:mentor-create' %}" method="POST", enctype="multipart/form-data">
     {% csrf_token %}
     <p>test_company : <input type="text" name="mentor_company" id=""></p>
 
     <p>test_부서 : <input type="text" name="mentor_dept"></p>
     <p>test_직무 : <input type="text" name="mentor_work"></p>
-    <p>test_소개글 : <textarea type="text" name="mentor_intro"></textarea>
-    <p>test_년차 : <input type="number" name="mentor_year"></p>
+    <p>test_요약 : <input type="text" name="mentor_summary"></p>
+    <p>test_소개글 : <textarea type="text" name="mentor_info"></textarea></p>
+    <p>test_이력 : <input type="text" name="mentor_career"></p>
+    <p>test_자격증 : <input type="text" name="mentor_certificate"></p>
+    <p>사진 : <input type="file" name="image_1"></p>
+    <p>사진 : <input type="file" name="image_2"></p>
 
     <button type="submit">제출</button>
 </form>

@@ -17,8 +17,8 @@ def mentor_start(request):
     return render(request, 'main/mentor_start.html')
 
 def mentor_list(request):
-    profiles = Profile.objects.select_related('user').all()
     mentors = Mentor.objects.all()
+    profiles = Profile.objects.all()
     return render(request, 'main/mentor_list.html', {
         'mentors' : mentors,
         'profiles' : profiles
@@ -38,6 +38,7 @@ def mentor_info(request, id):
 
 
 def mentor_create(request):
+    if request.user.is_authenticated:
         new_mentor = Mentor()
 
         new_mentor.user = request.user
@@ -46,13 +47,19 @@ def mentor_create(request):
         new_mentor.mentor_dept = request.POST['mentor_dept']
         new_mentor.mentor_work = request.POST['mentor_work']
 
-        new_mentor.mentor_intro = request.POST['mentor_intro']
-        new_mentor.mentor_year = request.POST['mentor_year']
+        new_mentor.mentor_summary = request.POST['mentor_summary']
+        new_mentor.mentor_info = request.POST['mentor_info']
+        new_mentor.mentor_career = request.POST['mentor_career']
+        new_mentor.mentor_certificate = request.POST['mentor_certificate']
+        new_mentor.mentor_id_card = request.FILES.get('image')
+        new_mentor.mentor_name_card = request.FILES.get('image')
 
         new_mentor.mentor_at = timezone.now()
 
         new_mentor.save()
         return redirect('main:mentor-list')
+    else:
+        return render(request, 'main/mentor_enroll.html')
 
 def mentor_ask(request):
     return render(request, 'main/mentor_ask.html')
