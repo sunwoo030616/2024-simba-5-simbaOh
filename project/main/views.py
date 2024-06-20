@@ -28,27 +28,34 @@ def mentor_info(request, id):
     return render(request, 'main/mentor_info.html', {'mentor' : mentor})
 
 
-def mentor_create(request):
+def mentor_enroll(request):
     if request.method == 'POST':
-        new_mentor = Mentor()
-        new_mentor.user = request.user
-        new_mentor.mentor_company = request.POST.get('mentor_company', '')
-        new_mentor.mentor_dept = request.POST.get('mentor_dept', '')
-        new_mentor.mentor_work = request.POST.get('mentor_work', '')
-        new_mentor.mentor_info = request.POST.get('mentor_info', '')
-        new_mentor.mentor_career = request.POST.get('mentor_career', '')
-        new_mentor.mentor_summary = request.POST.get('mentor_summary', '')  # 누락된 필드 추가
-        new_mentor.mentor_certificate = request.POST.get('mentor_certificate', '')
+        request.session['mentor_company'] = request.POST.get('mentor_company', '')
+        request.session['mentor_dept'] = request.POST.get('mentor_dept', '')
+        request.session['mentor_work'] = request.POST.get('mentor_work', '')
 
-        if 'mentor_id_card' in request.FILES:
-            new_mentor.mentor_id_card = request.FILES['mentor_id_card']
-        if 'mentor_name_card' in request.FILES:
-            new_mentor.mentor_name_card = request.FILES['mentor_name_card']
-
-        new_mentor.mentor_at = timezone.now()
-        new_mentor.save()
-        return redirect('main:mentor-list')
+        print("Step 1 Session Data:")
+        print(request.session['mentor_company'])
+        print(request.session['mentor_dept'])
+        print(request.session['mentor_work'])
+        return redirect('main:mentor-enroll2')
     return render(request, 'main/mentor_enroll.html')
+
+def mentor_enroll2(request):
+    if request.method == 'POST':
+        request.session['mentor_summary'] = request.POST.get('mentor_summary', '')
+        request.session['mentor_info'] = request.POST.get('mentor_info', '')
+        request.session['mentor_career'] = request.POST.get('mentor_career', '')
+        request.session['mentor_certificate'] = request.POST.get('mentor_certificate', '')
+        return redirect('main:mentor-enroll3')
+    return render(request, 'main/mentor_enroll2.html')
+
+def mentor_enroll3(request):
+    if request.method == 'POST':
+        request.session['mentor_id_card'] = request.FILES.get('mentor_id_card')
+        request.session['mentor_name_card'] = request.FILES.get('mentor_name_card')
+        return redirect('main:mentor-create')
+    return render(request, 'main/mentor_enroll3.html')
 
 def mentor_ask(request):
     return render(request, 'main/mentor_ask.html')

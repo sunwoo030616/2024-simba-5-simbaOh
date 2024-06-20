@@ -6,7 +6,7 @@
   href="{% static 'css/main/mentor_enroll2.css'%}"
 />
 
-<form action="{% url 'main:mentor-create' %}" method="POST", enctype="multipart/form-data">
+<form action="{% url 'main:mentor-enroll2' %}" method="POST", enctype="multipart/form-data">
     {% csrf_token %}
     <p>test_요약 : <input type="text" name="mentor_summary"></p>
     <p>test_소개글 : <textarea type="text" name="mentor_info"></textarea></p>
