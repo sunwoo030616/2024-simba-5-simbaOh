@@ -33,15 +33,15 @@
           </div> 
           <div class="centering">
             {% if mentor.mentor_image %}
-              <img class="circuling" src="{{ mentor.image.url }}" alt="">
+              <img class="image_set" src="{{ mentor.image.url }}" width="50px" height="50px">
             {% else %}
-              <img class="circuling" src="{% static 'images/arrow-24.png' %}" width='75px' height='75px'>
+              <img class="image_set" src="{% static 'images/signup1.png' %}" width='50px' height='50px'>
             {% endif %}
             <div class="mentor_card_name_font color_00">
-              {{mentor.mentor_name}}
+              {{user.profile.user_name}}
             </div> 
             <div class="mentor_card_major_font color_00">
-              {{mentor.mentor_major}}
+              {{user.profile.user_major}}
             </div> 
             <div class="mentor_card_work_font color_9D">
               {{mentor.mentor_work}}
@@ -50,17 +50,6 @@
 
             <!-- button 관련 바꾸어야함 뜨질 않아 -->
             <div class="row"> 
-              {% if request.user != user %}
-                {% if request.user.profile in user.profile.followers.all %}
-                  <a class="follow_btn" href="{% url 'users:follow' user.id %}">
-                    <button type="button" class="btn_follow">팔로우</button>
-                  </a>
-                {% else %}
-                  <a class="follow_btn" href="{% url 'users:follow' user.id %}">
-                    <button type="button" class="">언팔로우</button>
-                  </a>
-                {% endif %}
-              {% endif %}
               <a class="mentoring" href="{% url 'main:mentor-ask' %}">멘토링 신청</a>
             </div>
             
@@ -68,7 +57,7 @@
         </div>
       </div>
       <p class="color_28 title_text">한 줄 소개</p>
-      <p class="color_00 context_text"></p>
+      <p class="color_00 context_text">{{ portfolio.introduction }}</p>
       <p class="color_28 title_text">멘토 소개</p>
       <p class="color_00 context_text"></p>
       <p class="color_28 title_text">멘토 이력</p>

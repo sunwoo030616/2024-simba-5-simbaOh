@@ -35,13 +35,13 @@
             {% if mentor.mentor_image %}
               <img class="circuling" src="{{ mentor.image.url }}" alt="">
             {% else %}
-              <img class="circuling" src="{% static 'images/arrow-24.png' %}" width='75px' height='75px'>
+              <img class="circuling" src="{% static 'images/signup1.png' %}" width='75px' height='75px'>
             {% endif %}
             <div class="mentor_card_name_font color_00">
-              {{mentor.mentor_name}}
+              {{user.profile.user_name}}
             </div> 
             <div class="mentor_card_major_font color_00">
-              {{mentor.mentor_major}}
+              {{user.profile.user_major}}
             </div> 
             <div class="mentor_card_work_font color_9D">
               {{mentor.mentor_work}}

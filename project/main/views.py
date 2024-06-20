@@ -19,6 +19,8 @@ def mentor_start(request):
 def mentor_list(request):
     mentors = Mentor.objects.all()
     profiles = Profile.objects.all()
+    for profile in profiles:
+        print(profile.user_name)
     return render(request, 'main/mentor_list.html', {
         'mentors' : mentors,
         'profiles' : profiles
@@ -34,7 +36,7 @@ def mentor_info(request, id):
     return render(request, 'main/mentor_info.html', {
         'user' : user,
         'profile' : profile
-    })
+        })
 
 
 def mentor_create(request):
