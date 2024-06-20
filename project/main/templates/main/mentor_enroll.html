@@ -38,10 +38,10 @@
 
       <div class='inputlist'>
         <div class='company'>
-          <p><label class='user' for="mentor_company">회사명</label><input class='same' placeholder="예시) 취트키" type="text" name="mentor_company" id=""></p>
+          <p><label class='user' for="mentor_company">회사명</label><input class='same' placeholder="예시) 취트키" type="text" name="mentor_company" id="mentor_company"></p>
         </div>
         <div class='input2'>
-          <p><label class='user' for="mentor_dept">부서</label><input class='same' placeholder="예시) 커리어 UI/UX 디자인" type="text" name="mentor_dept"></p>
+          <p><label class='user' for="mentor_dept">부서</label><input class='same' placeholder="예시) 커리어 UI/UX 디자인" type="text" name="mentor_dept" id="mentor_dept"></p>
         </div>
         <div class='input3'>
           <p><label class='user' for="mentor_work">직무 유형</label>
@@ -74,19 +74,44 @@
   </div>
 </div>
 
+
+  <p>test_요약 : <input type="text" name="mentor_summary"></p>
+  <p>test_소개글 : <textarea type="text" name="mentor_info"></textarea></p>
+  <p>test_이력 : <input type="text" name="mentor_career"></p>
+  <p>test_자격증 : <input type="text" name="mentor_certificate"></p>
+  <div class='submitcenter'>
+    <button class='submit1' type='prev' id='prev'>이전</button>
+    <button class='submit2' type='submit' id='submit'>다음</button>
+  </div>
+
+
+  <p>사진 : <input type="file" name="image_1"></p>
+  <p>사진 : <input type="file" name="image_2"></p>
+  <div class='submitcenter'>
+    <button class='submit1' type='prev' id='prev'>이전</button>
+    <button class='submit2' type='submit' id='submit'>다음</button>
+  </div>
+
+
+
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    const companyInput = document.getElementById('mentor_company');
-    const deptInput = document.getElementById('mentor_dept');
-    const workInput = document.getElementById('mentor_work');
+    const nameInput = document.getElementById('mentor_company');
+    const birthInput = document.getElementById('mentor_dept');
+    const phoneInput = document.getElementById('mentor_work');
     const submitButton = document.getElementById('submit');
+    const lineFinish2 = document.getElementById('linefinish2');
+    const finish1_2 = document.getElementById('finish1_2');
+
+    lineFinish2.style.display = 'none';
+    finish1_2.style.display = 'none';
 
     function validateForm() {
-      const companyValid = companyInput.value.trim() !== '';
-      const deptValid = deptInput.value.trim() !== '';
-      const workValid = workInput.value.trim() !== '';
+      const nameValid = nameInput.value.trim() !== '';
+      const birthValid = birthInput.value.trim() !== '';
+      const phoneValid = phoneInput.value.trim() !== '';
 
-      return companyValid && deptValid && workValid;
+      return nameValid && birthValid && phoneValid;
     }
 
     function updateSubmitButton() {
@@ -94,24 +119,28 @@
         submitButton.disabled = false;
         submitButton.style.backgroundColor = "#28464E";
         submitButton.style.color = "#ffffff";
+        lineFinish2.style.display = 'block'; 
+        finish1_2.style.display = 'block';
+
       } else {
         submitButton.disabled = true;
         submitButton.style.backgroundColor = "";
         submitButton.style.color = "";
+        lineFinish2.style.display = 'none'; 
+        finish1_2.style.display = 'none';
       }
     }
 
-    companyInput.addEventListener('input', updateSubmitButton);
-    deptInput.addEventListener('input', updateSubmitButton);
-    workInput.addEventListener('change', updateSubmitButton);
+    nameInput.addEventListener('input', updateSubmitButton);
+    birthInput.addEventListener('input', updateSubmitButton);
+    phoneInput.addEventListener('input', updateSubmitButton);
 
     submitButton.addEventListener('click', function() {
       if (validateForm()) {
-        window.location.href = "{% url 'main:mentor-start' %}";
+        window.location.href = "{% url 'main:mentor-enroll' %}";
       }
     });
 
-    updateSubmitButton();
   });
 </script>
 
