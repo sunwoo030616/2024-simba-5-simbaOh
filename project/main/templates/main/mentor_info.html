@@ -61,7 +61,7 @@
                   </a>
                 {% endif %}
               {% endif %}
-              <a class="mentoring" href="">멘토링 신청</a>
+              <a class="mentoring" href="{% url 'main:mentor-ask' %}">멘토링 신청</a>
             </div>
             
           </div>
@@ -80,7 +80,4 @@
   </div>
 </div>
 
-
-
-</form>
 {% endblock %}
