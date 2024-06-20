@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/accounts/signup2.css' %}" />
+<div class="container"> 
+  <div class='container2'>
+    <div class='container3'>
+      <div class='imagesmask' style="padding-top: 48px;">
+        <div class="left"></div>
+        <div class="middle">
+          <h2 class='signup-main'>회원가입</h2>
+        </div>
+        <div class='right'></div>
+      </div>
+      <div class='finish'>
+        <div class='finish1'>
+          <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2' id='finish1_2'>60%</div>
+        </div>
+        <div class='linefinish'><div class='linefinish2' id='linefinish2'></div></div>
+      </div>
+      <form action="{% url 'accounts:signup2' %}" method="post" id='signup-form' enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class='inputlist'>
+          <div class='major'>
+            <label class='user' for='user_major'>학과</label>
+            <input class='same' placeholder="학과 입력" type='text' name='user_major' id='user_major' required />
+            <div class='inputlist_text'>학과를 입력해주세요.</div>
+          </div>
+          <div class='enroll'>
+            <label class='user' for="user_enroll">상태</label>
+            <select class='same' name='user_enroll' id='user_enroll' placeholder="상태를 선택하세요">
+              <option value=''></option>
+              <option value='재학'>재학</option>
+              <option value='휴학'>휴학</option>
+              <option value='졸업'>졸업</option>
+              <option value='교직원'>교직원</option>
+            </select>
+            <div class='inputlist_text'>재학,휴학,졸업,교직원 중 선택해주세요.</div>
+          </div>
+          <div class='face'>
+            <label class='user' for="user_profile">얼굴 사진</label>
+            <div class='face2'>
+              <input class='same3' type='file' name='user_profile' id='user_profile' required />
+              <img class="plus" src="{% static 'images/plus.png' %}">
+              <div class='inputlist_text2'><div class='inputlist_text3'>얼굴 이미지를 첨부해주세요.<br></div>선명하고 해상도 높은 사진으로 등록해주세요.</div>  
+            </div>
+          </div>
+          <div class='submitcenter'>
+            <button class='submit2' type='submit' id='submit'>다음</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var lineFinish2 = document.getElementById('linefinish2');
+    lineFinish2.style.display = 'none'; 
+    finish1_2.style.display = 'none';
+  });
+
+  document.getElementById('user_enroll').addEventListener('change', function() {
+    var enrollValue = this.value;
+    var submitButton = document.getElementById('submit');
+    var lineFinish2 = document.getElementById('linefinish2');
+
+    if (enrollValue) {
+      submitButton.style.background = '#28464E'; 
+      submitButton.disabled = false; 
+      lineFinish2.style.display = 'block'; 
+      finish1_2.style.display='block';
+    } else {
+      submitButton.style.background = 'rgba(40, 70, 78, 0.30)'; 
+      submitButton.disabled = true; 
+      lineFinish2.style.display = 'none'; 
+      finish1_2.style.display = 'none';
+    }
+  });
+  
+  submit.addEventListener('click', function() {
+    window.location.href = "{% url 'accounts:signup3' %}";
+  });
+
+  document.getElementById('submit1').addEventListener('click', function() {
+    window.location.href = "{% url 'accounts:signup' %}";
+  });
+</script>
+
+
+{% if error %}
+<div style="color: red">{{ error }}</div>
+{% endif %}
+
+{% endblock %}

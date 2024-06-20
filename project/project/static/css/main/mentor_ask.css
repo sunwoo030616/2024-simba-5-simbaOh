@@ -1,0 +1,211 @@
+/* mentor ask page - CSS */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 0.625rem; /* 10px */
+
+  @media (max-width: 430px) {
+    align-items: start;
+  }
+  @media (min-width: 431px) {
+    align-items: center;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 26.875rem; /* 430px */
+  align-items: center;
+  padding-bottom: 0.625rem; /* 10px */
+}
+
+.body {
+  display: flex;
+  width: 25rem; /* 400px */
+  flex-direction: column;
+  gap: 1.25rem; /* 20px */
+}
+
+.nav {
+  display: flex;
+  width: 100%;
+  height: 2rem; /* 32px */
+  padding-top: 3rem; /* 48px */
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mentor_card {
+  display: flex;
+  width: 334px; /* 334px padding 64px line 2px */
+  flex-direction: column;
+  padding: 2rem;
+
+  border: 1px solid #00C3AD;
+  border-radius: 1.25rem; /* 20px */
+  background: rgba(212, 237, 231, 0.15);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  gap: 0.25rem; /* 4px */
+}
+
+.centering {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mentoring {
+  display: flex;
+  padding: 1rem; /* 16px */
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 0.625rem; /* 10px */
+  color: #FFF;
+  border: 1px solid #000;
+  background-color: #1E3E46;
+}
+
+.circuling {
+  border-radius: 3.125rem; /* 50px */
+}
+
+.text_box {
+  display: flex;
+  width: 24rem; /* 384px */
+  flex-direction: column;
+
+  padding: 0.5rem;
+  
+  border-radius: 0.25rem; /* 4px */
+  background-color: #EBEBEB;
+}
+
+input[type="text"] {
+  display: flex;
+  width: 23.375rem; /* 374px */
+  align-items: center;
+  padding: 0.5rem 0.75rem; /* 8px 12px */
+  gap: 0.25rem; /* 4px */
+
+  border: 1px solid rgba(12, 157, 122, 0.50);
+  border-radius: 0.375rem; /* 6px */
+}
+
+.gapping {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.btn_men {
+  display: flex;
+  padding: 0.625rem 0.75rem; /* 10px 12px */
+  justify-content: center;
+
+  background-color: #28464E;
+
+  border-radius: 0.5rem; /* 8px */
+  color: #FFF;
+}
+
+
+
+
+
+/* 폰트 설정 */
+
+.title_text {
+  font-family: "noto Sans KR";
+  font-size: 1.5rem; /* 24px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.mentor_card_comp_font {
+  font-family: "Noto Sans KR";
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.mentor_card_dept_font {
+  font-family: "Noto Sans KR";
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.mentor_card_name_font {
+  font-family: Pretendard;
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.mentor_card_major_font {
+  font-family: Pretendard;
+  font-size: 0.75rem; /* 12px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.mentor_card_work_font{
+  font-family: Pretendard;
+  font-size: 0.75rem; /* 12px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.context_text {
+  font-family: Pretendard;
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.context3 {
+  font-family: "Noto Sans KR";
+  font-size: 0.75rem; /* 12px */
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+
+
+
+/* 색상 설정 */
+
+.color_28 {
+  color: #28464E;
+}
+
+.color_00 {
+  color: #000;
+}
+
+.color_82 {
+  color: #828282;
+}

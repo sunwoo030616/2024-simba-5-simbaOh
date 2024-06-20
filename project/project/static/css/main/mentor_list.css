@@ -1,0 +1,210 @@
+/* mentor list page - CSS */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 0.625rem; /* 10px */
+
+  @media (max-width: 430px) {
+    align-items: start;
+  }
+  @media (min-width: 431px) {
+    align-items: center;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 26.875rem; /* 430px */
+  align-items: center;
+  padding-bottom: 0.625rem; /* 10px */
+}
+
+.body {
+  display: flex;
+  width: 25rem; /* 400px */
+  flex-direction: column;
+  gap: 1.25rem; /* 20px */
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  padding-top: 3rem; /* 48px */
+  width: 100%;
+}
+
+.search_bar_zone {
+  display: flex;
+  width: 100%;
+  height: 2rem;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  background-color: #F3F3F3;
+
+  border: 1px solid #F3F3F3;
+  border-radius: 1.25rem; /* 20px */
+
+}
+
+input {
+  width: 100%;
+}
+
+input::placeholder {
+  background-color: #F3F3F3;
+  text-align: center;
+}
+
+.filter {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding-top: 0.5rem; /* 8px */
+  gap: 0.25rem; /* 4px */
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+label {
+  display: flex;
+  padding: 0.5rem; /* 8px */
+  font-size: 1rem; /* 16px */
+  color: #1E3D46;
+  background-color: white;
+  border: 1px solid #A4DACD;
+  border-radius: 0.625rem; /* 10px */
+}
+
+input[type="checkbox"]:checked + label {
+  color: white;
+  background-color: #1E3D46;
+}
+
+.mento_text {
+  display: flex;
+  justify-content: start;
+}
+
+.mento_list {
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  align-self: stretch;
+  flex-wrap: wrap;
+  gap: 0.5rem; /* 8px */
+}
+
+.mentor_card {
+  display: flex;
+  width: 6.875rem; /* 110px padding 20px line 2px */
+  height: 9.75rem; /* 156px padding 20px line 2px */
+  flex-direction: column;
+
+  padding: 0.5rem; /* 8px */
+  border: 1px solid #00C3AD;
+  border-radius: 1.25rem; /* 20px */
+}
+
+.centering {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+
+
+
+/* 폰트 설정 */
+
+.font_1 {
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.mentor_card_comp_font {
+  font-family: Pretendard;
+  font-size: 1.125rem; /* 18px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.mentor_card_dept_font {
+  font-family: Pretendard;
+  font-size: 0.9375rem; /* 15px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.mentor_card_name_font {
+  font-family: Pretendard;
+  font-size: 0.8125rem; /* 13px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.mentor_card_major_font {
+  font-family: Pretendard;
+  font-size: 0.8125; /* 13px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.mentor_card_work_font{
+  font-family: Pretendard;
+  font-size: 0.8125rem; /* 13px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.image_set {
+  display: flex;
+  border-radius: 50px;
+}
+
+
+
+/* 색상 설정 */
+
+.color_28 {
+  color: #28464E;
+}
+
+.color_00{
+  color: #000;
+}
+
+.color9D{
+  color: #9D9D9D;
+}
+
+/* 아이콘 설정 */

@@ -1,0 +1,91 @@
+{% extends 'base.html' %} 
+{% block content %} 
+{% load static %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/main/mentor_list.css'%}"
+/>
+
+<div class="screen">
+  <div class="main">
+    <div class="body">
+      <form class="control" action="{% url 'main:mentor-list' %}" method="POST">
+        {% csrf_token %}
+        <div class="search_bar_zone">
+          <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" id="search">
+        </div>
+        <div class="filter">
+          <div class="row">
+            <input type="checkbox" name="checkbox1" id="checkbox1" class="ckb_white">
+            <label for="checkbox1">인사/노무</label>
+            <input type="checkbox" name="checkbox2" id="checkbox2" class="ckb_white">
+            <label for="checkbox2">IT개발/데이터</label>
+            <input type="checkbox" name="checkbox3" id="checkbox3" class="ckb_white">
+            <label for="checkbox3">디자인</label>
+            <input type="checkbox" name="checkbox4" id="checkbox4" class="ckb_white">
+            <label for="checkbox4">영상/판매/무역</label>
+          </div>
+          <div class="row">
+            <input type="checkbox" name="checkbox5" id="checkbox5" class="ckb_white">
+            <label for="checkbox5">상품기획/MD</label>
+            <input type="checkbox" name="checkbox6" id="checkbox6" class="ckb_white">
+            <label for="checkbox6">서비스</label>
+            <input type="checkbox" name="checkbox7" id="checkbox7" class="ckb_white">
+            <label for="checkbox7">생산</label>
+            <input type="checkbox" name="checkbox8" id="checkbox8" class="ckb_white">
+            <label for="checkbox8">의료</label>
+            <input type="checkbox" name="checkbox9" id="checkbox9" class="ckb_white">
+            <label for="checkbox9">건설/건축</label>
+          </div>
+          <div class="row">
+            <input type="checkbox" name="checkbox10" id="checkbox10" class="ckb_white">
+            <label for="checkbox10">연구/R&D</label>
+            <input type="checkbox" name="checkbox11" id="checkbox11" class="ckb_white">
+            <label for="checkbox11">교육</label>
+            <input type="checkbox" name="checkbox12" id="checkbox12" class="ckb_white">
+            <label for="checkbox12">금융/보험</label>
+            <input type="checkbox" name="checkbox13" id="checkbox13" class="ckb_white">
+            <label for="checkbox13">미디어/스포츠</label>
+            <input type="checkbox" name="checkbox14" id="checkbox14" class="ckb_white">
+            <label for="checkbox14">교육</label>
+          </div>
+        </div>
+      </form>
+      <div class="mento_text color_28 font_1">멘토 리스트</div>
+      <div class="mento_list">
+        {% for mentor in mentors %}
+        <a href="{% url 'main:mentor-info' mentor.id %}">
+          <div class="mentor_card">
+            <div class="mentor_card_comp_font color_00">
+              {{mentor.mentor_company}}
+            </div> 
+            <div class="mentor_card_dept_font color_00">
+              {{mentor.mentor_dept}}
+            </div> 
+            <div class="centering">
+              {% if mentor.mentor_image %}
+                <img class="image_set" src="{{ mentor.image.url }}" width="50px" height="50px">
+              {% else %}
+                <img class="image_set" src="{% static 'images/signup1.png' %}" width='50px' height='50px'>
+              {% endif %}
+              <div class="mentor_card_name_font color_00">
+                {{mentor.mentor_name}}
+              </div> 
+              <div class="mentor_card_major_font color_00">
+                {{mentor.mentor_major}}
+              </div> 
+              <div class="mentor_card_work_font color_9D">
+                {{mentor.mentor_work}}
+              </div> 
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
