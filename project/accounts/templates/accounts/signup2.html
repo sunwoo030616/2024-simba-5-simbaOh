@@ -53,4 +53,44 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var lineFinish2 = document.getElementById('linefinish2');
+    lineFinish2.style.display = 'none'; 
+    finish1_2.style.display = 'none';
+  });
+
+  document.getElementById('user_enroll').addEventListener('change', function() {
+    var enrollValue = this.value;
+    var submitButton = document.getElementById('submit');
+    var lineFinish2 = document.getElementById('linefinish2');
+
+    if (enrollValue) {
+      submitButton.style.background = '#28464E'; 
+      submitButton.disabled = false; 
+      lineFinish2.style.display = 'block'; 
+      finish1_2.style.display='block';
+    } else {
+      submitButton.style.background = 'rgba(40, 70, 78, 0.30)'; 
+      submitButton.disabled = true; 
+      lineFinish2.style.display = 'none'; 
+      finish1_2.style.display = 'none';
+    }
+  });
+  
+  submit.addEventListener('click', function() {
+    window.location.href = "{% url 'accounts:signup3' %}";
+  });
+
+  document.getElementById('submit1').addEventListener('click', function() {
+    window.location.href = "{% url 'accounts:signup' %}";
+  });
+</script>
+
+
+{% if error %}
+<div style="color: red">{{ error }}</div>
+{% endif %}
+
 {% endblock %}
