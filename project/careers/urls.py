@@ -7,7 +7,7 @@ urlpatterns = [
     path('new-info', new_info, name="new-info"),
     path('create', create, name="create"),
     path('career-info', career_info, name="career-info"),
-    path('<int:id>', detail, name="detail"),
+    path('/<int:id>', detail, name="detail"),
     path('edit/<int:id>', edit, name="edit"),
     path('delete/<int:id>', delete, name="delete"),
 ]
