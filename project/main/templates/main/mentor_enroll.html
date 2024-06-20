@@ -1,32 +1,26 @@
-{% extends 'base.html' %} 
-{% block content %} 
+{% extends 'base.html' %}
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/accounts/signup.css' %}" />
+{% block content %}
+<form action="{% url 'main:mentor-create' %}" method="POST", enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>test_company : <input type="text" name="mentor_company" id=""></p>
 
-<div class="container"> 
-<div class='container2'>
-    <div class='container3'>
-    <div class='imagesmask' style="padding-top: 48px;">
-        <div class="left">
-        <a href="{% url 'main:mentor-start' %}">
-            <img src="{% static 'images/Mask group.png' %}" alt='but' width='32px'>
-        </a>
-        </div>
-        <div class="right">
-        <h2 class='signup-main'>멘토 등록</h2>
-        </div>
-        <div style="width:36px;"></div>
-    </div>
-    
-    <div class='finish'>
-        <div class='finish1'>
-        <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2' id='finish1_2'>30%</div>
-        </div>
-        <div class='linefinish'><div class='linefinish2' id='linefinish2'></div></div>
-    </div>
+    <p>test_부서 : <input type="text" name="mentor_dept"></p>
+    <p>test_직무 : <input type="text" name="mentor_work"></p>
+    <p>test_요약 : <input type="text" name="mentor_summary"></p>
+    <p>test_소개글 : <textarea type="text" name="mentor_info"></textarea></p>
+    <p>test_이력 : <input type="text" name="mentor_career"></p>
+    <p>test_자격증 : <input type="text" name="mentor_certificate"></p>
+    <p>사진 : <input type="file" name="image_1"></p>
+    <p>사진 : <input type="file" name="image_2"></p>
 
+    <button type="submit">제출</button>
+</form>
 
+<<<<<<< HEAD
+{% endblock %}
+=======
     <form action="{% url 'accounts:signup' %}" method="post" id="signup-form">
         {% csrf_token %}
         <div class='inputlist'>
@@ -158,3 +152,4 @@ document.addEventListener("DOMContentLoaded", function() {
     </a>
     {% endfor %}
   </div>
+>>>>>>> 356558bf8211471711cd951dd6fe3845f4050032
