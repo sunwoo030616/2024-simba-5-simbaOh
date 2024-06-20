@@ -11,7 +11,8 @@ urlpatterns = [
     path('mentor-start', mentor_start, name='mentor-start'),
     path('mentor-list/', mentor_list, name='mentor-list'),
     path('mentor-info/<int:id>/', mentor_info, name='mentor-info'),
+    path('mentor-create/', mentor_create, name='mentor-create'),
     path('mentor-enroll/', mentor_enroll, name='mentor-enroll'),
-    path('mentor-create', mentor_create, name='mentor-create'),
     path('mentor-ask/<int:id>/', mentor_ask, name='mentor-ask'),
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('follows/<int:mentor_id>/', follows, name='follows'),
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

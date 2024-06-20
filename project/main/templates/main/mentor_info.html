@@ -33,15 +33,15 @@
           </div> 
           <div class="centering">
             {% if mentor.mentor_image %}
-              <img class="image_set" src="{{ mentor.image.url }}" width="100px" height="100px">
+              <img class="circuling" src="{{ mentor.image.url }}" alt="">
             {% else %}
-              <img class="image_set" src="{% static 'images/signup1.png' %}" width='100px' height='100px'>
+              <img class="circuling" src="{% static 'images/arrow-24.png' %}" width='75px' height='75px'>
             {% endif %}
             <div class="mentor_card_name_font color_00">
-              {{mentor.user.profile.user_name}}
+              {{mentor.mentor_name}}
             </div> 
             <div class="mentor_card_major_font color_00">
-              {{mentor.user.profile.user_major}}
+              {{mentor.mentor_major}}
             </div> 
             <div class="mentor_card_work_font color_9D">
               {{mentor.mentor_work}}
@@ -50,13 +50,18 @@
 
             <!-- button 관련 바꾸어야함 뜨질 않아 -->
             <div class="row"> 
+              <a href="{% url 'main:follows' mentor.id %}">
+                {% if user in mentor.follow.all %} 취소 {% else %} 좋아요 {% endif %}
+              </a>
+            {{mentor.follow_count}}개
               <a class="mentoring" href="{% url 'main:mentor-ask' mentor.id %}">멘토링 신청</a>
             </div>
+            
           </div>
         </div>
       </div>
       <p class="color_28 title_text">한 줄 소개</p>
-      <p class="color_00 context_text">{{ portfolio.introduction }}</p>
+      <p class="color_00 context_text"></p>
       <p class="color_28 title_text">멘토 소개</p>
       <p class="color_00 context_text"></p>
       <p class="color_28 title_text">멘토 이력</p>
