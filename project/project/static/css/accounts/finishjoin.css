@@ -1,12 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+
+  @media (max-width: 430px) {
+      align-items: start;
+  }
+  @media (min-width: 431px) {
+      align-items: center;
+  } 
+}
+
 .container2{
   display: flex;
-  padding-top: 50px;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 32px;
-  align-self: stretch;
+  width: 430px;
+  height: 850px;
+  background: #D4EDE7;
 }
+
 .inputlist{
   display: flex;
   flex-direction: column;
@@ -31,3 +45,56 @@
 height: 100px;
 flex-shrink: 0;
 }
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 26.875rem; /* 430px */
+  height: 932px;
+  align-items: center;
+  justify-content: center;
+  background-color: #D4EDE7;
+  padding-bottom: 0.625rem; /* 10px */
+}
+
+.body {
+  display: flex;
+  width: 25rem; /* 400px */
+  flex-direction: column;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+
+
+
+/* 폰트 설정 */
+
+.font_center_big {
+  font-size: 3.125rem; /* 50px */
+  font-family: STHupo;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.font_center_small {
+  font-size: 1.875rem; /* 30px */
+  font-family: VITRO CORE OTF;
+  font-weight: 900;
+  word-wrap: break-word;
+}
+
+
+/* 색상 설정 */
+
+.color_1E {
+  color: #1E3D46;
+}
+
+/* 아이콘 설정 */
