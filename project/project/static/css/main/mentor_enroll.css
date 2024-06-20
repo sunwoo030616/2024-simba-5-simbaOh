@@ -19,6 +19,13 @@ gap: 10px;
     width: 430px;
     background: #FFF;
 }
+.class1 , .class2, .class3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 430px;
+    background: #FFF;
+}
 
 .inputlist{
     display: flex;
@@ -27,6 +34,12 @@ gap: 10px;
     align-items: center;
     align-self: stretch;
     width: 100%;
+    color: #1E3D46;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
 }
 
 .signup-main {
@@ -38,7 +51,10 @@ gap: 10px;
     font-weight: 700;
     line-height: normal;
         }
-
+.same#mentor_work{
+    display: flex;
+    width:449px;
+}
 .user{
     color: #1E3D46;
     font-family: Pretendard;
@@ -47,6 +63,9 @@ gap: 10px;
     font-weight: 500;
     line-height: 20px;
     align-self: stretch;
+    margin-bottom: 10px;
+    display: block;
+    /* 디스플레이를 블럭으로 하니까 갭이 생김. 뭘까 */
 }
 
 .imagesmask {
@@ -90,8 +109,16 @@ gap: 10px;
     border-radius: 6px;
     border: 1px solid #0C9D7A;
     background: #FFF;
-    padding: 0px 0px 0px 8px;
-    
+    padding: 8px 9px;
+    overflow: hidden;
+    color: #9D9D9D;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 111.111% */
 }
 
 .please{
@@ -104,7 +131,7 @@ gap: 10px;
 }
 
 
-.company, .input2, .input3 {
+.company, .input2, .input3, .write4 {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -113,7 +140,58 @@ gap: 10px;
     gap: 6px;
     margin-top: 15px;
 }
+.write1{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items:center; */
+    gap: 6px;
+    margin-top: 15px;
+    padding-bottom: 25px;
+}
+.write2{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items:center; */
+    gap: 6px;
+    margin-top: 15px;
+    padding-bottom: 60px;
+}
+.write3{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items:center; */
+    gap: 6px;
+    margin-top: 15px;
+    padding-bottom: 30px;
 
+}
+.sameinfo{
+    display: flex;
+    height: 200px;
+    width: 100%;   
+    align-items: center;
+    gap: 4px;
+    border-radius: 6px;
+    border: 1px solid #0C9D7A;
+    background: #FFF;
+    padding: 8px 9px;
+    overflow: hidden;
+    color: #9D9D9D;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 111.111% */
+    
+}
 .inputlist_text {
     width: 100%;
     height: 20px;
@@ -164,6 +242,39 @@ border-radius: 30px 0px 0px 30px;
 background: #00C3AD;
 position: absolute;
 }
+.linefinish2_2{
+    width: 240px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 30px 0px 0px 30px;
+    background: #00C3AD;
+    position: absolute;
+    }
+    .linefinish2_3{
+        width: 395px;
+        height: 8px;
+        flex-shrink: 0;
+        border-radius: 30px 0px 0px 30px;
+        background: #00C3AD;
+        position: absolute;
+        }
+.prev1, .prev2{
+    background: #28464E;
+    display: flex;
+    flex-direction: column;
+    width: 181px;
+    height: 51px;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 22px;
+    border-radius: 8px;
+}
 .move{
     color: #28464E;
     font-family: Pretendard;
@@ -199,13 +310,7 @@ position: absolute;
     line-height: 22px;
     border-radius: 8px;
 }
-.finish1{
-    display: flex;
-    width: 395px;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-bottom: 10px;
-}
+
 
 .move{
     color: #28464E;
@@ -237,8 +342,8 @@ line-height: 22px;
 
 .totaluser{
     display: flex;
-    width: 381px;
-    height: 74px;
+    width: 100%;
+    height: 170px;
     align-items: center;
     flex-shrink: 0;
     border-radius: 10px;
@@ -246,7 +351,11 @@ line-height: 22px;
     background: rgba(212, 237, 231, 0.15);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-
+.photo{
+    display:flex;
+    padding-left: 10px;
+    padding-top: 3px;
+}
 .name, .major{
     display: flex;
     width: 100%;
@@ -259,3 +368,130 @@ line-height: 22px;
     font-weight: 400;
     line-height: normal;
 }
+.namemajor{
+    display:flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+.origin1{
+    display: flex;
+    width: 100%;
+    height: 24px;
+    /* padding-right: 288px; */
+    align-items: flex-start;
+    flex-shrink: 0;
+    color: #28464E;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-bottom: 10px;
+}
+
+.ment{
+    width: 100%;
+height: 70px;
+flex-shrink: 0;
+border-radius: 5px;
+background: #EBEBEB;
+
+}
+.mainment{
+    color: #28464E;
+font-family: Pretendard;
+font-size: 15px;
+font-style: normal;
+font-weight: 600;
+line-height: 21px; /* 140% */
+letter-spacing: -0.32px;
+width: 100%;
+height: 22.969px;
+flex-shrink: 0;
+padding-left: 6px;
+padding-top: 3px;
+}
+.subment{
+    color: #828282;
+font-family: Pretendard;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: 21px; /* 175% */
+letter-spacing: -0.32px;
+width:100%;
+padding-left: 10px;
+}
+
+.face1{
+    display: flex;
+width: 380px;
+height: 232px;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 8px;
+flex-shrink: 0;
+padding-top: 12px;
+}
+
+.face2{
+    flex-direction: column;
+    width:100%;
+    height:240px;
+    border: 1px solid #D9D9D9;
+background: #FFF;
+display: flex;
+padding: 10px 9px 10px 9px;
+justify-content: center;
+align-items: center;
+}
+.same3{
+    display: flex;
+    height: 30px;
+    width: 200px;
+    align-items: center;
+    gap: 4px;
+    border-radius: 6px;
+    background: #FFF;
+    padding: 3px 0px 0px 25px;   
+}
+
+.inputlist_text2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    color: #9D9D9D;
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 111.111% */
+}
+
+.inputlist_text3 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    color: #28464E;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    }
+
+    .userphoto{
+        color: #28464E;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    }
