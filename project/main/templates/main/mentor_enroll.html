@@ -1,25 +1,118 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
-{% block content %}
-<form action="{% url 'main:mentor-create' %}" method="POST", enctype="multipart/form-data">
-    {% csrf_token %}
-    <p>test_company : <input type="text" name="mentor_company" id=""></p>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/main/mentor_enroll.css'%}"
+/>
 
-    <p>test_부서 : <input type="text" name="mentor_dept"></p>
-    <p>test_직무 : <input type="text" name="mentor_work"></p>
-    <p>test_요약 : <input type="text" name="mentor_summary"></p>
-    <p>test_소개글 : <textarea type="text" name="mentor_info"></textarea></p>
-    <p>test_이력 : <input type="text" name="mentor_career"></p>
-    <p>test_자격증 : <input type="text" name="mentor_certificate"></p>
-    <p>사진 : <input type="file" name="image_1"></p>
-    <p>사진 : <input type="file" name="image_2"></p>
+<div class='container'>
+  <div class="container2"> 
 
-    <button type="submit">제출</button>
-</form>
+    <div class='imagesmask' style="padding-top: 48px;">
+      <div class="left">
+        <a href="{% url 'main:mentor-start' %}">
+          <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
+        </a>
+      </div>
+      <div class="right">
+        <h2 class='signup-main'>멘토 등록</h2>
+      </div>
+      <div style="width:36px;"></div>
+    </div>
+    <div class='finish'>
+      <div class='finish1'>
+        <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2' id='finish1_2'>30%</div>
+      </div>
+      <div class='linefinish'><div class='linefinish2' id='linefinish2'></div></div>
+    </div> 
 
-<<<<<<< HEAD
+    <form action="{% url 'main:mentor-create' %}" method="POST", enctype="multipart/form-data">
+        {% csrf_token %}  
+
+      <div class='totaluser'>
+        <div class='photo'><p>{{ user.profile.user_profile }}</p></div>
+        <div class='name'><p>{{ user.profile.user_name }}</p></div>
+        <div class='major'><p>{{ user.profile.user_major }}</p></div>
+      </div>
+
+      <div class='inputlist'>
+        <div class='company'>
+          <p><label class='user' for="mentor_company">회사명</label><input class='same' placeholder="예시) 취트키" type="text" name="mentor_company" id=""></p>
+        </div>
+        <div class='input2'>
+          <p><label class='user' for="mentor_dept">부서</label><input class='same' placeholder="예시) 커리어 UI/UX 디자인" type="text" name="mentor_dept"></p>
+        </div>
+        <div class='input3'>
+          <p><label class='user' for="mentor_work">직무 유형</label>
+            <select class='same' name='mentor_work' id='mentor_work' placeholder="상태를 선택하세요" required/>
+            <option value=''>--- 선택 ---</option>
+            <option value='인사/노무'>인사/노무</option>
+            <option value='IT개발/데이터'>IT개발/데이터</option>
+            <option value='디자인'>디자인</option>
+            <option value='영업/판매/무역'>영업/판매/무역</option>
+            <option value='상품기획/MD'>상품기획/MD</option>
+            <option value='서비스'>서비스</option>
+            <option value='생산'>생산</option>
+            <option value='의료'>의료</option>
+            <option value='건설/건축'>건설/건축</option>
+            <option value='연구/R&D'>연구/R&D</option>
+            <option value='교육'>교육</option>
+            <option value='금융/보험'>금융/보험</option>
+            <option value='미디어/스포츠'>미디어/스포츠</option>
+            <option value='교육'>교육</option>
+          </select></p>
+        </div>
+      </div>
+        
+      <div class='submitcenter'>
+        <button class='submit1' type='prev' id='prev'>이전</button>
+        <button class='submit2' type='submit' id='submit'>다음</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const companyInput = document.getElementById('mentor_company');
+    const deptInput = document.getElementById('mentor_dept');
+    const workInput = document.getElementById('mentor_work');
+    const submitButton = document.getElementById('submit');
+
+    function validateForm() {
+      const companyValid = companyInput.value.trim() !== '';
+      const deptValid = deptInput.value.trim() !== '';
+      const workValid = workInput.value.trim() !== '';
+
+      return companyValid && deptValid && workValid;
+    }
+
+    function updateSubmitButton() {
+      if (validateForm()) {
+        submitButton.disabled = false;
+        submitButton.style.backgroundColor = "#28464E";
+        submitButton.style.color = "#ffffff";
+      } else {
+        submitButton.disabled = true;
+        submitButton.style.backgroundColor = "";
+        submitButton.style.color = "";
+      }
+    }
+
+    companyInput.addEventListener('input', updateSubmitButton);
+    deptInput.addEventListener('input', updateSubmitButton);
+    workInput.addEventListener('change', updateSubmitButton);
+
+    submitButton.addEventListener('click', function() {
+      if (validateForm()) {
+        window.location.href = "{% url 'main:mentor-start' %}";
+      }
+    });
+
+    updateSubmitButton();
+  });
+</script>
+
 {% endblock %}
-=======
-{% endblock %}
->>>>>>> e6e5fdc2d391c93bef79557df5b7398f928f090a

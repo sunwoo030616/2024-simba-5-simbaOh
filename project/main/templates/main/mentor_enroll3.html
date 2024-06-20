@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/main/mentor_enrol.css'%}"
+/>
+
+<form action="{% url 'main:mentor-create' %}" method="POST", enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>사진 : <input type="file" name="image_1"></p>
+    <p>사진 : <input type="file" name="image_2"></p>
+    <button type="submit">제출</button>
+</form>
+
+{% endblock %}
