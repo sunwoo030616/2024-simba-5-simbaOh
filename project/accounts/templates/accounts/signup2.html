@@ -23,12 +23,12 @@
         <div class='inputlist'>
           <div class='major'>
             <label class='user' for='user_major'>학과</label>
-            <input class='same' placeholder="학과 입력" type='text' name='user_major' id='user_major' required />
+            <input class='same' placeholder="학과 입력" type='text' name='user_major' id='user_major' >
             <div class='inputlist_text'>학과를 입력해주세요.</div>
           </div>
           <div class='enroll'>
             <label class='user' for="user_enroll">상태</label>
-            <select class='same' name='user_enroll' id='user_enroll' placeholder="상태를 선택하세요">
+            <select class='same' name='user_enroll' id='user_enroll' placeholder="상태를 선택하세요" required/>
               <option value=''></option>
               <option value='재학'>재학</option>
               <option value='휴학'>휴학</option>
@@ -40,7 +40,7 @@
           <div class='face'>
             <label class='user' for="user_profile">얼굴 사진</label>
             <div class='face2'>
-              <input class='same3' type='file' name='user_profile' id='user_profile' required />
+              <input class='same3' type='file' name='user_profile' id='user_profile' >
               <img class="plus" src="{% static 'images/plus.png' %}">
               <div class='inputlist_text2'><div class='inputlist_text3'>얼굴 이미지를 첨부해주세요.<br></div>선명하고 해상도 높은 사진으로 등록해주세요.</div>  
             </div>
