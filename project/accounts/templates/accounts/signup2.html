@@ -21,7 +21,7 @@
 
       <div class='finish'>
         <div class='finish1'>
-          <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2'>60%</div>
+          <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2' id='finish1_2'>60%</div>
         </div>
         <div class='linefinish'>
           <div class='linefinish2' id='linefinish2'></div>
@@ -30,7 +30,7 @@
 
       
 
-      <form action="{% url 'accounts:signup2' %}" method="post">
+      <form action="{% url 'accounts:signup2' %}" method="post" id='signup-form'>
         {% csrf_token %}
 
         <div class='inputlist'>
@@ -44,6 +44,7 @@
           <div class='enroll'>
             <label class='user' for="user_enroll">상태</label>
             <select class='same' name='user_enroll' id='user_enroll' placeholder="상태를 선택하세요">
+              <option value=''></option>
               <option value='재학'>재학</option>
               <option value='휴학'>휴학</option>
               <option value='졸업'>졸업</option>
@@ -79,6 +80,7 @@
   document.addEventListener('DOMContentLoaded', function() {
     var lineFinish2 = document.getElementById('linefinish2');
     lineFinish2.style.display = 'none'; 
+    finish1_2.style.display = 'none';
   });
 
   document.getElementById('user_enroll').addEventListener('change', function() {
@@ -90,10 +92,12 @@
       submitButton.style.background = '#28464E'; 
       submitButton.disabled = false; 
       lineFinish2.style.display = 'block'; 
+      finish1_2.style.display='block';
     } else {
       submitButton.style.background = 'rgba(40, 70, 78, 0.30)'; 
       submitButton.disabled = true; 
       lineFinish2.style.display = 'none'; 
+      finish1_2.style.display = 'none';
     }
   });
   
