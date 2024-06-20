@@ -8,17 +8,18 @@
   href="{% static 'css/main/mentor_ask.css'%}"
 />
 
+
 <div class="screen">
-  <div class="main">
-    <div class="body">
+  <form class="main" action="{% url 'main:mentor-ask' mentor.id %}" method="POST">
+    <div class="body" id="main">
       <div class="nav">
         <div class="left">
-          <a href="{% url 'main:mentor-list' %}">
+          <a href="{% url 'main:mentor-info' mentor.id %}">
             <img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
           </a>
         </div>
         <div class="color_28 title_text">
-          멘토 정보
+          멘토링 신청
         </div>
         <div style="width: 32px;"></div>
       </div>
@@ -33,15 +34,15 @@
           </div> 
           <div class="centering">
             {% if mentor.mentor_image %}
-              <img class="circuling" src="{{ mentor.image.url }}" alt="">
+              <img class="circuling" src="{{ mentor.image.url }}" width="100px" height="100px">
             {% else %}
-              <img class="circuling" src="{% static 'images/arrow-24.png' %}" width='75px' height='75px'>
+              <img class="circuling" src="{% static 'images/signup1.png' %}" width='100px' height='100px'>
             {% endif %}
             <div class="mentor_card_name_font color_00">
-              {{mentor.mentor_name}}
+              {{mentor.user.profile.user_name}}
             </div> 
             <div class="mentor_card_major_font color_00">
-              {{mentor.mentor_major}}
+              {{mentor.user.profile.user_major}}
             </div> 
             <div class="mentor_card_work_font color_9D">
               {{mentor.mentor_work}}
@@ -49,9 +50,9 @@
           </div>
         </div>
       </div>
-      <form class="gapping" action="{% url 'main:mentor-ask' %}" method="POST">
+      <div class="gapping">
         {% csrf_token %}
-        <p class="color_28 title_text">{{mentor.mentor_name}} 에게 멘토링 신청하기</p>
+        <p class="color_28 title_text">{{mentor.user.profile.user_name}} 에게 멘토링 신청하기</p>
         <p class="color_00 context_text">커리어, 직무 고민에 대해 현직자에게 물어보세요!</p>
         <div class="text_box">
           <p class="color_28 context3">한 줄 요약은 간단하고 명확하게 작성해주세요.</p>
@@ -65,10 +66,54 @@
         </div>
         <input type="text" id="context2" name="context2" placeholder="내용 작성">
         <label for="context2"></label>
-        <button type="submit" class="btn_men" id="btn_men">멘토링 보내기</button>
-      </form>
+        <button type="button" class="btn_men" id="btn_men">멘토링 보내기</button>
+      </div>
     </div>
-  </div>
+
+    <div class="modalpopup_frame" id="modalpopup_frame" style="display: none;">
+      <div class="modalpopup_body">
+        <p class="mentor_card_name_font color_28" style="text-align: center;">작성한 내용은 멘토에게 바로 알림이 가며,</p>
+        <div class="row1" style="justify-content: center;">
+          <p class="mentor_card_name_font color_00C">승인직후</p>
+          <p class="mentor_card_name_font color_28">프로필이 바로 공개됩니다.</p>
+        </div>
+        <p class="context_text color_9D">- 한 줄 요약과 내용에 오타가 없는지 확인하세요.<br>- 작성한 내용에 거짓, 비하에 대한 내용이 확인된다면<br>멘토에서 삭제됩니다.<br>- 동일한 내용에 대해 여러 멘토에게 보낸 것이 적발<br>될 경우 제한될 수 있습니다.</p>
+        <div class="row2">
+          <button type="button" class="modal_box1" id="modal_box1">다시 확인하기</button>
+          <a href="{% url 'main:mentor-list' %}">
+            <button type="submit" class="modal_box2" id="modal_box2">신청하기</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </form>
 </div> 
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const btn_modal = document.getElementById("btn_men");
+    const modal = document.getElementById("modalpopup_frame");
+    const btn_close = document.getElementById("modal_box1");
+    const main = document.getElementById("main");
+
+    btn_modal.onclick = function () {
+      modal.style.display = "block";
+      main.style.webkitFilter = "blur(3px)";
+    };
+
+    btn_close.onclick = function () {
+      modal.style.display = "none";
+      main.style.webkitFilter = "";
+
+    };
+
+    window.onclick = function (event) {
+      if(event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+  });
+</script>
 
 {% endblock %}

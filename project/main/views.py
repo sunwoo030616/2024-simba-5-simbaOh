@@ -54,41 +54,6 @@ def mentor_enroll(request):
         return redirect('main:mentor-enroll2')
     return render(request, 'main/mentor_enroll.html')
 
-@login_required
-def mentor_enroll2(request):
-    if request.method == 'POST':
-        mentor_summary = request.POST.get('mentor_summary', '')
-        mentor_info = request.POST.get('mentor_info', '')
-        mentor_career = request.POST.get('mentor_career', '')
-        mentor_certificate = request.POST.get('mentor_certificate', '')
-
-        mentor_id = request.session.get('mentor_id')
-        if mentor_id:
-            mentor = Mentor.objects.get(id=mentor_id)
-            mentor.mentor_summary = mentor_summary
-            mentor.mentor_info = mentor_info
-            mentor.mentor_career = mentor_career
-            mentor.mentor_certificate = mentor_certificate
-            mentor.save()
-        return redirect('main:mentor-enroll3')
-    return render(request, 'main/mentor_enroll2.html')
-
-@login_required
-def mentor_enroll3(request):
-    if request.method == 'POST':
-        mentor_id_card = request.FILES.get('mentor_id_card')
-        mentor_name_card = request.FILES.get('mentor_name_card')
-
-        mentor_id = request.session.get('mentor_id')
-        if mentor_id:
-            mentor = Mentor.objects.get(id=mentor_id)
-            if mentor_id_card:
-                mentor.mentor_id_card = mentor_id_card
-            if mentor_name_card:
-                mentor.mentor_name_card = mentor_name_card
-            mentor.save()
-        return redirect('main:mentor-list')
-    return render(request, 'main/mentor_enroll3.html')
-
-def mentor_ask(request):
-    return render(request, 'main/mentor_ask.html')
+def mentor_ask(request, id):
+    mentor = get_object_or_404(Mentor, pk = id)
+    return render(request, 'main/mentor_ask.html', {'mentor' : mentor})
