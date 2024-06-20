@@ -8,7 +8,6 @@
 
 <div class='container'>
   <div class="container2"> 
-
     <div class='imagesmask' style="padding-top: 48px;">
       <div class="left">
         <a href="{% url 'main:mentor-start' %}">
@@ -24,152 +23,152 @@
     <form action="{% url 'main:mentor-enroll' %}" method="POST", enctype="multipart/form-data">
       {% csrf_token %} 
 
-        <div class='class1'>
+      <div class='class1'>
 
-          <div class='finish'>
-            <div class='finish1'>
-              <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2' id='finish1_2'>30%</div>
-            </div>
-            <div class='linefinish'><div class='linefinish2' id='linefinish2'></div></div>
-          </div>  
-          
-          <div class='origin1'>기본 정보</div>
-
-            <div class='totaluser'>       
-              <div class='photo'><p><img src="{{ user.profile.user_profile.url }}" alt="사진" width="170px" height='140px'></p></div>
-              <div class='namemajor'>
-                <div class='name'><p>{{ user.profile.user_name }}</p></div>
-                <div class='major'><p>{{ user.profile.user_major }}</p></div>
-              </div>
-            </div>
-
-            <div class='inputlist'>
-              <div class='company'>
-                <p><label class='user' for="mentor_company">회사명</label><input class='same' placeholder="예시) 취트키" type="text" name="mentor_company" id="mentor_company"></p>
-              </div>
-              <div class='input2'>
-                <p><label class='user' for="mentor_dept">부서</label><input class='same' placeholder="예시) 커리어 UI/UX 디자인" type="text" name="mentor_dept" id="mentor_dept"></p>
-              </div>
-              <div class='input3'>
-                <p><label class='user' for="mentor_work">직무 유형</label>
-                  <select class='same' name='mentor_work' id='mentor_work' placeholder="상태를 선택하세요" required/>
-                  <option value=''>--- 선택 ---</option>
-                  <option value='인사/노무'>인사/노무</option>
-                  <option value='IT개발/데이터'>IT개발/데이터</option>
-                  <option value='디자인'>디자인</option>
-                  <option value='영업/판매/무역'>영업/판매/무역</option>
-                  <option value='상품기획/MD'>상품기획/MD</option>
-                  <option value='서비스'>서비스</option>
-                  <option value='생산'>생산</option>
-                  <option value='의료'>의료</option>
-                  <option value='건설/건축'>건설/건축</option>
-                  <option value='연구/R&D'>연구/R&D</option>
-                  <option value='교육'>교육</option>
-                  <option value='금융/보험'>금융/보험</option>
-                  <option value='미디어/스포츠'>미디어/스포츠</option>
-                  <option value='교육'>교육</option>
-                </select></p>
-                <div class='inputlist_text'>본인의 직무와 가장 유사한 카테고리를 선택해주세요.</div>
-              </div>
-            </div>
-              
-            <div class='submitcenter'>
-              <button class='submit1' type='prev' id='prev'>이전</button>
-              <button class='submit2' type='submit' id='submit'>다음</button>
-            </div>
-        </div>
-
-
-        <div class='class2'>
-          <div class='finish'>
-            <div class='finish1'>
-              <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2_2' id='finish1_2_2'>60%</div>
-            </div>
-            <div class='linefinish'><div class='linefinish2_2' id='linefinish2_2'></div></div>
-          </div> 
-  
-          <div class='origin1'>멘토링 정보</div>
-  
-          <div class='inputlist'>
-            <div class='write1'>
-              <p><label class='user1' for="mentor_summary"></label><input class='same' placeholder="한 줄 소개" type="text" name="mentor_summary" id="mentor_summary"></p>
-              <div class='inputlist_text'>- 한 줄 소개로 어떠한 분야 멘토인지 알려주세요.<br>
-                예시) 웹 개발, 대기업 취업 준비에 대해 궁금하시다면 잘 알려드릴 수 있습니다.</div>
-            </div>
-            <div class='write2'>
-              <p><label class='user2' for="mentor_info"></label><textarea class='sameinfo' placeholder="멘토 소개" type="text" name="mentor_info" id="mentor_info"></textarea></p>
-              <div class='inputlist_text'> - 본인이 어떠한 멘토인지 보다 상세하게 알려주세요.<br>
-                - 학교를 다니면서 취업을 준비하는 과정에서 멘티에게 도움이 될 수 있는 얘기를 작성해주세요.<br>
-                - 회사를 다니면서 해당 직무에 대해 느낀점과 업무에 대해 작성해주세요.</div>
-            </div>
-            <div class='write3'>
-              <p><label class='user3' for="mentor_career"></label><textarea class='same' placeholder="멘토 이력" type="text" name="mentor_career" id="mentor_career"></textarea></p>
-              <div class='inputlist_text'>예시) <br>
-                2023. 03 ~  현재 : 삼성<br>
-                2022.01 ~ 2022. 11 : 현대차 소프트웨어 서포터즈</div>
-            </div>
-            <div class='write4'>
-              <p><label class='user4' for="mentor_certificate"></label><textarea class='same' placeholder="멘토 자격증/어학성적" type="text" name="mentor_certificate" id="mentor_certificate"></textarea></p>
-              <div class='inputlist_text'>예시) 토익 820점, 정보처리기사 등</div>
-            </div>
-            {% comment %} 텍스트테에리아로 한 줄 소개 제외하고 다 바꿈 {% endcomment %}
+        <div class='finish'>
+          <div class='finish1'>
+            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2' id='finish1_2'>30%</div>
           </div>
-          <div class='submitcenter'>
-            <button class='prev1' type='prev' id='prev1'>이전</button>
-            <button class='submit2' type='submit' id='submit'>다음</button>
-          </div>
-        </div>
-  
-
+          <div class='linefinish'><div class='linefinish2' id='linefinish2'></div></div>
+        </div>  
         
+        <div class='origin1'>기본 정보</div>
 
-
-
-  
-        <div class='class3'>
-          <div class='finish'>
-            <div class='finish1'>
-              <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2' id='finish1_2'>100%</div>
-            </div>
-            <div class='linefinish'><div class='linefinish2_3' id='linefinish2_3'></div></div>
-          </div> 
-  
-          <div class='origin1'>멘토 확인</div>
-          <div class='ment'>
-            <div class='mainment'>멘토 확인을 위해 신분증과 명함/사원증 사진을 등록해주세요.</div>
-            <div class='subment'>- 등록 가능한 파일 형식은 .jpg, .png 입니다.<br>
-              - 얼굴이 잘 보이지 않거나, 해상도가 낮은 사진은 승인이 반려 될 수 있습니다.
+          <div class='totaluser'>       
+            <div class='photo'><p><img src="{{ user.profile.user_profile.url }}" alt="사진" width="170px" height='140px'></p></div>
+            <div class='namemajor'>
+              <div class='name'><p>{{ user.profile.user_name }}</p></div>
+              <div class='major'><p>{{ user.profile.user_major }}</p></div>
             </div>
           </div>
 
-          <div class='face1'>
-            <p><label class='userphoto' for="image_1">신분증 사진</label>
-            <div class='face2'>
-              <input class='same3' type='file' name='image_1' id='image_1' ></p>
-              <img class="plus" src="{% static 'images/plus.png' %}"><br>
-              <div class='inputlist_text2'><div class='inputlist_text3'>신분증 이미지를 첨부해주세요.<br></div>선명하고 해상도 높은 사진으로 등록해주세요.<br>
-            본인의 신분증 또는 운전면허증을 등록해주세요.</div>  
+          <div class='inputlist'>
+            <div class='company'>
+              <p><label class='user' for="mentor_company">회사명</label><input class='same' placeholder="예시) 취트키" type="text" name="mentor_company" id="mentor_company"></p>
+            </div>
+            <div class='input2'>
+              <p><label class='user' for="mentor_dept">부서</label><input class='same' placeholder="예시) 커리어 UI/UX 디자인" type="text" name="mentor_dept" id="mentor_dept"></p>
+            </div>
+            <div class='input3'>
+              <p><label class='user' for="mentor_work">직무 유형</label>
+                <select class='same' name='mentor_work' id='mentor_work' placeholder="상태를 선택하세요" required/>
+                <option value=''>--- 선택 ---</option>
+                <option value='인사/노무'>인사/노무</option>
+                <option value='IT개발/데이터'>IT개발/데이터</option>
+                <option value='디자인'>디자인</option>
+                <option value='영업/판매/무역'>영업/판매/무역</option>
+                <option value='상품기획/MD'>상품기획/MD</option>
+                <option value='서비스'>서비스</option>
+                <option value='생산'>생산</option>
+                <option value='의료'>의료</option>
+                <option value='건설/건축'>건설/건축</option>
+                <option value='연구/R&D'>연구/R&D</option>
+                <option value='교육'>교육</option>
+                <option value='금융/보험'>금융/보험</option>
+                <option value='미디어/스포츠'>미디어/스포츠</option>
+                <option value='교육'>교육</option>
+              </select></p>
+              <div class='inputlist_text'>본인의 직무와 가장 유사한 카테고리를 선택해주세요.</div>
             </div>
           </div>
-          <div class='face1'>
-            <p><label class='userphoto' for="image_2">명함 사진</label>
-            <div class='face2'>
-              <input class='same3' type='file' name='image_2' id='image_2' ></p>
-              <img class="plus" src="{% static 'images/plus.png' %}"><br>
-              <div class='inputlist_text2'><div class='inputlist_text3'>명함 이미지를 첨부해주세요.<br></div>선명하고 해상도 높은 사진으로 등록해주세요.<br>
-              본인의 신분증 또는 운전면허증을 등록해주세요.</div>  
-            </div>
-          </div>
-          
+            
           <div class='submitcenter'>
-            <button class='prev2' type='prev' id='prev2'>이전</button>
+            <button class='submit1' type='prev' id='prev'>이전</button>
             <button class='submit2' type='submit' id='submit'>다음</button>
           </div>
         </div>
+      </div>
 
-      </form>
-    </div>
+
+      <div class='class2'>
+        <div class='finish'>
+          <div class='finish1'>
+            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2_2' id='finish1_2_2'>60%</div>
+          </div>
+          <div class='linefinish'><div class='linefinish2_2' id='linefinish2_2'></div></div>
+        </div> 
+
+        <div class='origin1'>멘토링 정보</div>
+
+        <div class='inputlist'>
+          <div class='write1'>
+            <p><label class='user1' for="mentor_summary"></label><input class='same' placeholder="한 줄 소개" type="text" name="mentor_summary" id="mentor_summary"></p>
+            <div class='inputlist_text'>- 한 줄 소개로 어떠한 분야 멘토인지 알려주세요.<br>
+              예시) 웹 개발, 대기업 취업 준비에 대해 궁금하시다면 잘 알려드릴 수 있습니다.</div>
+          </div>
+          <div class='write2'>
+            <p><label class='user2' for="mentor_info"></label><textarea class='sameinfo' placeholder="멘토 소개" type="text" name="mentor_info" id="mentor_info"></textarea></p>
+            <div class='inputlist_text'> - 본인이 어떠한 멘토인지 보다 상세하게 알려주세요.<br>
+              - 학교를 다니면서 취업을 준비하는 과정에서 멘티에게 도움이 될 수 있는 얘기를 작성해주세요.<br>
+              - 회사를 다니면서 해당 직무에 대해 느낀점과 업무에 대해 작성해주세요.</div>
+          </div>
+          <div class='write3'>
+            <p><label class='user3' for="mentor_career"></label><textarea class='same' placeholder="멘토 이력" type="text" name="mentor_career" id="mentor_career"></textarea></p>
+            <div class='inputlist_text'>예시) <br>
+              2023. 03 ~  현재 : 삼성<br>
+              2022.01 ~ 2022. 11 : 현대차 소프트웨어 서포터즈</div>
+          </div>
+          <div class='write4'>
+            <p><label class='user4' for="mentor_certificate"></label><textarea class='same' placeholder="멘토 자격증/어학성적" type="text" name="mentor_certificate" id="mentor_certificate"></textarea></p>
+            <div class='inputlist_text'>예시) 토익 820점, 정보처리기사 등</div>
+          </div>
+          {% comment %} 텍스트테에리아로 한 줄 소개 제외하고 다 바꿈 {% endcomment %}
+        </div>
+        <div class='submitcenter'>
+          <button class='prev1' type='prev' id='prev1'>이전</button>
+          <button class='submit2' type='submit' id='submit'>다음</button>
+        </div>
+      </div>
+
+
+      
+
+
+
+
+      <div class='class3'>
+        <div class='finish'>
+          <div class='finish1'>
+            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2' id='finish1_2'>100%</div>
+          </div>
+          <div class='linefinish'><div class='linefinish2_3' id='linefinish2_3'></div></div>
+        </div> 
+
+        <div class='origin1'>멘토 확인</div>
+        <div class='ment'>
+          <div class='mainment'>멘토 확인을 위해 신분증과 명함/사원증 사진을 등록해주세요.</div>
+          <div class='subment'>- 등록 가능한 파일 형식은 .jpg, .png 입니다.<br>
+            - 얼굴이 잘 보이지 않거나, 해상도가 낮은 사진은 승인이 반려 될 수 있습니다.
+          </div>
+        </div>
+
+        <div class='face1'>
+          <p><label class='userphoto' for="image_1">신분증 사진</label>
+          <div class='face2'>
+            <input class='same3' type='file' name='image_1' id='image_1' ></p>
+            <img class="plus" src="{% static 'images/plus.png' %}"><br>
+            <div class='inputlist_text2'><div class='inputlist_text3'>신분증 이미지를 첨부해주세요.<br></div>선명하고 해상도 높은 사진으로 등록해주세요.<br>
+          본인의 신분증 또는 운전면허증을 등록해주세요.</div>  
+          </div>
+        </div>
+        <div class='face1'>
+          <p><label class='userphoto' for="image_2">명함 사진</label>
+          <div class='face2'>
+            <input class='same3' type='file' name='image_2' id='image_2' ></p>
+            <img class="plus" src="{% static 'images/plus.png' %}"><br>
+            <div class='inputlist_text2'><div class='inputlist_text3'>명함 이미지를 첨부해주세요.<br></div>선명하고 해상도 높은 사진으로 등록해주세요.<br>
+            본인의 신분증 또는 운전면허증을 등록해주세요.</div>  
+          </div>
+        </div>
+        
+        <div class='submitcenter'>
+          <button class='prev2' type='prev' id='prev2'>이전</button>
+          <button class='submit2' type='submit' id='submit'>다음</button>
+        </div>
+      </div>
+    </form>
   </div>
+</div>
 
 
 <script>
