@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .models import Mentor
 
@@ -27,28 +28,67 @@ def mentor_info(request, id):
     mentor = get_object_or_404(Mentor, pk = id)
     return render(request, 'main/mentor_info.html', {'mentor' : mentor})
 
-
-def mentor_create(request):
+@login_required
+def mentor_enroll(request):
     if request.method == 'POST':
-        new_mentor = Mentor()
-        new_mentor.user = request.user
-        new_mentor.mentor_company = request.POST.get('mentor_company', '')
-        new_mentor.mentor_dept = request.POST.get('mentor_dept', '')
-        new_mentor.mentor_work = request.POST.get('mentor_work', '')
-        new_mentor.mentor_info = request.POST.get('mentor_info', '')
-        new_mentor.mentor_career = request.POST.get('mentor_career', '')
-        new_mentor.mentor_summary = request.POST.get('mentor_summary', '')  # 누락된 필드 추가
-        new_mentor.mentor_certificate = request.POST.get('mentor_certificate', '')
+        mentor_company = request.POST.get('mentor_company', '')
+        mentor_dept = request.POST.get('mentor_dept', '')
+        mentor_work = request.POST.get('mentor_work', '')
 
-        if 'mentor_id_card' in request.FILES:
-            new_mentor.mentor_id_card = request.FILES['mentor_id_card']
-        if 'mentor_name_card' in request.FILES:
-            new_mentor.mentor_name_card = request.FILES['mentor_name_card']
-
-        new_mentor.mentor_at = timezone.now()
-        new_mentor.save()
-        return redirect('main:mentor-list')
+        # Mentor 객체가 없으면 생성
+        if not hasattr(request.user, 'mentor'):
+            mentor = Mentor.objects.create(
+                user=request.user,
+                mentor_company=mentor_company,
+                mentor_dept=mentor_dept,
+                mentor_work=mentor_work,
+                mentor_at=timezone.now()
+            )
+        else:
+            mentor = request.user.mentor
+            mentor.mentor_company = mentor_company
+            mentor.mentor_dept = mentor_dept
+            mentor.mentor_work = mentor_work
+            mentor.save()
+            request.session['mentor_id'] = mentor.id
+        return redirect('main:mentor-enroll2')
     return render(request, 'main/mentor_enroll.html')
+
+@login_required
+def mentor_enroll2(request):
+    if request.method == 'POST':
+        mentor_summary = request.POST.get('mentor_summary', '')
+        mentor_info = request.POST.get('mentor_info', '')
+        mentor_career = request.POST.get('mentor_career', '')
+        mentor_certificate = request.POST.get('mentor_certificate', '')
+
+        mentor_id = request.session.get('mentor_id')
+        if mentor_id:
+            mentor = Mentor.objects.get(id=mentor_id)
+            mentor.mentor_summary = mentor_summary
+            mentor.mentor_info = mentor_info
+            mentor.mentor_career = mentor_career
+            mentor.mentor_certificate = mentor_certificate
+            mentor.save()
+        return redirect('main:mentor-enroll3')
+    return render(request, 'main/mentor_enroll2.html')
+
+@login_required
+def mentor_enroll3(request):
+    if request.method == 'POST':
+        mentor_id_card = request.FILES.get('mentor_id_card')
+        mentor_name_card = request.FILES.get('mentor_name_card')
+
+        mentor_id = request.session.get('mentor_id')
+        if mentor_id:
+            mentor = Mentor.objects.get(id=mentor_id)
+            if mentor_id_card:
+                mentor.mentor_id_card = mentor_id_card
+            if mentor_name_card:
+                mentor.mentor_name_card = mentor_name_card
+            mentor.save()
+        return redirect('main:mentor-list')
+    return render(request, 'main/mentor_enroll3.html')
 
 def mentor_ask(request):
     return render(request, 'main/mentor_ask.html')

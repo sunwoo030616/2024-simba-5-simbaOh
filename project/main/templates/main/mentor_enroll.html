@@ -27,7 +27,7 @@
       <div class='linefinish'><div class='linefinish2' id='linefinish2'></div></div>
     </div> 
 
-    <form action="{% url 'main:mentor-create' %}" method="POST", enctype="multipart/form-data">
+    <form action="{% url 'main:mentor-enroll' %}" method="POST", enctype="multipart/form-data">
         {% csrf_token %}  
 
       <div class='totaluser'>
