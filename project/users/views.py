@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import User, Portfolio
 from django.contrib.auth.models import User
+from .models import Portfolio, Education, Experience, Project, Certification
 from accounts.models import Profile
+
 
 def mypage(request, id):
     user = get_object_or_404(User, pk=id)
@@ -20,17 +21,34 @@ def edit_portfolio(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         introduction = request.POST.get('introduction')
-        education = request.POST.get('education')
-        experience = request.POST.get('experience')
-        projects = request.POST.get('projects')
-        certifications = request.POST.get('certifications')
+        education_list = request.POST.getlist('education')
+        experience_list = request.POST.getlist('experience')
+        projects_list = request.POST.getlist('projects')
+        certifications_list = request.POST.getlist('certifications')
 
         portfolio.title = title
         portfolio.introduction = introduction
-        portfolio.education = education
-        portfolio.experience = experience
-        portfolio.projects = projects
-        portfolio.certifications = certifications
+
+        portfolio.education.clear()
+        for edu in education_list:
+            education, created = Education.objects.get_or_create(name=edu)
+            portfolio.education.add(education)
+
+        portfolio.experience.clear()
+        for exp in experience_list:
+            experience, created = Experience.objects.get_or_create(name=exp)
+            portfolio.experience.add(experience)
+
+        portfolio.projects.clear()
+        for proj in projects_list:
+            project, created = Project.objects.get_or_create(name=proj)
+            portfolio.projects.add(project)
+
+        portfolio.certifications.clear()
+        for cert in certifications_list:
+            certification, created = Certification.objects.get_or_create(name=cert)
+            portfolio.certifications.add(cert)
+
         portfolio.save()
 
         return redirect('users:mypage', id=request.user.id)
