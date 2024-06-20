@@ -1,13 +1,7 @@
-{% extends 'base.html' %} 
-{% block content %} 
+{% extends 'base.html' %}
+{% block content %}
 {% load static %}
-
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/accounts/signup2.css'%}"
-/>
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/accounts/signup2.css' %}" />
 <div class="container"> 
   <div class='container2'>
     <div class='container3'>
@@ -18,32 +12,23 @@
         </div>
         <div class='right'></div>
       </div>
-
       <div class='finish'>
         <div class='finish1'>
           <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2' id='finish1_2'>60%</div>
         </div>
-        <div class='linefinish'>
-          <div class='linefinish2' id='linefinish2'></div>
-        </div>
+        <div class='linefinish'><div class='linefinish2' id='linefinish2'></div></div>
       </div>
-
-      
-
-      <form action="{% url 'accounts:signup2' %}" method="post" id='signup-form'>
+      <form action="{% url 'accounts:signup2' %}" method="post" id='signup-form' enctype="multipart/form-data">
         {% csrf_token %}
-
         <div class='inputlist'>
-
           <div class='major'>
             <label class='user' for='user_major'>학과</label>
-            <input class='same' placeholder="학과 입력" type='text' name='user_major' id='user_major' required />
+            <input class='same' placeholder="학과 입력" type='text' name='user_major' id='user_major' >
             <div class='inputlist_text'>학과를 입력해주세요.</div>
           </div>
-          
           <div class='enroll'>
             <label class='user' for="user_enroll">상태</label>
-            <select class='same' name='user_enroll' id='user_enroll' placeholder="상태를 선택하세요">
+            <select class='same' name='user_enroll' id='user_enroll' placeholder="상태를 선택하세요" required/>
               <option value=''></option>
               <option value='재학'>재학</option>
               <option value='휴학'>휴학</option>
@@ -52,29 +37,22 @@
             </select>
             <div class='inputlist_text'>재학,휴학,졸업,교직원 중 선택해주세요.</div>
           </div>
-
           <div class='face'>
-            
-              <label class='user' for="user_profile">얼굴 사진</label>
-              <div class='face2'>
-              <input class='same3' type='file' name='user_profile' id='user_profile' required />
+            <label class='user' for="user_profile">얼굴 사진</label>
+            <div class='face2'>
+              <input class='same3' type='file' name='user_profile' id='user_profile' >
               <img class="plus" src="{% static 'images/plus.png' %}">
               <div class='inputlist_text2'><div class='inputlist_text3'>얼굴 이미지를 첨부해주세요.<br></div>선명하고 해상도 높은 사진으로 등록해주세요.</div>  
             </div>
           </div>
-          
           <div class='submitcenter'>
-            <button class='submit1' type='submit' id='submit1'>이전</button>
             <button class='submit2' type='submit' id='submit'>다음</button>
           </div>
-
         </div>
       </form>
     </div>
   </div>
 </div>
-
-{% comment %} 사진 넣으면 오류 뜸, 넣지 않으면 잘 넘어감 {% endcomment %}
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -114,4 +92,5 @@
 {% if error %}
 <div style="color: red">{{ error }}</div>
 {% endif %}
+
 {% endblock %}

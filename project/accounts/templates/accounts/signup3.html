@@ -1,17 +1,10 @@
-{% extends 'base.html' %} 
-{% block content %} 
+{% extends 'base.html' %}
+{% block content %}
 {% load static %}
-
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/accounts/signup3.css'%}"
-/>
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/accounts/signup3.css' %}" />
 <div class="container"> 
   <div class='container2'>
     <div class='container3'>
-
       <div class='imagesmask' style="padding-top: 48px;">
         <div class="left"></div>
         <div class="middle">
@@ -19,83 +12,57 @@
         </div>
         <div class='right'></div>
       </div>
-
       <div class='finish'>
         <div class='finish1'>
           <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2' id='finish1_2'>100%</div>
         </div>
         <div class='linefinish'><div class='linefinish2' id='linefinish2'></div></div>
       </div>
-
-      
-
       <form action="{% url 'accounts:signup3' %}" method="post" id='signup-form'>
         {% csrf_token %}
         <div class='inputlist'>
-          <div class='id'>
-            <label class='user' for="user_id">아이디</label>
-            <input class='same' placeholder="4-20자리 이메일 입력" type='text' name='user_id' id='user_id' required />
-            <div class='inputlist_text'>아이디를 입력해주세요</div>  
+          <div class='realname1'>
+            <label class='user' for='user_name'>이름</label>
+            <input class='same' placeholder="이름 입력" type='text' name='user_name' id='user_name' required />
+            <div class='inputlist_text'>이름을 정확하게 입력해주세요</div>
           </div>
-          
-
-          <div class='ps'>
-            <label class='user' for="user_pw">비밀번호</label>
-            <input class='same' placeholder="최소 13자리 이상, 대소문자 구분 입력" type='password' name='user_pw' id='user_pw' required/>
-            <div class='inputlist_text'>비밀번호를 입력해주세요</div>
+          <div class='birth1'>
+            <label class='user' for='user_birth'>생년월일</label>
+            <input class='same' placeholder="YYYYMMDD" type='text' name='user_birth' id='user_birth' required />
+            <div class='inputlist_text'>생년월일을 숫자만 입력해주세요</div>
           </div>
-          
-          
-
-          <div class='ps2'>
-            <label class='user' for="confirm">비밀번호 확인</label>
-            <input class='same' placeholder="비밀번호 재입력" type='password' name='confirm' id='confirm' required/>
-            <div class='please2' style="color: #FA622F;"></div>
-            <div class='inputlist_text'>동일한 비밀번호를 입력해주세요</div>
+          <div class='phone1'>
+            <label class='user' for='user_phone'>휴대폰 번호</label>
+            <input class='same' placeholder="'-' 제외하고 숫자만 입력" type='text' name='user_phone' id='user_phone' required />
+            <div class='inputlist_text'>휴대폰 번호를 13자리 숫자만 입력해주세요</div>
           </div>
-        
           <div class='submitcenter'>
-            <button class='submit1' type='submit' id='submit1'>이전</button>
-            <button class='submit2' type='submit' id='submit'>다음</button>
+            <button class='submit2' type='submit' id='submit'>완료</button>
           </div>
-
         </div>
       </form>
     </div>
   </div>
 </div>
 
-
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    const usernameInput = document.getElementById('user_id');
-    const passwordInput = document.getElementById('user_pw');
-    const password2Input = document.getElementById('confirm');
+    const nameInput = document.getElementById('user_name');
+    const birthInput = document.getElementById('user_birth');
+    const phoneInput = document.getElementById('user_phone');
     const submitButton = document.getElementById('submit');
     const lineFinish2 = document.getElementById('linefinish2');
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@!?-])[A-Za-z\d@!?-]{8,}$/;
-    const errorDiv = document.querySelector('.please2');
+    const finish1_2 = document.getElementById('finish1_2');
 
     lineFinish2.style.display = 'none';
-    finish1_2.style.display='none';
-
-    function validatePassword() {
-      const password = passwordInput.value;
-      return passwordPattern.test(password);
-    }
+    finish1_2.style.display = 'none';
 
     function validateForm() {
-      const usernameValid = usernameInput.value.trim() !== '';
-      const passwordValid = validatePassword();
-      const passwordsMatch = passwordInput.value === password2Input.value;
+      const nameValid = nameInput.value.trim() !== '';
+      const birthValid = /^[0-9]{8}$/.test(birthInput.value.trim());
+      const phoneValid = /^[0-9]{10,13}$/.test(phoneInput.value.trim());
 
-      if (password2Input.value.length > 0 && !passwordsMatch) {
-        errorDiv.textContent = "비밀번호가 일치하지 않습니다!";
-      } else {
-        errorDiv.textContent = "";
-      }
-
-      return usernameValid && passwordValid && passwordsMatch;
+      return nameValid && birthValid && phoneValid;
     }
 
     function updateSubmitButton() {
@@ -104,34 +71,31 @@
         submitButton.style.backgroundColor = "#28464E";
         submitButton.style.color = "#ffffff";
         lineFinish2.style.display = 'block'; 
-        finish1_2.style.display='block';
+        finish1_2.style.display = 'block';
+
       } else {
         submitButton.disabled = true;
         submitButton.style.backgroundColor = "";
         submitButton.style.color = "";
-        lineFinish2.style.display = 'none';
-        finish1_2.style.display='none';
+        lineFinish2.style.display = 'none'; 
+        finish1_2.style.display = 'none';
       }
     }
 
-    usernameInput.addEventListener('input', updateSubmitButton);
-    passwordInput.addEventListener('input', updateSubmitButton);
-    password2Input.addEventListener('input', updateSubmitButton);
-
-    document.getElementById('submit1').addEventListener('click', function() {
-      window.location.href = "{% url 'accounts:signup2' %}";
-    });
+    nameInput.addEventListener('input', updateSubmitButton);
+    birthInput.addEventListener('input', updateSubmitButton);
+    phoneInput.addEventListener('input', updateSubmitButton);
 
     submitButton.addEventListener('click', function() {
       if (validateForm()) {
-        window.location.href = "{% url 'main:mainpage' %}";
+        window.location.href = "{% url 'accounts:finishjoin' %}";
       }
     });
-
   });
 </script>
 
 {% if error %}
 <div style="color: red">{{ error }}</div>
 {% endif %}
+
 {% endblock %}
