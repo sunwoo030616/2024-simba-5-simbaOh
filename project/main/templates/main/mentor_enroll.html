@@ -1,160 +1,17 @@
-{% extends 'base.html' %} 
-{% block content %} 
+{% extends 'base.html' %}
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/accounts/signup.css' %}" />
+{% block content %}
+<form action="{% url 'main:mentor-enroll' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>test_company : <input type="text" name="mentor_company" id=""></p>
 
-<div class="container"> 
-<div class='container2'>
-    <div class='container3'>
-    <div class='imagesmask' style="padding-top: 48px;">
-        <div class="left">
-        <a href="{% url 'main:mentor-start' %}">
-            <img src="{% static 'images/Mask group.png' %}" alt='but' width='32px'>
-        </a>
-        </div>
-        <div class="right">
-        <h2 class='signup-main'>멘토 등록</h2>
-        </div>
-        <div style="width:36px;"></div>
-    </div>
-    
-    <div class='finish'>
-        <div class='finish1'>
-        <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2' id='finish1_2'>30%</div>
-        </div>
-        <div class='linefinish'><div class='linefinish2' id='linefinish2'></div></div>
-    </div>
+    <p>test_부서 : <input type="text" name="mentor_dept"></p>
+    <p>test_직무 : <input type="text" name="mentor_work"></p>
+    <p>test_소개글 : <textarea type="text" name="mentor_intro"></textarea>
+    <p>test_년차 : <input type="number" name="mentor_year"></p>
 
+    <button type="submit">제출</button>
+</form>
 
-    <form action="{% url 'accounts:signup' %}" method="post" id="signup-form">
-        {% csrf_token %}
-        <div class='inputlist'>
-
-        <div class='company'>
-            <label class='user' for='mentor_company'>회사명</label>
-            <input class='same' placeholder="예시) 취트키" type='text' name='mentor_company' id='mentor_company' required />
-        </div>
-
-        <div class='birth1'>
-            <label class='user' for='user_birth'>생년월일</label>
-            <input class='same' placeholder="YYYYMMDD" type='text' name='user_birth' id='user_birth' required />
-            <div class='inputlist_text'>생년월일을 숫자만 입력해주세요</div>
-        </div>
-
-        <div class='phone1'>
-            <label class='user' for='user_phone'>휴대폰 번호</label>
-            <input class='same' placeholder="'-' 제외하고 숫자만 입력" type='text' name='user_phone' id='user_phone' required />
-            <div class='inputlist_text'>휴대폰 번호를 13자리 숫자만 입력해주세요</div>
-        </div>
-        
-        <div class='submitcenter'>
-            <button class='submit1' type='button' id='prev'>이전</button>
-            <button class='submit2' type='button' id='submit'>다음</button>
-        </div>
-
-        </div>
-    </form>
-    </div>
-</div>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const nameInput = document.getElementById('user_name');
-    const birthInput = document.getElementById('user_birth');
-    const phoneInput = document.getElementById('user_phone');
-    const submitButton = document.getElementById('submit');
-    const lineFinish2 = document.getElementById('linefinish2');
-    const finish1_2 = document.getElementById('finish1_2');
-
-    lineFinish2.style.display = 'none';
-    finish1_2.style.display = 'none';
-
-    function validateForm() {
-    const nameValid = nameInput.value.trim() !== '';
-    const birthValid = /^[0-9]{8}$/.test(birthInput.value.trim());
-    const phoneValid = /^[0-9]{10,13}$/.test(phoneInput.value.trim());
-
-    return nameValid && birthValid && phoneValid;
-    }
-
-    function updateSubmitButton() {
-    if (validateForm()) {
-        submitButton.disabled = false;
-        submitButton.style.backgroundColor = "#28464E";
-        submitButton.style.color = "#ffffff";
-        lineFinish2.style.display = 'block'; 
-        finish1_2.style.display = 'block';
-
-    } else {
-        submitButton.disabled = true;
-        submitButton.style.backgroundColor = "";
-        submitButton.style.color = "";
-        lineFinish2.style.display = 'none'; 
-        finish1_2.style.display = 'none';
-    }
-    }
-
-    nameInput.addEventListener('input', updateSubmitButton);
-    birthInput.addEventListener('input', updateSubmitButton);
-    phoneInput.addEventListener('input', updateSubmitButton);
-
-    submitButton.addEventListener('click', function() {
-    if (validateForm()) {
-        window.location.href = "{% url 'accounts:signup2' %}";
-    }
-    });
-
-    document.getElementById('signup-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    if (submitButton.disabled) {
-        return;
-    }
-    this.submit();
-    });
-});
-</script>
-
-{% if error %}
-<div style="color: red">{{ error }}</div>
-{% endif %}
 {% endblock %}
-
-
-
-
-
-
-
-
-
-<div class="mento_list">
-    {% for mentor in mentors %}
-      <div class="mentor_card">
-        <div class="mentor_card_comp_font color_00">
-          {{mentor.mentor_company}}
-        </div> 
-        <div class="mentor_card_dept_font color_00">
-          {{mentor.mentor_dept}}
-        </div> 
-        <div class="centering">
-          {% if mentor.mentor_image %}
-            <img class="image_set" src="{{ mentor.image.url }}" width="50px" height="50px">
-          {% else %}
-            <img class="image_set" src="{% static 'images/signup1.png' %}" width='50px' height='50px'>
-          {% endif %}
-          <div class="mentor_card_name_font color_00">
-            {{mentor.mentor_name}}
-          </div> 
-          <div class="mentor_card_major_font color_00">
-            {{mentor.mentor_major}}
-          </div> 
-          <div class="mentor_card_work_font color_9D">
-            {{mentor.mentor_work}}
-          </div> 
-        </div>
-      </div>
-    </a>
-    {% endfor %}
-  </div>

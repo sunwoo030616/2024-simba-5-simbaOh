@@ -1,11 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
+from accounts.models import Profile
 
 # Create your models here.
 
 class Mentor(models.Model):
-    mentor_name = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
-
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     mentor_company = models.CharField(max_length=50)
     mentor_dept = models.CharField(max_length=50)
     mentor_work = models.CharField(max_length=50)
@@ -16,4 +16,4 @@ class Mentor(models.Model):
     mentor_at = models.DateTimeField()
 
     def __str__(self):
-        return self.mentor_name
+        return self.mentor_intro[:30]

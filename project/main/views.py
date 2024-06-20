@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from .models import Mentor
-
-
+from django.contrib.auth.models import User
+from accounts.models import Profile
 
 def intro(request):
     return render(request, 'main/intro.html')
@@ -17,21 +17,30 @@ def mentor_start(request):
     return render(request, 'main/mentor_start.html')
 
 def mentor_list(request):
+    profiles = Profile.objects.select_related('user').all()
     mentors = Mentor.objects.all()
-    return render(request, 'main/mentor_list.html', {'mentors' : mentors})
+    return render(request, 'main/mentor_list.html', {
+        'mentors' : mentors,
+        'profiles' : profiles
+        })
 
 def mentor_enroll(request):
     return render(request, 'main/mentor_enroll.html')
 
 def mentor_info(request, id):
-    mentor = get_object_or_404(Mentor, pk = id)
-    return render(request, 'main/mentor_info.html', {'mentor' : mentor})
+    user = get_object_or_404(User, pk=id)
+    profile = get_object_or_404(Profile, user=user)
+    profile, created = Profile.objects.get_or_create(user=user)
+    return render(request, 'main/mentor_info.html', {
+        'user' : user,
+        'profile' : profile
+    })
 
 
 def mentor_create(request):
         new_mentor = Mentor()
 
-        new_mentor.mentor_name = request.user
+        new_mentor.user = request.user
 
         new_mentor.mentor_company = request.POST['mentor_company']
         new_mentor.mentor_dept = request.POST['mentor_dept']
