@@ -1,0 +1,9 @@
+
+<h3>{{post.title}}</h3>
+작성자 : {{post.writer}}
+날짜 : {{post.pub_date}}
+<hr/>
+<p>{{post.body}}</p>
+<a href="{% url 'community:editc' post.id %}">글 수정하기</a>
+<a href="{% url 'community:delete' post.id %}">글 삭제하기</a>
+<br>
