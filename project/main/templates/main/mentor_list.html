@@ -71,10 +71,10 @@
                 <img class="image_set" src="{% static 'images/signup1.png' %}" width='50px' height='50px'>
               {% endif %}
               <div class="mentor_card_name_font color_00">
-                {{user.profile.user_name}}
+                {{mentor.user.profile.user_name}}
               </div> 
               <div class="mentor_card_major_font color_00">
-                {{mentor.mentor_major}}
+                {{mentor.user.profile.user_major}}
               </div> 
               <div class="mentor_card_work_font color_9D">
                 {{mentor.mentor_work}}
