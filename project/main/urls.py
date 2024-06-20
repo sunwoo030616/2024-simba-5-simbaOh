@@ -14,5 +14,6 @@ urlpatterns = [
     path('mentor-enroll1/', mentor_enroll, name='mentor-enroll'),
     path('mentor-enroll2/', mentor_enroll2, name='mentor-enroll2'),
     path('mentor-enroll3/', mentor_enroll3, name='mentor-enroll3'),
-    path('mentor-ask', mentor_ask, name='mentor-ask'),
+    path('mentor-ask/<int:id>/', mentor_ask, name='mentor-ask'),
+    path('follows/<int:mentor_id>/', follows, name='follows'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

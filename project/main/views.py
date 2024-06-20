@@ -90,5 +90,18 @@ def mentor_enroll3(request):
         return redirect('main:mentor-list')
     return render(request, 'main/mentor_enroll3.html')
 
-def mentor_ask(request):
-    return render(request, 'main/mentor_ask.html')
+def mentor_ask(request, id):
+    mentor = get_object_or_404(Mentor, pk = id)
+    return render(request, 'main/mentor_ask.html', {'mentor':mentor})
+
+def follows(request, mentor_id):
+    mentor = get_object_or_404(Mentor, pk = mentor_id)
+    if request.user in mentor.follow.all():
+        mentor.follow.remove(request.user)
+        mentor.follow_count -= 1
+        mentor.save()
+    else:
+        mentor.follow.add(request.user)
+        mentor.follow_count += 1
+        mentor.save()
+    return redirect('main:mentor-info', mentor.id)
