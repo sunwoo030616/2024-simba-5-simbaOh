@@ -14,4 +14,4 @@ urlpatterns = [
     path('mentor-enroll/', mentor_enroll, name='mentor-enroll'),
     path('mentor-create', mentor_create, name='mentor-create'),
     path('mentor-ask', mentor_ask, name='mentor-ask'),
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
