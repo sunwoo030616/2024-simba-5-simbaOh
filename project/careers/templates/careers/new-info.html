@@ -1,7 +1,7 @@
 {% if info.id %}
-    <form action="{% url 'create' info.id %}" method="post">
+    <form action="{% url 'careers:create' info.id %}" method="post">
 {% else %}
-    <form action="{% url 'create' %}" method="post">
+    <form action="{% url 'careers:create' %}" method="post">
 {% endif %}
     {% csrf_token %}
     <p>제목 : <input type="text" name="title"></p>
