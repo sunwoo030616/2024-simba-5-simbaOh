@@ -3,6 +3,8 @@ from django.urls import path
 from main import views
 from .views import *
 
+app_name = "careers"
+
 urlpatterns = [
     path('new-info', new_info, name="new-info"),
     path('create', create, name="create"),
