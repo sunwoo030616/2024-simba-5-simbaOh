@@ -50,5 +50,6 @@ def mentor_create(request):
         return redirect('main:mentor-list')
     return render(request, 'main/mentor_enroll.html')
 
-def mentor_ask(request):
-    return render(request, 'main/mentor_ask.html')
+def mentor_ask(request, id):
+    mentor = get_object_or_404(Mentor, pk = id)
+    return render(request, 'main/mentor_ask.html', {'mentor' : mentor})
