@@ -6,24 +6,17 @@
   href="{% static 'css/accounts/finishjoin.css' %}"
 />
 
-<meta http-equiv="refresh" content="2; url=/mainpage">
+<meta http-equiv="refresh" content="2.5; url=/mainpage">
 
-<div class='container'>
-  <div class='container2'>
-    <div class='container-top'>  
-        
-        <div class="main">
-          <div class="body">
-            <div class="center">
-              <img src="{% static 'images/mainlogo.png' %}" width="100px" style="padding-bottom: 32px;">
-              <p class="font_center_big color_1E">CHEAT KET</p>
-              <p class="font_center_small color_1E">취트키</p>
-              <p class="font_center_small color_1E">구도욱님, 회원가입이 완료되었습니다.</p>
-            </div>
-          </div>
+<div class='container'>        
+  <div class="main">
+      <div class="center">
+        <img src="{% static 'images/mainlogo.png' %}" width="100px" style="padding-bottom: 32px;">
+        <div class="font_center_small">
+          Welcome,<div class="username">
+          <p>{{ user.profile.user_name }}</p></div>
         </div>
-
-    </div>
+      </div>
   </div>
 </div>
 

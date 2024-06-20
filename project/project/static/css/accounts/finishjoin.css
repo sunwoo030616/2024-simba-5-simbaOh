@@ -12,40 +12,6 @@
   } 
 }
 
-.container2{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 430px;
-  height: 850px;
-  background: #D4EDE7;
-}
-
-.inputlist{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-self: stretch;
-  margin-bottom: 32px;
-}
-.container-top{
-  width: 388px;
-  color: #00C3AD;
-  text-align: center;
-  font-feature-settings: 'clig' off, 'liga' off;
-  font-family: "VITRO CORE OTF";
-  font-size: 28px;
-  font-style: normal;
-  font-weight: 900;
-  line-height: normal;
-}
-.image-button{
-  width: 100px;
-height: 100px;
-flex-shrink: 0;
-}
-
 .main {
   display: flex;
   flex-direction: column;
@@ -57,12 +23,6 @@ flex-shrink: 0;
   padding-bottom: 0.625rem; /* 10px */
 }
 
-.body {
-  display: flex;
-  width: 25rem; /* 400px */
-  flex-direction: column;
-}
-
 .center {
   display: flex;
   flex-direction: column;
@@ -70,31 +30,30 @@ flex-shrink: 0;
   gap: 1rem;
 }
 
-
-
-
-
-/* 폰트 설정 */
-
-.font_center_big {
-  font-size: 3.125rem; /* 50px */
-  font-family: STHupo;
-  font-weight: 400;
-  word-wrap: break-word;
-}
-
 .font_center_small {
-  font-size: 1.875rem; /* 30px */
-  font-family: VITRO CORE OTF;
-  font-weight: 900;
-  word-wrap: break-word;
-}
-
-
-/* 색상 설정 */
-
-.color_1E {
   color: #1E3D46;
-}
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: "VITRO CORE OTF";
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  width: 388px;
+  }
 
-/* 아이콘 설정 */
+  .username{
+    display: flex;
+    color: #00C3AD;
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: "VITRO CORE OTF";
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  }
+
