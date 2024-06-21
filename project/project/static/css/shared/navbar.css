@@ -41,7 +41,7 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  margin-top: 5rem; /* 80px */
+  margin-top: 4rem; /* 80px */
   width: 430px;
   z-index: 0;
   justify-content: space-around;
@@ -55,7 +55,7 @@
   padding-top: 5rem; /* 80px */
   padding-bottom: 2rem;
   width: 430px;
-  z-index: -1;
+  top: -550px;
   gap: 2rem; /* 16px */
   
   background: linear-gradient(180deg, #359287 0%, #19AC9B 50.72%, #00C3AD 100%);
@@ -69,7 +69,7 @@
 
 @keyframes move_navbar_down {
   from {
-    top: -500px;
+    top: -550px;
   }
   to {
     top: 0px;
@@ -81,7 +81,7 @@
     top: 0px;
   }
   to {
-    top: -500px;
+    top: -550px;
   }
 }
 
