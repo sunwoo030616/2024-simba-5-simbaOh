@@ -2,10 +2,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import User, Portfolio
 from django.contrib.auth.models import User
 from accounts.models import Profile
+from main.models import Mentor
 
 def mypage(request, id):
     user = get_object_or_404(User, pk=id)
-    profile = get_object_or_404(Profile, user=user)
     profile, created = Profile.objects.get_or_create(user=user)
     portfolio, created = Portfolio.objects.get_or_create(user=user)
 
@@ -14,6 +14,15 @@ def mypage(request, id):
         'profile': profile,
         'portfolio': portfolio
     })
+
+def follow_list(request, id):
+    user = get_object_or_404(User, pk=id)
+    context = {
+        'user':user,
+        'followers': user.profile.followers.all(),
+        'followings': user.profile.followings.all()
+    }
+    return render(request, 'users/follow_list.html', context)
 
 def edit_portfolio(request):
     portfolio, created = Portfolio.objects.get_or_create(user=request.user)
