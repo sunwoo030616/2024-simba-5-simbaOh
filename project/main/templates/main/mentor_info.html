@@ -32,10 +32,10 @@
             {{mentor.mentor_dept}}
           </div> 
           <div class="centering">
-            {% if mentor.mentor_image %}
-              <img class="circuling" src="{{ mentor.image.url }}" alt="">
+            {% if mentor.user.profile.user_profile %}
+              <img class="circuling" src="{{ mentor.user.profile.user_profile.url }}" alt="" width='100px' height='100px' style="padding-bottom: 20px;">
             {% else %}
-              <img class="circuling" src="{% static 'images/signup1.png' %}" width='75px' height='75px'>
+              <img class="circuling" src="{% static 'images/signup1.png' %}" width='100px' height='100px'>
             {% endif %}
             <div class="mentor_card_name_font color_00">
               {{mentor.user.profile.user_name}}
