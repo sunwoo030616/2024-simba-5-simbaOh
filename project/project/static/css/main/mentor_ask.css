@@ -136,7 +136,11 @@ input[type="text"] {
   display: flex;
   width: 400px;
   position: absolute;
-  transform: translate(0%, 125%);
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
   background-color: #FFF;
 }
 

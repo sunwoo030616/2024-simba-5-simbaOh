@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .models import Mentor
+from .models import Mentor, Category
 from django.contrib.auth.models import User
 
 
@@ -18,8 +18,34 @@ def mentor_start(request):
     return render(request, 'main/mentor_start.html')
 
 def mentor_list(request):
-    mentors = Mentor.objects.all()
-    return render(request, 'main/mentor_list.html', {'mentors' : mentors})
+    category_list = [
+            '인사/노무',
+            'IT개발/데이터',
+            '디자인',
+            '영상/판매/무역',
+            '상품기획/MD',
+            '서비스',
+            '생산',
+            '의료',
+            '건설/건축',
+            '연구/R&D',
+            '교육',
+            '금융/보험',
+            '미디어/스포츠',
+            '교육'
+        ]
+    if request.method == 'POST':
+        selected_categories = request.POST.getlist('categories')
+        if selected_categories:
+            selected_category_names = [category_list[int(i)] for i in selected_categories]
+            mentors = Mentor.objects.filter(mentor_work__in=selected_category_names)
+            return render(request, 'main/mentor_list.html', {'mentors': mentors})
+        else:
+            mentors = Mentor.objects.all()
+            return render(request, 'main/mentor_list.html', {'mentors': mentors})
+    else:
+        mentors = Mentor.objects.all()
+    return render(request, 'main/mentor_list.html', {'mentors': mentors})
 
 def mentor_enroll(request):
     return render(request, 'main/mentor_enroll.html')
@@ -35,8 +61,8 @@ def mentor_create(request):
         new_mentor.mentor_info = request.POST['mentor_info']
         new_mentor.mentor_career = request.POST['mentor_career']
         new_mentor.mentor_certificate = request.POST['mentor_certificate']
-        new_mentor.mentor_id_card = request.FILES['image_1']
-        new_mentor.mentor_name_card = request.FILES['image_2']
+        new_mentor.mentor_id_card = request.FILES.get('image_1')
+        new_mentor.mentor_name_card = request.FILES.get('image_2')
         new_mentor.mentor_at = timezone.now()
 
         new_mentor.save()
