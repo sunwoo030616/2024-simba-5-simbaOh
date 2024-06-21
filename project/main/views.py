@@ -156,12 +156,10 @@ def mentor_ask(request, id):
 
 def follow(request, id):
     user = request.user
-    mentor =get_object_or_404(Mentor, pk=id)
-    followed_user = get_object_or_404(User, mentor=mentor)
-    is_follower = user.profile in followed_user.profile.followers.all()
+    mentor = get_object_or_404(Mentor, pk=id)
+    is_follower = user in mentor.followers.all()
     if is_follower:
-        user.profile.followings.remove(followed_user.profile)
-        return redirect('main:mentor-info', mentor.id)
+        mentor.followers.remove(user)
     else:
-        user.profile.followings.add(followed_user.profile)
-        return redirect('main:mentor-info', mentor.id)
+        mentor.followers.add(user)
+    return redirect('main:mentor-info', mentor.id)

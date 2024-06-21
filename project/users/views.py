@@ -9,19 +9,21 @@ def mypage(request, id):
     user = get_object_or_404(User, pk=id)
     profile, created = Profile.objects.get_or_create(user=user)
     portfolio, created = Portfolio.objects.get_or_create(user=user)
+    following_count = user.mentor_followings.count()
 
-    return render(request, 'users/mypage.html', {
+    context = {
         'user': user,
         'profile': profile,
-        'portfolio': portfolio
-    })
+        'portfolio': portfolio,
+        'following_count': following_count,
+    }
+    
+    return render(request, 'users/mypage.html', context)
 
 def follow_list(request, id):
     user = get_object_or_404(User, pk=id)
     context = {
-        'user':user,
-        'followers': user.profile.followers.all(),
-        'followings': user.profile.followings.all()
+        'followings': user.mentor_followings.all()
     }
     return render(request, 'users/follow_list.html', context)
 
@@ -43,8 +45,6 @@ def edit_portfolio(request):
             education, created = Education.objects.get_or_create(name=edu)
             portfolio.education.add(education)
 
-            
-
         portfolio.experience.clear()
         for exp in experience_list:
             experience, created = Experience.objects.get_or_create(name=exp)
@@ -65,3 +65,6 @@ def edit_portfolio(request):
         return redirect('users:mypage', id=request.user.id)
 
     return render(request, 'users/edit_portfolio.html', {'portfolio': portfolio})
+
+def update_profile(request, id):
+    update_post = Profile.objects.get(pk=id)

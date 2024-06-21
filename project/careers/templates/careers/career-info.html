@@ -21,11 +21,15 @@ href="{% static 'css/careers/career_info.css'%}"
             <div style="width:36px;">
             </div>
         </div>
+        
 
-        <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" class="search">
-        <button type="button" class='button'>
-            <img src="{% static 'images/search.png' %}" alt="" onclick="" >
-        </button>
+        <div class="box">
+            <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" class="search">
+            <button type="button" class='button'>
+                <img src="{% static 'images/search.png' %}" alt="" onclick="" >
+            </button>
+        </div>
+        
 
         <div class='topbar'>
             <button type="button" class='topbar1'>채용 정보</button>
@@ -33,12 +37,28 @@ href="{% static 'css/careers/career_info.css'%}"
             <button type="button" class='topbar3'>교육 정보</button>
         </div>
 
-
-        <form action="{% url 'main:mentor-create' %}" method="POST", enctype="multipart/form-data">
-        {% csrf_token %} 
-        </form>
+        <div class='member'>
+            {% for careerinfo in careerinfos %}
+            <div class='careerinfo'>
+                <div class='title'>{{ careerinfo.title }}</div>
+                <div class='careerinfo2'>
+                    <div class='careerinfo3'>
+                        <div class='company'> {{careerinfo.company}}</div>
+                    
+                        <div class='area'>{{careerinfo.place}}</div>
+                    </div>
+                    <div class='update'>{{careerinfo.deadline}}</div>
+                </div>
+            </div>
+            {% endfor %} 
+        </div>
     </div>
 </div>
 
+<div>
+    {% if user.is_authenticated and user.is_superuser %}
+    <a href="{% url 'main:new-post' %}">새 글 작성하기</a>
+    {% endif %}
+</div>
 
 {% endblock %}

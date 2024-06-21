@@ -49,10 +49,10 @@
           </div>
         </div>
         <div class="row_space_around">
-          <div class="column">
-            <p class="color_FFF font_3">{{ user.profile.followings.count }}</p>
+          <a href="{% url 'users:follow-list' user.id %}" class="column">
+            <p class="color_FFF font_3">{{ user.mentor_followings.count }}</p>
             <p class="color_FFF font_3">팔로잉</p>
-          </div>
+          </a>
           <div class="column">
             <p class="color_FFF font_3">12</p>
             <p class="color_FFF font_3">북마크</p>
