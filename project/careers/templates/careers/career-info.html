@@ -57,7 +57,7 @@ href="{% static 'css/careers/career_info.css'%}"
 
 <div>
     {% if user.is_authenticated and user.is_superuser %}
-    <a href="{% url 'main:new-post' %}">새 글 작성하기</a>
+    <a href="{% url 'careers:new-careerinfo' %}">새 글 작성하기</a>
     {% endif %}
 </div>
 

@@ -11,6 +11,7 @@ def careerinfo_create(request):
     new_careerinfo = Careerinfo()
 
     new_careerinfo.title = request.POST['title']
+    new_careerinfo.writer = request.user
     new_careerinfo.company = request.POST['company']
     new_careerinfo.place = request.POST['place']
     new_careerinfo.content = request.POST['content']
