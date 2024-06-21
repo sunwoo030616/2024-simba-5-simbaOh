@@ -177,6 +177,18 @@
     /* top: 25.6%;
       left: 33.9%; */
     }
+
+    .linefinish3{
+        width: 0px;
+        height: 8px;
+        flex-shrink: 0;
+        border-radius: 30px 0px 0px 30px;
+        background: #00C3AD;
+        position: absolute;
+        /* top: 25.6%;
+          left: 33.9%; */
+        }
+
     .move{
         color: #28464E;
         font-family: Pretendard;

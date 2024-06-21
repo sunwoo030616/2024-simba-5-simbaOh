@@ -29,14 +29,14 @@
   display: flex;
   width: 25rem; /* 400px */
   flex-direction: column;
-  gap: 1.25rem; /* 20px */
+  gap: 1rem; /* 16px */
 }
 
 .nav {
   display: flex;
   width: 100%;
   height: 2rem; /* 32px */
-  padding-top: 3rem; /* 48px */
+  padding-top: 3.5rem; /* 56px */
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -191,6 +191,14 @@ input[type="text"] {
 .title_text {
   font-family: "noto Sans KR";
   font-size: 1.5rem; /* 24px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.title_text2 {
+  font-family: "noto Sans KR";
+  font-size: 1.25rem; /* 20px */
   font-style: normal;
   font-weight: 700;
   line-height: normal;

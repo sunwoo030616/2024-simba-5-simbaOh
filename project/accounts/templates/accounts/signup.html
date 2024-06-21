@@ -16,7 +16,13 @@
         </div>
         <div style="width:32px;"></div>
       </div>
-      <div class='finish'>
+      <div class='finish' id="finish0">
+        <div class='finish1'>
+          <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2' id='finish1_2'>0%</div>
+        </div>
+        <div class='linefinish'><div class='linefinish3' id='linefinish2'></div></div>
+      </div>
+      <div class='finish' id="finish30">
         <div class='finish1'>
           <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2' id='finish1_2'>30%</div>
         </div>
@@ -56,12 +62,13 @@
     const passwordInput = document.getElementById('user_pw');
     const password2Input = document.getElementById('confirm');
     const submitButton = document.getElementById('submit');
-    const lineFinish2 = document.getElementById('linefinish2');
+    const finish0 = document.getElementById('finish0');
+    const finish30 = document.getElementById('finish30');
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@!?-])[A-Za-z\d@!?-]{8,}$/;
     const errorDiv = document.querySelector('.please2');
 
-    lineFinish2.style.display = 'none';
-    finish1_2.style.display='none';
+    finish0.style.display = "block";
+    finish30.style.display = "none";
 
     function validatePassword() {
       const password = passwordInput.value;
@@ -87,14 +94,14 @@
         submitButton.disabled = false;
         submitButton.style.backgroundColor = "#28464E";
         submitButton.style.color = "#ffffff";
-        lineFinish2.style.display = 'block'; 
-        finish1_2.style.display='block';
+        finish0.style.display = "none";
+        finish30.style.display = "block";      
       } else {
         submitButton.disabled = true;
         submitButton.style.backgroundColor = "";
         submitButton.style.color = "";
-        lineFinish2.style.display = 'none';
-        finish1_2.style.display='none';
+        finish0.style.display = "block";
+        finish30.style.display = "none";
       }
     }
 
