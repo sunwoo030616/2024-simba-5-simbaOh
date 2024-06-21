@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이직 페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black.
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'community:free-board' %}">자유</a>
+        <a href="{% url 'community:move-board' %}">이직</a>
+        <a href="{% url 'community:movetag-list' %}">MoveTag</a>
+    </div>
+
+    <h1>이직 페이지</h1>
+    <p>여기는 이직 페이지입니다. 이직에 관한 내용을 작성하세요.</p>
+    <div>
+        {% if user.is_authenticated %}
+        <a href="{% url 'community:move-create' %}">새 글 작성하기</a>
+        {% endif %}
+        {% for move in moves %}
+        <div>
+            <hr/>
+            <h3>{{move.title}}</h3>
+            {{move.summary}}
+            {{move.pub_date}}
+            <a href="{% url 'community:move-detail' move.id %}">자세히 보기</a>
+            <br>
+            
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

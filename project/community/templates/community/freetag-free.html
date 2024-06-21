@@ -1,0 +1,14 @@
+<div>
+    <h1>#{{freetag}}가 달린 게시글</h1>
+    <hr>
+    <div>
+        {% for r in frees %}
+        <hr/>
+        <h3>{{r.title}}</h3>
+        {{r.writer}} | {{r.pub_date}}<br>
+        {{r.summary}}
+        <a href="{% url 'community:free-detail' r.id %}">자세히 보기</a>
+        <br>
+        {% endfor %}        
+    </div>
+</div>
