@@ -17,6 +17,7 @@ class Profile(models.Model):
         ('교직원', '교직원'),
     ]
     user_enroll = models.CharField(max_length=50, blank=True, null=True, choices=ENROLL_CHOICES, default='')
+    followings = models.ManyToManyField("self", related_name="followers", symmetrical=False)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
