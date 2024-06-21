@@ -50,10 +50,18 @@
 
             <!-- button 관련 바꾸어야함 뜨질 않아 -->
             <div class="row"> 
-              <a href="{% url 'main:follows' mentor.id %}">
-                {% if user in mentor.follow.all %} 취소 {% else %} 좋아요 {% endif %}
+            {% if request.user != mentor %}
+            {% if request.user.profile in user.profile.followers.all %}
+              <a href="{% url 'main:follow' mentor.id %}">
+                <button type="button" class="btn btn-outline-info">언팔로우</button>
               </a>
-            {{mentor.follow_count}}개
+            {% else %}
+              <a href="{% url 'main:follow' mentor.id %}">
+                <button type="button" class="btn btn-info">팔로우</button>
+              </a>
+            {% endif %}
+            {% endif %}
+            {{mentor.user.profile.followers.count}}
               <a class="mentoring" href="{% url 'main:mentor-ask' mentor.id %}">멘토링 신청</a>
             </div>
             

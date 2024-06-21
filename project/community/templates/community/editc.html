@@ -1,7 +1,0 @@
-<h2>수정중...</h2>
-<form action="{% url 'community:update' post.id %}" method="POST">
-    {% csrf_token %}
-    <p>제목 : <input type="text" name="title" value="{{post.title}}"></p>
-    <p>내용 : <textarea type="text" name="body" id="" cols="30" rows="10">{{post.body}}</textarea></p>
-    <button type="submit">제출</button>
-</form>

@@ -29,9 +29,9 @@ def create(request):
 
     new_info.save()
 
-    return redirect('detail', new_info.id)
+    return redirect('careers:detail', new_info.id)
 
 def delete(request, id):
     delete_info = Info.objects.get(pk=id)
     delete_info.delete()
-    return redirect('career-info')
+    return redirect('careers:career-info')
