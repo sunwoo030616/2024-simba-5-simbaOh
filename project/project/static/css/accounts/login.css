@@ -201,3 +201,27 @@ align-items: flex-start;
 gap: 2px;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem; /* 8px */
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* 폰트 설정 */
+
+.title_font {
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: STHupo;
+  font-size: 1.875rem; /* 30px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* 색상 설정 */
+
+.color_1E {
+  color: #1E3D46;
+}
