@@ -1,8 +1,8 @@
 {% extends 'base.html'%}
 {% block content %}
 
-{% for follower in followers %}
-    <a href="{% url 'users:mypage' follower.id %}">{{ follower.user.profile.user_name }}</a>
+{% for following in followings %}
+    <a href="{% url 'main:mentor-info' following.id %}">{{ following.user.profile.user_name }}{{following.id}}</a>
 {% endfor %}
 
 {% endblock %}

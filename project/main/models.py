@@ -27,6 +27,7 @@ class Mentor(models.Model):
     # follow_count = models.PositiveIntegerField(default=0)
     
     mentor_at = models.DateTimeField()
+    followers = models.ManyToManyField(User, related_name='mentor_followings', blank=True)
 
     categories = models.ManyToManyField(Category, related_name='mentors', blank=True)
 
