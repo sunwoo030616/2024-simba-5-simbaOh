@@ -1,14 +1,10 @@
-{% if info.id %}
-    <form action="{% url 'careers:create' info.id %}" method="post">
-{% else %}
-    <form action="{% url 'careers:create' %}" method="post">
-{% endif %}
+<form action="{% url 'careers:careerinfo-create' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <p>제목 : <input type="text" name="title"></p>
-    <p>작성자 : <input type="text" name="writer"></p>
-    <p>지역 : <input type="text" name="location"></p>
-    <p>내용 : <textarea type="text" name="body" id="" cols="30" rows="10"></textarea></p>
+    <p>회사 : <input type="text" name="company"></p>
+    <p>지역 : <input type="text" name="place"></p>
+    <p>마감기한 : <input type="text" name="deadline"></p>
+    <p>사진 : <input type="file" name="image"></p>
+    <p>내용 : <textarea type="text" name="content" id="" cols="30" rows="10"></textarea></p>
     <button type="submit">제출</button>
-    <h1>메인 페이지</h1>
-    <a href="{% url 'users:mypage' id=request.user.id %}">내 마이페이지로 이동</a>
 </form>
