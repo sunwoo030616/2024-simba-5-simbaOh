@@ -2,7 +2,7 @@
 {% block content %}
 
 {% for following in followings %}
-    <a href="{% url 'main:mentor-info' following.id %}">{{ following.user.profile.user_name }}{{following.id}}</a>
+    <a href="{% url 'main:mentor-info' following.id %}">{{ following.user.profile.user_name }}</a>
 {% endfor %}
 
 {% endblock %}
