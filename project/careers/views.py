@@ -1,37 +1,36 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
-from .models import Info
-
-# Create your views here.
-def new_info(request):
-    return render(request, 'careers/new-info.html')
+from .models import Careerinfo
 
 def career_info(request):
-    infos = Info.objects.all()
-    return render(request, 'careers/career-info.html', {'infos': infos})
+    careerinfos = Careerinfo.objects.all()
+    return render(request, 'careers/career-info.html', {'careerinfos': careerinfos})
 
-def detail(request, id):
-    info = get_object_or_404(Info, pk=id)
-    return render(request, 'careers/detail.html', {'info' : info})
+def careerinfo_create(request):
+    new_careerinfo = Careerinfo()
 
-def edit(request, id):
-    edit_info = get_object_or_404(Info, pk=id)
-    return render(request, 'careers/edit.html', {'info' : edit_info})
+    new_careerinfo.title = request.POST['title']
+    new_careerinfo.writer = request.user
+    new_careerinfo.company = request.POST['company']
+    new_careerinfo.place = request.POST['place']
+    new_careerinfo.content = request.POST['content']
+    new_careerinfo.deadline = request.POST['deadline']
+    new_careerinfo.pub_date = timezone.now()
+    new_careerinfo.image = request.FILES.get('image')
 
-def create(request):
-    new_info = Info()
+    new_careerinfo.save()
 
-    new_info.title = request.POST['title']
-    new_info.writer = request.POST['writer']
-    new_info.location = request.POST['location']
-    new_info.pub_date=timezone.now()
+    return redirect('careers:careerinfo-detail', new_careerinfo.id)
 
-    new_info.save()
+def new_careerinfo(request):
+    return render(request, 'careers/new-careerinfo.html')
 
-    return redirect('careers:detail', new_info.id)
+def careerinfo_detail(request, id):
+    careerinfo = get_object_or_404(Careerinfo, pk=id)
+    return render(request, 'careers/careerinfo-detail.html', {'careerinfo': careerinfo})
 
-def delete(request, id):
-    delete_info = Info.objects.get(pk=id)
-    delete_info.delete()
+def careerinfo_delete(request, id):
+    delete_careerinfo = Careerinfo.objects.get(pk=id)
+    delete_careerinfo.delete()
     return redirect('careers:career-info')

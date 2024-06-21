@@ -1,22 +1,19 @@
-{% extends 'base.html' %} {% load static %} {% block content %} 
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %} 
 <link
   rel="stylesheet"
   type="text/css"
   href="{% static 'css/main/mentor_start.css'%}"
 />
-<form action="{% url 'main:mentor-start' %}" method="post">
-  {% csrf_token %}
 
-<div class='container'>
+<form action="{% url 'main:mentor-start' %}" method="post" class='container'>
+  {% csrf_token %}
   <div class="small_nav">
     <div class="left">
       <a href="{% url 'main:mainpage' %}">
-        <img src="{% static 'images/profile_key.png' %}" width="32px">
+        <img src="{% static 'images/arrow-24.png' %}" width="32px">
       </a>
     </div>
-    <div class="right">
-      <img src="{% static 'images/entypo_menu.png' %}" width="32px">
-    </div>
+    <div class="right" style="width: 32px;"></div>
   </div>
   <div class='pictureandsubmit'>
     <img class="picture" src="{% static 'images/Rectangle 3406.png' %}">
@@ -72,26 +69,26 @@
 
     <div class='basemintment'>취트키 멘토 매칭은 이렇게 운영됩니다.</div>
     <div class='sqare'>
-        <div class='step1'>
-          <div class='sqare1'>STEP<br>1</div>
-          <div class='sqare_1'>멘토 선택</div>
-          멘토를 선택하고,<br> 궁금한 내용에 대해 <br>글을 작성해주세요.
-        </div>
+      <div class='step1'>
+        <div class='sqare1'>STEP<br>1</div>
+        <div class='sqare_1'>멘토 선택</div>
+        멘토를 선택하고,<br> 궁금한 내용에 대해 <br>글을 작성해주세요.
+      </div>
 
-        <div class='line'></div>
+      <div class='line'></div>
 
-        <div class='step2'>
-          <div class='sqare1'>STEP<br>2</div>
-          <div class='sqare_2'>검토 후 회신</div>
-          멘토가 글 검토 후<br> 매칭 진행 여부를<br> 안내드려요. 
-        </div>
+      <div class='step2'>
+        <div class='sqare1'>STEP<br>2</div>
+        <div class='sqare_2'>검토 후 회신</div>
+        멘토가 글 검토 후<br> 매칭 진행 여부를<br> 안내드려요. 
+      </div>
 
-        <div class='line'></div>
+      <div class='line'></div>
 
-        <div class='step3'>
-          <div class='sqare1'>STEP<br>3</div>
-          <div class='sqare_3'>매칭</div>
-          멘토와 매칭되어<br> 채팅을 통해 자유롭게<br> 멘토링 할 수 있어요.
+      <div class='step3'>
+        <div class='sqare1'>STEP<br>3</div>
+        <div class='sqare_3'>매칭</div>
+        멘토와 매칭되어<br> 채팅을 통해 자유롭게<br> 멘토링 할 수 있어요.
       </div>
     </div>
   </div>
@@ -103,7 +100,7 @@
   </div>
 
   <div class='icon'>
-    <div class='icon1'>📖<div class='icon1_1'><br>핫트랙스&교보문고 10% 할인</div></div>
+    <div class='icon1'>📖<div class='icon1_1'>핫트랙스&교보문고 10% 할인</div></div>
     <div class='icon1'>🎬<div class='icon1_2'>대한 극장 7,000원 영화 관람<br>메가박스 동문점 3천원 할인</div></div>
     <div class='icon1'>☕<div class='icon1_2'>뚜레쥬르 제일제당사옥점 15% 할인<br>할리스 충무로역점 20% 할인</div></div>
     <div class='icon1'>🗂️<div class='icon1_2'>마이크로소프트 오피스 무료 이용<br>구글 드라이브 용량 무제한</div></div>
@@ -119,8 +116,7 @@
     <div class="instayoutube_icon"></div>
     <div class="copyright font_200">Copyright ⓒ 2024 심바오 Team. All Rights Reserved.</div>
   </div>
-</div>
-
+</form>
 
 {% if error %}
 <div style="color: red">{{ error }}</div>
