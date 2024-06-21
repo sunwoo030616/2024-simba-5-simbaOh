@@ -12,12 +12,27 @@
         </div>
         <div class='right'></div>
       </div>
-      <div class='finish'>
+
+      <div class='finish' id="finish30">
         <div class='finish1'>
-          <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2' id='finish1_2'>60%</div>
+          <div class='finish1_1'>회원가입 완성도</div>
+          <div class='finish1_2' id='finish1_2'>30%</div>
         </div>
-        <div class='linefinish'><div class='linefinish2' id='linefinish2'></div></div>
+        <div class='linefinish'>
+          <div class='linefinish3' id='linefinish2'></div>
+        </div>
       </div>
+
+      <div class='finish' id="finish60">
+        <div class='finish1'>
+          <div class='finish1_1'>회원가입 완성도</div>
+          <div class='finish1_2' id='finish1_2'>60%</div>
+        </div>
+        <div class='linefinish'>
+          <div class='linefinish2' id='linefinish2'></div>
+        </div>
+      </div>
+
       <form action="{% url 'accounts:signup2' %}" method="post" id='signup-form' enctype="multipart/form-data">
         {% csrf_token %}
         <div class='inputlist'>
@@ -56,26 +71,27 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    var lineFinish2 = document.getElementById('linefinish2');
-    lineFinish2.style.display = 'none'; 
-    finish1_2.style.display = 'none';
+    var finish30 = document.getElementById('finish30');
+    var finish60 = document.getElementById('finish60')
+    finish30.style.display = "block";
+    finish60.style.display = "none";
   });
 
   document.getElementById('user_enroll').addEventListener('change', function() {
     var enrollValue = this.value;
     var submitButton = document.getElementById('submit');
-    var lineFinish2 = document.getElementById('linefinish2');
 
     if (enrollValue) {
       submitButton.style.background = '#28464E'; 
       submitButton.disabled = false; 
-      lineFinish2.style.display = 'block'; 
-      finish1_2.style.display='block';
+      finish60.style.display = "block";
+      finish30.style.display = "none";
+      console.log("test");
     } else {
       submitButton.style.background = 'rgba(40, 70, 78, 0.30)'; 
       submitButton.disabled = true; 
-      lineFinish2.style.display = 'none'; 
-      finish1_2.style.display = 'none';
+      finish60.style.display = "none";
+      finish30.style.display = "block";
     }
   });
   
