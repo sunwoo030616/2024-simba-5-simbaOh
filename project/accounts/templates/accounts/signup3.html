@@ -12,7 +12,13 @@
         </div>
         <div class='right'></div>
       </div>
-      <div class='finish'>
+      <div class='finish' id="finish60">
+        <div class='finish1'>
+          <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2' id='finish1_2'>60%</div>
+        </div>
+        <div class='linefinish'><div class='linefinish3' id='linefinish2'></div></div>
+      </div>
+      <div class='finish' id="finish100">
         <div class='finish1'>
           <div class='finish1_1'>회원가입 완성도</div><div class='finish1_2' id='finish1_2'>100%</div>
         </div>
@@ -51,11 +57,11 @@
     const birthInput = document.getElementById('user_birth');
     const phoneInput = document.getElementById('user_phone');
     const submitButton = document.getElementById('submit');
-    const lineFinish2 = document.getElementById('linefinish2');
-    const finish1_2 = document.getElementById('finish1_2');
+    const finish60 = document.getElementById('finish60');
+    const finish100 = document.getElementById('finish100');
 
-    lineFinish2.style.display = 'none';
-    finish1_2.style.display = 'none';
+    finish100.style.display = 'none';
+    finish60.style.display = 'block';
 
     function validateForm() {
       const nameValid = nameInput.value.trim() !== '';
@@ -70,15 +76,15 @@
         submitButton.disabled = false;
         submitButton.style.backgroundColor = "#28464E";
         submitButton.style.color = "#ffffff";
-        lineFinish2.style.display = 'block'; 
-        finish1_2.style.display = 'block';
+        finish60.style.display = 'none'; 
+        finish100.style.display = 'block';
 
       } else {
         submitButton.disabled = true;
         submitButton.style.backgroundColor = "";
         submitButton.style.color = "";
-        lineFinish2.style.display = 'none'; 
-        finish1_2.style.display = 'none';
+        finish60.style.display = 'block'; 
+        finish100.style.display = 'none';
       }
     }
 
