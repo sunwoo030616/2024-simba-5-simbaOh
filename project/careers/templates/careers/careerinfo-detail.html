@@ -7,5 +7,7 @@
     <p><img src="{{ careerinfo.image.url }}" alt="사진" width="100px"></p>
 {% endif %}
 <p>{{careerinfo.content}}</p>
+{% if careerinfo.writer == user %}
 <a href="{% url 'careers:careerinfo-delete' careerinfo.id %}">삭제하기</a>
+{% endif %}
 <br>
