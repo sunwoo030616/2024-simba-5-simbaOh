@@ -1,9 +1,11 @@
-<h3>{{info.title}}</h3>
-작성자 : {{info.writer}}
-위치 : {{info.location}}
-
+<h3>{{careerinfo.title}}</h3>
+회사 : {{careerinfo.company}}
+지역 : {{careerinfo.place}}
+마감기한 : {{careerinfo.deadline}}
 <hr/>
-<p>{{info.body}}</p>
-<a href="{% url 'careers:edit' info.id %}">글 수정하기</a>
-<a href="{% url 'careers:delete' info.id %}">삭제하기</a>
+{% if careerinfo.image %}
+    <p><img src="{{ careerinfo.image.url }}" alt="사진" width="100px"></p>
+{% endif %}
+<p>{{careerinfo.content}}</p>
+<a href="{% url 'careers:careerinfo-delete' careerinfo.id %}">삭제하기</a>
 <br>
