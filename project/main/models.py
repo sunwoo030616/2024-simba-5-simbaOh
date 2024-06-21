@@ -23,8 +23,8 @@ class Mentor(models.Model):
     mentor_id_card = models.ImageField(upload_to="mentor_1/")
     mentor_name_card = models.ImageField(upload_to="mentor_2/")
 
-    follow = models.ManyToManyField(User, related_name='follow', blank=True)
-    follow_count = models.PositiveIntegerField(default=0)
+    # follow = models.ManyToManyField(User, related_name='follow', blank=True)
+    # follow_count = models.PositiveIntegerField(default=0)
     
     mentor_at = models.DateTimeField()
 
