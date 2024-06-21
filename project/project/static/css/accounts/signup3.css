@@ -202,3 +202,14 @@ position: absolute;
 /* top: 25.6%;
 left: 33.9%; */
 }
+
+.linefinish3{
+    width: 240px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: #00C3AD;
+    position: absolute;
+    /* top: 25.6%;
+    left: 33.9%; */
+    }
