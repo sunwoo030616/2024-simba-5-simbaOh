@@ -4,7 +4,7 @@
 날짜 : {{free.pub_date}}
 <p>
     {% for freetag in free.freetags.all %}
-            #{{ freetag.freename }}
+            <a href="{% url 'community:freetag-frees' freetag.id %}">#{{ freetag.freename }}</a>
     {% endfor %}
 </p>
 
