@@ -8,6 +8,7 @@
 
 <div class='container'>
   <div class="container2"> 
+
     <div class='imagesmask' style="padding-top: 48px;">
       <div class="left">
         <a href="{% url 'main:mentor-start' %}">
@@ -32,7 +33,6 @@
         </div>  
         
         <div class='origin1'>기본 정보</div>
-
           <div class='totaluser'>
             {% if mentor.mentor_image %}
             <div class='photo'><p><img src="{{ user.profile.user_profile.url }}" alt="사진" width="170px" height='140px'></p></div>
@@ -76,14 +76,14 @@
           </div>
             
           <div class='submitcenter'>
-            <button class='submit1' type='prev' id='prev'>이전</button>
-            <button class='submit2' type='submit' id='submit'>다음</button>
+            <button class='submit1' type='button' id='prev1'>이전</button>
+            <button class='submit2' type='button' id='next1'>다음</button>
           </div>
         </div>
       </div>
 
 
-      <div class='class2'>
+      <div class='class2' style="display:none;">
         <div class='finish'>
           <div class='finish1'>
             <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2_2' id='finish1_2_2'>60%</div>
@@ -115,24 +115,19 @@
             <p><label class='user4' for="mentor_certificate"></label><textarea class='same' placeholder="멘토 자격증/어학성적" type="text" name="mentor_certificate" id="mentor_certificate"></textarea></p>
             <div class='inputlist_text'>예시) 토익 820점, 정보처리기사 등</div>
           </div>
-          {% comment %} 텍스트테에리아로 한 줄 소개 제외하고 다 바꿈 {% endcomment %}
+        
         </div>
         <div class='submitcenter'>
-          <button class='prev1' type='prev' id='prev1'>이전</button>
-          <button class='submit2' type='submit' id='submit'>다음</button>
+          <button class='prev1' type='button' id='prev1'>이전</button>
+          <button class='submit2' type='button' id='next2'>다음</button>
         </div>
       </div>
 
 
-      
-
-
-
-
-      <div class='class3'>
+      <div class='class3' style="display:none;">
         <div class='finish'>
           <div class='finish1'>
-            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2' id='finish1_2'>100%</div>
+            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2_3' id='finish1_2_3'>100%</div>
           </div>
           <div class='linefinish'><div class='linefinish2_3' id='linefinish2_3'></div></div>
         </div> 
@@ -165,7 +160,7 @@
         </div>
         
         <div class='submitcenter'>
-          <button class='prev2' type='prev' id='prev2'>이전</button>
+          <button class='prev2' type='button' id='prev2'>이전</button>
           <button class='submit2' type='submit' id='submit'>다음</button>
         </div>
       </div>
@@ -177,52 +172,107 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    const nameInput = document.getElementById('mentor_company');
-    const birthInput = document.getElementById('mentor_dept');
-    const phoneInput = document.getElementById('mentor_work');
+    const class1 = document.querySelector('.class1');
+    const class2 = document.querySelector('.class2');
+    const class3 = document.querySelector('.class3');
+
+    const next1Button = document.getElementById('next1');
+    const next2Button = document.getElementById('next2');
+    const prev1Button = document.getElementById('prev1');
+    const prev2Button = document.getElementById('prev2');
     const submitButton = document.getElementById('submit');
-    const lineFinish2 = document.getElementById('linefinish2');
-    const finish1_2 = document.getElementById('finish1_2');
 
-    lineFinish2.style.display = 'none';
+    const class1Inputs = class1.querySelectorAll('input, select');
+    const class2Inputs = class2.querySelectorAll('input, textarea');
+    const class3Inputs = class3.querySelectorAll('input');
+
+    const finish1_2 = document.querySelector('.finish1_2');
+    const linefinish2 = document.querySelector('.linefinish2');
+    const finish1_2_2 = document.querySelector('.finish1_2_2');
+    const linefinish2_2 = document.querySelector('.linefinish2_2');
+    const finish1_2_3 = document.querySelector('.finish1_2_3');
+    const linefinish2_3 = document.querySelector('.linefinish2_3');
+
+    // Initially hide the elements
     finish1_2.style.display = 'none';
+    linefinish2.style.display = 'none';
+    finish1_2_2.style.display = 'none';
+    linefinish2_2.style.display = 'none';
+    finish1_2_3.style.display = 'none';
+    linefinish2_3.style.display = 'none';
 
-    function validateForm() {
-      const nameValid = nameInput.value.trim() !== '';
-      const birthValid = birthInput.value.trim() !== '';
-      const phoneValid = phoneInput.value.trim() !== '';
-
-      return nameValid && birthValid && phoneValid;
+    function validateInputs(inputs) {
+      return Array.from(inputs).every(input => input.checkValidity());
     }
 
-    function updateSubmitButton() {
-      if (validateForm()) {
-        submitButton.disabled = false;
-        submitButton.style.backgroundColor = "#28464E";
-        submitButton.style.color = "#ffffff";
-        lineFinish2.style.display = 'block'; 
-        finish1_2.style.display = 'block';
-
+    function toggleButtonState(inputs, button, elementsToShow) {
+      if (validateInputs(inputs)) {
+        button.disabled = false;
+        button.style.backgroundColor = "#28464E";
+        button.style.color = "#ffffff";
+        elementsToShow.forEach(el => el.style.display = 'block');
       } else {
-        submitButton.disabled = true;
-        submitButton.style.backgroundColor = "";
-        submitButton.style.color = "";
-        lineFinish2.style.display = 'none'; 
-        finish1_2.style.display = 'none';
+        button.disabled = true;
+        button.style.backgroundColor = "";
+        button.style.color = "";
+        elementsToShow.forEach(el => el.style.display = 'none');
       }
     }
 
-    nameInput.addEventListener('input', updateSubmitButton);
-    birthInput.addEventListener('input', updateSubmitButton);
-    phoneInput.addEventListener('input', updateSubmitButton);
+    function updateButtonAndElements() {
+      toggleButtonState(class1Inputs, next1Button, [finish1_2, linefinish2]);
+      toggleButtonState(class2Inputs, next2Button, [finish1_2_2, linefinish2_2]);
+      toggleButtonState(class3Inputs, submitButton, [finish1_2_3, linefinish2_3]);
+    }
 
-    submitButton.addEventListener('click', function() {
-      if (validateForm()) {
-        window.location.href = "{% url 'main:mentor-enroll' %}";
+    class1Inputs.forEach(input => input.addEventListener('input', () => toggleButtonState(class1Inputs, next1Button, [finish1_2, linefinish2])));
+    class2Inputs.forEach(input => input.addEventListener('input', () => toggleButtonState(class2Inputs, next2Button, [finish1_2_2, linefinish2_2])));
+    class3Inputs.forEach(input => input.addEventListener('input', () => toggleButtonState(class3Inputs, submitButton, [finish1_2_3, linefinish2_3])));
+
+    next1Button.addEventListener('click', function() {
+      if (validateInputs(class1Inputs)) {
+        class1.style.display = 'none';
+        class2.style.display = 'block';
+        finish1_2.style.display = 'none';
+        linefinish2.style.display = 'none';
       }
     });
 
+    next2Button.addEventListener('click', function() {
+      if (validateInputs(class2Inputs)) {
+        class2.style.display = 'none';
+        class3.style.display = 'block';
+        finish1_2_2.style.display = 'none';
+        linefinish2_2.style.display = 'none';
+      }
+    });
+
+    prev1Button.addEventListener('click', function() {
+      class1.style.display = 'block';
+      class2.style.display = 'none';
+      finish1_2.style.display = 'none';
+      linefinish2.style.display = 'none';
+    });
+
+    prev2Button.addEventListener('click', function() {
+      class2.style.display = 'block';
+      class3.style.display = 'none';
+      finish1_2_2.style.display = 'none';
+      linefinish2_2.style.display = 'none';
+    });
+
+    // Add event listener for the prev button in class3
+    const prev3Button = document.getElementById('prev2');
+    prev3Button.addEventListener('click', function() {
+      class2.style.display = 'block';
+      class3.style.display = 'none';
+      finish1_2_3.style.display = 'none';
+      linefinish2_3.style.display = 'none';
+    });
+
+    updateButtonAndElements();
   });
+
 </script>
 
 {% endblock %}
