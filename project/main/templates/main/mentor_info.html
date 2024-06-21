@@ -35,13 +35,13 @@
             {% if mentor.mentor_image %}
               <img class="circuling" src="{{ mentor.image.url }}" alt="">
             {% else %}
-              <img class="circuling" src="{% static 'images/arrow-24.png' %}" width='75px' height='75px'>
+              <img class="circuling" src="{% static 'images/signup1.png' %}" width='75px' height='75px'>
             {% endif %}
             <div class="mentor_card_name_font color_00">
-              {{mentor.mentor_name}}
+              {{mentor.user.profile.user_name}}
             </div> 
             <div class="mentor_card_major_font color_00">
-              {{mentor.mentor_major}}
+              {{mentor.user.profile.user_major}}
             </div> 
             <div class="mentor_card_work_font color_9D">
               {{mentor.mentor_work}}
@@ -61,13 +61,13 @@
         </div>
       </div>
       <p class="color_28 title_text">한 줄 소개</p>
-      <p class="color_00 context_text"></p>
+      <p class="color_00 context_text">{{ mentor.mentor_summary }}</p>
       <p class="color_28 title_text">멘토 소개</p>
-      <p class="color_00 context_text"></p>
+      <p class="color_00 context_text">{{ mentor.mentor_info }}</p>
       <p class="color_28 title_text">멘토 이력</p>
-      <p class="color_00 context_text"></p>
+      <p class="color_00 context_text">{{ mentor.mentor_career }}</p>
       <p class="color_28 title_text">멘토 자격증 / 어학 성적</p>
-      <p class="color_00 context_text"></p>
+      <p class="color_00 context_text">{{ mentor.mentor_certificate }}</p>
       <!-- 태그로 가져와야함 -->
     </div>
   </div>

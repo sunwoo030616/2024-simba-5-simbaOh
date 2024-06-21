@@ -61,8 +61,8 @@ def mentor_create(request):
         new_mentor.mentor_info = request.POST['mentor_info']
         new_mentor.mentor_career = request.POST['mentor_career']
         new_mentor.mentor_certificate = request.POST['mentor_certificate']
-        new_mentor.mentor_id_card = request.FILES['image_1']
-        new_mentor.mentor_name_card = request.FILES['image_2']
+        new_mentor.mentor_id_card = request.FILES.get('image_1')
+        new_mentor.mentor_name_card = request.FILES.get('image_2')
         new_mentor.mentor_at = timezone.now()
 
         new_mentor.save()
