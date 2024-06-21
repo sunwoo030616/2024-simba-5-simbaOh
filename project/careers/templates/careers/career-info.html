@@ -21,17 +21,41 @@ href="{% static 'css/careers/career_info.css'%}"
             <div style="width:36px;">
             </div>
         </div>
+        
 
-        <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" class="search">
-        <button type="button" class='button'>
-            <img src="{% static 'images/search.png' %}" alt="" onclick="" >
-        </button>
+        <div class="box">
+            <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" class="search">
+            <button type="button" class='button'>
+                <img src="{% static 'images/search.png' %}" alt="" onclick="" >
+            </button>
+        </div>
+        
 
         <div class='topbar'>
             <button type="button" class='topbar1'>채용 정보</button>
             <button type="button" class='topbar2'>취업 프로그램</button>
             <button type="button" class='topbar3'>교육 정보</button>
         </div>
+
+        <div class='member'>
+            {% comment %} {% for info in infos %} {% endcomment %}
+            <div class='careerinfo'>
+                <div class='title'>삼성전기/삼성전자 Front-End 웹 개발자 채용</div>
+                {% comment %} {{info.title}} {% endcomment %}
+                <div class='careerinfo2'>
+                  <div class='careerinfo3'>
+                    <div class='company'>SAMSUNG</div>
+                    {% comment %} {{info.company}} {% endcomment %}
+                    <div class='area'>서울</div>
+                    {% comment %} {{info.area}} {% endcomment %}
+                  </div>
+                    <div class='update'>~ 2024.05.13</div>
+                    {% comment %} {{info.update}} {% endcomment %}
+                </div>
+            </div>
+            {% comment %} {% endfor %} {% endcomment %}
+        </div>
+
 
 
         <form action="{% url 'main:mentor-create' %}" method="POST", enctype="multipart/form-data">
