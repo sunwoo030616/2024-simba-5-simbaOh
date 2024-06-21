@@ -4,6 +4,7 @@ from .models import Portfolio, Education, Experience, Project, Certification
 from accounts.models import Profile
 from main.models import Mentor
 from community.models import Free, Move
+from careers.models import Careerinfo
 
 
 def mypage(request, id):
@@ -27,6 +28,9 @@ def follow_list(request, id):
         'followings': user.mentor_followings.all()
     }
     return render(request, 'users/follow_list.html', context)
+
+def bookmark(request, id):
+    return render(request, 'users/bookmark.html')
 
 def edit_portfolio(request):
     portfolio, created = Portfolio.objects.get_or_create(user=request.user)
@@ -67,14 +71,26 @@ def edit_portfolio(request):
 
     return render(request, 'users/edit_portfolio.html', {'portfolio': portfolio})
 
-# def update_profile(request, id):
-#     update_post = Profile.objects.get(pk=id)
-    
-# def my_writing(request, id):
-#     user = User.objects.get(pk=id)
-#     username = request.user
-#     my_writes_free = Free.objects.filter(writer = username)
-#     my_writes_move = Move.objects.filter(writer = username)
-#     # my_writes_
+def update_profile(request, id):
+    update_post = Profile.objects.get(pk=id)
+    render(request, 'users/update_profile.html')
 
+def my_writing(request, id):
+    user = User.objects.get(pk=id)
+    username = request.user
+    my_writes_free = Free.objects.filter(writer = username)
+    my_writes_move = Move.objects.filter(writer = username)
+    my_writes_careerinfo = Careerinfo.objects.filter(writer = username)
+    context = {
+        'user' : user,
+        'my_writes_free' : my_writes_free,
+        'my_writes_move' : my_writes_move,
+        'my_writes_careerinfo' : my_writes_careerinfo
+    }
+    return render(request, 'users/my_writing.html', context)
 
+def mentoring(request, id):
+    return render(request, 'users/mentoring.html')
+
+def career_now(request, id):
+    return render(request, 'users/career_now.html')
