@@ -37,6 +37,16 @@ href="{% static 'css/careers/career_info.css'%}"
             <button type="button" class='topbar3'>교육 정보</button>
         </div>
 
+        <div class='midbar'>
+            <div class='total'>총 105건</div>
+            {% comment %} 여기에도 글씨대신 데이터 불러와주세요 {% endcomment %}
+            <select class='new' name='' id=''>
+                {% comment %} 여기 name하고 id뭐하죠? {% endcomment %}
+                <option value='최신순'>최신순</option>
+                <option value='오래된순'>오래된순</option>
+            </select>
+        </div>
+
         <div class='member'>
             {% for careerinfo in careerinfos %}
             <div class='careerinfo'>
@@ -51,14 +61,15 @@ href="{% static 'css/careers/career_info.css'%}"
                 </div>
             </div>
             {% endfor %} 
+
+            <div class='superwrite'>
+                {% if user.is_authenticated and user.is_superuser %}
+                <a href="{% url 'careers:new-careerinfo' %}">+</a>
+                {% endif %}
+            </div>
+
         </div>
     </div>
-</div>
-
-<div>
-    {% if user.is_authenticated and user.is_superuser %}
-    <a href="{% url 'careers:new-careerinfo' %}">새 글 작성하기</a>
-    {% endif %}
 </div>
 
 {% endblock %}
