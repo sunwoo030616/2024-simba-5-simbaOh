@@ -142,14 +142,26 @@ def mentor_ask(request, id):
         return redirect('main:mentor-list')
     return render(request, 'main/mentor_ask.html', {'mentor':mentor})
 
-def follows(request, mentor_id):
-    mentor = get_object_or_404(Mentor, pk = mentor_id)
-    if request.user in mentor.follow.all():
-        mentor.follow.remove(request.user)
-        mentor.follow_count -= 1
-        mentor.save()
+# def follows(request, mentor_id):
+#     mentor = get_object_or_404(Mentor, pk = mentor_id)
+#     if request.user in mentor.follow.all():
+#         mentor.follow.remove(request.user)
+#         mentor.follow_count -= 1
+#         mentor.save()
+#     else:
+#         mentor.follow.add(request.user)
+#         mentor.follow_count += 1
+#         mentor.save()
+#     return redirect('main:mentor-info', mentor.id)
+
+def follow(request, id):
+    user = request.user
+    mentor =get_object_or_404(Mentor, pk=id)
+    followed_user = get_object_or_404(User, mentor=mentor)
+    is_follower = user.profile in followed_user.profile.followers.all()
+    if is_follower:
+        user.profile.followings.remove(followed_user.profile)
+        return redirect('main:mentor-info', mentor.id)
     else:
-        mentor.follow.add(request.user)
-        mentor.follow_count += 1
-        mentor.save()
-    return redirect('main:mentor-info', mentor.id)
+        user.profile.followings.add(followed_user.profile)
+        return redirect('main:mentor-info', mentor.id)

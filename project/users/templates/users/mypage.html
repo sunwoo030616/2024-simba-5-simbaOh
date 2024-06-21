@@ -20,5 +20,6 @@
         <p>프로필 사진이 없습니다.</p>
     {% endif %}
     <a href="{% url 'users:edit_portfolio' %}">포트폴리오 편집</a>
+    <a href="{% url 'users:follow-list' user.id %}">팔로잉{{ user.profile.followers.count }}</a>
 </body>
 </html>

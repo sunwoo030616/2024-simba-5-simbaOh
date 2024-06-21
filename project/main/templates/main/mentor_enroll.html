@@ -286,18 +286,14 @@
     };
     
     btn_open.addEventListener('click', function() {
-      // 모달이 열리는 것만 처리하고, 페이지 이동은 모달 안의 버튼을 클릭했을 때 처리하도록 변경
       modal.style.display = 'block';
     });
     
-    // 모달 안의 버튼 클릭 시 처리
     document.getElementById('modal_box2').addEventListener('click', function() {
-      // 여기서 페이지 이동 처리
       window.location.href = 'main:mentor-start';
     });
 
   });
 </script>
-
 
 {% endblock %}
