@@ -1,0 +1,48 @@
+
+<h3>{{move.title}}</h3>
+작성자 : {{move.writer.profile.user_name}}
+날짜 : {{move.pub_date}}
+<p>
+    {% for movetag in move.movetags.all %}
+    <a href="{% url 'community:movetag-moves' movetag.id %}">#{{ movetag.movename }}</a>
+    {% endfor %}
+</p>
+<hr/>
+{% if move.image %}
+    <p><img src="{{ move.image.url }}" alt="사진" width="100px"></p>
+{% endif %}
+
+<p>{{move.content}}</p>
+<br>
+
+
+<a href="{% url 'community:move-edit' move.id %}">글 수정하기</a>
+<a href="{% url 'community:move-delete' move.id %}">글 삭제하기</a>
+<br>
+
+<div class="comment_container">
+    <div class="comment_form">
+        <h2></h2>
+        <form action="{% url 'community:move-detail' move.id %}" method="POST">
+            {% csrf_token %}
+            댓글 쓰기: <input type="text" name="content">
+            <input type="submit" name="submit">
+        </form>
+    </div>
+    <div class="comment_list">
+        {% for movecomment in movecomments %}
+        <hr>
+        <h4>작성자 : {{movecomment.writer.profile.user_name}}</h4>
+        <p>내용: {{movecomment.content}}</p>
+        <p>{{movecomment.pub_date}}</p>
+        {% if user.is_authenticated and movecomment.writer == user %}
+            <form action="{% url 'community:move-detail' move.id %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="delete_movecomment_id" value="{{ movecomment.id }}">
+                <button type="submit">댓글 삭제</button>
+            </form>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+

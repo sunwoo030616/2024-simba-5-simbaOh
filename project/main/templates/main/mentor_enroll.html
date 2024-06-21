@@ -27,14 +27,14 @@
       <div class='class1'>
         <div class='finish'>
           <div class='finish1'>
-            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2' id='finish1_2'>30%</div>
+            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2' id='finish1_2' style="display:none;">30%</div>
           </div>
-          <div class='linefinish'><div class='linefinish2' id='linefinish2'></div></div>
+          <div class='linefinish'><div class='linefinish2' id='linefinish2' style="display:none;"></div></div>
         </div>  
         
         <div class='origin1'>기본 정보</div>
           <div class='totaluser'>
-            {% if mentor.mentor_image %}
+            {% if user.profile.user_profile %}
             <div class='photo'><p><img src="{{ user.profile.user_profile.url }}" alt="사진" width="170px" height='140px'></p></div>
             {% else %}
             <div class='photo'><p><img src="{% static 'images/signup1.png' %}" alt="사진" width="170px" height='140px'></p></div>
@@ -86,9 +86,9 @@
       <div class='class2' style="display:none;">
         <div class='finish'>
           <div class='finish1'>
-            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2_2' id='finish1_2_2'>60%</div>
+            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2_2' id='finish1_2_2' style="display:none;">60%</div>
           </div>
-          <div class='linefinish'><div class='linefinish2_2' id='linefinish2_2'></div></div>
+          <div class='linefinish'><div class='linefinish2_2' id='linefinish2_2' style="display:none;"></div></div>
         </div> 
 
         <div class='origin1'>멘토링 정보</div>
@@ -118,7 +118,7 @@
         
         </div>
         <div class='submitcenter'>
-          <button class='prev1' type='button' id='prev1'>이전</button>
+          <button class='prev1' type='button' id='prev2'>이전</button>
           <button class='submit2' type='button' id='next2'>다음</button>
         </div>
       </div>
@@ -127,9 +127,9 @@
       <div class='class3' style="display:none;">
         <div class='finish'>
           <div class='finish1'>
-            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2_3' id='finish1_2_3'>100%</div>
+            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2_3' id='finish1_2_3' style="display:none;">100%</div>
           </div>
-          <div class='linefinish'><div class='linefinish2_3' id='linefinish2_3'></div></div>
+          <div class='linefinish'><div class='linefinish2_3' id='linefinish2_3' style="display:none;"></div></div>
         </div> 
 
         <div class='origin1'>멘토 확인</div>
@@ -160,8 +160,23 @@
         </div>
         
         <div class='submitcenter'>
-          <button class='prev2' type='button' id='prev2'>이전</button>
-          <button class='submit2' type='submit' id='submit'>다음</button>
+          <button class='prev2' type='button' id='prev3'>이전</button>
+          <button class='submit2' type='button' id='submit'>다음</button>
+        </div>
+      </div>
+
+      <div class="modalpopup_frame" id="modalpopup_frame" style="display: none;">
+        <div class="modalpopup_body">
+          <p class="mentor_card_name_font color_28" style="text-align: center;">작성한 내용은 멘토 등록 내용 및 멘토 확인</p>
+          <div class="row1" style="justify-content: center;">
+            <p class="mentor_card_name_font color_00C">승인직후</p>
+            <p class="mentor_card_name_font color_28">프로필이 바로 공개됩니다.</p>
+          </div>
+          <p class="context_text color_9D">- 회사, 부서, 직급에는 가장 최근에 근무했던 정보를 작성해주세요.<br>- 작성한 내용에 거짓, 비하에 대한 내용이 확인된다면<br>멘토에서 삭제됩니다.<br>- 첨부한 이미지가 선명하지 않거나 해상도가 낮아 판<br>별이 불가한 경우 멘토 등록 승인이 반려 될 수 있음을<br>안내드립니다.</p>
+          <div class="row2">
+            <button type="button" class="modal_box1" id="modal_box1">다시 확인하기</button>
+              <button type="submit" class="modal_box2" id="modal_box2">신청하기</button>
+          </div>
         </div>
       </div>
 
@@ -175,12 +190,16 @@
     const class1 = document.querySelector('.class1');
     const class2 = document.querySelector('.class2');
     const class3 = document.querySelector('.class3');
+    const modal = document.querySelector('.modalpopup_frame');
 
-    const next1Button = document.getElementById('next1');
-    const next2Button = document.getElementById('next2');
     const prev1Button = document.getElementById('prev1');
+    const next1Button = document.getElementById('next1');
     const prev2Button = document.getElementById('prev2');
+    const next2Button = document.getElementById('next2');
+    const prev3Button = document.getElementById('prev3');
     const submitButton = document.getElementById('submit');
+    const btn_close = document.getElementById("modal_box1");
+    const btn_open = document.getElementById("modal_box2");
 
     const class1Inputs = class1.querySelectorAll('input, select');
     const class2Inputs = class2.querySelectorAll('input, textarea');
@@ -192,14 +211,6 @@
     const linefinish2_2 = document.querySelector('.linefinish2_2');
     const finish1_2_3 = document.querySelector('.finish1_2_3');
     const linefinish2_3 = document.querySelector('.linefinish2_3');
-
-    // Initially hide the elements
-    finish1_2.style.display = 'none';
-    linefinish2.style.display = 'none';
-    finish1_2_2.style.display = 'none';
-    linefinish2_2.style.display = 'none';
-    finish1_2_3.style.display = 'none';
-    linefinish2_3.style.display = 'none';
 
     function validateInputs(inputs) {
       return Array.from(inputs).every(input => input.checkValidity());
@@ -255,24 +266,38 @@
     });
 
     prev2Button.addEventListener('click', function() {
-      class2.style.display = 'block';
+      class2.style.display = 'none';
       class3.style.display = 'none';
+      class1.style.display = 'block';
       finish1_2_2.style.display = 'none';
       linefinish2_2.style.display = 'none';
     });
 
-    // Add event listener for the prev button in class3
-    const prev3Button = document.getElementById('prev2');
-    prev3Button.addEventListener('click', function() {
-      class2.style.display = 'block';
-      class3.style.display = 'none';
-      finish1_2_3.style.display = 'none';
-      linefinish2_3.style.display = 'none';
+
+    submitButton.onclick = function () {
+      modal.style.display = "block";
+      class3.style.webkitFilter = "blur(3px)";
+    };
+
+    btn_close.onclick = function () {
+      modal.style.display = "none";
+      class3.style.webkitFilter = "";
+
+    };
+    
+    btn_open.addEventListener('click', function() {
+      // 모달이 열리는 것만 처리하고, 페이지 이동은 모달 안의 버튼을 클릭했을 때 처리하도록 변경
+      modal.style.display = 'block';
+    });
+    
+    // 모달 안의 버튼 클릭 시 처리
+    document.getElementById('modal_box2').addEventListener('click', function() {
+      // 여기서 페이지 이동 처리
+      window.location.href = 'main:mentor-start';
     });
 
-    updateButtonAndElements();
   });
-
 </script>
+
 
 {% endblock %}

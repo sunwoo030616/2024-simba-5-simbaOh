@@ -163,6 +163,7 @@ label {
   font-weight: 400;
   line-height: 1.3125rem; /* 21px */
   letter-spacing: -0.32px;
+  white-space: pre-wrap;
 }
 
 /* 색상 설정 */

@@ -55,6 +55,74 @@ gap: 10px;
     display: flex;
     width:449px;
 }
+.context_text {
+    font-family: Pretendard;
+    font-size: 1rem; /* 16px */
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3125rem; /* 21px */
+    letter-spacing: -0.32px;
+}
+.row1 {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem; /* 4px */
+}
+.color_00C {
+    color: #00C3AD;
+}
+.color_9D {
+    color: #9D9D9D;
+}
+.modal_box1 {
+display: flex;
+width: 140px;
+height: 50px;
+justify-content: center;
+align-items: center;
+
+border-radius: 0.5rem; /* 8px */
+border: 1px solid #359287;
+background-color: #FFF;
+text-align: center;
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+font-weight: 800;
+line-height: 22px; /* 110% */
+}
+
+.modal_box2 {
+display: flex;
+width: 140px;
+height: 50px;
+justify-content: center;
+align-items: center;
+z-index: 1;
+border-radius: 8px;
+border: 1px solid #FFF;
+background-color: #359287;
+text-align: center;
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+font-weight: 800;
+line-height: 22px;
+}
+.row2 {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem; /* 16px */
+    justify-content: center;
+}
+.mentor_card_name_font {
+    font-family: Pretendard;
+    font-size: 1rem; /* 20px */
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.3125rem; /* 21px */
+    letter-spacing: -0.32px;
+}
 .user{
     color: #1E3D46;
     font-family: Pretendard;
@@ -494,4 +562,54 @@ align-items: center;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    }
+
+.modalpopup_frame {
+    display: flex;
+    width: 400px;
+    position: absolute;
+        top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    background-color: #FFF;
+    padding: 13px 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    }
+    
+    .modalpopup_body {
+        display: flex;
+        padding: 13px 24px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .modal_box1 {
+    display: flex;
+    width: 140px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 0.5rem; /* 8px */
+    border: 1px solid #359287;
+    background-color: #FFF;
+    }
+    
+    .modal_box2 {
+    display: flex;
+    width: 140px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    color: #FFF;
+    border-radius: 8px;
+    border: 1px solid #FFF;
+    background-color: #359287;
     }
