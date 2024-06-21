@@ -43,6 +43,8 @@ def edit_portfolio(request):
             education, created = Education.objects.get_or_create(name=edu)
             portfolio.education.add(education)
 
+            
+
         portfolio.experience.clear()
         for exp in experience_list:
             experience, created = Experience.objects.get_or_create(name=exp)
