@@ -14,7 +14,11 @@
       <form class="control" action="{% url 'main:mentor-list' %}" method="POST">
         {% csrf_token %}
         <div class="search_bar_zone">
-          <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" id="search">
+          <a href="{% url 'main:mainpage' %}">
+            <img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
+          </a>
+          <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" class="search">
+          <div style="width: 32px;"></div>
         </div>
         <div class="filter">
           <div class="row">
