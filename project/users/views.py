@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from .models import Portfolio, Education, Experience, Project, Certification
 from accounts.models import Profile
 from main.models import Mentor
+from community.models import Free, Move
 
 
 def mypage(request, id):
@@ -66,5 +67,14 @@ def edit_portfolio(request):
 
     return render(request, 'users/edit_portfolio.html', {'portfolio': portfolio})
 
-def update_profile(request, id):
-    update_post = Profile.objects.get(pk=id)
+# def update_profile(request, id):
+#     update_post = Profile.objects.get(pk=id)
+    
+# def my_writing(request, id):
+#     user = User.objects.get(pk=id)
+#     username = request.user
+#     my_writes_free = Free.objects.filter(writer = username)
+#     my_writes_move = Move.objects.filter(writer = username)
+#     # my_writes_
+
+
