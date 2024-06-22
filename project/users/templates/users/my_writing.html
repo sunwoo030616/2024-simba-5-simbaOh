@@ -9,8 +9,30 @@
     <div>
         <hr/>
         <h3>{{free.title}}</h3>
-        {{free.writer}} | {{free.write_date}}
-        <a href="{% url 'community:free_detal' free.id %}">자세히 보기</a>
+        {{free.writer.profile.user_name}} | {{free.write_date}}
+        <a href="{% url 'community:free-detail' free.id %}">자세히 보기</a>
+        <br>
+    </div>
+    {% endfor %}
+</div>
+<div>
+    {% for move in my_writes_move %}
+    <div>
+        <hr/>
+        <h3>{{move.title}}</h3>
+        {{move.writer.profile.user_name}} | {{move.write_date}}
+        <a href="{% url 'community:move-detail' move.id %}">자세히 보기</a>
+        <br>
+    </div>
+    {% endfor %}
+</div>
+<div>
+    {% for careerinfo in my_writes_careerinfo %}
+    <div>
+        <hr/>
+        <h3>{{careerinfo.title}}</h3>
+        {{careerinfo.writer.profile.user_name}} | {{careerinfo.write_date}}
+        <a href="{% url 'careers:careerinfo-detail' careerinfo.id %}">자세히 보기</a>
         <br>
     </div>
     {% endfor %}
