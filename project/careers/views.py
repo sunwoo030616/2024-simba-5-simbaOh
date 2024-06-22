@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
-from .models import Careerinfo, Careerinfotag, Careerprogram, Careerprogramtag
+from .models import Careerinfo, Careerinfotag, Careerprogram, Careerprogramtag, Eduinfo, Eduinfotag
 
 def career_info(request):
     order = request.GET.get('order', 'latest')
@@ -32,6 +32,22 @@ def career_program(request):
     return render(request, 'careers/career-program.html', {
         'careerprograms': careerprograms,
         'total_careerprogram_count': total_careerprogram_count,
+        'selected_order': order
+    })
+
+def edu_info(request):
+    order = request.GET.get('order', 'latest')
+    
+    if order == 'latest':
+        eduinfos = Eduinfo.objects.all().order_by('-pub_date')
+    elif order == 'oldest':
+        eduinfos = Eduinfo.objects.all().order_by('pub_date')
+    else:
+        eduinfos = Eduinfo.objects.all()
+    total_eduinfo_count = eduinfos.count()
+    return render(request, 'careers/edu-info.html', {
+        'eduinfos': eduinfos,
+        'total_eduinfo_count': total_eduinfo_count,
         'selected_order': order
     })
 
@@ -89,7 +105,32 @@ def careerprogram_create(request):
         new_careerprogram.careerprogramtags.add(careerprogramtag.id)
     return redirect('careers:careerprogram-detail', new_careerprogram.id)
 
+def eduinfo_create(request):
+    new_eduinfo = Eduinfo()
 
+    new_eduinfo.title = request.POST['title']
+    new_eduinfo.writer = request.user
+    new_eduinfo.place = request.POST['place']
+    new_eduinfo.field = request.POST['field']
+    new_eduinfo.content = request.POST['content']
+    new_eduinfo.startline = request.POST['startline']
+    new_eduinfo.deadline = request.POST['deadline']
+    new_eduinfo.pub_date = timezone.now()
+    new_eduinfo.image = request.FILES.get('image')
+
+    new_eduinfo.save()
+
+    words = new_eduinfo.content.split(' ')
+    eduinfotag_list = []
+    for w in words:
+        if len(w)>0:
+            if w[0] == '#':
+                eduinfotag_list.append(w[1:])
+    
+    for t in eduinfotag_list:
+        eduinfotag, boolean = eduinfotag.objects.get_or_create(name=t)
+        new_eduinfo.eduinfotags.add(eduinfotag.id)
+    return redirect('careers:eduinfo-detail', new_eduinfo.id)
 
 def new_careerinfo(request):
     return render(request, 'careers/new-careerinfo.html')
