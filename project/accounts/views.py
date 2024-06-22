@@ -101,21 +101,23 @@ def signup3(request):
 
 def update_profile(request, id):
     update_profile = Profile.objects.get(pk=id)
+
     if request.user.is_authenticated and request.user == update_profile.user:
-        update_profile.user_name = request.POST['user_name']
-        update_profile.user_phone = request.POST['user_phone']
-        update_profile.user_birth = request.POST['user_birth']
+        if request.method == 'POST':
+            update_profile.user_name = request.POST.get('user_name')
+            update_profile.user_phone = request.POST.get('user_phone')
+            update_profile.user_major = request.POST.get('user_major')
+            update_profile.user_enroll = request.POST.get('user_enroll')
+            
+            if request.FILES.get('user_profile'):
+                update_profile.user_profile = request.FILES.get('user_profile')
+            
+            update_profile.save()
 
-        update_profile.user_major = request.POST['user_major']
-        update_profile.user_enroll = request.POST['user_enroll']
-        
-        if request.FILES.get('user_profile'):
-            update_profile.user_profile = request.FILES.get('user_profile')
-
-        update_profile.save()
-
-        return redirect('main:mainpage', id)
-    return render(request, 'accounts:login.html')
+            return redirect('main:mainpage')
+        else:
+            return render(request, 'accounts/update_profile.html', {'profile': update_profile})
+    return redirect('accounts:login')
 
 def finishjoin(request):
     return render(request, 'accounts/finishjoin.html')

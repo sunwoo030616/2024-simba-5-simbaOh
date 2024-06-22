@@ -45,7 +45,7 @@
                 <p class="color_FFF font_2">{{ user.profile.user_major }}</p>
               </div>
             </div>
-            <a href="{% url 'users:update-profile' user.id %}">
+            <a href="{% url 'accounts:update-profile' user.id %}">
               <img src="{% static 'images/edit.png' %}" width="32px" height="32px">
             </a>
           </div>
