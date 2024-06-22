@@ -1,4 +1,4 @@
-<form action="{% url 'careers:program-create' %}" method="POST" enctype="multipart/form-data">
+<form action="{% url 'careers:careerprogram-create' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <p>취업프로그램명 : <input type="text" name="title"></p>
     <p>활동시작일 : <input type="text" name="startline"></p>

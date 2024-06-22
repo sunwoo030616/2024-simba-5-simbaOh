@@ -13,6 +13,11 @@ class Careerprogramtag(models.Model):
     def __str__(self):
         return self.name
 
+class Eduinfotag(models.Model):
+    name = models.CharField(max_length=30, null=False, blank=False)
+
+    def __str__(self):
+        return self.name
 
 # Create your models here.
 class Careerinfo(models.Model):
@@ -31,6 +36,7 @@ class Careerinfo(models.Model):
     cibm_count = models.PositiveIntegerField(default=0)
     def __str__(self):
         return self.title
+    
 
 class Careerprogram(models.Model):
 
@@ -49,3 +55,19 @@ class Careerprogram(models.Model):
     def __str__(self):
         return self.title
 
+class Eduinfo(models.Model):
+
+    title = models.CharField(max_length=50)
+    writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
+    startline = models.CharField(max_length=20, default='')
+    deadline = models.CharField(max_length=20)
+    place = models.CharField(max_length=30)
+    field = models.CharField(max_length=10)
+    content = models.TextField()
+    image=models.ImageField(upload_to="eduinfo/", blank=True, null=True)
+    pub_date = models.DateTimeField()
+    eduinfotags=models.ManyToManyField(Eduinfotag, related_name='eduinfos', blank=True)
+    ei_bm= models.ManyToManyField(User, related_name='ei_bms', blank=True)
+    eibm_count = models.PositiveIntegerField(default=0)
+    def __str__(self):
+        return self.title
