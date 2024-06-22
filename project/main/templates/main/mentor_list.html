@@ -98,11 +98,9 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    const checkboxState = 0;
-
     const form = document.getElementById('mentor-filter-form');
 
-    
+
     checkboxes.forEach(checkbox => {
       const checkboxState = localStorage.getItem(checkbox.id);
       if (checkboxState === 'checked') {
@@ -121,6 +119,8 @@
       });
     });
   });
+
+
 </script>
 
 {% endblock %}
