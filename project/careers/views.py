@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.db.models import Q
-from .models import Careerinfo, Careerinfotag, Careerprogram, Careerprogramtag, Eduinfo, Eduinfotag
+from .models import Careerinfo, Careerinfotag, Careerprogram, Careerprogramtag, Eduinfo, Eduinfotag, Ciapply
 
 def career_info(request):
     order = request.GET.get('order', 'latest')
@@ -80,26 +80,19 @@ def careerinfo_create(request):
         new_careerinfo.deadline = request.POST.get('deadline')
         new_careerinfo.pub_date = timezone.now()
         new_careerinfo.image = request.FILES.get('image')
-        new_careerinfo.careerinfotags = request.POST.get('careerinfotags')
-
-        # content가 비어있는지 확인
-        if not new_careerinfo.content:
-            # content가 비어있을 경우 처리
-            print("Content is missing")
-            return render(request, 'careers/new-careerinfo.html', {'error': '내용을 입력해 주세요.'})
         
         new_careerinfo.save()
 
-        words = new_careerinfo.careerinfotags.split(' ')
+        careerinfotags = request.POST.get('careerinfotags', '')
+        tag_names = [tag.strip() for tag in careerinfotags.split('#') if tag.strip()]
+        
         careerinfotag_list = []
-        for w in words:
-            if len(w) > 0 and w[0] == '#':
-                careerinfotag_list.append(w[1:])
-        
-        for t in careerinfotag_list:
-            careerinfotag, created = Careerinfotag.objects.get_or_create(name=t)
-            new_careerinfo.careerinfotags.add(careerinfotag.id)
-        
+        for tag_name in tag_names:
+            careerinfotag, created = Careerinfotag.objects.get_or_create(name=tag_name)
+            careerinfotag_list.append(careerinfotag)
+
+        new_careerinfo.careerinfotags.set(careerinfotag_list)
+
         return redirect('careers:careerinfo-detail', new_careerinfo.id)
 
     return render(request, 'careers/new-careerinfo.html')
@@ -255,4 +248,9 @@ def ei_bms(request, eduinfo_id):
         eduinfo.save()
     return redirect('careers:eduinfo-detail', eduinfo.id)
 
-
+def apply_careerinfo(request, id):
+    careerinfo = get_object_or_404(Careerinfo, pk=id)
+    if request.method == 'POST':
+        Ciapply.objects.create(user=request.user, careerinfo=careerinfo)
+        return redirect('users:ciapply') 
+    return redirect('careers:careerinfo-detail', id=id)

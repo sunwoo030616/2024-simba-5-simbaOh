@@ -32,6 +32,9 @@ def follow_list(request, id):
 def bookmark(request, id):
     return render(request, 'users/bookmark.html')
 
+def ciapply(request, id):
+    return render(request, 'users/ciapply.html')
+
 def edit_portfolio(request):
     portfolio, created = Portfolio.objects.get_or_create(user=request.user)
     if request.method == 'POST':
