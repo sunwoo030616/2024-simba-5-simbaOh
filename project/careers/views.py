@@ -1,22 +1,35 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-
+from django.db.models import Q
 from .models import Careerinfo, Careerinfotag, Careerprogram, Careerprogramtag, Eduinfo, Eduinfotag
 
 def career_info(request):
     order = request.GET.get('order', 'latest')
-    
-    if order == 'latest':
-        careerinfos = Careerinfo.objects.all().order_by('-pub_date')
-    elif order == 'oldest':
-        careerinfos = Careerinfo.objects.all().order_by('pub_date')
+    search_query = request.GET.get('search', '')
+    if search_query.startswith('#'):
+        tag_name = search_query[1:]
+        careerinfos = Careerinfo.objects.filter(
+            Q(careerinfotags__name__icontains=tag_name)
+        ).distinct()
     else:
-        careerinfos = Careerinfo.objects.all()
+        careerinfos = Careerinfo.objects.filter(
+            Q(title__icontains=search_query) |
+            Q(company__icontains=search_query) |
+            Q(field__icontains=search_query) |
+            Q(content__icontains=search_query)
+        ).distinct()
+
+    if order == 'latest':
+        careerinfos = careerinfos.order_by('-pub_date')
+    elif order == 'oldest':
+        careerinfos = careerinfos.order_by('pub_date')
+
     total_careerinfo_count = careerinfos.count()
     return render(request, 'careers/career-info.html', {
         'careerinfos': careerinfos,
         'total_careerinfo_count': total_careerinfo_count,
-        'selected_order': order
+        'selected_order': order,
+        'search_query': search_query,
     })
 
 def career_program(request):
@@ -52,31 +65,44 @@ def edu_info(request):
     })
 
 def careerinfo_create(request):
-    new_careerinfo = Careerinfo()
+    if request.method == "POST":
+        # 디버그 출력문 추가
+        print(request.POST)
 
-    new_careerinfo.title = request.POST['title']
-    new_careerinfo.writer = request.user
-    new_careerinfo.company = request.POST['company']
-    new_careerinfo.field = request.POST['field']
-    new_careerinfo.content = request.POST['content']
-    new_careerinfo.startline = request.POST['startline']
-    new_careerinfo.deadline = request.POST['deadline']
-    new_careerinfo.pub_date = timezone.now()
-    new_careerinfo.image = request.FILES.get('image')
+        new_careerinfo = Careerinfo()
 
-    new_careerinfo.save()
+        new_careerinfo.title = request.POST.get('title')
+        new_careerinfo.writer = request.user
+        new_careerinfo.company = request.POST.get('company')
+        new_careerinfo.field = request.POST.get('field')
+        new_careerinfo.content = request.POST.get('content')
+        new_careerinfo.startline = request.POST.get('startline')
+        new_careerinfo.deadline = request.POST.get('deadline')
+        new_careerinfo.pub_date = timezone.now()
+        new_careerinfo.image = request.FILES.get('image')
+        new_careerinfo.careerinfotags = request.POST.get('careerinfotags')
 
-    words = new_careerinfo.content.split(' ')
-    careerinfotag_list = []
-    for w in words:
-        if len(w)>0:
-            if w[0] == '#':
+        # content가 비어있는지 확인
+        if not new_careerinfo.content:
+            # content가 비어있을 경우 처리
+            print("Content is missing")
+            return render(request, 'careers/new-careerinfo.html', {'error': '내용을 입력해 주세요.'})
+        
+        new_careerinfo.save()
+
+        words = new_careerinfo.careerinfotags.split(' ')
+        careerinfotag_list = []
+        for w in words:
+            if len(w) > 0 and w[0] == '#':
                 careerinfotag_list.append(w[1:])
-    
-    for t in careerinfotag_list:
-        careerinfotag, boolean = Careerinfotag.objects.get_or_create(name=t)
-        new_careerinfo.careerinfotags.add(careerinfotag.id)
-    return redirect('careers:careerinfo-detail', new_careerinfo.id)
+        
+        for t in careerinfotag_list:
+            careerinfotag, created = Careerinfotag.objects.get_or_create(name=t)
+            new_careerinfo.careerinfotags.add(careerinfotag.id)
+        
+        return redirect('careers:careerinfo-detail', new_careerinfo.id)
+
+    return render(request, 'careers/new-careerinfo.html')
 
 def careerprogram_create(request):
     new_careerprogram = Careerprogram()
