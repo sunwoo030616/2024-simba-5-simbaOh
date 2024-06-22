@@ -1,0 +1,56 @@
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/main/careerprogram_detail.css'%}"
+/>
+
+<div class="screen">
+	<div class="main">
+		<div class="body">
+			<div class="nav">
+				<div class="left" style="z-index: 1;">
+					<a href="{% url 'careers:career-program' %}">
+						<img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
+					</a>
+				</div>
+				<div></div>
+				<div style="width: 32px;"></div>
+			</div>
+			<p class="color_28 title_text" style="text-align: center;">멘토 정보</p>
+		</div>
+	</div>
+</div>
+
+<h3>{{careerprogram.title}}</h3>
+활동일 : {{careerprogram.startline}} - {{careerprogram.deadline}}
+장소 : {{careerprogram.company}}
+분야: {{careerprogram.field}}
+<p>
+    {% for careerprogramtag in careerprogram.careerprogramtags.all %}
+        <a href="{% url 'careers:careerprogramtag-careerprograms' careerprogramtag.id %}">#{{ careerprogramtag.name }} </a>
+    {% endfor %}
+</p>
+<hr/>
+
+<form action="{% url 'careers:cp_bms' careerprogram.id %}" method="post">
+    {% csrf_token %}
+    {% if user in careerprogram.cp_bm.all %}
+        <button type="submit">북마크 취소</button>
+    {% else %}
+        <button type="submit">북마크 추가</button>
+    {% endif %}
+    </form>
+
+{{careerprogram.cpbm_count}}개
+{% if careerprogram.image %}
+    <p><img src="{{ careerprogram.image.url }}" alt="사진" width="100px"></p>
+{% endif %}
+<p>{{careerprogram.content}}</p>
+{% if careerprogram.writer == user %}
+<a href="{% url 'careers:careerprogram-delete' careerprogram.id %}">삭제하기</a>
+{% endif %}
+<br>
+
+{% endblock %}
