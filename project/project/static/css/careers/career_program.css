@@ -110,7 +110,7 @@
 }
 
 .topbar1{
-  color: #0C9D7A;
+  color: #5A5A5A;
   font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
@@ -120,7 +120,7 @@
 }
 
 .topbar2{
-  color: #5A5A5A;
+  color: #0C9D7A;
   font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
@@ -215,6 +215,7 @@
   position: absolute;
   transform: translate(170px,580px);
 }
+
 .midbar{
   display: flex;
   width: 430px;
