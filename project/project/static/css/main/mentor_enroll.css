@@ -53,7 +53,7 @@ gap: 10px;
         }
 .same#mentor_work{
     display: flex;
-    width:449px;
+    width:430px;
 }
 .context_text {
     font-family: Pretendard;
@@ -170,7 +170,7 @@ line-height: 22px;
 }
 .same{
     display: flex;
-    width: 100%;
+    width: 410px;
     height: 45px;
     align-items: center;
     gap: 4px;
@@ -242,7 +242,7 @@ line-height: 22px;
 .sameinfo{
     display: flex;
     height: 200px;
-    width: 100%;   
+    width: 410px;   
     align-items: center;
     gap: 4px;
     border-radius: 6px;
@@ -271,60 +271,65 @@ line-height: 22px;
     line-height: 16px;
 }
 .finish{
-    padding-top: 15px;
-    width:395px;
+    padding: 15px;
+    width:400px;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding-left: 4px;
     color: #28464E;
     font-family: Pretendard;
     font-size: 17px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    padding-bottom: 30px;
 }
 
 .finish1{
     display: flex;
-    width: 395px;
+    width: 100%;
     flex-direction: row;
     justify-content: space-between;
     padding-bottom: 10px;
 }
+
 .linefinish{
-    width: 395px;
-height: 8px;
-flex-shrink: 0;
-border-radius: 30px 30px 30px 30px;
-background: #FFF;
-border: 1px solid #0C9D7A;
+    width: 398px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 30px 30px 30px 30px;
+    background: #FFF;
+    border: 1px solid #0C9D7A;
+}
+
+.linefinish1{
+    width: 0px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 30px 0px 0px 30px;
+    background: #00C3AD;
 }
 
 .linefinish2{
-width: 120px;
-height: 8px;
-flex-shrink: 0;
-border-radius: 30px 0px 0px 30px;
-background: #00C3AD;
-position: absolute;
+    width: 120px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 30px 0px 0px 30px;
+    background: #00C3AD;
 }
+
 .linefinish2_2{
     width: 240px;
     height: 8px;
     flex-shrink: 0;
     border-radius: 30px 0px 0px 30px;
     background: #00C3AD;
-    position: absolute;
-    }
+}
     .linefinish2_3{
-        width: 395px;
+        width: px;
         height: 8px;
         flex-shrink: 0;
         border-radius: 30px 0px 0px 30px;
         background: #00C3AD;
-        position: absolute;
         }
 .prev1, .prev2{
     background: #28464E;
@@ -410,7 +415,7 @@ line-height: 22px;
 
 .totaluser{
     display: flex;
-    width: 100%;
+    width: 428px;
     height: 170px;
     align-items: center;
     flex-shrink: 0;

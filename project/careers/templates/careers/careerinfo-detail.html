@@ -1,3 +1,28 @@
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/main/careerinfo_detail.css'%}"
+/>
+
+<div class="screen">
+	<div class="main">
+		<div class="body">
+			<div class="nav">
+				<div class="left" style="z-index: 1;">
+					<a href="{% url 'careers:career-info' %}">
+						<img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
+					</a>
+				</div>
+				<div></div>
+				<div style="width: 32px;"></div>
+			</div>
+			<p class="color_28 title_text" style="text-align: center;">멘토 정보</p>
+		</div>
+	</div>
+</div>
+
 <h3>{{careerinfo.title}}</h3>
 지원일 : {{careerinfo.startline}} - {{careerinfo.deadline}}
 기업명 : {{careerinfo.company}}
@@ -27,3 +52,5 @@
 <a href="{% url 'careers:careerinfo-delete' careerinfo.id %}">삭제하기</a>
 {% endif %}
 <br>
+
+{% endblock %}
