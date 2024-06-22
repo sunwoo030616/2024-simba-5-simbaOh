@@ -138,6 +138,9 @@ def new_careerinfo(request):
 def new_careerprogram(request):
     return render(request, 'careers/new-careerprogram.html')
 
+def new_eduinfo(request):
+    return render(request, 'careers/new-eduinfo.html')
+
 def careerinfo_detail(request, id):
     careerinfo = get_object_or_404(Careerinfo, pk=id)
     return render(request, 'careers/careerinfo-detail.html', {'careerinfo': careerinfo})
@@ -146,6 +149,9 @@ def careerprogram_detail(request, id):
     careerprogram = get_object_or_404(Careerprogram, pk=id)
     return render(request, 'careers/careerprogram-detail.html', {'careerprogram': careerprogram})
 
+def eduinfo_detail(request, id):
+    eduinfo = get_object_or_404(Eduinfo, pk=id)
+    return render(request, 'careers/eduinfo-detail.html', {'eduinfo': eduinfo})
 
 
 def careerinfo_delete(request, id):
@@ -157,6 +163,11 @@ def careerprogram_delete(request, id):
     delete_careerprogram_ = Careerprogram.objects.get(pk=id)
     delete_careerprogram_.delete()
     return redirect('careers:career-program')
+
+def eduinfo_delete(request, id):
+    delete_eduinfo = Eduinfo.objects.get(pk=id)
+    delete_eduinfo.delete()
+    return redirect('careers:edu-info')
 
 def careerinfotag_careerinfos(request, careerinfotag_id):
     careerinfotag = get_object_or_404(Careerinfotag, id=careerinfotag_id)
@@ -172,6 +183,14 @@ def careerprogramtag_careerprograms(request, careerprogramtag_id):
     return render(request, 'careers/careerprogramtag-careerprogram.html', {
         'careerprogramtag' : careerprogramtag,
         'careerprograms' : careerprograms
+    })
+
+def eduinfotag_eduinfos(request, eduinfotag_id):
+    eduinfotag = get_object_or_404(Eduinfotag, id=eduinfotag_id)
+    eduinfos = eduinfotag.eduinfos.all()
+    return render(request, 'careers/eduinfotag-eduinfo.html', {
+        'eduinfotag' : eduinfotag,
+        'eduinfos' : eduinfos
     })
 
 def ci_bms(request, careerinfo_id):
@@ -198,5 +217,16 @@ def cp_bms(request, careerprogram_id):
         careerprogram.save()
     return redirect('careers:careerprogram-detail', careerprogram.id)
 
+def ei_bms(request, eduinfo_id):
+    eduinfo = get_object_or_404(Eduinfo, id=eduinfo_id)
+    if request.user in eduinfo.ei_bm.all():
+        eduinfo.ei_bm.remove(request.user)
+        eduinfo.eibm_count-=1
+        eduinfo.save()
+    else:
+        eduinfo.ei_bm.add(request.user)
+        eduinfo.eibm_count +=1
+        eduinfo.save()
+    return redirect('careers:eduinfo-detail', eduinfo.id)
 
 

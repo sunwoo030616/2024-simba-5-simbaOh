@@ -23,7 +23,7 @@
         </div>
         <div class="filter">
           <div class="row1">
-            <input type="checkbox" name="categories" id="checkbox1" value="0" class="ckb_white">
+            <input type="checkbox" name="categories" id="checkbox1" value="0" class="ckb_white" >
             <label for="checkbox1">인사/노무</label>
             <input type="checkbox" name="categories" id="checkbox2" value="1" class="ckb_white">
             <label for="checkbox2">IT개발/데이터</label>
@@ -98,7 +98,10 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const checkboxState = 0;
+
     const form = document.getElementById('mentor-filter-form');
+
     
     checkboxes.forEach(checkbox => {
       const checkboxState = localStorage.getItem(checkbox.id);
@@ -114,6 +117,7 @@
         }
         
         form.submit();
+
       });
     });
   });

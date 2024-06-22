@@ -119,3 +119,8 @@ def cpbm_list(request):
     cpbms = user.cp_bms.all()
     return render(request, 'users/cpbm.html', {'cpbms': cpbms})
 
+def eibm_list(request):
+    user = request.user
+    eibms = user.ei_bms.all()
+    return render(request, 'users/eibm.html', {'eibms': eibms})
+
