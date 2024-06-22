@@ -113,3 +113,9 @@ def cibm_list(request):
     user = request.user
     cibms = user.ci_bms.all()
     return render(request, 'users/cibm.html', {'cibms': cibms})
+
+def cpbm_list(request):
+    user = request.user
+    cpbms = user.cp_bms.all()
+    return render(request, 'users/cpbm.html', {'cpbms': cpbms})
+

@@ -101,10 +101,21 @@ def careerinfo_detail(request, id):
     careerinfo = get_object_or_404(Careerinfo, pk=id)
     return render(request, 'careers/careerinfo-detail.html', {'careerinfo': careerinfo})
 
+def careerprogram_detail(request, id):
+    careerprogram = get_object_or_404(Careerprogram, pk=id)
+    return render(request, 'careers/careerprogram-detail.html', {'careerprogram': careerprogram})
+
+
+
 def careerinfo_delete(request, id):
     delete_careerinfo = Careerinfo.objects.get(pk=id)
     delete_careerinfo.delete()
     return redirect('careers:career-info')
+
+def careerprogram_delete(request, id):
+    delete_careerprogram_ = Careerprogram.objects.get(pk=id)
+    delete_careerprogram_.delete()
+    return redirect('careers:career-program')
 
 def careerinfotag_careerinfos(request, careerinfotag_id):
     careerinfotag = get_object_or_404(Careerinfotag, id=careerinfotag_id)
@@ -112,6 +123,14 @@ def careerinfotag_careerinfos(request, careerinfotag_id):
     return render(request, 'careers/careerinfotag-careerinfo.html', {
         'careerinfotag' : careerinfotag,
         'careerinfos' : careerinfos
+    })
+
+def careerprogramtag_careerprograms(request, careerprogramtag_id):
+    careerprogramtag = get_object_or_404(Careerprogramtag, id=careerprogramtag_id)
+    careerprograms = careerprogramtag.careerprograms.all()
+    return render(request, 'careers/careerprogramtag-careerprogram.html', {
+        'careerprogramtag' : careerprogramtag,
+        'careerprograms' : careerprograms
     })
 
 def ci_bms(request, careerinfo_id):
@@ -125,6 +144,18 @@ def ci_bms(request, careerinfo_id):
         careerinfo.cibm_count +=1
         careerinfo.save()
     return redirect('careers:careerinfo-detail', careerinfo.id)
+
+def cp_bms(request, careerprogram_id):
+    careerprogram = get_object_or_404(Careerprogram, id=careerprogram_id)
+    if request.user in careerprogram.cp_bm.all():
+        careerprogram.cp_bm.remove(request.user)
+        careerprogram.cpbm_count-=1
+        careerprogram.save()
+    else:
+        careerprogram.cp_bm.add(request.user)
+        careerprogram.cpbm_count +=1
+        careerprogram.save()
+    return redirect('careers:careerprogram-detail', careerprogram.id)
 
 
 
