@@ -29,4 +29,5 @@ urlpatterns = [
     path('eduinfo-delete/<int:id>/', eduinfo_delete, name="eduinfo-delete"),
     path('eduinfotag-eduinfos/<int:eduinfotag_id>/', eduinfotag_eduinfos, name="eduinfotag-eduinfos"),
     path('ei_bms/<int:eduinfo_id>', ei_bms, name="ei_bms"),
+    path('careerinfo-detail/<int:id>/apply/', apply_careerinfo, name="apply_careerinfo"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

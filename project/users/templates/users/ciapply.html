@@ -1,0 +1,7 @@
+<h2>지원 현황</h2>
+<ul>
+    {% for application in ci_apply %}
+        <li>{{ application.careerinfo.title }} - {{ application.application_date }}</li>
+        <li>{{application.careerinfo.company}} - {{application.careerinfo.field}}</li>
+    {% endfor %}
+</ul>

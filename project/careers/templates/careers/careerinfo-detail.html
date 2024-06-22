@@ -69,11 +69,17 @@
           <a href="{% url 'careers:careerinfotag-careerinfos' careerinfotag.id %}">#{{ careerinfotag.name }} </a>
         {% endfor %}
       </div>
-      <form action="" method="POST">
-        {% csrf_token %}
-      </form>
-      <button class="btn_ask color_FF context_text3" style="margin-top: 32px;" type="submit">지원하기</button>
-
+      {% if not has_applied %}
+        <form method="post" action="{% url 'careers:apply_careerinfo' careerinfo.id %}">
+            {% csrf_token %}
+            <button type="submit">지원하기</button>
+        </form>
+      {% else %}
+        <form method="post" action="{% url 'careers:apply_careerinfo' careerinfo.id %}">
+            {% csrf_token %}
+            <button type="submit">지원 취소하기</button>
+        </form>
+      {% endif %}
       <div class="modalpopup_frame" id="modalpopup_frame" style="display: none;">
         <div class="modalpopup_body">
           <p class="mentor_card_name_font color_28" style="text-align: center;">작성한 내용은 멘토에게 바로 알림이 가며,</p>

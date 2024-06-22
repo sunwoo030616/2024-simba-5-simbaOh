@@ -4,7 +4,7 @@ from .models import Portfolio, Education, Experience, Project, Certification
 from accounts.models import Profile
 from main.models import Mentor
 from community.models import Free, Move
-from careers.models import Careerinfo
+from careers.models import Careerinfo, Ciapply
 
 
 def mypage(request, id):
@@ -32,8 +32,9 @@ def follow_list(request, id):
 def bookmark(request, id):
     return render(request, 'users/bookmark.html')
 
-def ciapply(request, id):
-    return render(request, 'users/ciapply.html')
+def ciapply(request):
+    ci_apply=Ciapply.objects.filter(user=request.user)
+    return render(request, 'users/ciapply.html', {'ci_apply': ci_apply})
 
 def edit_portfolio(request):
     portfolio, created = Portfolio.objects.get_or_create(user=request.user)

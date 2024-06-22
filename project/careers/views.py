@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
+from django.contrib import messages
 from django.db.models import Q
 from .models import Careerinfo, Careerinfotag, Careerprogram, Careerprogramtag, Eduinfo, Eduinfotag, Ciapply
 
@@ -162,7 +163,12 @@ def new_eduinfo(request):
 
 def careerinfo_detail(request, id):
     careerinfo = get_object_or_404(Careerinfo, pk=id)
-    return render(request, 'careers/careerinfo-detail.html', {'careerinfo': careerinfo})
+    user = request.user
+    has_applied = Ciapply.objects.filter(user=user, careerinfo=careerinfo).exists()
+    return render(request, 'careers/careerinfo-detail.html', {
+        'careerinfo': careerinfo,
+        'has_applied': has_applied
+    })
 
 def careerprogram_detail(request, id):
     careerprogram = get_object_or_404(Careerprogram, pk=id)
@@ -251,6 +257,16 @@ def ei_bms(request, eduinfo_id):
 def apply_careerinfo(request, id):
     careerinfo = get_object_or_404(Careerinfo, pk=id)
     if request.method == 'POST':
-        Ciapply.objects.create(user=request.user, careerinfo=careerinfo)
-        return redirect('users:ciapply') 
+        user = request.user
+    # 이미 지원했는지 확인
+        existing_application = Ciapply.objects.filter(user=user, careerinfo=careerinfo).first()
+        if existing_application:
+        # 이미 지원했다면 지원 취소
+            existing_application.delete()
+        else:
+        # 지원하지 않았다면 새로 지원
+            Ciapply.objects.create(user=user, careerinfo=careerinfo)
+    
+        return redirect('users:ciapply')
+
     return redirect('careers:careerinfo-detail', id=id)
