@@ -71,3 +71,27 @@ class Eduinfo(models.Model):
     eibm_count = models.PositiveIntegerField(default=0)
     def __str__(self):
         return self.title
+
+class Ciapply(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    careerinfo = models.ForeignKey(Careerinfo, on_delete=models.CASCADE)
+    application_date = models.DateTimeField(auto_now_add=True)
+
+def __str__(self):
+        return f"{self.user.username} - {self.careerinfo.title}"
+
+class Cpapply(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    careerprogram = models.ForeignKey(Careerprogram, on_delete=models.CASCADE)
+    application_date = models.DateTimeField(auto_now_add=True)
+
+def __str__(self):
+        return f"{self.user.username} - {self.careerprogram.title}"
+
+class Eiapply(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    eduinfo = models.ForeignKey(Eduinfo, on_delete=models.CASCADE)
+    application_date = models.DateTimeField(auto_now_add=True)
+
+def __str__(self):
+        return f"{self.user.username} - {self.eduinfo.title}"

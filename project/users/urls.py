@@ -13,4 +13,7 @@ urlpatterns = [
     path('cibms/', cibm_list, name="cibm_list"),
     path('cpbms/', cpbm_list, name="cpbm_list"),
     path('eibms/', eibm_list, name="eibm_list"),
+    path('ciapply/', ciapply, name="ciapply"),
+    path('cpapply/', cpapply, name="cpapply"),
+    path('eiapply/', eiapply, name="eiapply"),
 ]

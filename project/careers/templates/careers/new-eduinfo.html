@@ -5,11 +5,12 @@ rel="stylesheet"
 type="text/css"
 href="{% static 'css/careers/new_eduinfo.css'%}"
 />
+<!-- css eduinfo으로 바꿔주세용 -->
 <div class='container'>
   <div class="container2"> 
     <div class='imagesmask' style="padding-top: 48px;">
         <div class="left">
-            <a href="{% url 'main:mainpage' %}">
+            <a href="{% url 'careers:edu-info' %}">
             <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
             </a>
         </div>
@@ -30,24 +31,25 @@ href="{% static 'css/careers/new_eduinfo.css'%}"
             {% csrf_token %}
             <div class='cate'><div class='cate2'>카테고리 *</div>
               <div class='box3'>
-               
-                <a href="{% url 'careers:new-careerinfo' %}">
                 <div class='box3_1'>채용</div>
+                <a href="{% url 'careers:new-careerinfo' %}">
+                 
+                  <div class='box3_2'>취업</div>
                 </a>
-             
                 <a href="{% url 'careers:new-careerprogram' %}">
-                <div class='box3_2'>취업</div>
-                </a>
+                  
                 <div class='box3_3'>교육</div>
+                </a>
               </div>
             </div>
 
-            <p class='title_'>교육 프로그램명 *<input class='title' type="text" name="title" required/></p>
-            <p class='start_'>활동 시작일 *<input class='start' type="date" name="start" min="2024-06-15" max="2024-07-15" required/></p>
-            <p class='end_'>활동 마감일 *<input class='end' type="date" name="end" min="2024-06-16" max="2024-07-16" required/></p>
-            <p class='place_'>장소 *<input class='place' type="text" name="place" required/></p>
+            <p class='title_'>취업 프로그램명 *<input class='title' type="text" name="title" required/></p>
+            <p class='start_'>활동 시작일 *<input class='start' type="date" name="startline" min="2024-06-15" max="2024-07-15" required/></p>
+            <p class='end_'>활동 마감일 *<input class='end' type="date" name="deadline" min="2024-06-16" max="2024-07-16" required/></p>
+            <p class='company_'>장소 *<input class='company' type="text" name="place" required/></p>
+            <!-- 회사가 아니고 장소로 class 수정?부탁 -->
             <p class='area_'>분야 *
-              <select class='area' name='area' id='area' required/>
+              <select class='area' name='field' id='field' required/>
                 <option value=''>--- 선택 ---</option>
                 <option value='인사/노무'>인사/노무</option>
                 <option value='IT개발/데이터'>IT개발/데이터</option>
@@ -65,8 +67,8 @@ href="{% static 'css/careers/new_eduinfo.css'%}"
                 <option value='교육'>교육</option>
               </select>
             <p class='image_'>이미지 *<input class='image' type="file" name="image" required/></p>
-            <p class='tag_'>태그 *<input class='tag' type="text" name="tag" required/></p>
-            <p class='comment_'>내용<input class='comment' type="text" name="comment"></p>
+            <p class='tag_'>태그 *<input class='tag' type="text" name="eduinfotag" required/></p>
+            <p class='comment_'>내용<input class='comment' type="text" name="content"></p>
             <button class='submitbutton' type="submit">작성완료</button>
 
 
