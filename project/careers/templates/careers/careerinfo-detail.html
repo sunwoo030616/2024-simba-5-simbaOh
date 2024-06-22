@@ -1,8 +1,24 @@
 <h3>{{careerinfo.title}}</h3>
-회사 : {{careerinfo.company}}
-지역 : {{careerinfo.place}}
-마감기한 : {{careerinfo.deadline}}
+지원일 : {{careerinfo.startline}} - {{careerinfo.deadline}}
+기업명 : {{careerinfo.company}}
+분야: {{careerinfo.field}}
+<p>
+    {% for careerinfotag in careerinfo.careerinfotags.all %}
+        <a href="{% url 'careers:careerinfotag-careerinfos' careerinfotag.id %}">#{{ careerinfotag.name }} </a>
+    {% endfor %}
+</p>
 <hr/>
+
+<form action="{% url 'careers:ci_bms' careerinfo.id %}" method="post">
+    {% csrf_token %}
+    {% if user in careerinfo.ci_bm.all %}
+        <button type="submit">북마크 취소</button>
+    {% else %}
+        <button type="submit">북마크 추가</button>
+    {% endif %}
+    </form>
+
+{{careerinfo.cibm_count}}개
 {% if careerinfo.image %}
     <p><img src="{{ careerinfo.image.url }}" alt="사진" width="100px"></p>
 {% endif %}

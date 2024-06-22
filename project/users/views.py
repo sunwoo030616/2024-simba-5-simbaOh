@@ -71,11 +71,6 @@ def edit_portfolio(request):
 
     return render(request, 'users/edit_portfolio.html', {'portfolio': portfolio})
 
-<<<<<<< HEAD
-def update_profile(request, id):
-    update_post = Profile.objects.get(pk=id)
-    render(request, 'users/update_profile.html')
-=======
 # def update_profile(request, id):
 #     update_profile = Profile.objects.get(pk=id)
 #     if request.user.is_authenticated and request.user == update_profile.user:
@@ -93,7 +88,6 @@ def update_profile(request, id):
 
 #         return redirect('main:mainpage', id)
 #     return render(request, 'users/update_profile.html')
->>>>>>> 8f385948905ccdfdc940f2b55f5cccba573b3795
 
 def my_writing(request, id):
     user = User.objects.get(pk=id)
@@ -114,3 +108,8 @@ def mentoring(request, id):
 
 def career_now(request, id):
     return render(request, 'users/career_now.html')
+
+def cibm_list(request):
+    user = request.user
+    cibms = user.ci_bms.all()
+    return render(request, 'users/cibm.html', {'cibms': cibms})

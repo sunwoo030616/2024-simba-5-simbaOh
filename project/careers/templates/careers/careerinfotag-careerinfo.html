@@ -1,0 +1,13 @@
+<div>
+    <h1>#{{careerinfotag}}가 달린 게시글</h1>
+    <hr>
+    <div>
+        {% for c in careerinfos %}
+        <hr/>
+        <h3>{{c.title}}</h3>
+        {{c.company}} | {{c.startline}}~{{c.deadline}}<br>
+        <a href="{% url 'careers:careerinfo-detail' c.id %}">자세히 보기</a>
+        <br>
+        {% endfor %}
+    </div>
+</div>
