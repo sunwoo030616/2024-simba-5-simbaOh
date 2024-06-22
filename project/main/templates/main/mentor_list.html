@@ -1,6 +1,4 @@
-{% extends 'base_with_nav.html' %} 
-{% block content %} 
-{% load static %}
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %} 
 
 <link
   rel="stylesheet"
@@ -23,10 +21,9 @@
         {% csrf_token %}
         <div class="search_bar_zone">
           <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" class="search">
-          <div style="width: 32px;"></div>
         </div>
         <div class="filter">
-          <div class="row">
+          <div class="row1">
             <input type="checkbox" name="categories" id="checkbox1" value="0" class="ckb_white">
             <label for="checkbox1">인사/노무</label>
             <input type="checkbox" name="categories" id="checkbox2" value="1" class="ckb_white">
@@ -36,7 +33,7 @@
             <input type="checkbox" name="categories" id="checkbox4" value="3" class="ckb_white">
             <label for="checkbox4">영상/판매/무역</label>
           </div>
-          <div class="row">
+          <div class="row1">
             <input type="checkbox" name="categories" id="checkbox5" value="4" class="ckb_white">
             <label for="checkbox5">상품기획/MD</label>
             <input type="checkbox" name="categories" id="checkbox6" value="5" class="ckb_white">
@@ -48,7 +45,7 @@
             <input type="checkbox" name="categories" id="checkbox9" value="8" class="ckb_white">
             <label for="checkbox9">건설/건축</label>
           </div>
-          <div class="row">
+          <div class="row1">
             <input type="checkbox" name="categories" id="checkbox10" value="9" class="ckb_white">
             <label for="checkbox10">연구/R&D</label>
             <input type="checkbox" name="categories" id="checkbox11" value="10" class="ckb_white">
