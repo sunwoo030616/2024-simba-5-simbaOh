@@ -11,11 +11,10 @@
       <div class="navbar" id="navbar">
         <div class="row_space_between">
           <div style="width: 32px;"></div>
-          <a class="row" href="{% url 'main:mainpage' %}">
-            <img src="{% static 'images/profile_key.png' %}" width="32px" height="32px">
-            <p class="color_1E title_font">CHEAT KEY</p>
-          </a>
-          <div>
+          <div class="row">
+            <a class="row" href="{% url 'main:mainpage' %}">
+              <img src="{% static 'images/profile_key.png' %}" width="32px" height="32px">
+            </a>
             <img src="{% static 'images/person.png' %}" width="32px" height="32px" id="btn_open_mypage">
           </div>
         </div>
@@ -46,6 +45,9 @@
               </div>
             </div>
 <<<<<<< HEAD
+            <a href="{% url 'accounts:update-profile' user.id %}">
+=======
+<<<<<<< HEAD
             <a href="">
 =======
 <<<<<<< HEAD
@@ -55,6 +57,7 @@
             <a href="{% url 'accounts:update-profile' user.id %}">
 >>>>>>> 8f385948905ccdfdc940f2b55f5cccba573b3795
 >>>>>>> 0430515f103dda7a03ec6eee4a7be449f46b87c3
+>>>>>>> 3e2dbae6212c6b7707a6f8b2fc9e2138d34ca0b3
               <img src="{% static 'images/edit.png' %}" width="32px" height="32px">
             </a>
           </div>
