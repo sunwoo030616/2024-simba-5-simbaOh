@@ -37,7 +37,7 @@
     <p>여기는 자유 페이지입니다. 자유에 관한 내용을 작성하세요.</p>
     <div>
         {% if user.is_authenticated %}
-        <a href="{% url 'community:free-create' %}">새 글 작성하기</a>
+        <a href="{% url 'community:new-free' %}">새 글 작성하기</a>
         {% endif %}
         {% for free in frees %}
         <div>
