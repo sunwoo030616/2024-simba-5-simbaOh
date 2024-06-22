@@ -18,6 +18,9 @@ class Profile(models.Model):
     ]
     user_enroll = models.CharField(max_length=50, blank=True, null=True, choices=ENROLL_CHOICES, default='')
     followings = models.ManyToManyField("self", related_name="followers", symmetrical=False)
+    
+class Request(models.Model):
+    menti_ship = models.ForeignKey(User, related_name='mentor_ship', on_delete=models.CASCADE, blank=True, null=True, default='0')
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

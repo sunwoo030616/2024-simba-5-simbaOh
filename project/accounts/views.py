@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.contrib.auth.models import User
-from .models import Profile
 from django.core.files.storage import default_storage
+from .models import Profile, Request
 
 # 로그인 뷰
 def login(request):
@@ -23,7 +23,7 @@ def login(request):
 # 로그아웃 뷰
 def logout(request):
     auth.logout(request)
-    return redirect('main:mainpage')
+    return redirect('main:first_screen')
 
 # 회원가입 뷰 (1단계)
 def signup(request):
@@ -51,6 +51,10 @@ def signup(request):
                     user_enroll='',
                     user_profile=None
                 )
+                Request.objects.create(
+                    menti_ship = ''
+                )
+
 
             request.session['user_id'] = user.id
             request.session.modified = True  # Ensure session is saved

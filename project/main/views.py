@@ -140,7 +140,9 @@ def mentor_ask(request, id):
     mentor = get_object_or_404(Mentor, pk = id)
     if mentor.user == request.user:
         return redirect('main:mentor-list')
-    return render(request, 'main/mentor_ask.html', {'mentor':mentor})
+    else:
+        request.menti_ship = mentor.id
+        return render(request, 'main/mentor_ask.html', {'mentor':mentor})
 
 # def follows(request, mentor_id):
 #     mentor = get_object_or_404(Mentor, pk = mentor_id)

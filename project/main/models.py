@@ -31,5 +31,8 @@ class Mentor(models.Model):
 
     categories = models.ManyToManyField(Category, related_name='mentors', blank=True)
 
+class Accept(models.Model):
+    mentor_ship = models.ForeignKey(Mentor, related_name='menti_ship', on_delete=models.CASCADE, blank=True, null=True, default='0')
+
     def __str__(self):
         return self.mentor_intro[:30]
