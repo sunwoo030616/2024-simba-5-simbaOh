@@ -1,0 +1,116 @@
+{% load static %}
+<link
+  rel="stylesheet"
+  type=""
+  href="{% static 'css/shared/navbar.css' %}"
+/>
+
+<div class="screen">
+  <div class="main">
+    <div class="column">
+      <div class="navbar" id="navbar">
+        <div class="row_space_between">
+          <div style="width: 32px;"></div>
+          <div class="row">
+            <a class="row" href="{% url 'main:mainpage' %}">
+              <img src="{% static 'images/profile_key.png' %}" width="32px" height="32px">
+            </a>
+            <img src="{% static 'images/person.png' %}" width="32px" height="32px" id="btn_open_mypage">
+          </div>
+        </div>
+      </div>
+      <div class="navbar2" id="navbar2">
+        <div class="row_space_between">
+          <div style="width: 32px;"></div>
+          <a class="row" href="{% url 'main:mainpage' %}">
+            <img src="{% static 'images/profile_key.png' %}" width="32px" height="32px">
+            <p class="color_1E title_font">MY PAGE</p>
+          </a>
+          <div>
+            <img src="{% static 'images/signx.png' %}" width="32px" height="32px" id="btn_close_mypage">
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="row_space_around">
+            <div class="row">
+              {% if user.profile.user_profile %}
+                <img class="image_set" src="{{ user.profile.user_profile.url }}" width="60px" height="60px">
+              {% else %}
+                <img class="image_set" src="{% static 'images/signup1.png' %}" width="60px" height="60px">
+              {% endif %}
+              <div class="column">
+                <p class="color_FFF font_1">{{ user.profile.user_name }}</p>
+                <p class="color_FFF font_2">{{ user.profile.user_major }}</p>
+              </div>
+            </div>
+            <!-- update-profile address 추후 삽입 -->
+            <a href="{% url 'accounts:update-profile' user.id %}">
+              <img src="{% static 'images/edit.png' %}" width="32px" height="32px">
+            </a>
+          </div>
+        </div>
+        <div class="row_space_around">
+          <a href="{% url 'users:follow-list' user.id %}" class="column">
+            <p class="color_FFF font_3">{{ user.mentor_followings.count }}</p>
+            <p class="color_FFF font_3">팔로잉</p>
+          </a>
+          <a href="{% url 'users:cibm_list' %}" class="column">
+            <p class="color_FFF font_3">12</p>
+            <p class="color_FFF font_3">북마크</p>
+          </a>
+          <a href="{% url 'users:edit_portfolio' %}" class="column">
+            <img src="{% static 'images/portfolio_icon.png' %}" width="32px" height="32px">
+            <p class="color_FFF font_4">포트폴리오</p>
+          </a>
+        </div>
+        <div class="btn_part">
+          <a class="row_space_between round_box" href="{% url 'users:my-writing' user.id %}">
+            <div class="row">
+              <img src="{% static 'images/write_icon.png' %}" width="32px" height="32px">
+              <p class="font_5 color_17">내가 쓴 글</p>
+            </div>
+            <img src="{% static 'images/arrow_forward.png' %}" width="32px" height="32px">
+          </a>
+          <a class="row_space_between round_box" href="{% url 'users:mentoring' user.id %}">
+            <div class="row">
+              <img src="{% static 'images/mentoring_icon.png' %}" width="32px" height="32px">
+              <p class="font_5 color_17">멘토링 신청 현황</p>
+            </div>
+            <img src="{% static 'images/arrow_forward.png' %}" width="32px" height="32px">
+          </a>
+          <a class="row_space_between round_box" href="{% url 'users:career-now' user.id %}">
+            <div class="row">
+              <img src="{% static 'images/target_icon.png' %}" width="32px" height="32px">
+              <p class="font_5 color_17">커리어 신청 현황</p>
+            </div>
+            <img src="{% static 'images/arrow_forward.png' %}" width="32px" height="32px">
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const btn_open_mypage = document.getElementById('btn_open_mypage');
+    const btn_close_mypage = document.getElementById('btn_close_mypage');
+    const navbar2 = document.getElementById('navbar2');
+    let x = false;
+
+    function Navbar() {
+      if (x) {
+        navbar2.style.animationName = 'move_navbar_up';
+      } else {
+        navbar2.style.animationName = 'move_navbar_down';
+      }
+      x = !x;
+      navbar2.style.zIndex = x ? "10" : "2";
+    }
+
+    btn_open_mypage.onclick = Navbar;
+    btn_close_mypage.onclick = Navbar;
+  });
+</script>

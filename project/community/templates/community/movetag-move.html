@@ -1,0 +1,14 @@
+<div>
+    <h1>#{{movetag}}가 달린 게시글</h1>
+    <hr>
+    <div>
+        {% for v in moves %}
+        <hr/>
+        <h3>{{v.title}}</h3>
+        {{v.writer}} | {{v.pub_date}}<br>
+        {{v.summary}}
+        <a href="{% url 'community:move-detail' v.id %}">자세히 보기</a>
+        <br>
+        {% endfor %}        
+    </div>
+</div>

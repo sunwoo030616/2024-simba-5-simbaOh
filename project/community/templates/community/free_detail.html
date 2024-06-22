@@ -1,0 +1,51 @@
+
+<h3>{{free.title}}</h3>
+작성자 : {{free.writer.profile.user_name}}
+날짜 : {{free.pub_date}}
+<p>
+    {% for freetag in free.freetags.all %}
+            <a href="{% url 'community:freetag-frees' freetag.id %}">#{{ freetag.freename }}</a>
+    {% endfor %}
+</p>
+
+
+<hr/>
+{% if free.image %}
+    <p><img src="{{ free.image.url }}" alt="사진" width="100px"></p>
+{% endif %}
+
+<p>{{free.content}}</p>
+<br>
+{% if free.writer == user %}
+
+<a href="{% url 'community:free-edit' free.id %}">글 수정하기</a>
+<a href="{% url 'community:free-delete' free.id %}">글 삭제하기</a>
+{% endif %}
+<br>
+
+<div class="comment_container">
+    <div class="comment_form">
+        <h2></h2>
+        <form action="{% url 'community:free-detail' free.id %}" method="POST">
+            {% csrf_token %}
+            댓글 쓰기: <input type="text" name="content">
+            <input type="submit" name="submit">
+        </form>
+    </div>
+    <div class="comment_list">
+        {% for freecomment in freecomments %}
+        <hr>
+        <h4>작성자 : {{freecomment.writer.profile.user_name}}</h4>
+        <p>내용: {{freecomment.content}}</p>
+        <p>{{freecomment.pub_date}}</p>
+        {% if user.is_authenticated and freecomment.writer == user %}
+            <form action="{% url 'community:free-detail' free.id %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="delete_freecomment_id" value="{{ freecomment.id }}">
+                <button type="submit">댓글 삭제</button>
+            </form>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+

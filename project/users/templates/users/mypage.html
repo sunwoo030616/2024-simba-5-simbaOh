@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ user.username }}님의 마이페이지</title>
+</head>
+<body>
+    <h1>{{ profile.user_name }}님의 마이페이지</h1>
+    <p>user: {{ user.username }}</p>
+    <p>전화번호: {{ profile.user_phone }}</p>
+    <h2>포트폴리오</h2>
+    <p>제목: {{ portfolio.title }}</p>
+    <p>소개: {{ portfolio.introduction }}</p>
+    <p>학력: {{ portfolio.education }}</p>
+    <p>경력: {{ portfolio.experience }}</p>
+    <p>프로젝트: {{ portfolio.projects }}</p>
+    <p>자격증/수상: {{ portfolio.certifications }}</p>
+    {% if profile.user_profile %}
+        <img src="{{ profile.user_profile.url }}" alt="프로필 사진">
+    {% else %}
+        <p>프로필 사진이 없습니다.</p>
+    {% endif %}
+    <a href="{% url 'users:edit_portfolio' %}">포트폴리오 편집</a>
+    <a href="{% url 'users:follow-list' user.id %}">팔로잉{{ following_count }}</a>
+</body>
+</html>

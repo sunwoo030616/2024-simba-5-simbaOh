@@ -1,0 +1,124 @@
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %} 
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/main/mentor_start.css'%}"
+/>
+
+<form action="{% url 'main:mentor-start' %}" method="post" class='container'>
+  {% csrf_token %}
+  <div class="small_nav">
+    <div class="left" style="z-index: 1;">
+      <a style="margin-left: 15px;" href="{% url 'main:mainpage' %}">
+        <img src="{% static 'images/arrow-24.png' %}" width="32px" style="z-index: 30;">
+      </a>
+    </div>
+    <div class="right" style="width: 32px;"></div>
+  </div>
+  <div class='pictureandsubmit'>
+    <img class="picture" src="{% static 'images/Rectangle 3406.png' %}">
+    <p class='textbig'>현직자 동문 멘토에게 <br>매칭 받아보세요 </p>
+    <p class='textsmall'>취트키에서 매칭 평균 만족도는 9.3점!</p>
+    <a href="{% url 'main:mentor-list' %}" class="submit">멘토 리스트보기</a>
+    <a class="submit1">멘토 등록하기</a>
+    <a href="{% url 'main:mentor-enroll' %}" class="submit1">멘토 등록하기</a>
+  </div>
+
+  <div class='cheatkey'>
+    <img class='cheatkeyimages' src={% static "images/Group 1410-2.png" %}>
+    <div class='cheatkeymessage'>CHEAT KEY</div>
+  </div>
+
+  <div class='ment1'>세심한 멘토링 및 취업 정보를 전해주는<br>
+    <div class='ment2'>동국인을 위한 매칭 커리어 플랫폼</div>
+  </div>
+
+  <div class='pictureee'>
+    <div class='picture1'>
+      <img class='picture1_1' src={% static "images/Group 1411.png" %}>
+      <div class='picture1_12'>
+        <div class='picture1_11'>1대1 매칭 멘토<br><br></div>
+        직접 원하는 멘토를 선택해서<br>
+        1대1로 매칭되어 기업에 대해 원하는<br>
+        내용을 물어볼 수 있어요.
+      </div>
+    </div>
+
+    <div class='picture2'>
+      <div class='picture2_22'>
+        <div class='picture2_21'>검증된 멘토<br><br></div>
+        동국대학교 학생 인증과<br>
+        취트키 담당자 검토를 통해 현업에<br>
+        재직중인 것이 검증된 멘토에요.
+      </div>
+      <img class='picture2_2' src={% static "images/Group 1411-2.png" %}>
+    </div>
+
+    <div class='picture3'>
+      <img class='picture3_3' src={% static "images/Group 1411-3.png" %}>
+      <div class='picture3_32'>
+        <div class='picture3_31'>멘토 팔로우 & 등록<br><br></div>
+        멘토를 팔로우하여 나의 리스트를<br>
+        확인 할 수 있고, 취업을 한다면<br>
+        나도 멘토로 등록할 수 있어요.
+      </div>
+    </div>
+  </div>
+
+  <div class='basemint'>
+
+    <div class='basemintment'>취트키 멘토 매칭은 이렇게 운영됩니다.</div>
+    <div class='sqare'>
+      <div class='step1'>
+        <div class='sqare1'>STEP<br>1</div>
+        <div class='sqare_1'>멘토 선택</div>
+        멘토를 선택하고,<br> 궁금한 내용에 대해 <br>글을 작성해주세요.
+      </div>
+
+      <div class='line'></div>
+
+      <div class='step2'>
+        <div class='sqare1'>STEP<br>2</div>
+        <div class='sqare_2'>검토 후 회신</div>
+        멘토가 글 검토 후<br> 매칭 진행 여부를<br> 안내드려요. 
+      </div>
+
+      <div class='line'></div>
+
+      <div class='step3'>
+        <div class='sqare1'>STEP<br>3</div>
+        <div class='sqare_3'>매칭</div>
+        멘토와 매칭되어<br> 채팅을 통해 자유롭게<br> 멘토링 할 수 있어요.
+      </div>
+    </div>
+  </div>
+
+  <div class='benefit'>
+    <div class='benefit1'>등록된 멘토는 특별한 혜택이 있습니다.</div>
+    <div class='benefit2'>*본 혜택은 멘토링을 3개월 내 1회 이상 멘토링을 진행했을 경우 제공되며, 만기시 자동으로 혜택이 해제됩니다.</div>
+    <div class='benefit3'>“학생때 누렸던 혜택을 그대로 받아 볼 수 있습니다!”</div>
+  </div>
+
+  <div class='icon'>
+    <div class='icon1'>📖<div class='icon1_1'>핫트랙스&교보문고 10% 할인</div></div>
+    <div class='icon1'>🎬<div class='icon1_2'>대한 극장 7,000원 영화 관람<br>메가박스 동문점 3천원 할인</div></div>
+    <div class='icon1'>☕<div class='icon1_2'>뚜레쥬르 제일제당사옥점 15% 할인<br>할리스 충무로역점 20% 할인</div></div>
+    <div class='icon1'>🗂️<div class='icon1_2'>마이크로소프트 오피스 무료 이용<br>구글 드라이브 용량 무제한</div></div>
+  </div>
+  <div class="credit" style="margin-top: 2rem;">
+    <div class="webname">
+      <p class="webname_bold">CHEAT KEY</p>
+      <p class="font_400">취트키 CHEAT KEY</p>
+    </div>
+    <div class="maker">
+      <p class="font_500">Product Designer | 구도욱<br>Front End | 오태준, 최민<br>Back End | 박선우, 황채현</p>
+    </div>
+    <div class="instayoutube_icon"></div>
+    <div class="copyright font_200">Copyright ⓒ 2024 심바오 Team. All Rights Reserved.</div>
+  </div>
+</form>
+
+{% if error %}
+<div style="color: red">{{ error }}</div>
+{% endif %}
+{% endblock %}

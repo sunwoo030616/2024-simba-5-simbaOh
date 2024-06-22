@@ -1,0 +1,19 @@
+<!-- templates/accounts/update_profile.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>수정중...</h2>
+<form action="{% url 'accounts:update-profile' profile.id %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>이름 : <input type="text" name="user_name" value="{{ profile.user_name }}"></p>
+    <p>전화번호 : <input type="text" name="user_phone" value="{{ profile.user_phone }}"></p>
+    <p>전공 : <input type="text" name="user_major" value="{{ profile.user_major }}"></p>
+    <p>재학 여부 : <input type="text" name="user_enroll" value="{{ profile.user_enroll }}"></p>
+    <p>프로필 사진 : <input type="file" name="user_profile"></p>
+    {% if profile.user_profile %}
+        <p><img src="{{ profile.user_profile.url }}" alt="프로필사진" width="100px"></p>
+    {% endif %}
+    <button type="submit">Update Profile</button>
+</form>
+{% endblock %}

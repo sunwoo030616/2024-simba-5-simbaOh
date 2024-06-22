@@ -1,0 +1,245 @@
+/* careerinfo-info page - CSS */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  
+  @media (max-width: 430px) {
+      align-items: start;
+  }
+  @media (min-width: 431px) {
+      align-items: center;
+  } 
+}
+
+.container2{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 430px;
+  background: #FFF;
+}
+
+.imagesmask {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 17px;
+}
+/* .searchbutton{
+  width: 400px;
+  height: 35px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: #F3F3F3;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+} */
+.left {
+  display: flex;
+}
+
+.right {
+  display: flex;
+}
+
+.signup-main {
+  color: #28464E;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.search{
+  display: flex;
+  height: 2rem;
+  width: 400px;
+  height: 35px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: #F3F3F3;
+  color: #000;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: -0.32px;
+  padding: 0px 10px 0px 10px;
+}
+
+.search.placeholder{
+  display: flex;
+  color: #8E8E8E;
+  padding-left: 14px;
+}
+
+.box {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.button{
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  transform: translateX(370px);
+  /* top: 15.7%;
+  left: 63%; */
+}
+
+
+.topbar{
+  display: flex;
+  flex-direction: row;
+  width: 430px;
+  height: 40px;
+  flex-shrink: 0;
+  border-top: 1px solid #D7D7D7;
+  border-bottom: 1px solid #D7D7D7;
+  background: #FFF;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.topbar1{
+  color: #0C9D7A;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21px; /* 131.25% */
+  letter-spacing: -0.32px;
+}
+
+.topbar2{
+  color: #5A5A5A;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px; /* 131.25% */
+  letter-spacing: -0.32px;
+}
+
+.topbar3{
+  color: #5A5A5A;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px; /* 131.25% */
+  letter-spacing: -0.32px;
+}
+.careerinfo{
+  width: 430px;
+  display: flex;
+  flex-direction: column;
+  height: 55px;
+  flex-shrink: 0;
+  border-top: 0.5px solid #D7D7D7;
+  border-bottom: 0.5px solid #D7D7D7;
+  background: #FFF;
+  justify-content: space-between;
+  padding: 10px 10px 10px 10px;
+}
+
+.careerinfo2{
+  width: 430px;
+  display: flex;
+  flex-direction: row;
+  /* height: 71px; */
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+}
+.careerinfo3{
+  display:flex;
+  flex-direction: row;
+}
+.title{
+  width: 400px;
+  color: #000;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: -0.32px;
+}
+
+.company{
+  width: 95px;
+  color: #515151;
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px; 
+  letter-spacing: -0.32px;
+}
+.area{
+  color: #6A6A6A;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: -0.32px;
+}
+.update{
+  display: flex;
+  width: 62px;
+  height: 21px;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  color: #000;
+  text-align: right;
+  font-family: Pretendard;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 21px;
+  letter-spacing: -0.32px;
+}
+
+.superwrite{
+  position: absolute;
+  transform: translate(170px,580px);
+}
+.midbar{
+  display: flex;
+  width: 430px;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+.total{
+  color: #757575;
+font-family: Pretendard;
+font-size: 13px;
+font-style: normal;
+font-weight: 300;
+line-height: 21px; /* 161.538% */
+letter-spacing: -0.32px;
+}
+
+.new{
+  color: #575757;
+font-family: Pretendard;
+font-size: 13px;
+font-style: normal;
+font-weight: 500;
+line-height: 21px; /* 161.538% */
+letter-spacing: -0.32px;
+}

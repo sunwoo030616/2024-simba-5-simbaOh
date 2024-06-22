@@ -1,0 +1,14 @@
+<h2>수정중...</h2>
+
+<form action="{% url 'community:free-update' free.id %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>제목 : <input type="text" name="title" value="{{free.title}}"></p>
+    {% if free.image %}
+        <p><img src="{{ free.image.url }}" alt="사진" width="100px"></p>
+    {% endif %}
+    <p>사진 : <input type="file" name="image"></p>
+    
+    
+    <p>내용 : <textarea type="text" name="content" id="" cols="30" rows="10">{{free.content}}</textarea></p>
+    <button type="submit">제출</button>
+</form>

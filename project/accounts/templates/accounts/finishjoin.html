@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/accounts/finishjoin.css' %}"
+/>
+
+<meta http-equiv="refresh" content="2.5; url=/mainpage">
+
+<div class='container'>        
+  <div class="main">
+      <div class="center">
+        <img src="{% static 'images/mainlogo.png' %}" width="100px" style="padding-bottom: 32px;">
+        <div class="font_center_small">
+          Welcome,<div class="username">
+          <p>{{ user.profile.user_name }}</p></div>
+        </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

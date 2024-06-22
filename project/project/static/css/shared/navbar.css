@@ -1,0 +1,196 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 10px;
+
+  @media (max-width: 430px) {
+    align-items: start;
+  }
+  @media (min-width: 431px) {
+    align-items: center;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 26.875rem; /* 430px */
+  padding-bottom: 0.625rem; /* 10px */
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem; /* 8px */
+  justify-content: space-around;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 0.5rem; /* 8px */
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin-top: 4rem; /* 64px */
+  width: 430px;
+  z-index: 0;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navbar2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4rem; /* 64px */
+  padding-bottom: 2rem;
+  width: 430px;
+  top: -550px;
+  gap: 2rem; /* 16px */
+  
+  background: linear-gradient(180deg, #359287 0%, #19AC9B 50.72%, #00C3AD 100%);
+
+  border-radius: 0px 0px 30px 30px;
+
+  position: fixed;
+  animation-duration: 2.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes move_navbar_down {
+  from {
+    top: -550px;
+  }
+  to {
+    top: 0px;
+  }
+}
+
+@keyframes move_navbar_up {
+  from {
+    top: 0px;
+  }
+  to {
+    top: -550px;
+  }
+}
+
+.row_space_around {
+  display: flex;
+  width: 400px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.row_space_between {
+  display: flex;
+  width: 400px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.image_set {
+  display: flex;
+  border-radius: 20px;
+}
+
+.btn_part {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* 20px */
+  align-items: center;
+}
+
+.round_box {
+  display: flex;
+  width: 300px;
+  padding: 0.5rem; /* 8px */
+  align-items: center;
+
+  border-radius: 1.25rem; /* 20px */
+  background-color: #FFF;
+}
+
+
+
+/* 폰트 설정 */
+
+.title_font {
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: STHupo;
+  font-size: 1.875rem; /* 30px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.font_1 {
+  font-family: Pretendard;
+  font-size: 1.5625rem; /* 25px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.3125; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.font_2 {
+  font-family: Pretendard;
+  font-size: 0.9375rem; /* 15px */
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.3125; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.font_3 {
+  font-family: Pretendard;
+  font-size: 0.9375rem; /* 15px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.3125; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.font_4 {
+  font-family: Pretendard;
+  font-size: 0.8125rem; /* 13px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.3125; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.font_5 {
+  font-family: Pretendard;
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+
+
+
+/* 색상설정 */
+
+.color_1E {
+  color: #1E3D46;
+}
+
+.color_FFF {
+  color: #FFF;
+}
+
+.color_17 {
+  color: #17363F;
+}
