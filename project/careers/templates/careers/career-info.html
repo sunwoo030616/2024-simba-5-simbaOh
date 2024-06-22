@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %}
 
 <link
 rel="stylesheet"
@@ -9,7 +9,7 @@ href="{% static 'css/careers/career_info.css'%}"
 <div class='container'>
     <div class="container2"> 
 
-        <div class='imagesmask' style="padding-top: 48px;">
+        <div class='imagesmask' style="padding-top: 56px;">
             <div class="left">
                 <a href="{% url 'main:mainpage' %}">
                 <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
