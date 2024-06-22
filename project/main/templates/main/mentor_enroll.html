@@ -9,27 +9,34 @@
 <div class='container'>
   <div class="container2"> 
 
-    <div class='imagesmask' style="padding-top: 48px;">
-      <div class="left" style="z-index: 1;">
+    <div class='imagesmask' style="padding-top: 56px;">
+      <div class="left" style="margin-left: 15px; z-index: 1;">
         <a href="{% url 'main:mentor-start' %}">
           <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
         </a>
       </div>
-      <div class="right">
+      <div class="right" style="margin-top: 48px;">
         <h2 class='signup-main'>멘토 등록</h2>
       </div>
-      <div style="width:36px;"></div>
+      <div style="width:32px;"></div>
     </div>
 
     <form action="{% url 'main:mentor-create' %}" method="POST", enctype="multipart/form-data">
       {% csrf_token %} 
 
       <div class='class1'>
-        <div class='finish'>
+        <div class='finish' id="finish_1_0" style="display: block;">
           <div class='finish1'>
-            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2' id='finish1_2' style="display:none;">30%</div>
+            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2' id='finish1_2'>0%</div>
           </div>
-          <div class='linefinish'><div class='linefinish2' id='linefinish2' style="display:none;"></div></div>
+          <div class='linefinish'><div class='linefinish1' id='linefinish_1_0'></div></div>
+        </div>  
+
+        <div class='finish' id="finish_1_30" style="display: none;">
+          <div class='finish1'>
+            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2' id='finish1_2'>30%</div>
+          </div>
+          <div class='linefinish'><div class='linefinish2' id='linefinish_1_30'></div></div>
         </div>  
         
         <div class='origin1'>기본 정보</div>
@@ -47,10 +54,10 @@
 
           <div class='inputlist'>
             <div class='company'>
-              <p><label class='user' for="mentor_company">회사명</label><input class='same' placeholder="예시) 취트키" type="text" name="mentor_company" id="mentor_company"></p>
+              <p><label class='user' for="mentor_company">회사명</label><input class='same' placeholder="예시) 취트키" type="text" name="mentor_company" id="mentor_company" required></p>
             </div>
             <div class='input2'>
-              <p><label class='user' for="mentor_dept">부서</label><input class='same' placeholder="예시) 커리어 UI/UX 디자인" type="text" name="mentor_dept" id="mentor_dept"></p>
+              <p><label class='user' for="mentor_dept">부서</label><input class='same' placeholder="예시) 커리어 UI/UX 디자인" type="text" name="mentor_dept" id="mentor_dept" required></p>
             </div>
             <div class='input3'>
               <p><label class='user' for="mentor_work">직무 유형</label>
@@ -76,7 +83,7 @@
           </div>
             
           <div class='submitcenter'>
-            <button class='submit1' type='button' id='prev1'>이전</button>
+            <button class='submit1' type='button' id='prev1' disabled>이전</button>
             <button class='submit2' type='button' id='next1'>다음</button>
           </div>
         </div>
@@ -84,35 +91,42 @@
 
 
       <div class='class2' style="display:none;">
-        <div class='finish'>
+        <div class='finish' id="finish_2_30" style="display: block;">
           <div class='finish1'>
-            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2_2' id='finish1_2_2' style="display:none;">60%</div>
+            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2' id='finish1_2'>30%</div>
           </div>
-          <div class='linefinish'><div class='linefinish2_2' id='linefinish2_2' style="display:none;"></div></div>
-        </div> 
+          <div class='linefinish'><div class='linefinish2' id='linefinish_2_30'></div></div>
+        </div>  
+
+        <div class='finish' id="finish_2_60" style="display: none;">
+          <div class='finish1'>
+            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2_2' id='finish1_2'>60%</div>
+          </div>
+          <div class='linefinish'><div class='linefinish2_2' id='linefinish_2_60'></div></div>
+        </div>  
 
         <div class='origin1'>멘토링 정보</div>
 
         <div class='inputlist'>
           <div class='write1'>
-            <p><label class='user1' for="mentor_summary"></label><input class='same' placeholder="한 줄 소개" type="text" name="mentor_summary" id="mentor_summary"></p>
+            <p><label class='user1' for="mentor_summary"></label><input class='same' placeholder="한 줄 소개" type="text" name="mentor_summary" id="mentor_summary" required></p>
             <div class='inputlist_text'>- 한 줄 소개로 어떠한 분야 멘토인지 알려주세요.<br>
               예시) 웹 개발, 대기업 취업 준비에 대해 궁금하시다면 잘 알려드릴 수 있습니다.</div>
           </div>
           <div class='write2'>
-            <p><label class='user2' for="mentor_info"></label><textarea class='sameinfo' placeholder="멘토 소개" type="text" name="mentor_info" id="mentor_info"></textarea></p>
+            <p><label class='user2' for="mentor_info"></label><textarea class='sameinfo' placeholder="멘토 소개" type="text" name="mentor_info" id="mentor_info" required></textarea></p>
             <div class='inputlist_text'> - 본인이 어떠한 멘토인지 보다 상세하게 알려주세요.<br>
               - 학교를 다니면서 취업을 준비하는 과정에서 멘티에게 도움이 될 수 있는 얘기를 작성해주세요.<br>
               - 회사를 다니면서 해당 직무에 대해 느낀점과 업무에 대해 작성해주세요.</div>
           </div>
           <div class='write3'>
-            <p><label class='user3' for="mentor_career"></label><textarea class='same' placeholder="멘토 이력" type="text" name="mentor_career" id="mentor_career"></textarea></p>
+            <p><label class='user3' for="mentor_career"></label><textarea class='same' placeholder="멘토 이력" type="text" name="mentor_career" id="mentor_career" required></textarea></p>
             <div class='inputlist_text'>예시) <br>
               2023. 03 ~  현재 : 삼성<br>
               2022.01 ~ 2022. 11 : 현대차 소프트웨어 서포터즈</div>
           </div>
           <div class='write4'>
-            <p><label class='user4' for="mentor_certificate"></label><textarea class='same' placeholder="멘토 자격증/어학성적" type="text" name="mentor_certificate" id="mentor_certificate"></textarea></p>
+            <p><label class='user4' for="mentor_certificate"></label><textarea class='same' placeholder="멘토 자격증/어학성적" type="text" name="mentor_certificate" id="mentor_certificate" required></textarea></p>
             <div class='inputlist_text'>예시) 토익 820점, 정보처리기사 등</div>
           </div>
         
@@ -125,12 +139,19 @@
 
 
       <div class='class3' style="display:none;">
-        <div class='finish'>
+        <div class='finish' id="finish_3_60">
           <div class='finish1'>
-            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2_3' id='finish1_2_3' style="display:none;">100%</div>
+            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2_2' id='finish1_2'>60%</div>
           </div>
-          <div class='linefinish'><div class='linefinish2_3' id='linefinish2_3' style="display:none;"></div></div>
-        </div> 
+          <div class='linefinish'><div class='linefinish2_2' id='linefinish_3_60'></div></div>
+        </div>  
+
+        <div class='finish' id="finish_3_100" style="display: none;">
+          <div class='finish1'>
+            <div class='finish1_1'>멘토 등록 완성도</div><div class='finish1_2_3' id='finish1_2'>100%</div>
+          </div>
+          <div class='linefinish'><div class='linefinish2_3' id='linefinish_3_100'></div></div>
+        </div>  
 
         <div class='origin1'>멘토 확인</div>
         <div class='ment'>
@@ -143,7 +164,7 @@
         <div class='face1'>
           <p><label class='userphoto' for="image_1">신분증 사진</label>
           <div class='face2'>
-            <input class='same3' type='file' name='image_1' id='image_1' ></p>
+            <input class='same3' type='file' name='image_1' id='image_1' required></p>
             <img class="plus" src="{% static 'images/plus.png' %}"><br>
             <div class='inputlist_text2'><div class='inputlist_text3'>신분증 이미지를 첨부해주세요.<br></div>선명하고 해상도 높은 사진으로 등록해주세요.<br>
           본인의 신분증 또는 운전면허증을 등록해주세요.</div>  
@@ -152,7 +173,7 @@
         <div class='face1'>
           <p><label class='userphoto' for="image_2">명함 사진</label>
           <div class='face2'>
-            <input class='same3' type='file' name='image_2' id='image_2' ></p>
+            <input class='same3' type='file' name='image_2' id='image_2' required></p>
             <img class="plus" src="{% static 'images/plus.png' %}"><br>
             <div class='inputlist_text2'><div class='inputlist_text3'>명함 이미지를 첨부해주세요.<br></div>선명하고 해상도 높은 사진으로 등록해주세요.<br>
             본인의 신분증 또는 운전면허증을 등록해주세요.</div>  
@@ -201,76 +222,95 @@
     const btn_close = document.getElementById("modal_box1");
     const btn_open = document.getElementById("modal_box2");
 
+    const finish_1_0 = document.getElementById('finish_1_0');
+    const finish_1_30 = document.getElementById('finish_1_30');
+    const finish_2_30 = document.getElementById('finish_2_30');
+    const finish_2_60 = document.getElementById('finish_2_60');
+    const finish_3_60 = document.getElementById('finish_3_60');
+    const finish_3_100 = document.getElementById('finish_3_100');
+
     const class1Inputs = class1.querySelectorAll('input, select');
     const class2Inputs = class2.querySelectorAll('input, textarea');
     const class3Inputs = class3.querySelectorAll('input');
-
-    const finish1_2 = document.querySelector('.finish1_2');
-    const linefinish2 = document.querySelector('.linefinish2');
-    const finish1_2_2 = document.querySelector('.finish1_2_2');
-    const linefinish2_2 = document.querySelector('.linefinish2_2');
-    const finish1_2_3 = document.querySelector('.finish1_2_3');
-    const linefinish2_3 = document.querySelector('.linefinish2_3');
 
     function validateInputs(inputs) {
       return Array.from(inputs).every(input => input.checkValidity());
     }
 
-    function toggleButtonState(inputs, button, elementsToShow) {
-      if (validateInputs(inputs)) {
-        button.disabled = false;
-        button.style.backgroundColor = "#28464E";
-        button.style.color = "#ffffff";
-        elementsToShow.forEach(el => el.style.display = 'block');
-      } else {
-        button.disabled = true;
-        button.style.backgroundColor = "";
-        button.style.color = "";
-        elementsToShow.forEach(el => el.style.display = 'none');
-      }
+    function updateButtonState(inputs, button, finish, finishElement) {
+    if (validateInputs(inputs)) {
+      button.disabled = false;
+      button.style.backgroundColor = "#28464E";
+      button.style.color = "#ffffff";
+      finish.style.display = "none"
+      finishElement.style.display = 'block';
+    } else {
+      button.disabled = true;
+      button.style.backgroundColor = "";
+      button.style.color = "";
+      finish.style.display = "block";
+      finishElement.style.display = 'none';
     }
+  }
 
-    function updateButtonAndElements() {
-      toggleButtonState(class1Inputs, next1Button, [finish1_2, linefinish2]);
-      toggleButtonState(class2Inputs, next2Button, [finish1_2_2, linefinish2_2]);
-      toggleButtonState(class3Inputs, submitButton, [finish1_2_3, linefinish2_3]);
-    }
+  function handleInputChange() {
+    updateButtonState(class1Inputs, next1Button, finish_1_0, finish_1_30);
+    updateButtonState(class2Inputs, next2Button, finish_2_30, finish_2_60);
+    updateButtonState(class3Inputs, submitButton, finish_3_60, finish_3_100);
+  }
 
-    class1Inputs.forEach(input => input.addEventListener('input', () => toggleButtonState(class1Inputs, next1Button, [finish1_2, linefinish2])));
-    class2Inputs.forEach(input => input.addEventListener('input', () => toggleButtonState(class2Inputs, next2Button, [finish1_2_2, linefinish2_2])));
-    class3Inputs.forEach(input => input.addEventListener('input', () => toggleButtonState(class3Inputs, submitButton, [finish1_2_3, linefinish2_3])));
+  class1Inputs.forEach(input => input.addEventListener('input', handleInputChange));
+  class2Inputs.forEach(input => input.addEventListener('input', handleInputChange));
+  class3Inputs.forEach(input => input.addEventListener('input', handleInputChange));
+
+
 
     next1Button.addEventListener('click', function() {
-      if (validateInputs(class1Inputs)) {
-        class1.style.display = 'none';
-        class2.style.display = 'block';
-        finish1_2.style.display = 'none';
-        linefinish2.style.display = 'none';
-      }
+      class1.style.display = 'none';
+      class2.style.display = 'block';
+      class3.style.disabled = 'none';
+      finish_1_0.style.display = 'none';
+      finish_1_30.style.display = 'none';
+      finish_2_30.style.display = 'block';
+      finish_2_60.style.display = 'none';
+      finish_3_60.style.display = 'none';
+      finish_3_100.style.display = 'none';
     });
 
     next2Button.addEventListener('click', function() {
-      if (validateInputs(class2Inputs)) {
-        class2.style.display = 'none';
-        class3.style.display = 'block';
-        finish1_2_2.style.display = 'none';
-        linefinish2_2.style.display = 'none';
-      }
+      class1.style.display = 'none';
+      class2.style.display = 'none';
+      class3.style.display = 'block';
+      finish_1_0.style.display = 'none';
+      finish_1_30.style.display = 'none';
+      finish_2_30.style.display = 'none';
+      finish_2_60.style.display = 'none';
+      finish_3_60.style.display = 'block';
+      finish_3_100.style.display = 'none';
     });
 
-    prev1Button.addEventListener('click', function() {
-      class1.style.display = 'block';
-      class2.style.display = 'none';
-      finish1_2.style.display = 'none';
-      linefinish2.style.display = 'none';
+    prev3Button.addEventListener('click', function() {
+      class1.style.display = 'none';
+      class2.style.display = 'block';
+      class3.style.disabled = 'none';
+      finish_1_0.style.display = 'none';
+      finish_1_30.style.display = 'none';
+      finish_2_30.style.display = 'none';
+      finish_2_60.style.display = 'block';
+      finish_3_60.style.display = 'none';
+      finish_3_100.style.display = 'none';
     });
 
     prev2Button.addEventListener('click', function() {
+      class1.style.display = 'block';
       class2.style.display = 'none';
       class3.style.display = 'none';
-      class1.style.display = 'block';
-      finish1_2_2.style.display = 'none';
-      linefinish2_2.style.display = 'none';
+      finish_1_0.style.display = 'none';
+      finish_1_30.style.display = 'block';
+      finish_2_30.style.display = 'none';
+      finish_2_60.style.display = 'none';
+      finish_3_60.style.display = 'none';
+      finish_3_100.style.display = 'none';
     });
 
 
