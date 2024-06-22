@@ -45,8 +45,12 @@
                 <p class="color_FFF font_2">{{ user.profile.user_major }}</p>
               </div>
             </div>
+<<<<<<< HEAD
             <!-- update-profile address 추후 삽입 -->
             <a href="">
+=======
+            <a href="{% url 'accounts:update-profile' user.id %}">
+>>>>>>> 8f385948905ccdfdc940f2b55f5cccba573b3795
               <img src="{% static 'images/edit.png' %}" width="32px" height="32px">
             </a>
           </div>
