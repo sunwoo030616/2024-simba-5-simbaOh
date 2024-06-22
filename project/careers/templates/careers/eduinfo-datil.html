@@ -1,0 +1,56 @@
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/main/eduinfo_detail.css'%}"
+/>
+
+<div class="screen">
+	<div class="main">
+		<div class="body">
+			<div class="nav">
+				<div class="left" style="z-index: 1;">
+					<a href="{% url 'careers:edu-info' %}">
+						<img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
+					</a>
+				</div>
+				<div></div>
+				<div style="width: 32px;"></div>
+			</div>
+			<p class="color_28 title_text" style="text-align: center;">멘토 정보</p>
+		</div>
+	</div>
+</div>
+
+<h3>{{eduinfo.title}}</h3>
+활동일 : {{eduinfo.startline}} - {{eduinfo.deadline}}
+장소 : {{eduinfo.company}}
+분야: {{eduinfo.field}}
+<p>
+    {% for eduinfotag in eduinfo.eduinfotags.all %}
+        <a href="{% url 'careers:eduinfotag-eduinfos' eduinfotag.id %}">#{{ eduinfotag.name }} </a>
+    {% endfor %}
+</p>
+<hr/>
+
+<form action="{% url 'careers:ei_bms' eduinfo.id %}" method="post">
+    {% csrf_token %}
+    {% if user in eduinfo.ei_bm.all %}
+        <button type="submit">북마크 취소</button>
+    {% else %}
+        <button type="submit">북마크 추가</button>
+    {% endif %}
+    </form>
+
+{{eduinfo.eibm_count}}개
+{% if eduinfo.image %}
+    <p><img src="{{ eduinfo.image.url }}" alt="사진" width="100px"></p>
+{% endif %}
+<p>{{eduinfo.content}}</p>
+{% if eduinfo.writer == user %}
+<a href="{% url 'careers:eduinfo-delete' eduinfo.id %}">삭제하기</a>
+{% endif %}
+<br>
+
+{% endblock %}

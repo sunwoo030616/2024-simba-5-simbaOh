@@ -21,19 +21,20 @@ href="{% static 'css/careers/career_info.css'%}"
             <div style="width:36px;">
             </div>
         </div>
-        
 
-        <div class="box">
-            <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" class="search">
-            <button type="button" class='button'>
-                <img src="{% static 'images/search.png' %}" alt="" onclick="" >
-            </button>
-        </div>
-        {% comment %} 여기에도 데이터 불러와주세요 {% endcomment %}
+        <form method="GET" action="{% url 'careers:career-info' %}">
+            <div class="box">
+                <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" class="search" value="{{ search_query }}">
+                <button type="submit" class='button'>
+                    <img src="{% static 'images/search.png' %}" alt="">
+                </button>
+            </div>
+        </form>
+
         <div class='topbar'>
             <a href="{% url 'careers:career-info' %}" class='topbar1'>채용 정보</a>
             <a href="{% url 'careers:career-program' %}" class='topbar2'>취업 프로그램</a>
-            <a href="{% url 'careers:career-info' %}" class='topbar3'>교육 정보</a>
+            <a href="{% url 'careers:edu-info' %}" class='topbar3'>교육 정보</a>
         </div>
 
         <div class='midbar'>

@@ -44,12 +44,11 @@
     </div>
 <h1>내 북마크</h1>
 <ul>
-    {% for careerinfo in cibms %}
+    {% for eduinfo in eibms %}
         <li>
-            <a href="{% url 'careers:careerinfo-detail' careerinfo.id %}">{{ careerinfo.title }}</a>
-            <p>{{ careerinfo.company }}</p>
-            <p>{{ careerinfo.startline }}|{{careerinfo.deadline}}</p>
+            <a href="{% url 'careers:eduinfo-detail' eduinfo.id %}">{{ eduinfo.title }}</a>
+            <p>{{ eduinfo.company }}</p>
+            <p>{{ eduinfo.startline }}|{{eduinfo.deadline}}</p>
         </li>
     {% endfor %}
 </ul>
-
