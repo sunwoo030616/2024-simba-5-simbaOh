@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h1>커리어 신청 현황</h1>
+    <div class="tab-menu">
+        <a href="{% url 'users:ciapply' %}" class="active">채용</a>
+        <a href="{% url 'users:cpapply' %}">취업 </a>
+        <a href="{% url 'users:eiapply' %}">교육</a>
+    </div>
+    <ul class="application-list">
+        {% for application in cp_apply %}
+        <li class="application-item">
+            <a href="{% url 'careers:careerprogram-detail' application.careerprogram.id %}">
+                
+                <div class="application-details">
+                    <h2>{{ application.careerprogram.title }}</h2>
+                    <p>{{ application.careerprogram.place }}</p>
+                    <div class="tags">
+                        {% for tag in application.careerprogram.careerinfoprograms.all %}
+                        <span class="tag">{{ tag.name }}</span>
+                        {% endfor %}
+                    </div>
+                    <p class="application-date">{{ application.application_date|date:"Y/m/d" }}</p>
+                </div>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
