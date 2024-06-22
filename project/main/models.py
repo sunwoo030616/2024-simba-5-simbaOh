@@ -30,9 +30,8 @@ class Mentor(models.Model):
     followers = models.ManyToManyField(User, related_name='mentor_followings', blank=True)
 
     categories = models.ManyToManyField(Category, related_name='mentors', blank=True)
+    def __str__(self):
+        return self.mentor_info[:30]
 
 class Accept(models.Model):
     mentor_ship = models.ForeignKey(Mentor, related_name='menti_ship', on_delete=models.CASCADE, blank=True, null=True, default='0')
-
-    def __str__(self):
-        return self.mentor_intro[:30]

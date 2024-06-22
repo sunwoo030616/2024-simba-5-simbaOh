@@ -52,7 +52,7 @@ def signup(request):
                     user_profile=None
                 )
                 Request.objects.create(
-                    menti_ship = ''
+                    menti_ship = '0'
                 )
 
 
