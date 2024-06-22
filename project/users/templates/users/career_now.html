@@ -1,0 +1,7 @@
+<h2>지원 현황</h2>
+<ul>
+    {% for application in cp_apply %}
+        <li>{{ application.careerprogram.title }} - {{ application.application_date }}</li>
+        <li>{{application.careerprogram.place}} - {{application.careerprogram.field}}</li>
+    {% endfor %}
+</ul>

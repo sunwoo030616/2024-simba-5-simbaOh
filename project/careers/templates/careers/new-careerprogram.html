@@ -1,12 +1,83 @@
-<form action="{% url 'careers:careerprogram-create' %}" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <p>취업프로그램명 : <input type="text" name="title"></p>
-    <p>활동시작일 : <input type="text" name="startline"></p>
-    <p>활동마감일 : <input type="text" name="deadline"></p>
-    <p>장소 : <input type="text" name="place"></p>
-    <p>분야 : <input type="text" name="field"></p>
-    
-    <p>이미지 : <input type="file" name="image"></p>
-    <p>내용 : <textarea type="text" name="content" id="" cols="30" rows="10"></textarea></p>
-    <button type="submit">제출</button>
-</form>
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<link
+rel="stylesheet"
+type="text/css"
+href="{% static 'css/careers/new_careerprogram.css'%}"
+/>
+<!-- css careerprogram으로 바꿔주세용 -->
+<div class='container'>
+  <div class="container2"> 
+    <div class='imagesmask' style="padding-top: 48px;">
+        <div class="left">
+            <a href="{% url 'main:mainpage' %}">
+            <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
+            </a>
+        </div>
+        <div class="right">
+            <h2 class='signup-main'>커리어</h2>
+        </div>
+        <div style="width:36px;">
+        </div>
+    </div>
+
+    <div class='intro'>
+      {{ user.profile.user_name }}님, 안녕하세요 :)
+    </div>
+
+    <div class='main'>
+      <div class='box'>
+        <form action="{% url 'careers:careerprogram-create' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class='cate'><div class='cate2'>카테고리 *</div>
+              <div class='box3'>
+                <div class='box3_1'>채용</div>
+                <a href="{% url 'careers:new-careerprogram' %}">
+                 
+                  <div class='box3_2'>취업</div>
+                </a>
+                <a href="{% url 'careers:new-eduinfo' %}">
+                  
+                <div class='box3_3'>교육</div>
+                </a>
+              </div>
+            </div>
+
+            <p class='title_'>취업 프로그램명 *<input class='title' type="text" name="title" required/></p>
+            <p class='start_'>활동 시작일 *<input class='start' type="date" name="startline" min="2024-06-15" max="2024-07-15" required/></p>
+            <p class='end_'>활동 마감일 *<input class='end' type="date" name="deadline" min="2024-06-16" max="2024-07-16" required/></p>
+            <p class='company_'>장소 *<input class='company' type="text" name="place" required/></p>
+            <!-- 회사가 아니고 장소로 class 수정?부탁 -->
+            <p class='area_'>분야 *
+              <select class='area' name='field' id='field' required/>
+                <option value=''>--- 선택 ---</option>
+                <option value='인사/노무'>인사/노무</option>
+                <option value='IT개발/데이터'>IT개발/데이터</option>
+                <option value='디자인'>디자인</option>
+                <option value='영업/판매/무역'>영업/판매/무역</option>
+                <option value='상품기획/MD'>상품기획/MD</option>
+                <option value='서비스'>서비스</option>
+                <option value='생산'>생산</option>
+                <option value='의료'>의료</option>
+                <option value='건설/건축'>건설/건축</option>
+                <option value='연구/R&D'>연구/R&D</option>
+                <option value='교육'>교육</option>
+                <option value='금융/보험'>금융/보험</option>
+                <option value='미디어/스포츠'>미디어/스포츠</option>
+                <option value='교육'>교육</option>
+              </select>
+            <p class='image_'>이미지 *<input class='image' type="file" name="image" required/></p>
+            <p class='tag_'>태그 *<input class='tag' type="text" name="careerprogramtag" required/></p>
+            <p class='comment_'>내용<input class='comment' type="text" name="content"></p>
+            <button class='submitbutton' type="submit">작성완료</button>
+
+
+        </form>
+      </div>
+    </div>
+    <img class='click' src="{% static 'images/이미지.png' %}" alt="" onclick="" >
+  </div>
+</div>
+
+
+{% endblock %}

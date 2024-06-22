@@ -8,15 +8,15 @@
         <a href="{% url 'users:eiapply' %}">교육</a>
     </div>
     <ul class="application-list">
-        {% for application in ci_apply %}
+        {% for application in ei_apply %}
         <li class="application-item">
-            <a href="{% url 'careers:careerinfo-detail' application.careerinfo.id %}">
+            <a href="{% url 'careers:eduinfo-detail' application.eduinfo.id %}">
                 
                 <div class="application-details">
-                    <h2>{{ application.careerinfo.title }}</h2>
-                    <p>{{ application.careerinfo.company }}</p>
+                    <h2>{{ application.eduinfo.title }}</h2>
+                    <p>{{ application.eduinfo.place }}</p>
                     <div class="tags">
-                        {% for tag in application.careerinfo.careerinfotags.all %}
+                        {% for tag in application.eduinfo.eduinfos.all %}
                         <span class="tag">{{ tag.name }}</span>
                         {% endfor %}
                     </div>

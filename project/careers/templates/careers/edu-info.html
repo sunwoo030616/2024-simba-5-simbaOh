@@ -23,12 +23,14 @@ href="{% static 'css/careers/edu_info.css'%}"
         </div>
         
 
-        <div class="box">
-            <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" class="search">
-            <button type="button" class='button'>
-                <img src="{% static 'images/search.png' %}" alt="" onclick="" >
-            </button>
-        </div>
+        <form method="GET" action="{% url 'careers:edu-info' %}">
+            <div class="box">
+                <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" class="search" value="{{ search_query }}">
+                <button type="submit" class='button'>
+                    <img src="{% static 'images/search.png' %}" alt="">
+                </button>
+            </div>
+        </form>
 
         <div class='topbar'>
             <a href="{% url 'careers:career-info' %}" class='topbar1'>채용 정보</a>
@@ -47,17 +49,18 @@ href="{% static 'css/careers/edu_info.css'%}"
 
         <div class='member'>
             {% for eduinfo in eduinfos %}
-            <div class='eduinfo'>
+            <a href="{% url 'careers:eduinfo-detail' eduinfo.id %}" class='careerinfo'>
                 <div class='title'>{{ eduinfo.title }}</div>
-                <div class='eduinfo2'>
-                    <div class='eduinfo3'>
-                        <div class='company'> {{eduinfo.company}}</div>
+                <div class='careerinfo2'>
+                    <div class='careerinfo3'>
+                        <div class='company'> {{eduinfo.place}}</div>
                     
-                        <div class='area'>{{eduinfo.place}}</div>
+                        <div class='area'>{{eduinfo.field}}</div>
+
                     </div>
-                    <div class='update'>{{careerinfo.startline}}~{{eduinfo.deadline}}</div>
+                    <div class='update'>{{eduinfo.startline}}~{{eduinfo.deadline}}</div>
                 </div>
-            </div>
+            </a>
             {% endfor %} 
         </div>
 
