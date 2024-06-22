@@ -99,5 +99,25 @@ def signup3(request):
             return redirect('accounts:finishjoin')
     return render(request, 'accounts/signup3.html')
 
+def update_profile(request, id):
+    update_profile = Profile.objects.get(pk=id)
+
+    if request.user.is_authenticated and request.user == update_profile.user:
+        if request.method == 'POST':
+            update_profile.user_name = request.POST.get('user_name')
+            update_profile.user_phone = request.POST.get('user_phone')
+            update_profile.user_major = request.POST.get('user_major')
+            update_profile.user_enroll = request.POST.get('user_enroll')
+            
+            if request.FILES.get('user_profile'):
+                update_profile.user_profile = request.FILES.get('user_profile')
+            
+            update_profile.save()
+
+            return redirect('main:mainpage')
+        else:
+            return render(request, 'accounts/update_profile.html', {'profile': update_profile})
+    return redirect('accounts:login')
+
 def finishjoin(request):
     return render(request, 'accounts/finishjoin.html')

@@ -11,15 +11,18 @@ href="{% static 'css/accounts/login.css'%}"
 <div class="container">
   <div class='container2'> 
     <div class='container-top'>
-
       <div class="small_nav">
-        <div class="left">
+        <div class="left" style="z-index: 1;">
           <a href="{% url 'main:first-screen' %}">
             <img src="{% static 'images/arrow-24.png' %}" width="32px">
           </a>
         </div>
+        <a class="row" style="flex-direction: row;" href="{% url 'accounts:login' %}">
+          <img src="{% static 'images/profile_key.png' %}" width="32px" height="32px">
+          <p class="color_1E title_font">CHEAT KEY</p>
+        </a>
         <div class="right">
-          <div width="32px"></div>
+          <div style="width: 32px;"></div>
         </div>
       </div>
       
@@ -28,26 +31,26 @@ href="{% static 'css/accounts/login.css'%}"
         {% csrf_token %}
 
         <div class='inputlist'>
-            <div class='id'>
-              <input class='same' placeholder="아이디를 입력해주세요." type='text' name='user_id' id='user_id' required />
-            </div>
+          <div class='id'>
+            <input class='same' placeholder="아이디를 입력해주세요." type='text' name='user_id' id='user_id' required />
+          </div>
 
-            <div class='id'>
-              <input class='same' placeholder="비밀번호를 입력해주세요." type='password' name='user_pw' id='user_pw' required/>
-            </div>
-            <div class='auto'>
-              <label  for='check'>
-                <input type='checkbox' name='check_group' id='check' checked/>
+          <div class='id'>
+            <input class='same' placeholder="비밀번호를 입력해주세요." type='password' name='user_pw' id='user_pw' required/>
+          </div>
+          <div class='auto'>
+            <label  for='check'>
+              <input type='checkbox' name='check_group' id='check' checked/>
                 자동 로그인
-              </label>
-            </div>
+            </label>
+          </div>
 
-            <button class='submit' type='submit' id='loginButton' disabled>로그인</button>
+          <button class='submit' type='submit' id='loginButton' disabled>로그인</button>
 
             <!-- <div class='search'> 
               <button class='submit3' type='button'>아이디 찾기</button>
               <button class='submit3' type='button'>비밀번호 찾기</button> -->
-              <button class='submit3' type='button' id='signupButton'>회원가입</button>
+          <button class='submit3' type='button' id='signupButton'>회원가입</button>
             <!-- </div class='search'> -->
 
             <!-- <div class='midbar'>
@@ -55,10 +58,9 @@ href="{% static 'css/accounts/login.css'%}"
                 <span class='hrtext'>소셜 계정 로그인</span>
                 <div class='line'></div>
             </div> -->
-
             <!-- <img src="{% static 'images/image 38.png' %}" alt='google' width='50px'> -->
+        
         </div>
-
       </form>
     </div>
   </div>

@@ -1,32 +1,28 @@
-{% extends 'base_with_nav.html' %} 
-{% block content %} 
+{% extends 'base_with_nav.html' %}
 {% load static %}
 
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/main/mentor_list.css'%}"
-/>
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/main/mentor_list.css' %}">
 
 <div class="screen">
   <div class="main">
     <div class="body">
       <div class="small_nav">
-        <div class="left">
+        <div class="left" style="z-index: 1;">
           <a href="{% url 'main:mentor-start' %}">
             <img src="{% static 'images/arrow-24.png' %}" width="32px">
           </a>
         </div>
         <div class="right" style="width: 32px;"></div>
       </div>
-      <form class="control" action="{% url 'main:mentor-list' %}" method="POST">
+      <form id="mentor-filter-form" class="control" action="{% url 'main:mentor-list' %}" method="POST">
         {% csrf_token %}
         <div class="search_bar_zone">
           <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" class="search">
-          <div style="width: 32px;"></div>
         </div>
         <div class="filter">
-          <div class="row">
+          <div class="row1">
             <input type="checkbox" name="categories" id="checkbox1" value="0" class="ckb_white">
             <label for="checkbox1">인사/노무</label>
             <input type="checkbox" name="categories" id="checkbox2" value="1" class="ckb_white">
@@ -36,7 +32,7 @@
             <input type="checkbox" name="categories" id="checkbox4" value="3" class="ckb_white">
             <label for="checkbox4">영상/판매/무역</label>
           </div>
-          <div class="row">
+          <div class="row1">
             <input type="checkbox" name="categories" id="checkbox5" value="4" class="ckb_white">
             <label for="checkbox5">상품기획/MD</label>
             <input type="checkbox" name="categories" id="checkbox6" value="5" class="ckb_white">
@@ -48,20 +44,21 @@
             <input type="checkbox" name="categories" id="checkbox9" value="8" class="ckb_white">
             <label for="checkbox9">건설/건축</label>
           </div>
-          <div class="row">
+          <div class="row1">
             <input type="checkbox" name="categories" id="checkbox10" value="9" class="ckb_white">
             <label for="checkbox10">연구/R&D</label>
             <input type="checkbox" name="categories" id="checkbox11" value="10" class="ckb_white">
             <label for="checkbox11">교육</label>
             <input type="checkbox" name="categories" id="checkbox12" value="11" class="ckb_white">
             <label for="checkbox12">금융/보험</label>
-            <input type="checkbox" name="categories" id="checkbox13" value="12"class="ckb_white">
+            <input type="checkbox" name="categories" id="checkbox13" value="12" class="ckb_white">
             <label for="checkbox13">미디어/스포츠</label>
-            <input type="checkbox" name="categories" id="checkbox14" value="13"class="ckb_white">
+            <input type="checkbox" name="categories" id="checkbox14" value="13" class="ckb_white">
             <label for="checkbox14">교육</label>
           </div>
         </div>
-        <button type="submit">Submit</button>
+        <!-- Submit 버튼을 숨김 처리하고 JavaScript로 클릭 이벤트 발생시키기 -->
+        <button type="submit" id="submit-btn" hidden>Submit</button>
       </form>
       <div class="mento_text color_28 font_1">멘토 리스트</div>
       <div class="mento_list">
@@ -69,26 +66,26 @@
         <a href="{% url 'main:mentor-info' mentor.id %}">
           <div class="mentor_card">
             <div class="mentor_card_comp_font color_00">
-              {{mentor.mentor_company}}
-            </div> 
+              {{ mentor.mentor_company }}
+            </div>
             <div class="mentor_card_dept_font color_00">
-              {{mentor.mentor_dept}}
-            </div> 
+              {{ mentor.mentor_dept }}
+            </div>
             <div class="centering">
               {% if mentor.mentor_image %}
-                <img class="image_set" src="{{ mentor.image.url }}" width="50px" height="50px">
+              <img class="image_set" src="{{ mentor.image.url }}" width="50px" height="50px">
               {% else %}
-                <img class="image_set" src="{% static 'images/signup1.png' %}" width='50px' height='50px'>
+              <img class="image_set" src="{% static 'images/signup1.png' %}" width='50px' height='50px'>
               {% endif %}
               <div class="mentor_card_name_font color_00">
-                {{mentor.user.profile.user_name}}
-              </div> 
+                {{ mentor.user.profile.user_name }}
+              </div>
               <div class="mentor_card_major_font color_00">
-                {{mentor.user.profile.user_major}}
-              </div> 
+                {{ mentor.user.profile.user_major }}
+              </div>
               <div class="mentor_card_work_font color_9D">
-                {{mentor.mentor_work}}
-              </div> 
+                {{ mentor.mentor_work }}
+              </div>
             </div>
           </div>
         </a>
@@ -97,5 +94,29 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const form = document.getElementById('mentor-filter-form');
+    
+    checkboxes.forEach(checkbox => {
+      const checkboxState = localStorage.getItem(checkbox.id);
+      if (checkboxState === 'checked') {
+        checkbox.checked = true;
+      }
+      
+      checkbox.addEventListener('change', function() {
+        if (checkbox.checked) {
+          localStorage.setItem(checkbox.id, 'checked');
+        } else {
+          localStorage.removeItem(checkbox.id);
+        }
+        
+        form.submit();
+      });
+    });
+  });
+</script>
 
 {% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %}
 
 <link
   rel="stylesheet"
@@ -10,7 +10,7 @@
   <div class="container2"> 
 
     <div class='imagesmask' style="padding-top: 48px;">
-      <div class="left">
+      <div class="left" style="z-index: 1;">
         <a href="{% url 'main:mentor-start' %}">
           <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
         </a>

@@ -71,9 +71,29 @@ def edit_portfolio(request):
 
     return render(request, 'users/edit_portfolio.html', {'portfolio': portfolio})
 
+<<<<<<< HEAD
 def update_profile(request, id):
     update_post = Profile.objects.get(pk=id)
     render(request, 'users/update_profile.html')
+=======
+# def update_profile(request, id):
+#     update_profile = Profile.objects.get(pk=id)
+#     if request.user.is_authenticated and request.user == update_profile.user:
+#         update_profile.user_name = request.POST['user_name']
+#         update_profile.user_phone = request.POST['user_phone']
+#         update_profile.user_birth = request.POST['user_birth']
+
+#         update_profile.user_major = request.POST['user_major']
+#         update_profile.user_enroll = request.POST['user_enroll']
+        
+#         if request.FILES.get('user_profile'):
+#             update_profile.user_profile = request.FILES.get('user_profile')
+
+#         update_profile.save()
+
+#         return redirect('main:mainpage', id)
+#     return render(request, 'users/update_profile.html')
+>>>>>>> 8f385948905ccdfdc940f2b55f5cccba573b3795
 
 def my_writing(request, id):
     user = User.objects.get(pk=id)
