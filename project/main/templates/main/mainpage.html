@@ -15,20 +15,24 @@
         </div>
       </div>
       <div class="btn_list">
-        <a href="/mentor-start" class="btn_rec">
+        <a href="{% url 'main:mentor-start' %}" class="btn_rec">
           <img src="{% static 'images/btn_rec.png' %}" width="50%">
           <p class="text_set1 font_CORE color_D4">멘토</p>
           <p class="text_set2 font_PRIDE color_D4">동문선배가 다 모였다!<br>궁금한 기업에 대해<br>물어봐</p>
         </a>
         <div class="btn_rho">
           <img src="{% static 'images/btn_rho.png' %}" width="300px">
-          <p class="text_set3 font_CORE color_28">커뮤니티</p>
-          <p class="text_set4 font_PRIDE color_28">자유게시반<br>취업 정보</p>
+          <a href="{% url 'community:board' %}" class="box_set2">
+            <p class="text_set3 font_CORE color_28">커뮤니티</p>
+            <p class="text_set4 font_PRIDE color_28">자유게시반<br>취업 정보</p>
+          </a>
         </div>
         <div class="btn_cir">
           <img src="{% static 'images/btn_cir.png' %}" width="50%">
-          <p class="text_set5 font_CORE color_F">커리어</p>
-          <p class="text_set6 font_PRIDE color_F">채용, 취업, 교육<br>프로그램</p>
+          <a href="{% url 'careers:career-info' %}" class="box_set3">
+            <p class="text_set5 font_CORE color_F">커리어</p>
+            <p class="text_set6 font_PRIDE color_F">채용, 취업, 교육<br>프로그램</p>
+          </a>
         </div>
       </div>
       <div class="text_dongguk">
