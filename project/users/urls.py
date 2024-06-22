@@ -7,7 +7,6 @@ urlpatterns = [
     path('edit_portfolio/', edit_portfolio, name='edit_portfolio'),
     path('follow-list/<int:id>', follow_list, name="follow-list"),
     path('bookmark/<int:id>', bookmark, name="bookmark"),
-    path('update-profile/<int:id>', update_profile, name="update-profile"),
     path('my-writing/<int:id>', my_writing, name="my-writing"),
     path('mentoring/<int:id>', mentoring, name="mentoring"),
     path('career-now/<int:id>', career_now, name="career-now")
