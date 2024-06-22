@@ -8,9 +8,9 @@
 <form action="{% url 'main:mentor-start' %}" method="post" class='container'>
   {% csrf_token %}
   <div class="small_nav">
-    <div class="left">
-      <a href="{% url 'main:mainpage' %}">
-        <img src="{% static 'images/arrow-24.png' %}" width="32px">
+    <div class="left" style="z-index: 1;">
+      <a style="margin-left: 15px;" href="{% url 'main:mainpage' %}">
+        <img src="{% static 'images/arrow-24.png' %}" width="32px" style="z-index: 30;">
       </a>
     </div>
     <div class="right" style="width: 32px;"></div>

@@ -91,32 +91,52 @@
   transform: translateY(100%);
 }
 
+.box_set2 {
+  display: flex;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  transform: translate(-10px, 40px);
+  align-items: center;
+  justify-content: center;
+}
+
+.box_set3 {
+  display: flex;
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  transform: translate(-5px, 5px);
+  align-items: center;
+  justify-content: center;
+}
+
 .text_set3 {
   display: flex;
   position: absolute;
   text-align: center;
-  transform: translate(-10%, 220%);
+  transform: translateY(-60%);
 }
 
 .text_set4 {
   display: flex;
   position: absolute;
   text-align: center;
-  transform: translate(-10%, 300%);
+  transform: translateY(70%);
 }
 
 .text_set5 {
   display: flex;
   position: absolute;
   text-align: center;
-  transform: translateY(100%);
+  transform: translateY(-75%);
 }
 
 .text_set6 {
   display: flex;
   position: absolute;
   text-align: center;
-  transform: translateY(180%);
+  transform: translateY(50%);
 }
 
 .text_dongguk {
