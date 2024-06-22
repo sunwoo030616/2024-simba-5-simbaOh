@@ -5,7 +5,7 @@ rel="stylesheet"
 type="text/css"
 href="{% static 'css/careers/career_info.css'%}"
 />
-{% comment %} 여기가 커리어 부분의 메인페이지와 같은 느낌임 {% endcomment %}
+
 <div class='container'>
     <div class="container2"> 
 
@@ -29,21 +29,19 @@ href="{% static 'css/careers/career_info.css'%}"
                 <img src="{% static 'images/search.png' %}" alt="" onclick="" >
             </button>
         </div>
-        
-        {% comment %} topbar부분 url 수정해야함 임시로 넣어둠 {% endcomment %}
+        {% comment %} 여기에도 데이터 불러와주세요 {% endcomment %}
         <div class='topbar'>
-            <a href="{% url 'main:mainpage' %}" class='topbar1'>채용 정보</a>
-            <a href="{% url 'main:mainpage' %}" class='topbar2'>취업 프로그램</a>
-            <a href="{% url 'main:mainpage' %}" class='topbar3'>교육 정보</a>
+            <a href="{% url 'careers:career-info' %}" class='topbar1'>채용 정보</a>
+            <a href="{% url 'careers:career-info' %}" class='topbar2'>취업 프로그램</a>
+            <a href="{% url 'careers:career-info' %}" class='topbar3'>교육 정보</a>
         </div>
 
         <div class='midbar'>
-            <div class='total'>총 105건</div> 
-            {% comment %} 여기에도 글씨대신 데이터 불러와주세요 {% endcomment %}
-            <select class='new' name='' id=''>
-                {% comment %} 여기 name하고 id뭐하죠? {% endcomment %}
-                <option value='최신순'>최신순</option>
-                <option value='오래된순'>오래된순</option>
+            <div class='total'>총 {{ total_careerinfo_count }}건</div> 
+            
+            <select class='new' name='order' id='order' onchange="location.href='?order=' + this.value;">
+                <option value='latest' {% if selected_order == 'latest' %}selected{% endif %}>최신순</option>
+                <option value='oldest' {% if selected_order == 'oldest' %}selected{% endif %}>오래된순</option>
             </select>
         </div>
 
@@ -55,7 +53,8 @@ href="{% static 'css/careers/career_info.css'%}"
                     <div class='careerinfo3'>
                         <div class='company'> {{careerinfo.company}}</div>
                     
-                        <div class='area'>{{careerinfo.place}}</div>
+                        <div class='area'>{{careerinfo.field}}</div>
+                        <a href="{% url 'careers:careerinfo-detail' careerinfo.id %}">자세히 보기</a>
                     </div>
                     <div class='update'>{{careerinfo.deadline}}</div>
                 </div>
