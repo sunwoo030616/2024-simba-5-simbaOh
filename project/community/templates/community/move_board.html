@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_with_nav.html' %}
 {% load static %}
 {% block content %}
 
@@ -8,65 +8,66 @@
     href="{% static 'css/community/move_board.css' %}"
 />
 
-<div class='container'>
-    <div class="container2"> 
-        <div class='imagesmask' style="padding-top: 48px;">
-            <div class="left">
-                <a href="{% url 'main:mainpage' %}">
-                    <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
-                </a>
-            </div>
-            <div class="right">
-                <h2 class='signup-main'>커뮤니티</h2>
-            </div>
-            <div style="width:36px;">
-            </div>
+<div class='screen'>
+  <div class="main">
+    <div class="body"> 
+      <div class='nav'>
+        <div class="left" style="z-index: 1;">
+          <a href="{% url 'main:mainpage' %}">
+            <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
+          </a>
         </div>
-
-        <div class='topbar'>
-            <a class='topbar1' href="{% url 'community:free-board' %}">자유게시판<div class='line'></div></a>
-            <a class='topbar2' href="{% url 'community:move-board' %}">이직게시판<div class='line2'></div></a>
+        <div class="right">
+          <h2 class="color_28 title_text" style="text-align: center;">커뮤니티</h2>
         </div>
+        <div style="width:32px;"></div>
+      </div>
 
-        {% for move in moves %}
-        <a href="{% url 'community:move-detail' move.id %}">
-            <div class='boxes'>
-                <div class='first'>
-                    <div class='emoji'>{{ move.emoji|safe }}</div>
-                    <div class='first2'>
-                        <div class='title'>{{ move.title }}</div>
-                        <div class='names'>
-                            <div class='name'>{{ move.writer.profile.user_name }} |</div>
-                            <div class='major'>{{ move.writer.profile.user_major }}</div>
-                        </div>
-                    </div>
+      <div class='topbar'>
+        <a class='topbar1' href="{% url 'community:free-board' %}">자유게시판<div class='line'></div></a>
+        <a class='topbar2' href="{% url 'community:move-board' %}">이직게시판<div class='line2'></div></a>
+      </div>
+
+      {% for move in moves %}
+        <a class="centering" href="{% url 'community:move-detail' move.id %}">
+          <div class='boxes'>
+            <div class='first'>
+              <div class='emoji'>{{ move.emoji|safe }}</div>
+              <div class='first2'>
+                <div class='title'>{{ move.title }}</div>
+                <div class='names'>
+                  <div class='name'>{{ move.writer.profile.user_name }} |</div>
+                  <div class='major'>{{ move.writer.profile.user_major }}</div>
                 </div>
-                <div class='second'>
-                    <div class='second2'>
-                        <div class='imaplus'>
-                            <img src="{% static 'images/ima.png' %}" alt="Example Image" class="ima">
-                            <div class='comentcount'>{{ move.movecomments_count }}</div>
-                        </div>
-                        <div class='tag'>
-                            {% for movetag in move.movetags.all %}
-                                #{{ movetag.movename }}
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class='date'>{{ move.pub_date }}</div>
-                </div>
+              </div>
             </div>
-        </a>
-        {% endfor %}
-
-        <div class='superwrite' style="position:fixed">
-            {% if user.is_authenticated %}
-                <a href="{% url 'community:move-create' %}" width='17px' height='17px'>
-                    <img src="{% static 'images/realplus.png' %}" alt="">
-                </a>
-            {% endif %}
-        </div>
+            <div class='second'>
+              <div class='second2'>
+                <div class='imaplus'>
+                  <img src="{% static 'images/ima.png' %}" alt="Example Image" class="ima">
+                  <div class='comentcount'>{{ move.movecomments_count }}</div>
+                </div>
+                <div class='tag'>
+                {% for movetag in move.movetags.all %}
+                  #{{ movetag.movename }}
+                {% endfor %}
+                </div>
+              </div>
+              <div class='date'>{{ move.pub_date }}</div>
+            </div>
+          </div>
+        </a>    
+      {% endfor %}
+      </div>
     </div>
+    <div class='superwrite'>
+      {% if user.is_authenticated %}
+      <a href="{% url 'community:move-create' %}" width='17px' height='17px'>
+        <img src="{% static 'images/realplus.png' %}" alt="">
+      </a>
+      {% endif %}
+    </div>
+  </div>
 </div>
 
 {% endblock %}

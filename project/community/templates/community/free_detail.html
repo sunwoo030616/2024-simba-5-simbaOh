@@ -28,10 +28,9 @@
         </div>
       </div>
       <div class="row1">
-        <!-- 이모지 나오는 곳 -->
         <div class="row">
-          <div style="width: 32px;"></div>
-          <div class="column">
+          <div style="width: 30px; font-size: 30px;">{{ free.emoji }}</div>
+          <div class="column1">
             <p class="text_1 color_1E">{{ free.title }}</p>
           <p class="text_2 color_66">{{ free.writer.profile.user_name }}</p>
           </div>
@@ -60,28 +59,23 @@
       {% endif %}
       {% endfor %}
 
-      <div class="commnet_form row" style="position: fixed; bottom:0;">
+      <div class="commnet_form row" style="position: fixed; bottom:10px;">
         {% if free.image %}
-          <img src="{{ free.image.url }}" alt="사진" width="32px">
+          <img src="{{ free.image.url }}" alt="사진" width="40px">
         {% else %}
-          <img src="{% static 'images/arrow-24.png' %}" width="32px">
+          <img src="{% static 'images/logo.png' %}" width="40px">
         {% endif %}
         <form class="comment_box_2" action="{% url 'community:free-detail' free.id %}" method="POST">
           {% csrf_token %}
-          <input type="text" name="content" placeholder="댓글 추가">
-          <input class="btn_submit" style="border: 1px solid black;" type="submit" name="submit">
+          <input type="text" size="40" name="content" placeholder="댓글 추가">
+          <button class="btn_submit" type="submit" name="submit">
+            <img src="{% static 'images/dm_icon.png' %}" width="40px" height="40px">
+          </button>
         </form>
       </div>
     </div>
   </div>
 </div>
-<p>
-  {% for freetag in free.freetags.all %}
-    #{{freetag.freename}}
-  {% endfor %}
-</p>
-
-<p>댓글개수: {{freecomment_count}}</p>
 
 {% endblock %}
 
