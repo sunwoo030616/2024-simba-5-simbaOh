@@ -1,30 +1,54 @@
-{% extends 'base.html' %}
-{% block content %}
-<div class="container">
-    <h1>커리어 신청 현황</h1>
-    <div class="tab-menu">
-        <a href="{% url 'users:ciapply' %}" class="active">채용</a>
-        <a href="{% url 'users:cpapply' %}">취업 </a>
-        <a href="{% url 'users:eiapply' %}">교육</a>
-    </div>
-    <ul class="application-list">
-        {% for application in cp_apply %}
-        <li class="application-item">
-            <a href="{% url 'careers:careerprogram-detail' application.careerprogram.id %}">
-                
-                <div class="application-details">
-                    <h2>{{ application.careerprogram.title }}</h2>
-                    <p>{{ application.careerprogram.place }}</p>
-                    <div class="tags">
-                        {% for tag in application.careerprogram.careerinfoprograms.all %}
-                        <span class="tag">{{ tag.name }}</span>
-                        {% endfor %}
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %}
+
+<link
+rel="stylesheet"
+type="text/css"
+href="{% static 'css/users/cpapply.css'%}"
+/>
+
+<div class="screen">
+  <div class="main">
+    <div class="body">
+
+        <div class="nav">
+            <div class="left" style="z-index: 1;">
+                <a href="{% url 'main:mainpage' %}">
+        <img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
+                </a>
+            </div>
+            <div><p class="color_28 title_text" style="text-align: center;">커리어 신청 현황</p></div>
+            <div style="width: 32px;"></div>
+        </div>
+
+
+        <div class="active">
+            <div class='act1'>
+            <a class="active1" href="{% url 'users:ciapply' %}">채용</a><div class='line1'></div>
+            </div>
+            <div class='act3'>
+            <a class="active3" href="{% url 'users:cpapply' %}">취업 프로그램</a><div class='line3'></div>
+            </div>
+            <div class='act2'>
+            <a class="active2" href="{% url 'users:eiapply' %}">교육</a><div class='line2'></div>
+            </div>
+        </div>
+        
+        <div class="application">
+            {% for application in cp_apply %}
+                <a class='detail' href="{% url 'careers:careerprogram-detail' application.careerprogram.id %}">
+                    {% comment %} area에 템플릿 언어 넣어야함 {% endcomment %}
+                    <div class='areadate'>
+                        <div class='area'>IT 개발/데이터***</div>
+                        <div class='date'>{{ application.application_date|date:"Y/m/d" }}</div>                            
                     </div>
-                    <p class="application-date">{{ application.application_date|date:"Y/m/d" }}</p>
-                </div>
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
+                        <div class='place'>{{ application.careerprogram.place }}</div>
+                        <div class='title'>{{ application.careerprogram.title }}</div>
+                        <div class='line'></div>
+                </a>
+            {% endfor %}
+        
+        </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

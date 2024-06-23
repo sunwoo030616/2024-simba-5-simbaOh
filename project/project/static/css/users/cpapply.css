@@ -1,4 +1,4 @@
-/* eiapply - CSS */
+/* cpapply - CSS */
 
 .screen {
   display: flex;
@@ -54,7 +54,7 @@
 .active3{
   color: #359287;
 font-family: Pretendard;
-font-size: 20px;
+font-size: 17px;
 font-style: normal;
 font-weight: 700;
 line-height: 24px; /* 120% */
@@ -71,7 +71,7 @@ line-height: 24px; /* 120% */
 .active2{
   color: #D4EDE7;
 font-family: Pretendard;
-font-size: 17px;
+font-size: 20px;
 font-style: normal;
 font-weight: 700;
 line-height: 24px; /* 120% */
