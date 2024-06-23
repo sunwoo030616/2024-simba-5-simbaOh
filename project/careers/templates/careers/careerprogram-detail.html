@@ -30,9 +30,9 @@
             <div class="row1">
               <div class="row_100">
                 <img src="{% static 'images/calendar.png' %}" width="20px" height="20px">
-                <p>지원일</p>
+                <p class="text4 color_17">지원일</p>
               </div>
-              <p>{{careerprogram.startline}} - {{careerprogram.deadline}}</p>
+              <p class="text5 color_61">{{careerprogram.startline}} - {{careerprogram.deadline}}</p>
               <form action="{% url 'careers:cp_bms' careerprogram.id %}" method="post">
                 {% csrf_token %}
                 {% if user in careerprogram.cp_bm.all %}
@@ -45,19 +45,20 @@
             <div class="row1">
               <div class="row_100">
                 <img src="{% static 'images/location.png' %}" width="20px" height="20px">
-                <p>장소</p>
+                <p class="text4 color_17">장소</p>
               </div>
-              <p>{{careerprogram.place}}</p>
+              <p class="text5 color_61 length_limit" style="width: 200px;">{{careerprogram.place}}</p>
               <div style="width: 20px;"></div>
             </div>
             <div class="row1">
               <div class="row_100">
                 <img src="{% static 'images/book.png' %}" width="20px" height="20px">
-                <p style="width: 31.145px;">분야</p>
+                <p class="text4 color_17" style="width: 31.145px;">분야</p>
               </div>
-              <p>{{careerprogram.field}}</p>
+              <p class="text5 color_61" style="width: 200px;">{{careerprogram.field}}</p>
               <div style="width: 20px;"></div>
             </div>
+            <hr width="100%">
             <div class="context">
               <p class="color_17 context_text">내용</p>
               <p class="color61 context_text2">{{careerprogram.content}}</p>
@@ -70,14 +71,14 @@
         {% endfor %}
       </div>
       {% if not has_applied %}
-        <form method="post" action="{% url 'careers:apply_careerprogram' careerprogram.id %}">
+        <form method="post" action="{% url 'careers:apply_careerprogram' careerprogram.id %}" style="display: flex; justify-content: center;">
             {% csrf_token %}
-            <button type="submit">지원하기</button>
+            <button class="btn_ask color_FF" type="submit" style="position: fixed; bottom: 10px;">지원하기</button>
         </form>
       {% else %}
-        <form method="post" action="{% url 'careers:apply_careerprogram' careerprogram.id %}">
+        <form method="post" action="{% url 'careers:apply_careerprogram' careerprogram.id %}" style="display: flex; justify-content: center;">
             {% csrf_token %}
-            <button type="submit">지원 취소하기</button>
+            <button class="btn_ask2 color_FF" type="submit" style="position: fixed; bottom: 10px;">지원취소</button>
         </form>
       {% endif %}
       <div class="modalpopup_frame" id="modalpopup_frame" style="display: none;">
