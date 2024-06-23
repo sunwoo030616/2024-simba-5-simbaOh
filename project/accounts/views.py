@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib import auth
 from datetime import datetime
 from django.contrib.auth.models import User
-from .models import Profile
 from django.core.files.storage import default_storage
-from django.core.exceptions import ValidationError
+from .models import Profile
+
 # 로그인 뷰
 def login(request):
     if request.method == 'POST':
@@ -24,7 +24,7 @@ def login(request):
 # 로그아웃 뷰
 def logout(request):
     auth.logout(request)
-    return redirect('main:mainpage')
+    return redirect('main:first_screen')
 
 # 회원가입 뷰 (1단계)
 def signup(request):
@@ -50,8 +50,8 @@ def signup(request):
                     user_birth='2000-01-01',  # 기본값으로 임시 설정
                     user_major='',
                     user_enroll='',
-                    user_profile=None
                 )
+
 
             request.session['user_id'] = user.id
             request.session.modified = True  # Ensure session is saved

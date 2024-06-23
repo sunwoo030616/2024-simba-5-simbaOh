@@ -67,39 +67,39 @@ href="{% static 'css/accounts/login.css'%}"
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  const usernameInput = document.getElementById('user_id');
-  const passwordInput = document.getElementById('user_pw');
-  const loginButton = document.getElementById('loginButton');
-  const signupButton = document.getElementById('signupButton');
-
-  function validateLoginForm() {
-    const usernameValid = usernameInput.value.trim() !== '';
-    const passwordValid = passwordInput.value.trim() !== '';
-    return usernameValid && passwordValid;
-  }
-
-  function updateLoginButton() {
-    if (validateLoginForm()) {
-      loginButton.disabled = false;
-      loginButton.style.backgroundColor = "#1E3D46";
-      loginButton.style.color = "#ffffff";
-    } else {
-      loginButton.disabled = true;
-      loginButton.style.backgroundColor = "";
-      loginButton.style.color = "";
+  document.addEventListener("DOMContentLoaded", function() {
+    const usernameInput = document.getElementById('user_id');
+    const passwordInput = document.getElementById('user_pw');
+    const loginButton = document.getElementById('loginButton');
+    const signupButton = document.getElementById('signupButton');
+  
+    function validateLoginForm() {
+      const usernameValid = usernameInput.value.trim() !== '';
+      const passwordValid = passwordInput.value.trim() !== '';
+      return usernameValid && passwordValid;
     }
-  }
-
-  usernameInput.addEventListener('input', updateLoginButton);
-  passwordInput.addEventListener('input', updateLoginButton);
-
-  signupButton.addEventListener('click', function() {
-    window.location.href = "{% url 'accounts:signup' %}";
+  
+    function updateLoginButton() {
+      if (validateLoginForm()) {
+        loginButton.disabled = false;
+        loginButton.style.backgroundColor = "#1E3D46";
+        loginButton.style.color = "#ffffff";
+      } else {
+        loginButton.disabled = true;
+        loginButton.style.backgroundColor = "";
+        loginButton.style.color = "";
+      }
+    }
+  
+    usernameInput.addEventListener('input', updateLoginButton);
+    passwordInput.addEventListener('input', updateLoginButton);
+  
+    signupButton.addEventListener('click', function() {
+      window.location.href = "{% url 'accounts:signup' %}";
+    });
   });
-});
-</script>
-
+  </script>
+  
 
 {% if error %}
 <div style="color: red">{{ error }}</div>

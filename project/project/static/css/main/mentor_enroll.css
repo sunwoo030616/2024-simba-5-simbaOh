@@ -135,7 +135,9 @@ line-height: 22px;
     display: block;
     /* 디스플레이를 블럭으로 하니까 갭이 생김. 뭘까 */
 }
-
+.user::placeholder{
+    color: #9D9D9D;
+}
 .imagesmask {
     display: flex;
     width: 100%;
@@ -179,7 +181,7 @@ line-height: 22px;
     background: #FFF;
     padding: 8px 9px;
     overflow: hidden;
-    color: #9D9D9D;
+    color: #1E3D46;
     text-overflow: ellipsis;
     white-space: nowrap;
     font-family: Pretendard;
@@ -207,6 +209,7 @@ line-height: 22px;
     align-items:center; */
     gap: 6px;
     margin-top: 15px;
+    color:#28464E;
 }
 .write1{
     display: flex;
@@ -250,7 +253,7 @@ line-height: 22px;
     background: #FFF;
     padding: 8px 9px;
     overflow: hidden;
-    color: #9D9D9D;
+    color: #1E3D46;
     text-overflow: ellipsis;
     white-space: nowrap;
     font-family: Pretendard;
