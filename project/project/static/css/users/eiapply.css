@@ -1,0 +1,65 @@
+/* eiapply - CSS */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 0.625rem; /* 10px */
+
+  @media (max-width: 430px) {
+    align-items: start;
+  }
+  @media (min-width: 431px) {
+    align-items: center;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 26.875rem; /* 430px */
+  align-items: center;
+  background-color: #FFF;
+  padding-bottom: 0.625rem; /* 10px */
+}
+
+.body {
+  display: flex;
+  width: 25rem; /* 400px */
+  flex-direction: column;
+  gap: 2.5rem; /* 40px */
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  width: 100%;
+  height: 2rem; /* 32px */
+  flex-direction: row;
+  padding-top: 3.5rem; /* 56px */
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+
+/* 폰트 설정 */
+
+.title_text {
+  font-family: "noto Sans KR";
+  font-size: 1.5rem; /* 24px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+
+
+/* 색상 설정 */
+
+.color_28 {
+  color: #28464E;
+}

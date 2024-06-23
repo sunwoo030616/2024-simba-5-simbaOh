@@ -1,0 +1,132 @@
+/* my_writing - CSS */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 0.625rem; /* 10px */
+
+  @media (max-width: 430px) {
+    align-items: start;
+  }
+  @media (min-width: 431px) {
+    align-items: center;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 26.875rem; /* 430px */
+  align-items: center;
+  background-color: #FFF;
+  padding-bottom: 0.625rem; /* 10px */
+}
+
+.body {
+  display: flex;
+  width: 25rem; /* 400px */
+  flex-direction: column;
+  gap: 2.5rem; /* 40px */
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  width: 100%;
+  height: 2rem; /* 32px */
+  flex-direction: row;
+  padding-top: 3.5rem; /* 56px */
+  justify-content: space-between;
+  align-items: center;
+}
+.my{
+  display: flex;
+  width: 380px;
+  /* height:180px; */
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.line{
+  width: 380px;
+  height: 1px;
+  background: #808080;
+  margin-bottom: 10px;
+}
+
+.groupmy{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* 폰트 설정 */
+
+.title_text {
+  font-family: "noto Sans KR";
+  font-size: 1.5rem; /* 24px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.where{
+  color: #359287;
+text-align: center;
+font-family: Pretendard;
+font-size: 17px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+display: inline-flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 5px;
+}
+.title{
+  color: #000;
+font-family: Pretendard;
+font-size: 19px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+width: 380px;
+overflow: hidden; 
+white-space: nowrap;
+text-overflow: ellipsis;
+}
+.content{
+  color: #000;
+font-family: Pretendard;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+width: 380px;
+overflow: hidden; 
+white-space: nowrap;
+text-overflow: ellipsis;
+}
+.date{
+  color: #808080;
+font-family: Pretendard;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.wherearea{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7px;
+}
+
+/* 색상 설정 */
+
+.color_28 {
+  color: #28464E;
+}
