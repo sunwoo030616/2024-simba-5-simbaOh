@@ -69,15 +69,19 @@
         <form class="comment_box_2" action="{% url 'community:free-detail' free.id %}" method="POST">
           {% csrf_token %}
           <input type="text" name="content" placeholder="댓글 추가">
-          <input style="display: none;" type="submit" name="submit">
+          <input class="btn_submit" style="border: 1px solid black;" type="submit" name="submit">
         </form>
       </div>
     </div>
   </div>
 </div>
+<p>
+  {% for freetag in free.freetags.all %}
+    #{{freetag.freename}}
+  {% endfor %}
+</p>
 
-
-
+<p>댓글개수: {{freecomment_count}}</p>
 
 {% endblock %}
 

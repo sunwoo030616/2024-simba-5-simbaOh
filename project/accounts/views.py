@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth
+from datetime import datetime
 from django.contrib.auth.models import User
-from .models import Profile
 from django.core.files.storage import default_storage
+from .models import Profile
 
 # 로그인 뷰
 def login(request):
@@ -23,7 +24,7 @@ def login(request):
 # 로그아웃 뷰
 def logout(request):
     auth.logout(request)
-    return redirect('main:mainpage')
+    return redirect('main:first_screen')
 
 # 회원가입 뷰 (1단계)
 def signup(request):
@@ -49,8 +50,8 @@ def signup(request):
                     user_birth='2000-01-01',  # 기본값으로 임시 설정
                     user_major='',
                     user_enroll='',
-                    user_profile=None
                 )
+
 
             request.session['user_id'] = user.id
             request.session.modified = True  # Ensure session is saved
@@ -87,6 +88,14 @@ def signup3(request):
         user_name = request.POST['user_name']
         user_phone = request.POST['user_phone']
         user_birth = request.POST['user_birth']
+
+        try:
+            # 입력된 날짜 형식을 변환
+            user_birth = datetime.strptime(user_birth, '%Y%m%d').strftime('%Y-%m-%d')
+        except ValueError:
+            return render(request, 'accounts/signup3.html', {
+                'error': "날짜 형식이 잘못되었습니다. YYYYMMDD 형식이어야 합니다."
+            })
 
         if user_id:
             user = User.objects.get(id=user_id)
