@@ -21,7 +21,11 @@
   width: 400px;
   background: #FFF;
 }
-
+.member{
+  width: 430px;
+height: 71px;
+flex-shrink: 0;
+}
 .imagesmask {
   display: flex;
   width: 100%;
@@ -168,7 +172,8 @@
   flex-direction: row;
 }
 .title{
-  width: 400px;
+  width: 353px;
+  height:20px;
   color: #000;
   font-family: Pretendard;
   font-size: 18px;
@@ -176,6 +181,9 @@
   font-weight: 400;
   line-height: 21px;
   letter-spacing: -0.32px;
+  overflow: hidden; 
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .company{
@@ -187,6 +195,9 @@
   font-weight: 400;
   line-height: 21px; 
   letter-spacing: -0.32px;
+  overflow: hidden; 
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .area{
   color: #6A6A6A;
@@ -199,7 +210,7 @@
 }
 .update{
   display: flex;
-  width: 62px;
+  width: 120px;
   height: 21px;
   flex-direction: column;
   justify-content: flex-end;
@@ -243,4 +254,5 @@ font-style: normal;
 font-weight: 500;
 line-height: 21px; /* 161.538% */
 letter-spacing: -0.32px;
+margin-bottom: 10px;
 }

@@ -31,13 +31,13 @@ href="{% static 'css/careers/new_eduinfo.css'%}"
             {% csrf_token %}
             <div class='cate'><div class='cate2'>카테고리 *</div>
               <div class='box3'>
-                <div class='box3_1'>채용</div>
                 <a href="{% url 'careers:new-careerinfo' %}">
-                 
-                  <div class='box3_2'>취업</div>
+                <div class='box3_1'>채용</div>
                 </a>
                 <a href="{% url 'careers:new-careerprogram' %}">
-                  
+                  <div class='box3_2'>취업</div>
+                </a>
+                <a href="{% url 'careers:new-eduinfo' %}">
                 <div class='box3_3'>교육</div>
                 </a>
               </div>
@@ -67,7 +67,7 @@ href="{% static 'css/careers/new_eduinfo.css'%}"
                 <option value='교육'>교육</option>
               </select>
             <p class='image_'>이미지 *<input class='image' type="file" name="image" required/></p>
-            <p class='tag_'>태그 *<input class='tag' type="text" name="eduinfotag" required/></p>
+            <p class='tag_'>태그 *<input class='tag' placeholder='#을 이용하여 적어주세요.' type="text" name="eduinfotag" required/></p>
             <p class='comment_'>내용<input class='comment' type="text" name="content"></p>
             <button class='submitbutton' type="submit">작성완료</button>
 

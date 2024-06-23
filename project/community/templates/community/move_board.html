@@ -1,56 +1,66 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이직 페이지</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .navbar {
-            overflow: hidden;
-            background-color: #333;
-        }
-        .navbar a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-    </style>
-</head>
-<body>
-    <div class="navbar">
-        <a href="{% url 'community:free-board' %}">자유</a>
-        <a href="{% url 'community:move-board' %}">이직</a>
-        <a href="{% url 'community:movetag-list' %}">MoveTag</a>
-    </div>
+{% extends 'base.html' %} {% load static %} {% block content %}
 
-    <h1>이직 페이지</h1>
-    <p>여기는 이직 페이지입니다. 이직에 관한 내용을 작성하세요.</p>
-    <div>
-        {% if user.is_authenticated %}
-        <a href="{% url 'community:move-create' %}">새 글 작성하기</a>
-        {% endif %}
-        {% for move in moves %}
-        <div>
-            <hr/>
-            <h3>{{move.title}}</h3>
-            {{move.summary}}
-            {{move.pub_date}}
-            <a href="{% url 'community:move-detail' move.id %}">자세히 보기</a>
-            <br>
-            
+<link
+rel="stylesheet"
+type="text/css"
+href="{% static 'css/community/move_board.css'%}"
+/>
+
+<div class='container'>
+  <div class="container2"> 
+    <div class='imagesmask' style="padding-top: 48px;">
+        <div class="left">
+            <a href="{% url 'main:mainpage' %}">
+            <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
+            </a>
         </div>
-        {% endfor %}
+        <div class="right">
+            <h2 class='signup-main'>커뮤니티</h2>
+        </div>
+        <div style="width:36px;">
+        </div>
     </div>
 
-</body>
-</html>
+    <div class='topbar'>
+        <a class='topbar1' href="{% url 'community:free-board' %}">자유게시판<div class='line'></div></a>
+        <a class='topbar2' href="{% url 'community:move-board' %}">이직게시판<div class='line2'></div></a>
+    </div>
+    {% for move in moves %}
+    <a href="{% url 'community:move-detail' move.id %}">
+        <div class='boxes'>
+            <div class='first'>
+            <div class='emoji'>이모지***</div>
+            <div class='first2'>
+                <div class='title'>{{move.title}}</div>
+                <div class='names'>
+                <div class='name'>박선우 |***</div>
+                <div class='major'>컴퓨터 공학과***</div>
+                </div>
+            </div>
+            {% comment %} 여기 *** 해놓은 곳은 그 중괄호해서 템플릿 언어인가 넣어주세요 {% endcomment %}
+            </div>
+            <div class='second'>
+            <div class='second2'>
+                <div class='imaplus'>
+                <img src="{% static 'images/ima.png' %}" alt="Example Image" class="ima">
+                <div class='comentcount'>7878***</div>
+                </div>
+                <div class='tag'>#대기업 #집갈래***</div>
+            </div>
+            <div class='date'>{{move.pub_date}}</div>
+            </div>
+        </div>  
+    </a>
+    {% endfor %}
+
+    <div class='superwrite' style="position:fixed">
+        {% if user.is_authenticated %}
+        <a href="{% url 'community:move-create' %}" width='17px' height='17px'>
+            <img src="{% static 'images/realplus.png' %}" alt="">
+        </a>
+        {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

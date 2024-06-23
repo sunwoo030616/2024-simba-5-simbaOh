@@ -59,7 +59,7 @@ href="{% static 'css/careers/career_program.css'%}"
                         <div class='area'>{{careerprogram.field}}</div>
 
                     </div>
-                    <div class='update'>{{careerprogram.startline}}~{{careerinfo.deadline}}</div>
+                    <div class='update'>{{careerprogram.startline}} ~ {{careerprogram.deadline}}</div>
                 </div>
             </a>
             {% endfor %} 
@@ -68,7 +68,7 @@ href="{% static 'css/careers/career_program.css'%}"
         
         </div>
 
-        <div class='superwrite'>
+        <div class='superwrite' style="position:fixed">
             {% if user.is_authenticated and user.is_superuser %}
             <a href="{% url 'careers:new-careerprogram' %}" width='17px' height='17px'>
                 <img src="{% static 'images/realplus.png' %}" alt="">
