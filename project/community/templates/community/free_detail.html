@@ -86,9 +86,13 @@
   {% endif %}
   {% endfor %}
 </div>
+<p>
+  {% for freetag in free.freetags.all %}
+    #{{freetag.freename}}
+  {% endfor %}
+</p>
 
-
-
+<p>댓글개수: {{freecomment_count}}</p>
 
 {% endblock %}
 

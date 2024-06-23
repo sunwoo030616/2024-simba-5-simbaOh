@@ -1,24 +1,127 @@
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %}
 
-<h3>{{move.title}}</h3>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/community/free_detail.css'%}"
+/>
+
+<div class="screen">
+	<div class="main">
+    <div class="body">
+			<div class="nav">
+				<div class="left" style="z-index: 1;">
+					<a href="{% url 'community:move-board' %}">
+            <img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
+					</a>
+				</div>
+				<div><p class="color_28 title_text" style="text-align: center;">커뮤니티 작성</p></div>
+				<div style="width: 32px;"></div>
+			</div>
+      <div class="row1">
+        <p class="title_box color_FF title_text2">이직게시판</p>
+        <div class="row">
+          {% if move.writer == user %}
+          <a href="{% url 'community:move-edit' move.id %}">글 수정하기</a>
+          <a href="{% url 'community:move-delete' move.id %}">글 삭제하기</a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="row1">
+        <!-- 이모지 나오는 곳 -->
+        <div></div>
+        <div>
+          <div>{{ move.title }}</div>
+          <div>{{ move.writer.profile.user_name }}</div>
+        </div>
+        <div>
+          {{ move.pub_date }}
+        </div>
+      </div>
+      <p>분야</p>
+      <p></p>
+      <p>태그</p>
+      <p>
+        {% for movetag in move.movetags.all %}
+          <a href="{% url 'community:movetag-moves' movetag.id %}">#{{ movetag.movename }}</a>
+        {% endfor %}
+      </p>
+      <p>내용</p>
+      <p><p>{{ move.content }}</p></p>
+      <p>댓글</p>
+      <p></p>
+      <div class="row1">
+        {% if move.image %}
+          <p><img src="{{ move.image.url }}" alt="사진" width="100px"></p>
+        {% endif %}
+        <div>
+          <input type="text" placeholder="댓글 추가">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="comment_form">
+  <h2></h2>
+  <form action="{% url 'community:move-detail' move.id %}" method="POST">
+      {% csrf_token %}
+      댓글 쓰기: <input type="text" name="content">
+      <input type="submit" name="submit">
+  </form>
+</div>
+
+<div class="comment_list">
+  {% for movecomment in movecomments %}
+  <hr>
+  <h4>작성자 : {{movecomment.writer.profile.user_name}}</h4>
+  <p>내용: {{movecomment.content}}</p>
+  <p>{{movecomment.pub_date}}</p>
+  {% if user.is_authenticated and movecomment.writer == user %}
+      <form action="{% url 'community:move-detail' move.id %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="delete_movecomment_id" value="{{ movecomment.id }}">
+          <button type="submit">댓글 삭제</button>
+      </form>
+  {% endif %}
+  {% endfor %}
+</div>
+<p>
+  {% for movetag in move.movetags.all %}
+    #{{movetag.movename}}
+  {% endfor %}
+</p>
+
+<p>댓글개수: {{movecomment_count}}</p>
+
+{% endblock %}
+
+
+
+
+<!-- <h3>{{move.title}}</h3>
 작성자 : {{move.writer.profile.user_name}}
 날짜 : {{move.pub_date}}
 <p>
     {% for movetag in move.movetags.all %}
-    <a href="{% url 'community:movetag-moves' movetag.id %}">#{{ movetag.movename }}</a>
+            <a href="{% url 'community:movetag-moves' movetag.id %}">#{{ movetag.movename }}</a>
     {% endfor %}
-</p>
-<hr/>
+</p> -->
+
+
+<!-- <hr/>
 {% if move.image %}
     <p><img src="{{ move.image.url }}" alt="사진" width="100px"></p>
 {% endif %}
 
 <p>{{move.content}}</p>
 <br>
-
+{% if move.writer == user %}
 
 <a href="{% url 'community:move-edit' move.id %}">글 수정하기</a>
 <a href="{% url 'community:move-delete' move.id %}">글 삭제하기</a>
-<br>
+{% endif %}
+<br> -->
 
 <div class="comment_container">
     <div class="comment_form">

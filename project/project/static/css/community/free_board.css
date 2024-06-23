@@ -224,8 +224,27 @@ font-weight: 300;
 line-height: 21px; /* 210% */
 letter-spacing: -0.32px;
 }
-.emoji{
+.hidden {
+  display: none;
+}
+
+.emoji-drawer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  position: absolute;
+  z-index: 1000;
+  width: 200px;
+}
+
+.emoji {
   display: flex;
   width: 30px;
   height: 30px;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
 }
