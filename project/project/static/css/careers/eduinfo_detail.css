@@ -110,8 +110,10 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    max-width: 100%; /* 최대 너비 설정 */
+    word-wrap: break-word;
   }
-  
+
   .context_text {
     font-family: Pretendard;
     font-size: 1rem; /* 16px */
