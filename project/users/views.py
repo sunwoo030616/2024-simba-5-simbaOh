@@ -83,24 +83,6 @@ def edit_portfolio(request):
 
     return render(request, 'users/edit_portfolio.html', {'portfolio': portfolio})
 
-# def update_profile(request, id):
-#     update_profile = Profile.objects.get(pk=id)
-#     if request.user.is_authenticated and request.user == update_profile.user:
-#         update_profile.user_name = request.POST['user_name']
-#         update_profile.user_phone = request.POST['user_phone']
-#         update_profile.user_birth = request.POST['user_birth']
-
-#         update_profile.user_major = request.POST['user_major']
-#         update_profile.user_enroll = request.POST['user_enroll']
-        
-#         if request.FILES.get('user_profile'):
-#             update_profile.user_profile = request.FILES.get('user_profile')
-
-#         update_profile.save()
-
-#         return redirect('main:mainpage', id)
-#     return render(request, 'users/update_profile.html')
-
 def my_writing(request, id):
     user = User.objects.get(pk=id)
     username = request.user
@@ -116,7 +98,26 @@ def my_writing(request, id):
     return render(request, 'users/my_writing.html', context)
 
 def mentoring(request, id):
-    return render(request, 'users/mentoring.html')
+    user = get_object_or_404(User, pk=id)
+    context = {
+        'menti_ship': user.menti_ship.all(),
+    }
+    return render(request, 'users/mentoring.html', context)
+
+def menti_list(request, id):
+    user = get_object_or_404(User, pk=id)
+    mentor_ship_list = user.mentor_followings.all()
+    menti_ship_list = set()
+
+    for mentor in mentor_ship_list:
+        menti_ship_list.update(mentor.mentor_ship.all())
+
+    context = {
+        'mentor_ship': mentor_ship_list,
+        'menti_ship': menti_ship_list,
+    }
+    return render(request, 'users/menti_list.html', context)
+
 
 def career_now(request, id):
     return render(request, 'users/career_now.html')
