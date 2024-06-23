@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Freetag(models.Model):
     freename = models.CharField(max_length=30, null=False, blank=False)
 
@@ -18,10 +19,11 @@ class Free(models.Model):
     title = models.CharField(max_length=255)
     writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
     content = models.TextField()
+    ftcontent=models.TextField()
     pub_date = models.DateTimeField()
     image = models.ImageField(upload_to="free/", blank=True, null=True)
+    emoji = models.TextField()
     freetags = models.ManyToManyField(Freetag, related_name='frees', blank=True)
-
     def __str__(self):
         return self.title
 
@@ -34,8 +36,10 @@ class Move(models.Model):
     title = models.CharField(max_length=255)
     writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
     content = models.TextField()
+    mtcontent = models.TextField()
     pub_date = models.DateTimeField()
     image = models.ImageField(upload_to="move/", blank=True, null=True)
+    emoji = models.TextField()
     movetags = models.ManyToManyField(Movetag, related_name='moves', blank=True)
     def __str__(self):
         return self.title
