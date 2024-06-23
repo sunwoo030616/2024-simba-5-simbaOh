@@ -1,15 +1,100 @@
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %}
 
-<h3>{{free.title}}</h3>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/community/free_detail.css'%}"
+/>
+
+<div class="screen">
+	<div class="main">
+    <div class="body">
+			<div class="nav">
+				<div class="left" style="z-index: 1;">
+					<a href="{% url 'community:free-board' %}">
+            <img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
+					</a>
+				</div>
+				<div><p class="color_28 title_text" style="text-align: center;">커뮤니티 작성</p></div>
+				<div style="width: 32px;"></div>
+			</div>
+      <div class="row1">
+        <p class="title_box color_FF title_text2">자유게시판</p>
+        <div class="row">
+          {% if free.writer == user %}
+          <a href="{% url 'community:free-edit' free.id %}">글 수정하기</a>
+          <a href="{% url 'community:free-delete' free.id %}">글 삭제하기</a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="row1">
+        <!-- 이모지 나오는 곳 -->
+        <div class="row">
+          <div style="width: 32px;"></div>
+          <div class="column">
+            <p class="text_1 color_1E">{{ free.title }}</p>
+          <p class="text_2 color_66">{{ free.writer.profile.user_name }}</p>
+          </div>
+        </div>
+        <p class="text_3 color_66">
+          {{ free.pub_date }}
+        </p>
+      </div>
+      <p class="color_17 text_4">태그</p>
+      <p class="color_65 text_5">
+        {% for freetag in free.freetags.all %}
+          <a href="{% url 'community:freetag-frees' freetag.id %}">#{{ freetag.freename }}</a>
+        {% endfor %}
+      </p>
+      <p class="color_17 text_4">내용</p>
+      <p class="color_61 text_5">{{ free.content }}</p>
+      <p class="color_17 text_4">댓글</p>
+      {% for freecomment in freecomments %}
+      <p class="color_61 text_5 comment_box">{{freecomment.content}}</p>
+      {% if user.is_authenticated and freecomment.writer == user %}
+        <form action="{% url 'community:free-detail' free.id %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="delete_freecomment_id" value="{{ freecomment.id }}">
+          <button type="submit">댓글 삭제</button>
+        </form>
+      {% endif %}
+      {% endfor %}
+
+      <div class="commnet_form row" style="position: fixed; bottom:0;">
+        {% if free.image %}
+          <img src="{{ free.image.url }}" alt="사진" width="32px">
+        {% else %}
+          <img src="{% static 'images/arrow-24.png' %}" width="32px">
+        {% endif %}
+        <form class="comment_box_2" action="{% url 'community:free-detail' free.id %}" method="POST">
+          {% csrf_token %}
+          <input type="text" name="content" placeholder="댓글 추가">
+          <input class="btn_submit" style="border: 1px solid black;" type="submit" name="submit">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
+
+
+
+
+<!-- <h3>{{free.title}}</h3>
 작성자 : {{free.writer.profile.user_name}}
 날짜 : {{free.pub_date}}
 <p>
     {% for freetag in free.freetags.all %}
             <a href="{% url 'community:freetag-frees' freetag.id %}">#{{ freetag.freename }}</a>
     {% endfor %}
-</p>
+</p> -->
 
 
-<hr/>
+<!-- <hr/>
 {% if free.image %}
     <p><img src="{{ free.image.url }}" alt="사진" width="100px"></p>
 {% endif %}
@@ -21,7 +106,7 @@
 <a href="{% url 'community:free-edit' free.id %}">글 수정하기</a>
 <a href="{% url 'community:free-delete' free.id %}">글 삭제하기</a>
 {% endif %}
-<br>
+<br> -->
 
 <div class="comment_container">
     <div class="comment_form">

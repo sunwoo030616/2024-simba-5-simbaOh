@@ -29,6 +29,7 @@
   width: 25rem; /* 400px */
   flex-direction: column;
   gap: 1rem; /* 16px */
+  align-items: center;
 }
 
 .nav {
@@ -130,6 +131,8 @@ label {
   font-style: normal;
   font-weight: 700;
   line-height: 1.3125rem; /* 21px */
+  max-width: 100%; /* 최대 너비 설정 */
+  word-wrap: break-word;
 }
 
 .mentor_card_dept_font {
@@ -138,6 +141,8 @@ label {
   font-style: normal;
   font-weight: 500;
   line-height: 1.3125rem; /* 21px */
+  max-width: 100%; /* 최대 너비 설정 */
+  word-wrap: break-word;
 }
 
 .mentor_card_name_font {
@@ -172,6 +177,8 @@ label {
   line-height: 1.3125rem; /* 21px */
   letter-spacing: -0.32px;
   white-space: pre-wrap;
+  max-width: 100%; /* 최대 너비 설정 */
+  word-wrap: break-word;
 }
 
 /* 색상 설정 */

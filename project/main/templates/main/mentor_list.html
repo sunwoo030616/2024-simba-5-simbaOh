@@ -23,7 +23,7 @@
         </div>
         <div class="filter">
           <div class="row1">
-            <input type="checkbox" name="categories" id="checkbox1" value="0" class="ckb_white">
+            <input type="checkbox" name="categories" id="checkbox1" value="0" class="ckb_white" >
             <label for="checkbox1">인사/노무</label>
             <input type="checkbox" name="categories" id="checkbox2" value="1" class="ckb_white">
             <label for="checkbox2">IT개발/데이터</label>
@@ -59,7 +59,7 @@
         </div>
         <!-- Submit 버튼을 숨김 처리하고 JavaScript로 클릭 이벤트 발생시키기 -->
         <button type="submit" id="submit-btn" hidden>Submit</button>
-      </form>
+      </form> 
       <div class="mento_text color_28 font_1">멘토 리스트</div>
       <div class="mento_list">
         {% for mentor in mentors %}
@@ -99,7 +99,8 @@
   document.addEventListener('DOMContentLoaded', function() {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     const form = document.getElementById('mentor-filter-form');
-    
+
+
     checkboxes.forEach(checkbox => {
       const checkboxState = localStorage.getItem(checkbox.id);
       if (checkboxState === 'checked') {
@@ -114,9 +115,12 @@
         }
         
         form.submit();
+
       });
     });
   });
+
+
 </script>
 
 {% endblock %}

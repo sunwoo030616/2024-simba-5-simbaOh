@@ -1,8 +1,53 @@
-{% extends 'base.html'%}
-{% block content %}
+<!-- mentoring.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>멘토링 신청 현황</title>
+    <link rel="stylesheet" href="{% static 'css/shared/navbar.css' %}">
+</head>
+<body>
+    <div class="screen">
+        <div class="main">
+            <div class="column">
+                <div class="imagesmask" style="padding-top: 48px;">
+                    <div class="left">
+                        <a href="{% url 'main:mainpage' %}">
+                            <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
+                        </a>
+                    </div>
+                    <div class="right">
+                        <h2 class='signup-main'>멘토링 신청 현황</h2>
+                    </div>
+                    <div style="width:36px;"></div>
+                </div>
 
-{% for mentor in menti_ship %}
-    <a href="{% url 'main:mentor-info' mentor.id %}">{{ mentor.user.profile.user_name }}</a>
-{% endfor %}
-
-{% endblock %}
+                <div class='member'>
+                    <!-- 멘토링 신청 현황 내용 -->
+                    <div class='careerinfo'>
+                        <div class='title'>구도옥 멘토</div>
+                        <div class='careerinfo2'>
+                            <div class='careerinfo3'>
+                                <div class='company'>융합전자공학과</div>
+                                <div class='area'>거절</div>
+                            </div>
+                            <div class='update'>2014/05/26</div>
+                        </div>
+                    </div>
+                    <div class='careerinfo'>
+                        <div class='title'>최민 멘토</div>
+                        <div class='careerinfo2'>
+                            <div class='careerinfo3'>
+                                <div class='company'>경영정보학과</div>
+                                <div class='area'>수락</div>
+                            </div>
+                            <div class='update'>2014/05/26</div>
+                        </div>
+                    </div>
+                    <!-- 나머지 항목들 -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

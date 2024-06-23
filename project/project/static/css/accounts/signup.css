@@ -245,6 +245,13 @@
       line-height: 22px; /* 110% */
     }
 
+    input::placeholder {
+        color: #9D9D9D; /* Placeholder color */
+    }
+    input.with-text {
+        color: #000000; /* Text color when input has value */
+    }
+
     
     
     

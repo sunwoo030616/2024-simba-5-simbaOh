@@ -150,6 +150,9 @@ input[type="checkbox"]:checked + label {
   font-weight: 700;
   line-height: 1.3125rem; /* 21px */
   letter-spacing: -0.32px;
+  overflow: hidden; 
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .mentor_card_dept_font {
@@ -159,6 +162,9 @@ input[type="checkbox"]:checked + label {
   font-weight: 400;
   line-height: 1.3125rem; /* 21px */
   letter-spacing: -0.32px;
+  overflow: hidden; 
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .mentor_card_name_font {

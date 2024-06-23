@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>채용 정보 북마크</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black.
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('.navbar a').forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    window.location.href = link.getAttribute('href');
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'users:cibm_list' %}">채용정보</a>
+        <a href="{% url 'users:cpbm_list' %}">채용프로그램</a>
+        <a href="{% url 'users:eibm_list' %}">교육정보</a>
+    </div>
+<h1>내 북마크</h1>
+<ul>
+    {% for careerinfo in cibms %}
+        <li>
+            <a href="{% url 'careers:careerinfo-detail' careerinfo.id %}">{{ careerinfo.title }}</a>
+            <p>{{ careerinfo.company }}</p>
+            <p>{{ careerinfo.startline }}|{{careerinfo.deadline}}</p>
+        </li>
+    {% endfor %}
+</ul>
+

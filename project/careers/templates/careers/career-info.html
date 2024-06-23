@@ -1,69 +1,66 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %}
 
 <link
 rel="stylesheet"
 type="text/css"
 href="{% static 'css/careers/career_info.css'%}"
 />
-{% comment %} 여기가 커리어 부분의 메인페이지와 같은 느낌임 {% endcomment %}
+
 <div class='container'>
     <div class="container2"> 
 
-        <div class='imagesmask' style="padding-top: 48px;">
-            <div class="left">
-                <a href="{% url 'main:mainpage' %}">
-                <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
+        <div class="nav">
+            <div class="left" style="z-index: 1;">
+                <a href="{% url 'careers:career-info' %}">
+        <img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
                 </a>
             </div>
-            <div class="right">
-                <h2 class='signup-main'>커리어</h2>
-            </div>
-            <div style="width:36px;">
-            </div>
+            <div><p class="color_28 title_text" style="text-align: center;">커리어</p></div>
+            <div style="width: 32px;"></div>
         </div>
-        
 
-        <div class="box">
-            <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" class="search">
-            <button type="button" class='button'>
-                <img src="{% static 'images/search.png' %}" alt="" onclick="" >
-            </button>
-        </div>
-        
-        {% comment %} topbar부분 url 수정해야함 임시로 넣어둠 {% endcomment %}
+        <form method="GET" action="{% url 'careers:career-info' %}">
+            <div class="box">
+                <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" class="search" value="{{ search_query }}">
+                <button type="submit" class='button'>
+                    <img src="{% static 'images/search.png' %}" alt="">
+                </button>
+            </div>
+        </form>
+
         <div class='topbar'>
-            <a href="{% url 'main:mainpage' %}" class='topbar1'>채용 정보</a>
-            <a href="{% url 'main:mainpage' %}" class='topbar2'>취업 프로그램</a>
-            <a href="{% url 'main:mainpage' %}" class='topbar3'>교육 정보</a>
+            <a href="{% url 'careers:career-info' %}" class='topbar1'>채용 정보</a>
+            <a href="{% url 'careers:career-program' %}" class='topbar2'>취업 프로그램</a>
+            <a href="{% url 'careers:edu-info' %}" class='topbar3'>교육 정보</a>
         </div>
 
         <div class='midbar'>
-            <div class='total'>총 105건</div> 
-            {% comment %} 여기에도 글씨대신 데이터 불러와주세요 {% endcomment %}
-            <select class='new' name='' id=''>
-                {% comment %} 여기 name하고 id뭐하죠? {% endcomment %}
-                <option value='최신순'>최신순</option>
-                <option value='오래된순'>오래된순</option>
+            <div class='total'>총 {{ total_careerinfo_count }}건</div> 
+            
+            <select class='new' name='order' id='order' onchange="location.href='?order=' + this.value;">
+                <option value='latest' {% if selected_order == 'latest' %}selected{% endif %}>최신순</option>
+                <option value='oldest' {% if selected_order == 'oldest' %}selected{% endif %}>오래된순</option>
             </select>
         </div>
 
         <div class='member'>
             {% for careerinfo in careerinfos %}
-            <div class='careerinfo'>
+            <a href="{% url 'careers:careerinfo-detail' careerinfo.id %}" class='careerinfo'>
                 <div class='title'>{{ careerinfo.title }}</div>
                 <div class='careerinfo2'>
                     <div class='careerinfo3'>
                         <div class='company'> {{careerinfo.company}}</div>
                     
-                        <div class='area'>{{careerinfo.place}}</div>
+                        <div class='area'>{{careerinfo.field}}</div>
+
                     </div>
-                    <div class='update'>{{careerinfo.deadline}}</div>
+                    <div class='update'>{{careerinfo.startline}} ~ {{careerinfo.deadline}}</div>
                 </div>
-            </div>
+            </a>
             {% endfor %} 
         </div>
 
-        <div class='superwrite'>
+        <div class='superwrite' style="position:fixed">
             {% if user.is_authenticated and user.is_superuser %}
             <a href="{% url 'careers:new-careerinfo' %}" width='17px' height='17px'>
                 <img src="{% static 'images/realplus.png' %}" alt="">
