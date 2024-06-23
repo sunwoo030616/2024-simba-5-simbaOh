@@ -61,10 +61,10 @@
 
 .row_100 {
   display: flex;
-  width: 100px;
+  width: 80px;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
 .context {
@@ -76,7 +76,7 @@
 .btn_ask {
   display: flex;
   width: 20rem; /* 320px */
-  padding: 0.75rem; /* 12px */
+  padding: 1rem; /* 16px */
   justify-content: center;
   align-items: center;
 
@@ -84,6 +84,19 @@
   border-radius: 30px;
   background-color: #1E3D46;
 }
+
+.btn_ask2 {
+  display: flex;
+  width: 20rem; /* 320px */
+  padding: 1rem; /* 16px */
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid #FFF;
+  border-radius: 30px;
+  background-color: #DB7373;
+}
+
 
 .text_board {
   display: flex;
@@ -138,11 +151,6 @@
   line-height: 1.5rem; /* 24px */
 }
 
-.row1 {
-  display: flex;
-  flex-direction: row;
-  gap: 0.25rem; /* 4px */
-}
 
 .modalpopup_frame {
   display: flex;
@@ -184,6 +192,22 @@
   line-height: normal;
 }
 
+.text5 {
+  font-family: Pretendard;
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+}
+
+
+
+
+.length_limit {
+  max-width: 100%;
+  word-wrap: break-word;
+}
 
 
 /* 색상 설정 */
@@ -196,7 +220,7 @@
   color: #17363F;
 }
 
-.color61 {
+.color_61 {
   color: #616161;
 }
 

@@ -29,7 +29,7 @@
   display: flex;
   width: 25rem; /* 400px */
   flex-direction: column;
-  gap: 2.5rem; /* 40px */
+  gap: 1rem; /* 16px */
 }
 
 .nav {
@@ -44,7 +44,7 @@
 
 .row1 {
   display: flex;
-  width: 400px;
+  width: 100%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -67,6 +67,33 @@
   border-radius: 0.625rem; /* 10px */
 }
 
+.comment_box {
+  display: flex;
+  padding: 0.5rem; /* 8px */
+  border-radius: 0.625rem; /* 10px */
+  background-color: rgba(243, 243, 243, 0.80);
+}
+
+.comment_form {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.comment_box_2 {
+  display: flex;
+  width: 18.75rem; /* 300px */
+  align-items: center;
+
+  padding: 1rem;
+
+  border-radius: 1.875rem; /* 30px */
+  border: 1.5px solid #E9E9E9;
+}
+
+
 
 /* 폰트 설정 */
 
@@ -86,6 +113,47 @@
   line-height: 1.25rem; /* 20px */
 }
 
+.text_1 {
+  font-family: Pretendard;
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.text_2 {
+  font-family: Pretendard;
+  font-size: 0.875rem; /* 14px */
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.text_3 {
+  font-family: Pretendard;
+  font-size: 0.75rem; /* 12px */
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+
+.text_4 {
+  font-family: Pretendard;
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.text_5 {
+  font-family: Pretendard;
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 
 
 /* 색상 설정 */
@@ -96,4 +164,24 @@
 
 .color_FF {
   color: #FFF;
+}
+
+.color_1E {
+  color: #1E3D46;
+}
+
+.color_66 {
+  color: #666;
+}
+
+.color_17 {
+  color: #17363F;
+}
+
+.color_65 {
+  color: #656565;
+}
+
+.color_61 {
+  color: #616161;
 }
