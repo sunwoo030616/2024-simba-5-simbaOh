@@ -72,9 +72,38 @@ href="{% static 'css/accounts/login.css'%}"
     const passwordInput = document.getElementById('user_pw');
     const loginButton = document.getElementById('loginButton');
     const signupButton = document.getElementById('signupButton');
+    const domain = '@dgu.ac.kr';
+    let hasStartedTyping = false;
+  
+    function setCursorPosition(input, pos) {
+      input.setSelectionRange(pos, pos);
+    }
+
+    function handleInput(event) {
+      if (!hasStartedTyping) {
+        hasStartedTyping = true;
+        usernameInput.value = '';
+      }
+
+      let value = usernameInput.value;
+      if (!value.includes(domain)) {
+        usernameInput.value = domain;
+      } else {
+        let userPart = value.split(domain)[0];
+        userPart = userPart.replace(/[^a-zA-Z0-9]/g, '');
+        usernameInput.value = userPart + domain;
+      }
+      setCursorPosition(usernameInput, usernameInput.value.indexOf(domain));
+      updateLoginButton();
+    }
+
+    function handleFocus(event) {
+      let pos = usernameInput.value.indexOf(domain);
+      setCursorPosition(usernameInput, pos);
+    }
   
     function validateLoginForm() {
-      const usernameValid = usernameInput.value.trim() !== '';
+      const usernameValid = usernameInput.value.trim() !== domain;
       const passwordValid = passwordInput.value.trim() !== '';
       return usernameValid && passwordValid;
     }
@@ -91,14 +120,16 @@ href="{% static 'css/accounts/login.css'%}"
       }
     }
   
-    usernameInput.addEventListener('input', updateLoginButton);
+    usernameInput.addEventListener('input', handleInput);
+    usernameInput.addEventListener('focus', handleFocus);
     passwordInput.addEventListener('input', updateLoginButton);
   
     signupButton.addEventListener('click', function() {
       window.location.href = "{% url 'accounts:signup' %}";
     });
   });
-  </script>
+</script>
+
   
 
 {% if error %}
