@@ -86,7 +86,26 @@ def my_writing(request, id):
     return render(request, 'users/my_writing.html', context)
 
 def mentoring(request, id):
-    return render(request, 'users/mentoring.html')
+    user = get_object_or_404(User, pk=id)
+    context = {
+        'menti_ship': user.menti_ship.all(),
+    }
+    return render(request, 'users/mentoring.html', context)
+
+def menti_list(request, id):
+    user = get_object_or_404(User, pk=id)
+    mentor_ship_list = user.mentor_followings.all()
+    menti_ship_list = set()
+
+    for mentor in mentor_ship_list:
+        menti_ship_list.update(mentor.mentor_ship.all())
+
+    context = {
+        'mentor_ship': mentor_ship_list,
+        'menti_ship': menti_ship_list,
+    }
+    return render(request, 'users/menti_list.html', context)
+
 
 def career_now(request, id):
     return render(request, 'users/career_now.html')

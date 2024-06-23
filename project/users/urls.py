@@ -9,5 +9,6 @@ urlpatterns = [
     path('bookmark/<int:id>', bookmark, name="bookmark"),
     path('my-writing/<int:id>', my_writing, name="my-writing"),
     path('mentoring/<int:id>', mentoring, name="mentoring"),
-    path('career-now/<int:id>', career_now, name="career-now")
+    path('menti-list/<int:id>', menti_list, name="menti-list"),
+    path('career-now/<int:id>', career_now, name="career-now"),
 ]

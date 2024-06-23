@@ -1,0 +1,8 @@
+{% extends 'base.html'%}
+{% block content %}
+
+{% for mentor in menti_ship %}
+    <a href="{% url 'main:mentor-info' mentor.id %}">{{ mentor.user.profile.user_name }}</a>
+{% endfor %}
+
+{% endblock %}
