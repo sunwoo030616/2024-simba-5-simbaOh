@@ -6,7 +6,6 @@ from main.models import Mentor
 from community.models import Free, Move
 from careers.models import Careerinfo, Careerprogram, Eduinfo, Ciapply, Cpapply, Eiapply
 
-
 def mypage(request, id):
     user = get_object_or_404(User, pk=id)
     profile, created = Profile.objects.get_or_create(user=user)
