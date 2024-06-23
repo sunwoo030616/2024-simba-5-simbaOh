@@ -173,6 +173,9 @@
   font-weight: 400;
   line-height: 21px;
   letter-spacing: -0.32px;
+  overflow: hidden; 
+white-space: nowrap;
+text-overflow: ellipsis;
 }
 
 .company{
@@ -184,6 +187,9 @@
   font-weight: 400;
   line-height: 21px; 
   letter-spacing: -0.32px;
+  overflow: hidden; 
+white-space: nowrap;
+text-overflow: ellipsis;
 }
 .area{
   color: #6A6A6A;
@@ -196,7 +202,7 @@
 }
 .update{
   display: flex;
-  width: 62px;
+  width: 120px;
   height: 21px;
   flex-direction: column;
   justify-content: flex-end;
@@ -240,4 +246,5 @@ font-style: normal;
 font-weight: 500;
 line-height: 21px; /* 161.538% */
 letter-spacing: -0.32px;
+margin-bottom: 10px;
 }

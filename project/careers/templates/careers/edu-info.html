@@ -58,13 +58,13 @@ href="{% static 'css/careers/edu_info.css'%}"
                         <div class='area'>{{eduinfo.field}}</div>
 
                     </div>
-                    <div class='update'>{{eduinfo.startline}}~{{eduinfo.deadline}}</div>
+                    <div class='update'>{{eduinfo.startline}} ~ {{eduinfo.deadline}}</div>
                 </div>
             </a>
             {% endfor %} 
         </div>
 
-        <div class='superwrite'>
+        <div class='superwrite' style="position:fixed">
             {% if user.is_authenticated and user.is_superuser %}
             <a href="{% url 'careers:new-eduinfo' %}" width='17px' height='17px'>
                 <img src="{% static 'images/realplus.png' %}" alt="">
