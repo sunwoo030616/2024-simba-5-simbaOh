@@ -1,20 +1,178 @@
-{% extends 'base.html' %}
-
+{% extends 'base_with_nav.html' %}
+{% load static %}
 {% block content %}
-<form action="{% url 'users:mentoring-state' user.id %}" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <h1>나에게 신청한 멘티들</h1>
 
-    {% for m in menti %}
-        {{m.mentor.id}}<br>
-        {{m.mentor.user.profile.user_name}}<br>
-        {{m.mentor.user.username}}<br>
-        {{m.mentor.user.profile.user_major}}<br>
-        {{m.summary}}<br>
-        {{m.content}}<br>
-        <input type="hidden" name="mentorship_id" value="{{ m.id }}">
-        <p><button type="submit" name="state" value="수락">수락</button></p>
-        <p><button type="submit" name="state" value="거절">거절</button></p>
-    {% endfor %}
-</form>
+<link rel="stylesheet" type="text/css" href="{% static 'css/users/menti_list.css' %}" />
+<style>
+  .menti {
+    transition: background-color 0.5s ease, height 0.5s ease;
+    overflow: hidden;
+    cursor: pointer;
+    margin-bottom: 15px;
+    height: 70px;
+    width: 335px;
+    padding: 15px;
+}
+
+.menti.accepted {
+    background-color: #00C3AD !important;
+}
+
+.menti.rejected {
+    background-color: #DB7373 !important;
+}
+
+.class2 {
+    display: none;
+}
+
+.class2.visible {
+    display: block;
+}
+
+.buttons {
+    margin-top: 10px;
+    display: none;
+}
+
+.buttons button {
+    margin-right: 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    outline: none;
+}
+
+.accept-btn {
+    background-color: #00C3AD;
+    color: white;
+}
+
+.reject-btn {
+    background-color: #DB7373;
+    color: white;
+}
+
+</style>
+<div class='screen'>
+  <div class="main">
+    <div class="body">  
+    
+        <div class='nav'>
+            <div class="left" style="z-index: 1;">
+                <a href="{% url 'main:mainpage' %}">
+                    <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
+                </a>
+            </div>
+            <div class="right">
+                <h2 class="color_28 title_text" style="text-align: center;">멘토링 신청 현황</h2>
+            </div>
+            <div style="width:32px;"></div>
+        </div>
+    
+        <div class='topbar'>
+            <a class='topbar2' href="{% url 'users:mentoring' user.id %}">멘토링<div class='line2'></div></a>
+            <a class='topbar1' href="{% url 'users:menti-list' user.id %}">멘티 신청<div class='line'></div></a>
+        </div>
+    </div>
+      <form action="{% url 'users:mentoring-state' user.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+          {% for m in menti %}
+          <div class='menti' id="menti_{{ m.id }}">
+            <div class='first'>
+              <img class="image_set2" id="profile_image" src="{{ m.user.profile.user_profile.url }}" width='80px' height='80px'>
+              <div class='namemajor'>
+                <div class='name'>{{ m.user.profile.user_name }}멘티님이<br> 멘토링을 신청했습니다.</div>
+                <div class='major'>{{ m.user.profile.user_major }}</div>
+              </div>
+            </div>
+              <div class='class2'>
+                <div class='email2'>멘티 이메일</div>
+                  <div class='email'>{{ m.user.username }}</div>
+                  <div class='email2'>한 줄 요약</div>
+                  <div class='summary'>{{ m.summary }}</div>
+                  <div class='email2'>내용</div>
+                  <div class='content'>{{ m.content }}</div>
+                  <div class='buttons'>
+                          <input type="hidden" name="mentorship_id" value="{{ m.id }}">
+                          <button type="submit" name="state" value="수락" class="accept-btn">수락</button>
+                          <button type="submit" name="state" value="거절" class="reject-btn">거절</button>
+                  </div>
+              </div>
+          </div>
+        {% endfor %}
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const mentiBoxes = document.querySelectorAll('.menti');
+
+    mentiBoxes.forEach(box => {
+        box.addEventListener('click', function(event) {
+            if (event.target.closest('.buttons')) return; // 버튼 클릭 시는 무시
+
+            const buttons = this.querySelector('.buttons');
+            const class2 = this.querySelector('.class2');
+            const isExpanded = this.classList.toggle('expanded');
+
+            if (isExpanded) {
+                buttons.style.display = 'flex'; // 버튼들을 보이게 함
+                class2.classList.add('visible'); // 상세 정보를 보이게 함
+                this.style.height = `${class2.scrollHeight + 100}px`; // 높이를 자동으로 설정
+            } else {
+                buttons.style.display = 'none'; // 버튼들을 숨김
+                class2.classList.remove('visible'); // 상세 정보를 숨김
+                this.style.height = '70px'; // 기본 높이로 복원
+            }
+        });
+    });
+
+    const actionForms = document.querySelectorAll('.action-form');
+
+    actionForms.forEach(form => {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // 기본 동작 중단
+            
+            const mentiBox = this.closest('.menti');
+            const formData = new FormData(this);
+            const state = formData.get('state');
+
+            // AJAX 요청을 보냄
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 요청 성공 시 실행할 로직
+                if (state === '수락') {
+                    mentiBox.classList.add('accepted');
+                    mentiBox.classList.remove('rejected'); // 다른 상태 클래스 제거
+                } else if (state === '거절') {
+                    mentiBox.classList.add('rejected');
+                    mentiBox.classList.remove('accepted'); // 다른 상태 클래스 제거
+                }
+
+                // 상세 정보를 숨기고 높이를 기본 값으로 복원
+                mentiBox.querySelector('.class2').classList.remove('visible');
+                mentiBox.querySelector('.buttons').style.display = 'none';
+                mentiBox.style.height = '70px';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+});
+</script>
+
 {% endblock %}
+
