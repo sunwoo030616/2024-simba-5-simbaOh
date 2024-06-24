@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from .models import Portfolio, Education, Experience, Project, Certification
 from accounts.models import Profile
-from main.models import Mentor
+from main.models import Mentor, Relation_mentor
 from community.models import Free, Move
 from careers.models import Careerinfo, Careerprogram, Eduinfo, Ciapply, Cpapply, Eiapply
 
@@ -24,7 +24,8 @@ def mypage(request, id):
 def follow_list(request, id):
     user = get_object_or_404(User, pk=id)
     context = {
-        'followings': user.mentor_followings.all()
+        'followings': user.mentor_followings.all(),
+        'followers': user.profile.followers.all()
     }
     return render(request, 'users/follow_list.html', context)
 
@@ -132,18 +133,50 @@ def mentoring(request, id):
 
 def menti_list(request, id):
     user = get_object_or_404(User, pk=id)
-    mentor_ship_list = user.mentor_followings.all()
-    menti_ship_list = set()
+    mentors = Mentor.objects.filter(user_id=id)
+    user_profiles = []  # Initialize list to store Profile objects
+    mentor_lists = []  # Initialize list to store Relation_mentor objects
 
-    for mentor in mentor_ship_list:
-        menti_ship_list.update(mentor.mentor_ship.all())
+    for mentor in mentors:
+        mentor_list = Relation_mentor.objects.filter(mentor=mentor)
+        mentor_lists.extend(mentor_list)
+        for relation in mentor_list:
+            profiles = Profile.objects.filter(user=relation.menti)  # Get all Profile objects for this menti
+            user_profiles.extend(profiles)
 
-    context = {
-        'mentor_ship': mentor_ship_list,
-        'menti_ship': menti_ship_list,
-    }
-    return render(request, 'users/menti_list.html', context)
+    if not user_profiles:
+        return redirect('users:mentoring', id)
+    else:
+        menti_list = Relation_mentor.objects.filter(menti_id=user.id)
+        context = {
+            'mentors': mentors,
+            'user_profiles': user_profiles,
+            'mentor_lists': mentor_lists,
+            'menti_lists': menti_list.all()
+        }
+        return render(request, 'users/menti_list.html', context)
 
+
+def mentoring_state(request, id):
+    user = User.objects.get(pk=id)
+    if request.method == 'POST':
+        mentorship_id = request.POST.get('mentorship_id')
+        state = request.POST.get('state')
+        try:
+            mentoring = Relation_mentor.objects.get(pk=mentorship_id)
+            if request.POST['state'] == '거절':
+                mentoring.state = "거절"
+                mentoring.save()  # Save the state change
+            elif request.POST['state'] == '수락':
+                mentoring.state = '수락'
+                mentoring.save()  # Save the state change
+            else:
+                mentoring.state = '대기'
+                mentoring.save()  # Save the state change
+        except Relation_mentor.DoesNotExist:
+            # Handle the case where the mentorship does not exist
+            pass
+    return redirect('users:mentoring', user.id)
 
 def career_now(request, id):
     return render(request, 'users/career_now.html')

@@ -58,7 +58,12 @@
 
 
 
-{% for following in followings %}
+{% for follower in followers %}
+    <p>
+        확인
+    </p>
+{% endfor %}
+    {% for following in followings %}
     <a href="{% url 'main:mentor-info' following.id %}">{{ following.user.profile.user_name }}</a>
 {% endfor %}
 
