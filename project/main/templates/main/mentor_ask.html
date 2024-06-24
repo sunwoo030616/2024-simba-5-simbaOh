@@ -10,7 +10,7 @@
 
 
 <div class="screen">
-  <form class="main" action="{% url 'main:mentor-relation-create' mentor.id %}" method="POST">
+  <form class="main" action="{% url 'main:create-menti' mentor.id %}" method="POST">
     <div class="body" id="main">
       <div class="nav">
         <div class="left" style="z-index: 1;">
@@ -57,13 +57,13 @@
           <p class="color_28 context3">한 줄 요약은 간단하고 명확하게 작성해주세요.</p>
           <p class="color_82 context3">예시1 졸업까지 3개월 남지 않았는데, 대기업에 정말 입사하고 싶어요.<br>예시2 비전공자에서 개발자로 취업하는 성장 경로를 전수받고 싶습니다!</p>
         </div>
-        <input type="text" id="context1" name="context1" placeholder="한 줄 요약" required>
+        <input type="text" id="context1" name="summary" placeholder="한 줄 요약" required>
         <label for="context1"></label>
         <div class="text_box">
           <p class="color_28 context3">내용은 구체적으로 작성해주세요.</p>
           <p class="color_82 context3"> ⋅ 멘토링 취지에서 어긋나거나 오해될 수 있는 질문은 하지 말아주세요.<br> ⋅ 동일한 질문을 여러 멘토에게 보내는 것은 지양하고 있어요.<br> ⋅ 사적인 개인정보는 작성하지 않는 것이 좋아요.<br> ⋅ 멘토가 직접 글을 확인하여 멘토링이 진행되오니 신경써서 작성해주세요.</p>
         </div>
-        <input type="text" id="context2" name="context2" placeholder="내용 작성" required>
+        <input type="text" id="context2" name="content" placeholder="내용 작성" required>
         <label for="context2"></label>
         <button type="button" class="btn_men" id="btn_men" disabled>멘토링 보내기</button>
       </div>
