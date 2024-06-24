@@ -103,7 +103,6 @@ background: #D4EDE7;
 .application{
   display: flex;
   flex-direction: column;
-  width: 360px;
   height: 74px;
   justify-content: space-evenly;
   gap:20px;
@@ -182,8 +181,6 @@ background: #EDEDED;
   font-size: 13px;
   font-style: normal;
   font-weight: 700;
-  width: 100px;
-
 }
 
 
