@@ -1,9 +1,78 @@
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/users/bookmark.css'%}"
+/>
+
+<div class="screen">
+	<div class="main">
+    <div class="body">
+			<div class="nav">
+				<div class="left" style="z-index: 1;">
+					<a href="{% url 'careers:career-info' %}">
+            <img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
+					</a>
+				</div>
+				<div><p class="color_28 title_text" style="text-align: center;">북마크 리스트</p></div>
+				<div style="width: 32px;"></div>
+			</div>
+      <div class="active">
+        <div class="act1"><a class="active1" href="{% url 'users:cibm_list' %}">채용정보</a><div class="line1"></div></div>
+        <div class="act3"><a class="active3" href="{% url 'users:cpbm_list' %}">채용프로그램</a><div class="line3"></div></div>
+        <div class="act2"><a class="active2" href="{% url 'users:eibm_list' %}">교육정보</a><div class="line2"></div></div>
+      </div>
+
+      <div class="application">
+        {% for careerprogram in cpbms %}
+          <a class="detail" href="{% url 'careers:careerprogram-detail' careerprogram.id %}">
+            <div>
+              <div class="areadate" style="padding-bottom: 0.25rem;">
+                <div class="area">{{ careerprogram.field }}</div>
+              </div>
+              <div class="place">{{ careerprogram.company }}</div>
+              <div class="title">{{ careerprogram.title }}</div>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <p class="hi">채용정보</p>
+              <form style="display: flex; flex-direction: row-reverse;" action="{% url 'users:cp_bms' careerprogram.id %}">
+                <button>
+                  <img src="{% static 'images/filled_bookmark.png'%}" width="30px">
+                </button>
+              </form>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll('.navbar a').forEach(function(link) {
+          link.addEventListener('click', function(event) {
+              event.preventDefault();
+              window.location.href = link.getAttribute('href');
+          });
+      });
+  });
+</script>
+
+
+{% endblock %}
+
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>채용 프로그램 북마크</title>
+    <title>채용 정보 북마크</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -42,15 +111,14 @@
         <a href="{% url 'users:cpbm_list' %}">채용프로그램</a>
         <a href="{% url 'users:eibm_list' %}">교육정보</a>
     </div>
-    <h1>내 북마크</h1>
-    <ul>
-        {% for careerprogram in cpbms %}
-            <li>
-                <a href="{% url 'careers:careerprogram-detail' careerprogram.id %}">{{ careerprogram.title }}</a>
-                <p>{{ careerprogram.company }}</p>
-                <p>{{ careerprogram.startline }} | {{ careerprogram.deadline }}</p>
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+<h1>내 북마크</h1>
+<ul>
+    {% for careerinfo in cibms %}
+        <li>
+            <a href="{% url 'careers:careerinfo-detail' careerinfo.id %}">{{ careerinfo.title }}</a>
+            <p>{{ careerinfo.company }}</p>
+            <p>{{ careerinfo.startline }}|{{careerinfo.deadline}}</p>
+        </li>
+    {% endfor %}
+</ul>
+

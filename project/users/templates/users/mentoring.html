@@ -1,9 +1,14 @@
 {% extends 'base.html'%}
 {% block content %}
 
-{% for mentor in menti_ship %}
+<!-- {% for mentor in menti_ship %}
     <a href="{% url 'main:mentor-info' mentor.id %}">{{ mentor.user.profile.user_name }}</a>
-{% endfor %}
+{% endfor %} -->
+
+{% for m in mentor_state %}
+<a href="{% url 'main:mentor-info' m.mentor.id %}">{{m.mentor.user.profile.user_name}}</a>
+{{m.state}} </br>
+{%endfor%}
 
 <a href="{% url 'users:menti-list' user.id %}">멘티 리스트 보기</a>
 {% endblock %}

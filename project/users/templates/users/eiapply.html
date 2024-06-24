@@ -38,7 +38,7 @@ href="{% static 'css/users/eiapply.css'%}"
                     <a class='detail' href="{% url 'careers:eduinfo-detail' application.eduinfo.id %}">
                       {% comment %} area에 템플릿 언어 넣어야함 {% endcomment %}
                         <div class='areadate'>
-                          <div class='area'>IT 개발/데이터***</div>
+                          <div class='area'>{{eduinfo.field}}</div>
                           <div class='date'>{{ application.application_date|date:"Y/m/d" }}</div>                            
                         </div>
                           <div class='place'>{{ application.eduinfo.place }}</div>
