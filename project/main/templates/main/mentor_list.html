@@ -71,9 +71,10 @@
             <div class="mentor_card_dept_font color_00">
               {{ mentor.mentor_dept }}
             </div>
+            {% comment %} 유저 사진 불러오는거 해야함 {% endcomment %}
             <div class="centering">
-              {% if mentor.mentor_image %}
-              <img class="image_set" src="{{ mentor.image.url }}" width="50px" height="50px">
+              {% if mentor.user.profile.user_profile %}
+              <img class="image_set" src="{{ mentor.mentor.user.profile.user_profile.url }}" width="50px" height="50px">
               {% else %}
               <img class="image_set" src="{% static 'images/logo.png' %}" width='50px' height='50px'>
               {% endif %}
