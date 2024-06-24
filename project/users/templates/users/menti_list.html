@@ -3,34 +3,18 @@
 {% block content %}
 <form action="{% url 'users:mentoring-state' user.id %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <h1>내가 신청한 멘토 리스트</h1>
+    <h1>나에게 신청한 멘티들</h1>
 
     {% for m in menti %}
-        {{m.mentor.id}}
+        {{m.mentor.id}}<br>
+        {{m.mentor.user.profile.user_name}}<br>
+        {{m.mentor.user.username}}<br>
+        {{m.mentor.user.profile.user_major}}<br>
+        {{m.summary}}<br>
+        {{m.content}}<br>
         <input type="hidden" name="mentorship_id" value="{{ m.id }}">
         <p><button type="submit" name="state" value="수락">수락</button></p>
         <p><button type="submit" name="state" value="거절">거절</button></p>
     {% endfor %}
-    <!-- <ul>
-        {% for mentorship in mentor_lists %}
-        <li>
-            <p>멘토: {{ mentorship.mentor.user.user_name }}</p>
-            <ul>
-                {% for profile in user_profiles %}
-                    {% if profile.user == mentorship.menti %}
-                        <li>멘티: {{ profile.user.profile.user_name }}</li>
-                        <li>전공: {{ profile.user.profile.user_major }}</li>
-                    {% endif %}
-                    
-                {% endfor %}
-            </ul>
-            <a href="{% url 'users:mypage' mentorship.menti_id %}">멘토 정보 보기</a>
-            <input type="hidden" name="mentorship_id" value="{{ mentorship.id }}">
-            <p><button type="submit" name="state" value="수락">수락</button></p>
-            <p><button type="submit" name="state" value="거절">거절</button></p>
-        </li>
-        <p>상태: {{ mentorship.state }}</p>
-        {% endfor %}
-    </ul> -->
 </form>
 {% endblock %}
