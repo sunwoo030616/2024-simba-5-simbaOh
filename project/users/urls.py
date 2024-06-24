@@ -5,6 +5,7 @@ app_name = "users"
 urlpatterns = [
     path('mypage/<int:id>/', mypage, name="mypage"),
     path('edit_portfolio/', edit_portfolio, name='edit_portfolio'),
+    path('portfolio/<int:id>', view_portfolio, name='view_portfolio'),
     path('follow-list/<int:id>', follow_list, name="follow-list"),
     path('bookmark/<int:id>', bookmark, name="bookmark"),
     path('my-writing/<int:id>', my_writing, name="my-writing"),

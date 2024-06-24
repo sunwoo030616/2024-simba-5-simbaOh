@@ -35,6 +35,7 @@ class Move(models.Model):
     
     title = models.CharField(max_length=255)
     writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
+    field = models.CharField(max_length=10)
     content = models.TextField()
     mtcontent = models.TextField()
     pub_date = models.DateTimeField()
