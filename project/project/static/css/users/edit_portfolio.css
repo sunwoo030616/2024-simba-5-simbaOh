@@ -65,37 +65,115 @@
   width: 100%;
 }
 
+/* 여기부터 추가 */
+.origin{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.originuser{
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  gap: 17px;
+  align-items: center;
+}
+.photo1{
+  display: flex;
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
+  background: lightgray 50% / cover no-repeat;
+}
+.photoname{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  gap:4px;
+}
+.name1{
+  display: flex;
+  width: 47px;
+  padding: 1px 6px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  gap: 10px;
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0.50);
+  text-overflow: ellipsis;
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+.major1,.email1,.phone1{
+  display: flex;
+  width: 308px;
+  padding: 1px 6px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0.50);
+  text-overflow: ellipsis;
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 133.333% */
+  justify-content: flex-start;
+}
+.majorphone{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* 여기까지 추가 */
+
 .input_data1 {
   display: flex;
   padding: 0.5rem 0.75rem; /* 8px 12px */
   align-items: center;
   align-self: stretch;
-
   border: 1px solid rgba(0, 0, 0, 0.10);
   border-radius: 0.375rem; /* 6px */
 }
 
 .input_data1::placeholder {
   display: flex;
-
   color: rgba(0, 0, 0, 0.50);
   font-family: Pretendard;
-  font-size: 1rem; /* 16px */
+  font-size: 13px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
+  line-height: 22px; /* 146.667% */;
 }
 
 .input_data2 {
   display: flex;
-  padding: 0.5rem 0.75rem; /* 8px 12px */
-  
+  align-items: center;
+  width: 391px;
+  align-self: stretch;
+  padding-left: 8px;
+  height: 37px;
   border: 1px solid #C5C5C5;
   background-color: #FFF;
+
+font-family: Pretendard;
+font-size: 13px;
+font-style: normal;
+font-weight: 300;
+line-height: 22px; /* 146.667% */
 }
 
 .input_data2::placeholder {
   display: flex;
-
   color: #939393;
   text-align: center;
   font-family: Pretendard;
@@ -116,6 +194,41 @@
   color: #FFF;
   background-color: #28464E;
   border-radius: 0.5rem; /* 8px */
+}
+.btn_add_field{
+  font-family: Pretendard;
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 600;
+  height: 30px;
+  display: flex;
+  align-content: center;
+  color:#FFF;
+  width: 300px;
+  padding: 12px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
+  background: #1E3D46;
+}
+.btn_add_field2{
+  font-family: Pretendard;
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 600;
+  height: 30px;
+  display: flex;
+  align-content: center;
+  color:#FFF;
+  width: 300px;
+  padding: 12px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
+  background: #1E3D46;
+
 }
 
 
