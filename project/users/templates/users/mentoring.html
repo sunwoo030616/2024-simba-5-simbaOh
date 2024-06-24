@@ -4,8 +4,6 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/users/mentoring.css' %}" />
 
-
-
 <div class='screen'>
   <div class="main">
     <div class="body">  
@@ -27,7 +25,7 @@
         <a class='topbar2' href="{% url 'users:menti-list' user.id %}">멘티 신청<div class='line2'></div></a>
       </div>
 
-      {% for m in mentor_state %}
+      {% for m in mentor %}
       <div class='mentor'>
         <a href="{% url 'main:mentor-info' m.mentor.id %}">
           <div class='picture'>
