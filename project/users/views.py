@@ -153,7 +153,7 @@ def menti_list(request, id):
         context = {
             'mentors': mentors,
             'user_profiles': user_profiles,
-            'mentor_lists': mentor_lists.all(),
+            'mentor_lists': mentor_lists,
             'menti_lists': menti_list.all()
         }
         return render(request, 'users/menti_list.html', context)
