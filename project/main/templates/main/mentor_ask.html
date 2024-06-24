@@ -35,7 +35,7 @@
             {% if mentor.mentor_image %}
               <img class="circuling" src="{{ mentor.image.url }}" width="100px" height="100px">
             {% else %}
-              <img class="circuling" src="{% static 'images/signup1.png' %}" width='100px' height='100px'>
+              <img class="circuling" src="{% static 'images/logo.png' %}" width='100px' height='100px'>
             {% endif %}
             <div class="mentor_card_name_font color_00">
               {{mentor.user.profile.user_name}}
@@ -49,7 +49,7 @@
           </div>
         </div>
       </div>
-      <form class="gapping" action="{% url 'main:mentor-ask' mentor.id %}" method="POST">
+      <div class="gapping">
         {% csrf_token %}
         <p class="color_28 title_text">{{mentor.user.profile.user_name}} 에게 멘토링 신청하기</p>
         <p class="color_00 context_text">커리어, 직무 고민에 대해 현직자에게 물어보세요!</p>

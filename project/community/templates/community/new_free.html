@@ -12,50 +12,52 @@
       <div class="body">
         <div class="nav">
           <div class="left" style="z-index: 1;">
-            <a href="{% url 'careers:career-info' %}">
+            <a href="{% url 'community:free-board' %}">
               <img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
             </a>
           </div>
-          <div><p class="color_28 title_text" style="text-align: center;">커뮤니티 작성</p></div>
+          <p class="color_28 title_text" style="text-align: center;">커뮤니티 작성</p>
           <div style="width: 32px;"></div>
         </div>
         <div class="border1 row1">
           <p class="title_text2 color_00">게시판 구분</p>
           <div class="row">
-            <p class="select_free">자유게시판</p>
-            <a href="{% url 'community:new-move' %}" class="select_move">이직게시판</a>
+            <a class="select_point" href="{% url 'community:new-free' %}">자유게시판</a>
+            <a href="{% url 'community:new-move' %}">이직게시판</a>
           </div>
         </div>
         <div class="border2">
-          <div class="row2">
-            <div class="color_17 title_text2">이모지선택</div>
-            <p class="color_DB">*</p>
-          </div>
-          <button class="btn_select" onclick="select_Emoji()">
-            <input style="font-size: 30px;" id="input" type="text" placeholder="😀" size="1" readonly>
-          </button>
-          <div id="drawer" class="emoji-drawer hidden">
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">😁</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">😂</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">🤩</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">🤔</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">😥</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">😴</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">🫠</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">🤑</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">😤</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">😭</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">🤯</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">😱</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">😇</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">👀</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">🙏</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">💪</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">👍</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">🙌</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">🎉</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">✨</div>
-            <div class="emoji" onclick="addEmoji(this.innerHTML)">📢</div>
+            <div class="row2">
+              <div class="color_17 title_text2">이모지선택</div>
+              <p class="color_DB">*</p>
+            </div>
+            <button class="btn_select" type="button" onclick="toggleEmojiDrawer()">
+              <input style="font-size: 30px;" id="input" type="text" placeholder="😀" size="1" readonly>
+            </button>
+            <div id="drawer" class="emoji-drawer hidden">
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">😁</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">😂</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">🤩</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">🤔</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">😥</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">😴</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">🫠</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">🤑</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">😤</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">😭</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">🤯</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">😱</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">😇</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">👀</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">🙏</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">💪</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">👍</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">🙌</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">🎉</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">✨</div>
+              <div class="emoji" onclick="addEmoji(this.innerHTML)">📢</div>
+            </div>
+            <input type="hidden" id="emoji" name="emoji"> <!-- 숨겨진 입력 필드 -->
           </div>
           <div class="row2 mar">
             <div class="color_17 title_text2">제목</div>
@@ -71,7 +73,8 @@
             <div class="color_17 title_text2">태그</div>
             <p class="color_DB">*</p>
           </div>
-          <input class='tag mar' type="text" name="freetag" placeholder="#태그" required/>
+          <input class='tag mar' type="text" name="ftcontent" placeholder="#태그" required/>
+
         </div>
         <button type="submit" class="btn_submit">작성완료</button>
       </div>
@@ -80,10 +83,19 @@
 </form>  
 
 <script>
-  function addEmoji(emoji) {
-    let input = document.getElementById('input');
-    input.value = emoji;
-  }
+
+function toggleEmojiDrawer() {
+  var drawer = document.getElementById('drawer');
+  drawer.classList.toggle('hidden');
+}
+
+function addEmoji(emoji) {
+  var input = document.getElementById('input');
+  var hiddenEmojiInput = document.getElementById('emoji');
+  input.value = emoji;
+  hiddenEmojiInput.value = emoji;
+  toggleEmojiDrawer();
+}
 
   function select_Emoji() {
     let drawer = document.getElementById('drawer');
@@ -94,7 +106,6 @@
       drawer.classList.add('hidden');
     }
   }
-
   document.addEventListener("DOMContentLoaded", function() {
     let emojis = document.querySelectorAll('.emoji');
     emojis.forEach(emoji => {

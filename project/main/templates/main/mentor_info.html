@@ -34,7 +34,7 @@
             {% if mentor.user.profile.user_profile %}
               <img class="circuling" src="{{ mentor.user.profile.user_profile.url }}" alt="" width='100px' height='100px' style="padding-bottom: 20px;">
             {% else %}
-              <img class="circuling" src="{% static 'images/signup1.png' %}" width='100px' height='100px'>
+              <img class="circuling" src="{% static 'images/logo.png' %}" width='100px' height='100px'>
             {% endif %}
             <div class="mentor_card_name_font color_00">
               {{mentor.user.profile.user_name}}
@@ -50,15 +50,15 @@
             <!-- button 관련 바꾸어야함 뜨질 않아 -->
             <div class="row1"> 
             {% if request.user != mentor %}
-            {% if user in mentor.followers.all %}
-              <a href="{% url 'main:follow' mentor.id %}">
-                <button type="button" class="btn btn-outline-info">언팔로우</button>
-              </a>
-            {% else %}
-              <a href="{% url 'main:follow' mentor.id %}">
-                <button type="button" class="btn btn-info">팔로우</button>
-              </a>
-            {% endif %}
+              {% if user in mentor.followers.all %}
+                <a href="{% url 'main:follow' mentor.id %}">
+                  <button type="button" class="btn btn-outline-info">언팔로우</button>
+                </a>
+              {% else %}
+                <a href="{% url 'main:follow' mentor.id %}">
+                  <button type="button" class="btn btn-info">팔로우</button>
+                </a>
+              {% endif %}
             {% endif %}
             {{mentor.followers.count}}
               <a class="mentoring" href="{% url 'main:mentor-ask' mentor.id %}">멘토링 신청</a>

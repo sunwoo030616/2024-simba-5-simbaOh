@@ -22,7 +22,6 @@
   width: 26.875rem; /* 430px */
   align-items: center;
   background-color: #FFF;
-  padding-bottom: 0.625rem; /* 10px */
 }
 
 .body {
@@ -30,7 +29,6 @@
   width: 25rem; /* 400px */
   flex-direction: column;
   gap: 2.5rem; /* 40px */
-  align-items: center;
 }
 
 .nav {
@@ -59,7 +57,7 @@
   background-color: #F9F9F9;
 }
 
-.select_free {
+.select_point {
   display: flex;
   width: 100px;
   padding: 0.5rem; /* 8px */
@@ -70,6 +68,7 @@
   border-radius: 30px;
   background-color: #359287;
 }
+
 
 .border2 {
   display: flex;
@@ -128,12 +127,14 @@
   font-size: 1.25rem; /* 20px */
   font-style: normal;
   font-weight: 700;
+
+  position: fixed;
+  bottom: 10px;
 }
 
 .mar {
   margin-bottom: 2rem; /* 32px */
 }
-
 
 
 /* 폰트 설정 */

@@ -1,42 +1,75 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
-{% block content %}
+<link
+rel="stylesheet"
+type="text/css"
+href="{% static 'css/users/my_writing.css'%}"
+/>
 
-{% if request.user == user %}
-<div>
-    {% for free in my_writes_free %}
-    <div>
-        <hr/>
-        <h3>{{free.title}}</h3>
-        {{free.writer.profile.user_name}} | {{free.write_date}}
-        <a href="{% url 'community:free-detail' free.id %}">자세히 보기</a>
-        <br>
+<div class="screen">
+<div class="main">
+  <div class="body">
+    
+      <div class="nav">
+        <div class="left" style="z-index: 1;">
+          <a href="{% url 'main:mainpage' %}">
+            <img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
+          </a>
+        </div>
+        <div><p class="color_28 title_text" style="text-align: center;">내가 쓴 글</p></div>
+        <div style="width: 32px;"></div>
+      </div>
+
+          {% comment %} 이직게시판 부분에 area 넣어야함 (분야) {% endcomment %}
+
+    <div class='groupmy'>
+      {% if request.user == user %}
+
+        <div class='my'>
+            {% for free in my_writes_free %} 
+                <div class='where'>자유게시판</div>
+            <a href="{% url 'community:free-detail' free.id %}"> 
+                <div class='title'>{{free.title}}</div>
+            </a>
+                <div class='content'>{{free.content}}</div>
+                <div class='date'>{{free.pub_date}}</div>
+                <div class='line'></div>
+            {% endfor %}
+        </div>
+      
+        <div class='my'>
+            {% for move in my_writes_move %}
+            <div class='wherearea'>
+                <div class='where'>이직게시판</div>
+                <div class='area'>| IT개발/데이터****</div>
+            </div>
+            <a href="{% url 'community:move-detail' move.id %}">
+                <div class='title'>{{move.title}}</div>
+            </a>
+                <div class='content'>{{move.content}}</div>
+                <div class='date'>{{move.pub_date}}</div>
+                <div class='line'></div>
+            {% endfor %}
+        </div>
+
+
+        <div class='my'>
+            {% for careerinfo in my_writes_careerinfo %}
+                <div class='where'>커리어게시판</div>   
+            <a href="{% url 'careers:careerinfo-detail' careerinfo.id %}"> 
+                <div class='title'>{{careerinfo.title}}</div>
+            </a>
+                <div class='content'>{{careerinfo.content}}</div>
+                <div class='date'>{{careerinfo.pub_date}}</div>
+                <div class='line'></div>
+            {% endfor %}
+        </div>
+
+      {% endif %}
     </div>
-    {% endfor %}
+
+  </div>
 </div>
-<div>
-    {% for move in my_writes_move %}
-    <div>
-        <hr/>
-        <h3>{{move.title}}</h3>
-        {{move.writer.profile.user_name}} | {{move.write_date}}
-        <a href="{% url 'community:move-detail' move.id %}">자세히 보기</a>
-        <br>
-    </div>
-    {% endfor %}
 </div>
-<div>
-    {% for careerinfo in my_writes_careerinfo %}
-    <div>
-        <hr/>
-        <h3>{{careerinfo.title}}</h3>
-        {{careerinfo.writer.profile.user_name}} | {{careerinfo.write_date}}
-        <a href="{% url 'careers:careerinfo-detail' careerinfo.id %}">자세히 보기</a>
-        <br>
-    </div>
-    {% endfor %}
-</div>
-{% endif %}
 
 {% endblock %}

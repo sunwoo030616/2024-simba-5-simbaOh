@@ -1,5 +1,62 @@
-{% extends 'base.html'%}
-{% block content %}
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/users/follow_list.css'%}"
+/>
+
+<div class="screen">
+	<div class="main">
+    <div class="body">
+			<div class="nav">
+				<div class="left" style="z-index: 1;">
+					<a href="{% url 'main:mainpage' %}">
+            <img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
+					</a>
+				</div>
+				<div><p class="color_28 title_text" style="text-align: center;">팔로잉</p></div>
+				<div style="width: 32px;"></div>
+			</div>
+      <div class="row1">
+        <p class="font_1 color_28">팔로우 리스트</p>
+        <p class="font_1 color_28">{{ followings.count }} 명</p>
+      </div>
+      <hr width="100%">
+      {% for following in followings %}
+      
+      <div class="row1">
+        <a href="{% url 'main:mentor-info' following.id %}" class="follow_box">
+          <div class="row1">
+            {% if following.user.profile.user_profile %}
+            <img class="img_set" src="{{ following.user.profile.user_profile.url }}" width="60px" height="60px">
+            {% else %}
+            <div style="width: 60px;"></div>
+            {% endif %}
+            <div class="column">
+              <p class="font_3 color_17">{{ following.user.profile.user_name }}</p>
+              <p class="font_2 color_8E">{{ following.user.profile.user_major }}</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="{% url 'main:follow2' following.id %}">
+          <button class="color_FF font_2 btn_unfollow" type="button" class="">언팔로우</button>
+        </a>
+  
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
 
 {% for follower in followers %}
     <p>
@@ -10,4 +67,4 @@
     <a href="{% url 'main:mentor-info' following.id %}">{{ following.user.profile.user_name }}</a>
 {% endfor %}
 
-{% endblock %}
+

@@ -1,68 +1,72 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base_with_nav.html' %}
+{% load static %}
+{% block content %}
 
 <link
-rel="stylesheet"
-type="text/css"
-href="{% static 'css/community/free_board.css'%}"
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'css/community/free_board.css' %}"
 />
 
-<div class='container'>
-    <div class="container2"> 
-
-        <div class='imagesmask' style="padding-top: 48px;">
-            <div class="left">
-                <a href="{% url 'main:mainpage' %}">
-                <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
-                </a>
-            </div>
-            <div class="right">
-                <h2 class='signup-main'>커뮤니티</h2>
-            </div>
-            <div style="width:36px;">
-            </div>
+<div class='screen'>
+  <div class="main">
+    <div class="body"> 
+      <div class='nav'>
+        <div class="left" style="z-index: 1;">
+          <a href="{% url 'main:mainpage' %}">
+            <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
+          </a>
         </div>
-
-        <div class='topbar'>
-          <a class='topbar1' href="{% url 'community:free-board' %}">자유게시판<div class='line'></div></a>
-          <a class='topbar2' href="{% url 'community:move-board' %}">이직게시판<div class='line2'></div></a>
+        <div class="right">
+          <h2 class="color_28 title_text" style="text-align: center;">커뮤니티</h2>
         </div>
-        {% for free in frees %}
-        <a href="{% url 'community:free-detail' free.id %}">
+        <div style="width:32px;"></div>
+      </div>
+
+      <div class='topbar'>
+        <a class='topbar1' href="{% url 'community:free-board' %}">자유게시판<div class='line'></div></a>
+        <a class='topbar2' href="{% url 'community:move-board' %}">이직게시판<div class='line2'></div></a>
+      </div>
+
+      {% for free in frees %}
+        <a class="centering" href="{% url 'community:free-detail' free.id %}">
           <div class='boxes'>
-              <div class='first'>
-                <div class='emoji'>이모지***</div>
-                <div class='first2'>
-                  <div class='title'>{{free.title}}</div>
-                  <div class='names'>
-                    <div class='name'>박선우 |***</div>
-                    <div class='major'>컴퓨터 공학과***</div>
-                  </div>
+            <div class='first'>
+              <div class='emoji'>{{ free.emoji|safe }}</div>
+              <div class='first2'>
+                <div class='title'>{{ free.title }}</div>
+                <div class='names'>
+                  <div class='name'>{{ free.writer.profile.user_name }} |</div>
+                  <div class='major'>{{ free.writer.profile.user_major }}</div>
                 </div>
-                {% comment %} 여기 *** 해놓은 곳은 그 중괄호해서 템플릿 언어인가 넣어주세요 {% endcomment %}
               </div>
-              <div class='second'>
-                <div class='second2'>
-                  <div class='imaplus'>
-                    <img src="{% static 'images/ima.png' %}" alt="Example Image" class="ima">
-                    <div class='comentcount'>7878***</div>
-                  </div>
-                  <div class='tag'>#대기업 #집갈래***</div>
+            </div>
+            <div class='second'>
+              <div class='second2'>
+                <div class='imaplus'>
+                  <img src="{% static 'images/ima.png' %}" alt="Example Image" class="ima">
+                  <div class='comentcount'>{{ free.freecomments_count }}</div>
                 </div>
-                <div class='date'>{{free.pub_date}}</div>
+                <div class='tag'>
+                  {% for freetag in free.freetags.all %}
+                    #{{ freetag.freename }}
+                  {% endfor %}
+                </div>
               </div>
-        </div>
-      </a>
-        {% endfor %}
-
-        <div class='superwrite' style="position:fixed">
-          {% if user.is_authenticated %}
-            <a href="{% url 'community:free-create' %}" width='17px' height='17px'>
-              <img src="{% static 'images/realplus.png' %}" alt="">
-            </a>
-          {% endif %}
-        </div>
-
+              <div class='date'>{{ free.pub_date }}</div>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
     </div>
+    <div class='superwrite'>
+      {% if user.is_authenticated %}
+      <a href="{% url 'community:free-create' %}" width='17px' height='17px'>
+        <img src="{% static 'images/realplus.png' %}" alt="">
+      </a>
+      {% endif %}
+    </div>
+  </div>
 </div>
 
 {% endblock %}

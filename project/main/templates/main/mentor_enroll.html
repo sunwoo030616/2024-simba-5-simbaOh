@@ -44,7 +44,7 @@
             {% if user.profile.user_profile %}
             <div class='photo'><p><img src="{{ user.profile.user_profile.url }}" alt="사진" width="170px" height='140px'></p></div>
             {% else %}
-            <div class='photo'><p><img src="{% static 'images/signup1.png' %}" alt="사진" width="170px" height='140px'></p></div>
+            <div class='photo'><p><img src="{% static 'images/logo.png' %}" alt="사진" width="170px" height='140px'></p></div>
             {% endif %}
             <div class='namemajor'>
               <div class='name'><p>{{ user.profile.user_name }}</p></div>

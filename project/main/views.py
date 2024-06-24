@@ -99,3 +99,13 @@ def follow(request, id):
     else:
         mentor.followers.add(user)
     return redirect('main:mentor-info', mentor.id)
+
+def follow2(request, id):
+    user = request.user
+    mentor = get_object_or_404(Mentor, pk=id)
+    is_follower = user in mentor.followers.all()
+    if is_follower:
+        mentor.followers.remove(user)
+    else:
+        mentor.followers.add(user)
+    return redirect('users:follow-list', user.id)
