@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %}
 
 <link
 rel="stylesheet"
@@ -6,26 +6,26 @@ type="text/css"
 href="{% static 'css/careers/new_careerprogram.css'%}"
 />
 <!-- css careerprogram으로 바꿔주세용 -->
-<div class='container'>
-  <div class="container2"> 
-    <div class='imagesmask' style="padding-top: 48px;">
-        <div class="left">
-            <a href="{% url 'main:mainpage' %}">
+<div class='screen'>
+  <div class="main">
+    <div class="body"> 
+      <div class='nav'>
+        <div class="left" style="z-index: 1;">
+          <a href="{% url 'careers:career-program' %}">
             <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
-            </a>
+          </a>
         </div>
         <div class="right">
-            <h2 class='signup-main'>커리어</h2>
+          <h2 class='signup-main'>커리어</h2>
         </div>
-        <div style="width:36px;">
-        </div>
-    </div>
+        <div style="width:32px;"></div>
+      </div>
 
-    <div class='intro'>
+      <div class='intro'>
       {{ user.profile.user_name }}님, 안녕하세요 :)
-    </div>
+      </div>
 
-    <div class='main'>
+      <div class='main'>
       <div class='box'>
         <form action="{% url 'careers:careerprogram-create' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -74,8 +74,9 @@ href="{% static 'css/careers/new_careerprogram.css'%}"
 
         </form>
       </div>
+      </div>
+      <img class='click' src="{% static 'images/이미지.png' %}" alt="" onclick="" >
     </div>
-    <img class='click' src="{% static 'images/이미지.png' %}" alt="" onclick="" >
   </div>
 </div>
 
