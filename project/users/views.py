@@ -95,8 +95,9 @@ def edit_portfolio(request):
 
     return render(request, 'users/edit_portfolio.html', {'portfolio': portfolio})
 
-def view_portfolio(request,id):
-    portfolio = get_object_or_404(Portfolio, user=request.user)
+def view_portfolio(request, id):
+    user = get_object_or_404(User, pk=id)
+    portfolio = get_object_or_404(Portfolio, user=user)
     education = portfolio.education.all()
     experience = portfolio.experience.all()
     projects = portfolio.projects.all()
@@ -109,6 +110,14 @@ def view_portfolio(request,id):
         'certifications': certifications
     })
 
+# def portfolio(request, id):
+#     user= get_object_or_404(User, pk = id)
+#     portfolio = Portfolio.objects.get(user=user)
+#     context = {
+#         'user':user,
+#         'portfolio':portfolio
+#     }
+#     return render(request, 'users/portfolio.html', context)
 
 def my_writing(request, id):
     user = User.objects.get(pk=id)
