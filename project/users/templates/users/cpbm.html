@@ -31,12 +31,16 @@
               <div class="areadate" style="padding-bottom: 0.25rem;">
                 <div class="area">{{ careerprogram.field }}</div>
               </div>
-              <div class="place">{{ careerprogram.place }}</div>
+              <div class="place">{{ careerprogram.company }}</div>
               <div class="title">{{ careerprogram.title }}</div>
             </div>
-            <div>
-              <p class="hi">채용프로그램</p>
-              <img src="" alt="">
+            <div style="display: flex; flex-direction: column;">
+              <p class="hi">채용정보</p>
+              <form style="display: flex; flex-direction: row-reverse;" action="{% url 'users:cp_bms' careerprogram.id %}">
+                <button>
+                  <img src="{% static 'images/filled_bookmark.png'%}" width="30px">
+                </button>
+              </form>
             </div>
           </a>
         {% endfor %}

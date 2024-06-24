@@ -34,9 +34,13 @@
               <div class="place">{{ careerinfo.company }}</div>
               <div class="title">{{ careerinfo.title }}</div>
             </div>
-            <div>
+            <div style="display: flex; flex-direction: column;">
               <p class="hi">채용정보</p>
-              <img src="" alt="">
+              <form style="display: flex; flex-direction: row-reverse;" action="{% url 'users:ci_bms' careerinfo.id %}">
+                <button>
+                  <img src="{% static 'images/filled_bookmark.png'%}" width="30px">
+                </button>
+              </form>
             </div>
           </a>
         {% endfor %}
