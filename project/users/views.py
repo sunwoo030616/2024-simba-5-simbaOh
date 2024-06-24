@@ -198,3 +198,15 @@ def eibm_list(request):
     eibms = user.ei_bms.all()
     return render(request, 'users/eibm.html', {'eibms': eibms})
 
+def ci_bms(request, careerinfo_id):
+    careerinfo = get_object_or_404(Careerinfo, id=careerinfo_id)
+    if request.user in careerinfo.ci_bm.all():
+        careerinfo.ci_bm.remove(request.user)
+        careerinfo.cibm_count-=1
+        careerinfo.save()
+    else:
+        careerinfo.ci_bm.add(request.user)
+        careerinfo.cibm_count +=1
+        careerinfo.save()
+    return redirect('users:cibm_list')
+
