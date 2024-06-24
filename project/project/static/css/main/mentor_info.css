@@ -29,7 +29,6 @@
   width: 25rem; /* 400px */
   flex-direction: column;
   gap: 1rem; /* 16px */
-  align-items: center;
 }
 
 .nav {
