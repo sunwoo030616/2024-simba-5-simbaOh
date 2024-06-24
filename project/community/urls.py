@@ -6,7 +6,6 @@ from .views import *
 
 app_name = "community"
 urlpatterns = [
-    path('', board, name='board'),
     path('free-board/', free_board, name='free-board'),
     path('move-board/', move_board, name='move-board'),
     path('new-free/', new_free, name="new-free"),
