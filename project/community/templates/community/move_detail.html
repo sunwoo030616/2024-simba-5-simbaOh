@@ -28,41 +28,62 @@
         </div>
       </div>
       <div class="row1">
-        <!-- 이모지 나오는 곳 -->
-        <div></div>
-        <div>
-          <div>{{ move.title }}</div>
-          <div>{{ move.writer.profile.user_name }}</div>
+        <div class="row">
+          <div style="width: 30px; font-size: 30px;">{{ move.emoji }}</div>
+          <div class="column1">
+            <p class="text_1 color_1E">{{ move.title }}</p>
+          <p class="text_2 color_66">{{ move.writer.profile.user_name }}</p>
+          </div>
         </div>
-        <div>
+        <p class="text_3 color_66">
           {{ move.pub_date }}
-        </div>
+        </p>
       </div>
-      <p>분야</p>
+      <p class="color_17 text_4">분야</p>
       <p></p>
-      <p>태그</p>
-      <p>
+      <p class="color_17 text_4">태그</p>
+      <p class="color_65 text_5">
         {% for movetag in move.movetags.all %}
           <a href="{% url 'community:movetag-moves' movetag.id %}">#{{ movetag.movename }}</a>
         {% endfor %}
       </p>
-      <p>내용</p>
-      <p><p>{{ move.content }}</p></p>
-      <p>댓글</p>
-      <p></p>
-      <div class="row1">
+      <p class="color_17 text_4">내용</p>
+      <p class="color_61 text_5">{{ move.content }}</p>
+      <p class="color_17 text_4">댓글</p>
+      {% for movecomment in movecomments %}
+      <p class="color_61 text_5 comment_box">{{movecomment.content}}</p>
+      {% if user.is_authenticated and movecomment.writer == user %}
+        <form action="{% url 'community:move-detail' move.id %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="delete_movecomment_id" value="{{ movecomment.id }}">
+          <button type="submit">댓글 삭제</button>
+        </form>
+      {% endif %}
+      {% endfor %}
+
+      <div class="commnet_form row" style="position: fixed; bottom:10px;">
         {% if move.image %}
-          <p><img src="{{ move.image.url }}" alt="사진" width="100px"></p>
+          <img src="{{ move.image.url }}" alt="사진" width="40px">
+        {% else %}
+          <img src="{% static 'images/logo.png' %}" width="40px">
         {% endif %}
-        <div>
-          <input type="text" placeholder="댓글 추가">
-        </div>
+        <form class="comment_box_2" action="{% url 'community:move-detail' move.id %}" method="POST">
+          {% csrf_token %}
+          <input type="text" size="40" name="content" placeholder="댓글 추가">
+          <button class="btn_submit" type="submit" name="submit">
+            <img src="{% static 'images/dm_icon.png' %}" width="40px" height="40px">
+          </button>
+        </form>
       </div>
     </div>
   </div>
 </div>
 
-<div class="comment_form">
+{% endblock %}
+
+
+
+<!-- <div class="comment_form">
   <h2></h2>
   <form action="{% url 'community:move-detail' move.id %}" method="POST">
       {% csrf_token %}
@@ -92,9 +113,7 @@
   {% endfor %}
 </p>
 
-<p>댓글개수: {{movecomment_count}}</p>
-
-{% endblock %}
+<p>댓글개수: {{movecomment_count}}</p> -->
 
 
 
@@ -122,7 +141,7 @@
 <a href="{% url 'community:move-delete' move.id %}">글 삭제하기</a>
 {% endif %}
 <br> -->
-
+<!-- 
 <div class="comment_container">
     <div class="comment_form">
         <h2></h2>
@@ -148,4 +167,4 @@
         {% endfor %}
     </div>
 </div>
-
+ -->

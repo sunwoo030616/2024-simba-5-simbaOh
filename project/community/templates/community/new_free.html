@@ -16,14 +16,14 @@
               <img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
             </a>
           </div>
-          <div><p class="color_28 title_text" style="text-align: center;">커뮤니티 작성</p></div>
+          <p class="color_28 title_text" style="text-align: center;">커뮤니티 작성</p>
           <div style="width: 32px;"></div>
         </div>
         <div class="border1 row1">
           <p class="title_text2 color_00">게시판 구분</p>
           <div class="row">
-            <p class="select_free">자유게시판</p>
-            <a href="{% url 'community:new-move' %}" class="select_move">이직게시판</a>
+            <a class="select_point" href="{% url 'community:new-free' %}">자유게시판</a>
+            <a href="{% url 'community:new-move' %}">이직게시판</a>
           </div>
         </div>
         <div class="border2">
