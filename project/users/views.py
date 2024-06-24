@@ -164,11 +164,10 @@ def mentoring_state(request, id):
         state = request.POST.get('state')
         try:
             mentoring = Relation_mentor.objects.get(pk=mentorship_id)
-            if state == "거절":
+            if request.POST['state'] == '거절':
                 mentoring.state = "거절"
                 mentoring.save()  # Save the state change
-                mentoring.delete()  # Then delete the mentoring relation
-            elif state == '수락':
+            elif request.POST['state'] == '수락':
                 mentoring.state = '수락'
                 mentoring.save()  # Save the state change
             else:
