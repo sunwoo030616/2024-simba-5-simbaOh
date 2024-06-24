@@ -86,6 +86,7 @@ def mentor_relation_create(request, id):
 
 def mentor_ask(request, id):
     user = request.user
+    print(user)
     mentor = get_object_or_404(Mentor, pk = id)
     if mentor.user == request.user:
         return redirect('main:mentor-list')
