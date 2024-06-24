@@ -15,6 +15,7 @@ urlpatterns = [
     path('mentoring-state/<int:id>', mentoring_state, name="mentoring-state"),
     path('cibms/', cibm_list, name="cibm_list"),
     path('cpbms/', cpbm_list, name="cpbm_list"),
+    path('ci_bms/<int:careerinfo_id>/', ci_bms, name='ci_bms'),
     path('eibms/', eibm_list, name="eibm_list"),
     path('ciapply/', ciapply, name="ciapply"),
     path('cpapply/', cpapply, name="cpapply"),
