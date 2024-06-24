@@ -10,6 +10,7 @@
         <input type="hidden" name="mentorship_id" value="{{ m.id }}">
         <p><button type="submit" name="state" value="수락">수락</button></p>
         <p><button type="submit" name="state" value="거절">거절</button></p>
+        {{m.user.profile.user_name}}
     {% endfor %}
     <!-- <ul>
         {% for mentorship in mentor_lists %}
