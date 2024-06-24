@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .models import Mentor, Category
+from .models import Mentor, Category, Relation_mentor
 from django.contrib.auth.models import User
 
 
@@ -81,6 +81,12 @@ def mentor_ask(request, id):
         return redirect('main:mentor-list')
     else:
         mentor.mentor_ship.add(user)
+
+        new_relation = Relation_mentor()
+        new_relation.mentor = mentor
+        new_relation.menti = user
+        new_relation.state = '대기'
+        new_relation.save()
         return render(request, 'main/mentor_ask.html', {'mentor':mentor})
 
 

@@ -34,7 +34,15 @@ class Mentor(models.Model):
     categories = models.ManyToManyField(Category, related_name='mentors', blank=True)
     mentor_ship = models.ManyToManyField(User, related_name='menti_ship', symmetrical=False, blank=True)
     def __str__(self):
-        return self.mentor_info[:30]
+        return self.user
+
+
+class Relation_mentor(models.Model):
+    mentor = models.ForeignKey(Mentor, on_delete=models.CASCADE)
+    menti = models.ForeignKey(User, on_delete=models.CASCADE)
+    state = models.CharField(max_length=30, null=True, blank=True)
+    def __str__(self):
+        return self.menti
 
 # class Accept(models.Model):
 #     mentor_ship = models.ForeignKey(Mentor, related_name='menti_ship', on_delete=models.CASCADE, blank=True, null=True, default='0')
