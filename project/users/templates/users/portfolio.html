@@ -1,0 +1,48 @@
+<!-- users/portfolio.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ portfolio.title }}</title>
+</head>
+<body>
+    <h1>{{ portfolio.title }}</h1>
+    <p>{{ portfolio.introduction }}</p>
+    
+    <h2>교육</h2>
+    <ul>
+        {% for edu in portfolio.education.all %}
+            <li>{{ edu.name }}</li>
+        {% empty %}
+            <li>교육 정보가 없습니다.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>경험</h2>
+    <ul>
+        {% for exp in portfolio.experience.all %}
+            <li>{{ exp.name }}</li>
+        {% empty %}
+            <li>경험 정보가 없습니다.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>프로젝트</h2>
+    <ul>
+        {% for proj in portfolio.projects.all %}
+            <li>{{ proj.project.name }}</li>
+        {% empty %}
+            <li>프로젝트 정보가 없습니다.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>자격증</h2>
+    <ul>
+        {% for cert in portfolio.certifications.all %}
+            <li>{{ cert.name }}</li>
+        {% empty %}
+            <li>자격증 정보가 없습니다.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
