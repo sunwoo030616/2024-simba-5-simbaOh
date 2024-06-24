@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from .models import Portfolio, Education, Experience, Project, Certification
 from accounts.models import Profile
-from main.models import Mentor
+from main.models import Mentor, Relation_mentor
 from community.models import Free, Move
 from careers.models import Careerinfo, Careerprogram, Eduinfo, Ciapply, Cpapply, Eiapply
 
@@ -24,7 +24,8 @@ def mypage(request, id):
 def follow_list(request, id):
     user = get_object_or_404(User, pk=id)
     context = {
-        'followings': user.mentor_followings.all()
+        'followings': user.mentor_followings.all(),
+        'followers': user.profile.followers.all()
     }
     return render(request, 'users/follow_list.html', context)
 
@@ -46,41 +47,68 @@ def eiapply(request):
 def edit_portfolio(request):
     portfolio, created = Portfolio.objects.get_or_create(user=request.user)
     if request.method == 'POST':
-        title = request.POST.get('title')
-        introduction = request.POST.get('introduction')
-        education_list = request.POST.getlist('education')
-        experience_list = request.POST.getlist('experience')
-        projects_list = request.POST.getlist('projects')
-        certifications_list = request.POST.getlist('certifications')
+        title = request.POST.get('title', '')
+        introduction = request.POST.get('introduction', '')
+        education_list = request.POST.getlist('education', [])
+        experience_list = request.POST.getlist('experience', [])
+        projects_list = request.POST.getlist('projects', [])
+        certifications_list = request.POST.getlist('certifications', [])
 
         portfolio.title = title
         portfolio.introduction = introduction
 
         portfolio.education.clear()
         for edu in education_list:
-            education, created = Education.objects.get_or_create(name=edu)
-            portfolio.education.add(education)
+            if edu:  # 비어 있지 않은지 확인
+                education, created = Education.objects.get_or_create(name=edu)
+                portfolio.education.add(education)
 
         portfolio.experience.clear()
         for exp in experience_list:
-            experience, created = Experience.objects.get_or_create(name=exp)
-            portfolio.experience.add(experience)
+            if exp:  # 비어 있지 않은지 확인
+                experience, created = Experience.objects.get_or_create(name=exp)
+                portfolio.experience.add(experience)
 
         portfolio.projects.clear()
         for proj in projects_list:
-            project, created = Project.objects.get_or_create(name=proj)
-            portfolio.projects.add(project)
+            if proj:  # 비어 있지 않은지 확인
+                project, created = Project.objects.get_or_create(name=proj)
+                portfolio.projects.add(project)
 
         portfolio.certifications.clear()
         for cert in certifications_list:
-            certification, created = Certification.objects.get_or_create(name=cert)
-            portfolio.certifications.add(cert)
+            if cert:  # 비어 있지 않고 문자열인지 확인
+                certification, created = Certification.objects.get_or_create(name=cert)
+                portfolio.certifications.add(certification)
 
         portfolio.save()
 
-        return redirect('users:mypage', id=request.user.id)
+        # 디버깅을 위해 저장된 데이터를 출력합니다.
+        print('Title:', portfolio.title)
+        print('Introduction:', portfolio.introduction)
+        print('Education:', [edu.name for edu in portfolio.education.all()])
+        print('Experience:', [exp.name for exp in portfolio.experience.all()])
+        print('Projects:', [proj.name for proj in portfolio.projects.all()])
+        print('Certifications:', [cert.name for cert in portfolio.certifications.all()])
+
+        return redirect('users:view_portfolio', id=request.user.id)
 
     return render(request, 'users/edit_portfolio.html', {'portfolio': portfolio})
+
+def view_portfolio(request,id):
+    portfolio = get_object_or_404(Portfolio, user=request.user)
+    education = portfolio.education.all()
+    experience = portfolio.experience.all()
+    projects = portfolio.projects.all()
+    certifications = portfolio.certifications.all()
+    return render(request, 'users/portfolio.html', {
+        'portfolio': portfolio,
+        'education': education,
+        'experience': experience,
+        'projects': projects,
+        'certifications': certifications
+    })
+
 
 def my_writing(request, id):
     user = User.objects.get(pk=id)
@@ -105,18 +133,51 @@ def mentoring(request, id):
 
 def menti_list(request, id):
     user = get_object_or_404(User, pk=id)
-    mentor_ship_list = user.mentor_followings.all()
-    menti_ship_list = set()
+    mentors = Mentor.objects.filter(user_id=id)
+    user_profiles = []  # Initialize list to store Profile objects
+    mentor_lists = []  # Initialize list to store Relation_mentor objects
 
-    for mentor in mentor_ship_list:
-        menti_ship_list.update(mentor.mentor_ship.all())
+    for mentor in mentors:
+        mentor_list = Relation_mentor.objects.filter(mentor=mentor)
+        mentor_lists.extend(mentor_list)
+        for relation in mentor_list:
+            profiles = Profile.objects.filter(user=relation.menti)  # Get all Profile objects for this menti
+            user_profiles.extend(profiles)
 
-    context = {
-        'mentor_ship': mentor_ship_list,
-        'menti_ship': menti_ship_list,
-    }
-    return render(request, 'users/menti_list.html', context)
+    if not user_profiles:
+        return redirect('users:mentoring', id)
+    else:
+        menti_list = Relation_mentor.objects.filter(menti_id=user.id)
+        context = {
+            'mentors': mentors,
+            'user_profiles': user_profiles,
+            'mentor_lists': mentor_lists,
+            'menti_lists': menti_list.all()
+        }
+        return render(request, 'users/menti_list.html', context)
 
+
+def mentoring_state(request, id):
+    user = User.objects.get(pk=id)
+    if request.method == 'POST':
+        mentorship_id = request.POST.get('mentorship_id')
+        state = request.POST.get('state')
+        try:
+            mentoring = Relation_mentor.objects.get(pk=mentorship_id)
+            if state == "거절":
+                mentoring.state = "거절"
+                mentoring.save()  # Save the state change
+                mentoring.delete()  # Then delete the mentoring relation
+            elif state == '수락':
+                mentoring.state = '수락'
+                mentoring.save()  # Save the state change
+            else:
+                mentoring.state = '대기'
+                mentoring.save()  # Save the state change
+        except Relation_mentor.DoesNotExist:
+            # Handle the case where the mentorship does not exist
+            pass
+    return redirect('users:mentoring', user.id)
 
 def career_now(request, id):
     return render(request, 'users/career_now.html')

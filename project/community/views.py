@@ -5,8 +5,6 @@ from django.contrib.auth.decorators import login_required
 from .models import Free, Move, Freecomment, Movecomment, Freetag, Movetag
 # Create your views here.
 
-def board(request):
-    return render(request, 'community/board.html')
 
 def free_board(request):
     frees = Free.objects.all()
@@ -62,6 +60,7 @@ def move_create(request):
         new_move = Move()
         new_move.title = request.POST.get('title', '')
         new_move.writer = request.user
+        new_move.field = request.POST.get('field', '')
         new_move.content = request.POST['content']
         new_move.mtcontent = request.POST.get('mtcontent', '')
         new_move.pub_date = timezone.now()
