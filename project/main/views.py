@@ -89,14 +89,14 @@ def mentor_relation_create(request, id):
 def mentor_ask(request, id):
     user = request.user
     mentor = get_object_or_404(Mentor, pk = id)
-    menti = Menti.objects.get(mentor=mentor)
+    menti = Menti.objects.all()
     is_mentoring = user in mentor.mentor_ship.all()
     if mentor.user == request.user:
         return redirect('main:mentor-list')
     else:
         if is_mentoring:
             mentor.mentor_ship.remove(user)
-            menti.delete
+            menti.delete()
             return redirect('main:mentor-info', mentor.id)
         else:
             return render(request, 'main/mentor_ask.html', {'mentor':mentor})
