@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base_with_nav.html' %} 
 {% load static %}
 {% block content %} 
 
@@ -22,21 +22,14 @@
       </div>
       <form action="{% url 'users:edit_portfolio' %}" method="post" class="form_set">
         {% csrf_token %}
-<<<<<<< HEAD
-        <div class='box'>
-          <p class="text_font1 color_00">내정보</p>
-=======
         
         <div class="box">
           <p class="text_font1 color_00">내 정보</p>
 
->>>>>>> 6a001f7ee0c45842920f6ed973dd781042c5d4fe
           <div><hr></div>
         </div>
         
         <div class='origin'>
-          {% comment %} <div class="box"> {% endcomment %}
-          {% comment %} required 없애기 {% endcomment %}
 
           <div class='originuser'>
             <div class='photoname'> 
@@ -47,14 +40,13 @@
               <div class='major1'>{{user.profile.user_major}}</div>
               <div class='email1'>{{user.username}}</div>
               <div class='phone1'>{{user.profile.user_phone}}</div>
-              {% comment %} 전화번호에 010-3407-5472 이런식으로 넣기 {% endcomment %}
             </div>
           </div>
 
         </div>
         
         <div class="box">
-          <div class="row">
+          <div class="row1">
             <p class="text_font1 color_00">제목</p><p class="text_font2 color_F0">필수</p>
           </div>
           <div><hr></div>
@@ -62,7 +54,7 @@
         </div>
 
         <div class="box">
-          <div class="row">
+          <div class="row1">
             <p class="text_font1 color_00">소개글</p><p class="text_font2 color_F0">필수</p>
           </div>
           <div><hr></div>
@@ -71,47 +63,57 @@
         </div>
         
         <div class="box">
-          <div class="row">
+          <div class="row1">
             <p class="text_font1 color_00">학력</p><p class="text_font2 color_F0">필수</p><p class="text_font3 color_71">최종 학력을 모두 입력해주세요</p>
           </div>
           <div><hr></div>
           <div id="education_fields">
-            <input type="text" class="input_data2" name="education" id="education" placeholder="+ 입력하기" required>
+            {% for education in portfolio.education.all %}
+              <input type="text" class="input_data2" name="education" value="{{ education.name }}" placeholder="+ 입력하기" oninput="checkField(this)" required>
+            {% empty %}
+              <input type="text" class="input_data2" name="education" placeholder="+ 입력하기" oninput="checkField(this)" required>
+            {% endfor %}
           </div>
-          <button type="button" class="btn_add_field" onclick="addEducationField()">추가</button>
         </div>
-          
+        
         <div class="box">
-          <div class="row">
+          <div class="row1">
             <p class="text_font1 color_00">경력</p><p class="text_font3 color_71">정규직/인턴/아르바이트 경력을 입력해주세요.</p>
           </div>
           <div><hr></div>
           <div id="experience_fields">
-            <input type="text" class="input_data2" name="experience" id="experience" placeholder="+ 입력하기">
+            {% for experience in portfolio.experience.all %}
+              <input type="text" class="input_data2" name="experience" value="{{ experience.name }}" placeholder="+ 입력하기" oninput="checkField(this)">
+            {% empty %}
+              <input type="text" class="input_data2" name="experience" placeholder="+ 입력하기" oninput="checkField(this)">
+            {% endfor %}
           </div>
-          <button type="button" class="btn_add_field" onclick="addExperienceField()">추가</button>
         </div>
           
         <div class="box">
-          <div class="row">
+          <div class="row1">
             <p class="text_font1 color_00">프로젝트/교육</p><p class="text_font3 color_71">프로젝트/교육 이력을 입력해주세요.</p>
           </div>
           <div><hr></div>
           <div id="projects_fields">
-            <input type="text" class="input_data2" name="projects" id="projects" placeholder="+ 입력하기">
+            {% for project in portfolio.projects.all %}
+              <input type="text" class="input_data2" name="projects" value="{{ project }}" placeholder="+ 입력하기" oninput="checkField(this)">
+            {% endfor %}
+            <input type="text" class="input_data2" name="projects" placeholder="+ 입력하기" oninput="checkField(this)">
           </div>
-          <button type="button" class="btn_add_field" onclick="addProjectField()">추가</button>
         </div>
 
         <div class="box">
-          <div class="row">
-            <p class="text_font1 color_00">자격/어학/수상</p><p class="text_font3 color_71">취득한 자격증/어학성적/수상내역을 입력해주세요.</p>
+          <div class="row1">
+            <p class="text_font1_1 color_00">자격/어학/수상</p><p class="text_font3 color_71">취득한 자격증/어학성적/수상내역을 입력해주세요.</p>
           </div>
           <div><hr></div>
           <div id="certifications_fields">
-            <input type="text" class="input_data2" name="certifications" id="certifications" placeholder="+ 입력하기">
+            {% for certification in portfolio.certifications.all %}
+              <input type="text" class="input_data2" name="certifications" value="{{ certification }}" placeholder="+ 입력하기" oninput="checkField(this)">
+            {% endfor %}
+            <input type="text" class="input_data2" name="certifications" placeholder="+ 입력하기" oninput="checkField(this)">
           </div>
-          <button type="button" class='btn_add_field2' onclick="addCertificationField()">추가</button>
         </div>
       
         <button type="submit" class="btn_submit text_font5">저장하기</button>
@@ -122,44 +124,18 @@
 </div>
 
 <script>
-  function addEducationField() {
-    var container = document.getElementById('education_fields');
-    var input = document.createElement('input');
-    input.type = 'text';
-    input.className = 'input_data2';
-    input.name = 'education';
-    input.placeholder = '+ 입력하기';
-    container.appendChild(input);
-  }
-
-  function addExperienceField() {
-    var container = document.getElementById('experience_fields');
-    var input = document.createElement('input');
-    input.type = 'text';
-    input.className = 'input_data2';
-    input.name = 'experience';
-    input.placeholder = '+ 입력하기';
-    container.appendChild(input);
-  }
-
-  function addProjectField() {
-    var container = document.getElementById('projects_fields');
-    var input = document.createElement('input');
-    input.type = 'text';
-    input.className = 'input_data2';
-    input.name = 'projects';
-    input.placeholder = '+ 입력하기';
-    container.appendChild(input);
-  }
-
-  function addCertificationField() {
-    var container = document.getElementById('certifications_fields');
-    var input = document.createElement('input');
-    input.type = 'text';
-    input.className = 'input_data2';
-    input.name = 'certifications';
-    input.placeholder = '+ 입력하기';
-    container.appendChild(input);
+  function checkField(input) {
+    if (input.value.length > 0 && (!input.nextElementSibling || input.nextElementSibling.tagName !== 'INPUT')) {
+      var newInput = document.createElement('input');
+      newInput.type = 'text';
+      newInput.className = 'input_data2';
+      newInput.name = input.name;
+      newInput.placeholder = '+ 입력하기';
+      newInput.oninput = function() { checkField(newInput); };
+      input.parentNode.appendChild(newInput);
+    } else if (input.value.length === 0 && input.nextElementSibling && input.nextElementSibling.tagName === 'INPUT') {
+      input.parentNode.removeChild(input.nextElementSibling);
+    }
   }
 </script>
 
