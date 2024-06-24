@@ -85,7 +85,7 @@ def mentor_ask(request, id):
         new_relation = Relation_mentor()
         new_relation.mentor = mentor
         new_relation.menti = user
-        new_relation.state = '대기'
+        new_relation.state = ''
         new_relation.save()
         return render(request, 'main/mentor_ask.html', {'mentor':mentor})
 
