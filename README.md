@@ -7,4 +7,4 @@
 
 `서비스 소개`
 ![image](https://github.com/LikeLion-at-DGU/2024-simba-5-simbaOh/assets/163946300/657dd00c-7ad9-4e27-b2aa-411d7e6f8992)
--동문 선배 현직자 멘토 서비스
+`동문 선배 현직자 멘토 서비스`
