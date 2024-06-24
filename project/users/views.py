@@ -126,8 +126,10 @@ def my_writing(request, id):
 
 def mentoring(request, id):
     user = get_object_or_404(User, pk=id)
+    mentor_state = Relation_mentor.objects.filter(menti=user)
     context = {
         'menti_ship': user.menti_ship.all(),
+        'mentor_state':mentor_state.all(),
     }
     return render(request, 'users/mentoring.html', context)
 
@@ -143,7 +145,7 @@ def menti_list(request, id):
         for relation in mentor_list:
             profiles = Profile.objects.filter(user=relation.menti)  # Get all Profile objects for this menti
             user_profiles.extend(profiles)
-
+    
     if not user_profiles:
         return redirect('users:mentoring', id)
     else:
@@ -151,29 +153,26 @@ def menti_list(request, id):
         context = {
             'mentors': mentors,
             'user_profiles': user_profiles,
-            'mentor_lists': mentor_lists,
+            'mentor_lists': mentor_lists.all(),
             'menti_lists': menti_list.all()
         }
         return render(request, 'users/menti_list.html', context)
 
 
 def mentoring_state(request, id):
-    user = User.objects.get(pk=id)
+    user = get_object_or_404(User, pk=id)
     if request.method == 'POST':
         mentorship_id = request.POST.get('mentorship_id')
         state = request.POST.get('state')
         try:
             mentoring = Relation_mentor.objects.get(pk=mentorship_id)
-            if state == "거절":
+            if state == '거절':
                 mentoring.state = "거절"
-                mentoring.save()  # Save the state change
-                mentoring.delete()  # Then delete the mentoring relation
             elif state == '수락':
                 mentoring.state = '수락'
-                mentoring.save()  # Save the state change
             else:
                 mentoring.state = '대기'
-                mentoring.save()  # Save the state change
+            mentoring.save()  # Save the state change
         except Relation_mentor.DoesNotExist:
             # Handle the case where the mentorship does not exist
             pass
@@ -198,4 +197,16 @@ def eibm_list(request):
     user = request.user
     eibms = user.ei_bms.all()
     return render(request, 'users/eibm.html', {'eibms': eibms})
+
+def ci_bms(request, careerinfo_id):
+    careerinfo = get_object_or_404(Careerinfo, id=careerinfo_id)
+    if request.user in careerinfo.ci_bm.all():
+        careerinfo.ci_bm.remove(request.user)
+        careerinfo.cibm_count-=1
+        careerinfo.save()
+    else:
+        careerinfo.ci_bm.add(request.user)
+        careerinfo.cibm_count +=1
+        careerinfo.save()
+    return redirect('users:cibm_list')
 

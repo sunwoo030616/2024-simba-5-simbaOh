@@ -13,6 +13,7 @@ urlpatterns = [
     path('mentor-info/<int:id>/', mentor_info, name='mentor-info'),
     path('mentor-create/', mentor_create, name='mentor-create'),
     path('mentor-enroll/', mentor_enroll, name='mentor-enroll'),
+    path('mentor-relation-create/<int:id>/', mentor_relation_create, name='mentor-relation-create'),
     path('mentor-ask/<int:id>/', mentor_ask, name='mentor-ask'),
     path('follow/<int:id>/', follow, name='follow'),
     path('follow2/<int:id>/', follow2, name='follow2'),

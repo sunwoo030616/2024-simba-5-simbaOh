@@ -74,21 +74,24 @@ def mentor_info(request, id):
     mentor = get_object_or_404(Mentor, pk = id)
     return render(request, 'main/mentor_info.html', {'mentor' : mentor})
 
-def mentor_ask(request, id):
+def mentor_relation_create(request, id):
     user=request.user
+    mentor = get_object_or_404(Mentor, pk=id)
+    new_relation = Relation_mentor()
+    new_relation.mentor = mentor
+    new_relation.menti = user
+    new_relation.state = ''
+    new_relation.save()
+    return redirect('main:mentor-ask', mentor.id)
+
+def mentor_ask(request, id):
+    user = request.user
     mentor = get_object_or_404(Mentor, pk = id)
     if mentor.user == request.user:
         return redirect('main:mentor-list')
     else:
         mentor.mentor_ship.add(user)
-
-        new_relation = Relation_mentor()
-        new_relation.mentor = mentor
-        new_relation.menti = user
-        new_relation.state = '대기'
-        new_relation.save()
-        return render(request, 'main/mentor_ask.html', {'mentor':mentor})
-
+    return render(request, 'main/mentor_ask.html', {'mentor':mentor})
 
 def follow(request, id):
     user = request.user
