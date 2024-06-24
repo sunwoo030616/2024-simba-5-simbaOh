@@ -10,7 +10,7 @@
 
 
 <div class="screen">
-  <form id="form" class="main" action="{% url 'main:mentor-relation-create' mentor.id %}" method="POST">
+  <form id="form" class="main" action="{% url 'main:create-menti' mentor.id %}" method="POST">
     <div class="body" id="main">
       <div class="nav">
         <div class="left" style="z-index: 1;">
@@ -144,7 +144,7 @@
       toast.style.display = "";
       setTimeout(function() {
         form.submit();
-        window.location.href = "{% url 'main:mentor-list' %}"
+
       }, 1500);
     }
    
