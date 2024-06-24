@@ -11,7 +11,7 @@
             <ul>
                 {% for profile in user_profiles %}
                     {% if profile.user == mentorship.menti %}
-                        <li>멘티: {{ profile.user.user_name }}</li>
+                        <li>멘티: {{ profile.user.profile.user_name }}</li>
                         <li>전공: {{ profile.user.profile.user_major }}</li>
                     {% endif %}
                     
