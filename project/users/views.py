@@ -95,20 +95,9 @@ def edit_portfolio(request):
 
     return render(request, 'users/edit_portfolio.html', {'portfolio': portfolio})
 
-def view_portfolio(request, id):
-    user = get_object_or_404(User, pk=id)
-    portfolio = get_object_or_404(Portfolio, user=user)
-    education = portfolio.education.all()
-    experience = portfolio.experience.all()
-    projects = portfolio.projects.all()
-    certifications = portfolio.certifications.all()
-    return render(request, 'users/portfolio.html', {
-        'portfolio': portfolio,
-        'education': education,
-        'experience': experience,
-        'projects': projects,
-        'certifications': certifications
-    })
+def view_portfolio(request):
+    portfolio = Portfolio.objects.all()
+    return render(request, 'users/portfolio.html', {'portfolio':portfolio})
 
 def my_writing(request, id):
     user = User.objects.get(pk=id)
