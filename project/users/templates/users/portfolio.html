@@ -30,7 +30,7 @@
     <h2>프로젝트</h2>
     <ul>
         {% for proj in portfolio.projects.all %}
-            <li>{{ proj.project.name }}</li>
+            <li>{{ proj.name }}</li>
         {% empty %}
             <li>프로젝트 정보가 없습니다.</li>
         {% endfor %}
