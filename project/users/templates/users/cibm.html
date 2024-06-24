@@ -1,3 +1,68 @@
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/users/bookmark.css'%}"
+/>
+
+<div class="screen">
+	<div class="main">
+    <div class="body">
+			<div class="nav">
+				<div class="left" style="z-index: 1;">
+					<a href="{% url 'careers:career-info' %}">
+            <img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
+					</a>
+				</div>
+				<div><p class="color_28 title_text" style="text-align: center;">북마크 리스트</p></div>
+				<div style="width: 32px;"></div>
+			</div>
+      <div class="active">
+        <div class="act3"><a class="active3" href="{% url 'users:cibm_list' %}">채용정보</a><div class="line3"></div></div>
+        <div class="act1"><a class="active1" href="{% url 'users:cpbm_list' %}">채용프로그램</a><div class="line1"></div></div>
+        <div class="act2"><a class="active2" href="{% url 'users:eibm_list' %}">교육정보</a><div class="line2"></div></div>
+      </div>
+
+      <div class="application">
+        {% for careerinfo in cibms %}
+          <a class="detail" href="{% url 'careers:careerinfo-detail' careerinfo.id %}">
+            <div>
+              <div class="areadate" style="padding-bottom: 0.25rem;">
+                <div class="area">{{ careerinfo.field }}</div>
+              </div>
+              <div class="place">{{ careerinfo.company }}</div>
+              <div class="title">{{ careerinfo.title }}</div>
+            </div>
+            <div>
+              <p class="hi">채용정보</p>
+              <img src="" alt="">
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll('.navbar a').forEach(function(link) {
+          link.addEventListener('click', function(event) {
+              event.preventDefault();
+              window.location.href = link.getAttribute('href');
+          });
+      });
+  });
+</script>
+
+
+{% endblock %}
+
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>

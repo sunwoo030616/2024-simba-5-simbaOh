@@ -38,12 +38,12 @@ href="{% static 'css/users/ciapply.css'%}"
                 <a class='detail' href="{% url 'careers:careerinfo-detail' application.careerinfo.id %}">
                     {% comment %} area에 템플릿 언어 넣어야함 {% endcomment %}
                     <div class='areadate'>
-                        <div class='area'>IT 개발/데이터***</div>
+                        <div class='area'>{{ application.field }}</div>
                         <div class='date'>{{ application.application_date|date:"Y/m/d" }}</div>                            
                     </div>
-                        <div class='place'>{{ application.careerinfo.company }}</div>
-                        <div class='title'>{{ application.careerinfo.title }}</div>
-                        <div class='line'></div>
+                    <div class='place'>{{ application.careerinfo.company }}</div>
+                    <div class='title'>{{ application.careerinfo.title }}</div>
+                    <div class='line'></div>
                 </a>
             {% endfor %}
         
