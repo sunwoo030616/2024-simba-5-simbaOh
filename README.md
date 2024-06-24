@@ -6,5 +6,5 @@
 |기획/디자인|프론트엔드|프론트엔드|백엔드|백엔드|
 
 `서비스 소개`
-[![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/8ac75155-a239-4200-8d4c-0b1ae7a47dbf/3673d21e-38bf-4eee-9213-4f08d6c1ea5e/Untitled.png)](https://www.notion.so/a0fce2f8bdc249b18de6c061c825e6e7?pvs=4#7e28c7edd0f5412cbc2d81a825a97efc)
+![image](https://github.com/LikeLion-at-DGU/2024-simba-5-simbaOh/assets/163946300/657dd00c-7ad9-4e27-b2aa-411d7e6f8992)
 -동문 선배 현직자 멘토 서비스
