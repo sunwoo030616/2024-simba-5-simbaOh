@@ -88,6 +88,7 @@ def mentor_relation_create(request, id):
 
 def mentor_ask(request, id):
     user = request.user
+    print(user)
     mentor = get_object_or_404(Mentor, pk = id)
     menti = Menti.objects.all()
     is_mentoring = user in mentor.mentor_ship.all()

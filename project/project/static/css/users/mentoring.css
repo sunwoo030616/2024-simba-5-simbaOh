@@ -1,0 +1,204 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px; /* 0.625rem을 10px로 변경 */
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 430px; /* 26.875rem을 430px로 변경 */
+  align-items: center;
+  background-color: #FFF;
+}
+
+.body {
+  display: flex;
+  width: 100%;
+  max-width: 400px; /* 25rem을 400px로 변경 */
+  flex-direction: column;
+  gap: 16px; /* 1rem을 16px로 변경 */
+}
+
+.nav {
+  display: flex;
+  width: 100%;
+  height: 32px; /* 2rem을 32px로 변경 */
+  flex-direction: row;
+  padding-top: 56px; /* 3.5rem을 56px로 변경 */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  display: flex;
+}
+
+.right {
+  display: flex;
+}
+
+.signup-main {
+  color: #28464E;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.topbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  padding-bottom: 30px;
+}
+
+.topbar1 {
+  width: 165px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Pretendard";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 120% */
+  letter-spacing: -0.32px;
+  color: #359287;
+  gap: 12px;
+}
+
+.line {
+  width: 165px;
+  height: 2px;
+  background: #359287;
+}
+
+.topbar2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: #D4EDE7;
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px; /* 120% */
+}
+
+.line2 {
+  width: 165px;
+  height: 2px;
+  background: #d4ede7;
+}
+
+.mentor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 151px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0px 1px 5px 0px #359287;
+  margin-bottom: 20px;
+}
+.date{
+  color: #8A9699;
+text-align: right;
+font-family: Pretendard;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.picture {
+  display: flex;
+  width: 348px;
+  justify-content: space-between;
+  align-items: center;
+}
+.username{
+  color: #17363F;
+font-family: Pretendard;
+font-size: 19px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.major{
+  color: #8E8E8E;
+font-family: Pretendard;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: 21px; /* 140% */
+letter-spacing: -0.32px;
+}
+.usermajor {
+  display: flex;
+align-items: flex-start;
+flex-direction: column;
+gap: 6px;
+}
+
+.state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 65px; /* 아이콘 간격 설정 */
+  padding-top: 10px; /* 상단 패딩 설정 */
+  padding-bottom: 10px; /* 하단 패딩 설정 */
+}
+
+.icon-container {
+  text-align: center;
+  
+}
+
+.icon {
+  display: block;
+  margin: 0 auto;
+}
+
+.icon-text {
+  margin-top: 5px;
+}
+.userdate{
+  display:flex;
+  width: 280px;
+  justify-content: space-between;
+  flex-direction: row;
+  padding-left: 10px;
+}
+.green-text {
+  color: #359287;
+font-family: Pretendard;
+font-size: 15px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.center{
+  display: flex;
+  width: 100%;
+}
+.title_text {
+  font-family: "Pretendard";
+  font-size: 24px; /* 1.5rem을 24px로 변경 */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: #28464e;
+}

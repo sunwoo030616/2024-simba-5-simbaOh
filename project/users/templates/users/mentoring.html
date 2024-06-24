@@ -1,14 +1,80 @@
-{% extends 'base.html'%}
+{% extends 'base_with_nav.html' %}
+{% load static %}
 {% block content %}
 
-<!-- {% for mentor in menti_ship %}
-    <a href="{% url 'main:mentor-info' mentor.id %}">{{ mentor.user.profile.user_name }}</a>
-{% endfor %} -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/users/mentoring.css' %}" />
 
+<<<<<<< HEAD
 {% for m in mentor_state %}
 <a href="{% url 'main:mentor-info' m.mentor.id %}">{{m.mentor.user.profile.user_name}}</a>
 {{m.state}} {{m.mentoring_at}}</br>
 {%endfor%}
+=======
+>>>>>>> 46ad1b8883dca2daf01736aa97ae97a2cd209b12
 
-<a href="{% url 'users:menti-list' user.id %}">멘티 리스트 보기</a>
+
+<div class='screen'>
+  <div class="main">
+    <div class="body">  
+
+      <div class='nav'>
+        <div class="left" style="z-index: 1;">
+          <a href="{% url 'main:mainpage' %}">
+            <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
+          </a>
+        </div>
+        <div class="right">
+          <h2 class="color_28 title_text" style="text-align: center;">멘토링 신청 현황</h2>
+        </div>
+        <div style="width:32px;"></div>
+      </div>
+
+      <div class='topbar'>
+        <a class='topbar1' href="{% url 'users:mentoring' user.id %}">멘토링<div class='line'></div></a>
+        <a class='topbar2' href="{% url 'users:menti-list' user.id %}">멘티 신청<div class='line2'></div></a>
+      </div>
+
+      {% for m in mentor_state %}
+      <div class='mentor'>
+        <a href="{% url 'main:mentor-info' m.mentor.id %}">
+          <div class='picture'>
+                <div class='center'>
+                  {% if m.mentor.user.profile.user_profile %}
+                  <img class='photo1' src="{{ m.mentor.user.profile.user_profile.url }}" width='60px' height='60px'>
+                  {% else %}
+                  <img class="image_set" src="{% static 'images/logo.png' %}" width='60px' height='60px'>
+                  {% endif %}
+                  <div class='userdate'>
+                    <div class='usermajor'>
+                      <div class='username'>{{m.mentor.user.profile.user_name}} 멘토</div>
+                      <div class='major'>{{m.mentor.user.profile.user_major}}</div>
+                    </div>
+                  <div class='date'>신청일<br>{{m.mentoring_at}}</div>
+                </div>
+          </div>
+        </a>
+      </div>
+
+
+        <div class='state'>
+          <div class="icon-container">
+            <img src="{% if m.state == '대기' or m.state == '' %}{% static 'images/대기초록.png' %}{% else %}{% static 'images/대기.png' %}{% endif %}" class="icon" onclick="event.preventDefault()">
+            <div class="icon-text {% if m.state == '대기' or m.state == '' %}green-text{% endif %}">대기</div>
+          </div>
+          <div class="icon-container">
+            <img src="{% if m.state == '거절' %}{% static 'images/거절초록.png' %}{% else %}{% static 'images/거절.png' %}{% endif %}" class="icon" onclick="event.preventDefault()">
+            <div class="icon-text {% if m.state == '거절' %}green-text{% endif %}">거절</div>
+          </div>
+          <div class="icon-container">
+            <img src="{% if m.state == '수락' %}{% static 'images/수락초록.png' %}{% else %}{% static 'images/수락.png' %}{% endif %}" class="icon" onclick="event.preventDefault()">
+            <div class="icon-text {% if m.state == '수락' %}green-text{% endif %}">수락</div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+
 {% endblock %}
