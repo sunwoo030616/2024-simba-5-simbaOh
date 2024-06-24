@@ -41,12 +41,12 @@ class Menti(models.Model):
     mentor = models.ForeignKey(Mentor, on_delete=models.CASCADE)
     summary = models.CharField(max_length=50)
     content = models.CharField(max_length=500)
+    state = models.CharField(max_length=30, null=True, blank=True)
+    mentoring_at = models.DateField(blank=True, null=True)
 
 class Relation_mentor(models.Model):
     mentor = models.ForeignKey(Mentor, on_delete=models.CASCADE)
     menti = models.ForeignKey(User, on_delete=models.CASCADE)
-    state = models.CharField(max_length=30, null=True, blank=True)
-    mentoring_at = models.DateField(blank=True, null=True)
     def __str__(self):
         return self.menti
 

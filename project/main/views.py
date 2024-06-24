@@ -80,8 +80,6 @@ def mentor_relation_create(request, id):
     new_relation = Relation_mentor()
     new_relation.mentor = mentor
     new_relation.menti = user
-    new_relation.state = ''
-    new_relation.mentoring_at = timezone.now()
     new_relation.save()
 
     return redirect('main:mentor-info', mentor.id)
@@ -110,6 +108,8 @@ def create_menti(request, id):
     new_menti.mentor = mentor
     new_menti.summary = request.POST['summary']
     new_menti.content = request.POST['content']
+    new_menti.state = ''
+    new_menti.mentoring_at = timezone.now()
     new_menti.save()
     mentor.mentor_ship.add(user)
     return redirect('main:mentor-relation-create', mentor.id)

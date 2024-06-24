@@ -4,7 +4,14 @@
 <form action="{% url 'users:mentoring-state' user.id %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <h1>내가 신청한 멘토 리스트</h1>
-    <ul>
+
+    {% for m in menti %}
+        {{m.mentor.id}}
+        <input type="hidden" name="mentorship_id" value="{{ m.id }}">
+        <p><button type="submit" name="state" value="수락">수락</button></p>
+        <p><button type="submit" name="state" value="거절">거절</button></p>
+    {% endfor %}
+    <!-- <ul>
         {% for mentorship in mentor_lists %}
         <li>
             <p>멘토: {{ mentorship.mentor.user.user_name }}</p>
@@ -24,6 +31,6 @@
         </li>
         <p>상태: {{ mentorship.state }}</p>
         {% endfor %}
-    </ul>
+    </ul> -->
 </form>
 {% endblock %}
