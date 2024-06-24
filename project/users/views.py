@@ -91,13 +91,24 @@ def edit_portfolio(request):
         print('Projects:', [proj.name for proj in portfolio.projects.all()])
         print('Certifications:', [cert.name for cert in portfolio.certifications.all()])
 
-        return redirect('users:view_portfolio', id=request.user.id)
+        return redirect('users:portfolio', id=request.user.id)
 
     return render(request, 'users/edit_portfolio.html', {'portfolio': portfolio})
 
-def view_portfolio(request):
-    portfolio = Portfolio.objects.all()
-    return render(request, 'users/portfolio.html', {'portfolio':portfolio})
+def view_portfolio(request, id):
+    user = get_object_or_404(User, pk=id)
+    portfolio = get_object_or_404(Portfolio, user=user)
+    education = portfolio.education.all()
+    experience = portfolio.experience.all()
+    projects = portfolio.projects.all()
+    certifications = portfolio.certifications.all()
+    return render(request, 'users/portfolio.html', {
+        'portfolio': portfolio,
+        'education': education,
+        'experience': experience,
+        'projects': projects,
+        'certifications': certifications
+    })
 
 def my_writing(request, id):
     user = User.objects.get(pk=id)
