@@ -8,19 +8,20 @@
   href="{% static 'css/main/mentor_info.css'%}"
 />
 
-<div class="screen">
+<div class='screen'>
   <div class="main">
-    <div class="body">
-      <div class="nav">
+    <div class="body"> 
+      <div class='nav'>
         <div class="left" style="z-index: 1;">
-          <a href="{% url 'main:mentor-list' %}">
-            <img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
+          <a href="{% url 'main:mainpage' %}">
+            <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
           </a>
         </div>
-        <div></div>
-        <div style="width: 32px;"></div>
+        <div class="right">
+          <h2 class="color_28 title_text" style="text-align: center;">멘토 정보</h2>
+        </div>
+        <div style="width:32px;"></div>
       </div>
-      <p class="color_28 title_text" style="text-align: center;">멘토 정보</p>
       <p class="color_28 title_text2">멘토 프로필</p>
       <div class="mentor_card_wrap">
         <div class="mentor_card">
@@ -49,7 +50,7 @@
 
             <!-- button 관련 바꾸어야함 뜨질 않아 -->
             <div class="row1"> 
-            {% if request.user != mentor %}
+              {% if request.user != mentor %}
               {% if user in mentor.followers.all %}
                 <a href="{% url 'main:follow' mentor.id %}">
                   <button type="button" class="btn btn-outline-info">언팔로우</button>
@@ -61,7 +62,18 @@
               {% endif %}
             {% endif %}
             {{mentor.followers.count}}
-              <a class="mentoring" href="{% url 'main:mentor-ask' mentor.id %}">멘토링 신청</a>
+            
+          {% if request.user != mentor %}
+              {% if user in mentor.mentor_ship.all %}
+                <a href="{% url 'main:mentor-ask' mentor.id %}">
+                  <button type="button" class="btn btn-outline-info">취소하기</button>
+                </a>
+              {% else %}
+                <a href="{% url 'main:mentor-ask' mentor.id %}">
+                  <button type="button" class="btn btn-info">멘토링 신청하기</button>
+                </a>
+              {% endif %}
+            {% endif %}
             </div>
             
           </div>

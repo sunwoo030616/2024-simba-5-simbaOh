@@ -136,6 +136,7 @@ input[type="text"] {
   display: flex;
   width: 400px;
   position: absolute;
+  z-index: 20;
 
   top: 50%;
   left: 50%;
@@ -181,6 +182,48 @@ input[type="text"] {
   background-color: #359287;
 }
 
+.wrapping {
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  overflow: hidden;
+  background-color: rgba(232, 232, 232, 0.70);
+}
+
+.wrapping2 {
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+  overflow: hidden;
+  background-color: rgba(232, 232, 232, 0.70);
+}
+
+.toast {
+  display: flex;
+  width: 400px;
+  height: 200px;
+  position: absolute;
+  z-index: 50;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  background-color: #FFF;
+}
+
 
 
 
@@ -189,7 +232,7 @@ input[type="text"] {
 /* 폰트 설정 */
 
 .title_text {
-  font-family: "noto Sans KR";
+  font-family: "Pretendard";
   font-size: 1.5rem; /* 24px */
   font-style: normal;
   font-weight: 700;
@@ -197,15 +240,23 @@ input[type="text"] {
 }
 
 .title_text2 {
-  font-family: "noto Sans KR";
+  font-family: "Pretendard";
   font-size: 1.25rem; /* 20px */
   font-style: normal;
   font-weight: 700;
   line-height: normal;
 }
 
+.title_text3 {
+  font-family: "Pretendard";
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
 .mentor_card_comp_font {
-  font-family: "Noto Sans KR";
+  font-family: "Pretendard";
   font-size: 1.25rem; /* 20px */
   font-style: normal;
   font-weight: 700;
@@ -214,7 +265,7 @@ input[type="text"] {
 }
 
 .mentor_card_dept_font {
-  font-family: "Noto Sans KR";
+  font-family: "Pretendard";
   font-size: 1rem; /* 16px */
   font-style: normal;
   font-weight: 500;

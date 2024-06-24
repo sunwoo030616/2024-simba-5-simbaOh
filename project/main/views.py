@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .models import Mentor, Category, Relation_mentor
+from .models import Mentor, Category, Relation_mentor, Menti
 from django.contrib.auth.models import User
 
 
@@ -81,17 +81,38 @@ def mentor_relation_create(request, id):
     new_relation.mentor = mentor
     new_relation.menti = user
     new_relation.state = ''
+    new_relation.mentoring_at = timezone.now()
     new_relation.save()
-    return redirect('main:mentor-ask', mentor.id)
+
+    return redirect('main:mentor-info', mentor.id)
 
 def mentor_ask(request, id):
     user = request.user
+    print(user)
     mentor = get_object_or_404(Mentor, pk = id)
+    menti = Menti.objects.get(mentor=mentor)
+    is_mentoring = user in mentor.mentor_ship.all()
     if mentor.user == request.user:
         return redirect('main:mentor-list')
     else:
-        mentor.mentor_ship.add(user)
-    return render(request, 'main/mentor_ask.html', {'mentor':mentor})
+        if is_mentoring:
+            mentor.mentor_ship.remove(user)
+            menti.delete
+            return redirect('main:mentor-info', mentor.id)
+        else:
+            return render(request, 'main/mentor_ask.html', {'mentor':mentor})
+
+def create_menti(request, id):
+    user = request.user
+    mentor = get_object_or_404(Mentor, pk=id)
+    new_menti = Menti()
+    new_menti.user = user
+    new_menti.mentor = mentor
+    new_menti.summary = request.POST['summary']
+    new_menti.content = request.POST['content']
+    new_menti.save()
+    mentor.mentor_ship.add(user)
+    return redirect('main:mentor-relation-create', mentor.id)
 
 def follow(request, id):
     user = request.user
