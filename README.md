@@ -54,5 +54,14 @@
 | **구도욱** | **최민** | **오태준** | **황채현** | **박선우** |
 | PD | FE | FE | BE | BE |
 | 융합보안학과 | 경영정보학과 | 정보통신공학과 | 전자전기공학부 | 컴퓨터공학과 |
-| ENFJ | ENTJ | INTJ | ISTJ | INFP |
+| ENFJ | ENTJ | INTJ | ISTJ | INFP |<br>
+## <img src="https://github.com/sunwoo030616/Photo/assets/164135983/55c85488-4ccb-483e-bf85-8fa6db447ae4" alt="image" width="30" height="30"> 기술 스택 
+### ⌨️Frond-end
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"/> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
+ 
+### ⌨️Back-end 
+<img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"/> <img src="https://img.shields.io/badge/django-092E20?style=for-the-badge&logo=django&logoColor=white"/> ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
+### Tool
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"/> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"/> ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white) ![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)
 ***
+
