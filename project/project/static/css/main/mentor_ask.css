@@ -119,13 +119,13 @@ input[type="text"] {
   color: #FFF;
 }
 
-.row1 {
+.row5 {
   display: flex;
   flex-direction: row;
   gap: 0.25rem; /* 4px */
 }
 
-.row2 {
+.row6 {
   display: flex;
   flex-direction: row;
   gap: 1rem; /* 16px */

@@ -15,8 +15,11 @@ urlpatterns = [
     path('mentoring-state/<int:id>', mentoring_state, name="mentoring-state"),
     path('cibms/', cibm_list, name="cibm_list"),
     path('cpbms/', cpbm_list, name="cpbm_list"),
-    path('ci_bms/<int:careerinfo_id>/', ci_bms, name='ci_bms'),
+    
     path('eibms/', eibm_list, name="eibm_list"),
+    path('ci_bms/<int:careerinfo_id>/', ci_bms, name='ci_bms'),
+    path('cp_bms/<int:careerprogram_id>/', cp_bms, name='cp_bms'),
+    path('ei_bms/<int:eduinfo_id>/', ei_bms, name='ei_bms'),
     path('ciapply/', ciapply, name="ciapply"),
     path('cpapply/', cpapply, name="cpapply"),
     path('eiapply/', eiapply, name="eiapply"),

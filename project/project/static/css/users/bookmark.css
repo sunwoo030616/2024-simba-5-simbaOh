@@ -68,6 +68,22 @@ font-style: normal;
 font-weight: 700;
 line-height: 24px; /* 120% */
 }
+.active1_1{
+  color: #359287;
+font-family: Pretendard;
+font-size: 17px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px; /* 120% */
+}
+.active1_2{
+  color: #D4EDE7;
+font-family: Pretendard;
+font-size: 17px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px; /* 120% */
+}
 .active2{
   color: #D4EDE7;
 font-family: Pretendard;

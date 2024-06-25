@@ -36,9 +36,9 @@
               <form action="{% url 'careers:ci_bms' careerinfo.id %}" method="post">
                 {% csrf_token %}
                 {% if user in careerinfo.ci_bm.all %}
-                    <button type="submit"><img src="{% static 'images/filled_bookmark.png' %}" width="20px" height="20px"></button>
+                  <button type="submit"><img src="{% static 'images/filled_bookmark.png' %}" width="20px" height="20px"></button>
                 {% else %}
-                    <button type="submit"><img src="{% static 'images/unfilled_bookmark.png' %}" width="20px" height="20px"></button>
+                  <button type="submit"><img src="{% static 'images/unfilled_bookmark.png' %}" width="20px" height="20px"></button>
                 {% endif %}
               </form>
             </div>
@@ -71,38 +71,77 @@
         {% endfor %}
       </div>
       {% if not has_applied %}
-        <form style="display: flex; justify-content: center;" method="post" action="{% url 'careers:apply_careerinfo' careerinfo.id %}">
-            {% csrf_token %}
-            <button style="position: fixed; bottom: 10px;" class="btn_ask color_FF" type="submit">지원하기</button>
+        <form id="form_app" style="display: flex; justify-content: center;" method="post" action="{% url 'careers:apply_careerinfo' careerinfo.id %}">
+          {% csrf_token %}
+          <button style="position: fixed; bottom: 10px;" class="btn_ask color_FF" type="button" id="btn_app">지원하기</button>
         </form>
       {% else %}
-        <form style="display: flex; justify-content: center;" method="post" action="{% url 'careers:apply_careerinfo' careerinfo.id %}">
-            {% csrf_token %}
-            <button style="position: fixed; bottom: 10px;"  class="btn_ask2 color_FF" type="submit">지원취소하기</button>
+        <form id="form_noapp" style="display: flex; justify-content: center;" method="post" action="{% url 'careers:apply_careerinfo' careerinfo.id %}">
+          {% csrf_token %}
+          <button style="position: fixed; bottom: 10px;"  class="btn_ask2 color_FF" type="button" id="btn_noapp">지원취소</button>
         </form>
       {% endif %}
-      <div class="modalpopup_frame" id="modalpopup_frame" style="display: none;">
-        <div class="modalpopup_body">
-          <p class="mentor_card_name_font color_28" style="text-align: center;">작성한 내용은 멘토에게 바로 알림이 가며,</p>
-          <div class="column" style="justify-content: center;">
-            <img src="{% static 'images/complete_icon.png' %}" alt="">
-            <p class="color_28 text3">지원이 완료되었습니다!</p>
-            <p class="color_9D text4">커리어 신청 현황 화면으로 화면이 이동합니다.</p>
-          </div>
-        </div>
-      </div>
 
       {% if careerinfo.writer == user %}
         <a href="{% url 'careers:careerinfo-delete' careerinfo.id %}">삭제하기</a>
       {% endif %}
 		</div>
 	</div>
+  <div class="wrapping" id="wrapping"></div>
+  <div class="wrapping" id="wrapping2"></div>
+  <div class="toast" id="toast" style="align-items: center;">
+    <img src="{% static 'images/complete.png' %}" width="90px" height="90px">
+    <p class="color_28 title_text2">지원이 완료되었습니다.</p>
+    <p class="color_9D title_text3">커리어 신청 현황 화면으로 화면이 전환됩니다.</p>
+  </div>
+  <div class="toast" id="toast2" style="align-items: center;">
+    <img src="{% static 'images/complete_red.png' %}" width="90px" height="90px">
+    <p class="color_28 title_text2">지원이 취소되었습니다.</p>
+    <p class="color_9D title_text3">커리어 신청 현황 화면으로 화면이 전환됩니다.</p>
+  </div>
 </div>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    
+    const toast = document.getElementById("toast");
+    const toast2 = document.getElementById("toast2");
+
+    const wrapping = document.getElementById("wrapping");
+    const wrapping2 = document.getElementById("wrapping2");
+
+    const btn_app = document.getElementById("btn_app");
+    const btn_noapp = document.getElementById("btn_noapp");
+
+    const form_app = document.getElementById("form_app");
+    const form_noapp = document.getElementById("form_noapp");
+
+    wrapping.style.display = "none";
+    wrapping2.style.display = "none";
+    toast.style.display = "none";
+    toast2.style.display = "none";
+
+    if (btn_app) {
+      btn_app.onclick = function () {
+        wrapping2.style.display = "block";
+        toast.style.display = "";
+        setTimeout(function() {
+          form_app.submit();
+        }, 1500);
+      };
+    }
+
+    if (btn_noapp) {
+      btn_noapp.onclick = function () {
+        wrapping2.style.display = "block";
+        toast2.style.display = "";
+        setTimeout(function() {
+          form_noapp.submit();
+        }, 1500);
+      };
+    }
+
   });
+  
 </script>
 
 

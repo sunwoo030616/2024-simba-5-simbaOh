@@ -28,7 +28,7 @@
   display: flex;
   width: 25rem; /* 400px */
   flex-direction: column;
-  gap: 2.5rem; /* 40px */
+  gap: 1rem; /* 16px */
 }
 
 .nav {
@@ -69,6 +69,16 @@
   background-color: #359287;
 }
 
+.select_point {
+  display: flex;
+  width: 100px;
+  padding: 0.5rem; /* 8px */
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid #FFF;
+  border-radius: 30px;
+}
 
 .border2 {
   display: flex;
@@ -133,14 +143,61 @@
 }
 
 .mar {
-  margin-bottom: 2rem; /* 32px */
+  margin-bottom: 1rem; /* 16px */
+  font-size: 1rem; /* 16px */
+}
+
+.wrapping {
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  overflow: hidden;
+  background-color: rgba(232, 232, 232, 0.70);
+}
+
+.toast {
+  display: flex;
+  width: 400px;
+  height: 200px;
+  position: absolute;
+  z-index: 50;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  background-color: #FFF;
+}
+
+.bot_border {
+  border-bottom: 1px solid #DBDBDB;
+}
+
+input[type=text] {
+  height: 49px;
+}
+
+input:focus-visible {
+  outline: none;
+}
+
+textarea:focus-visible {
+  outline: none;
 }
 
 
 /* 폰트 설정 */
 
 .title_text {
-  font-family: Pretendard;
+  font-family: "Pretendard";
   font-size: 1.5rem; /* 24px */
   font-style: normal;
   font-weight: 700;
@@ -148,11 +205,93 @@
 }
 
 .title_text2 {
+  font-family: "Pretendard";
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  max-width: 100%; /* 최대 너비 설정 */
+  word-wrap: break-word;
+}
+
+.context_text {
   font-family: Pretendard;
   font-size: 1rem; /* 16px */
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+
+.context_text2 {
+  font-family: Pretendard;
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.context_text3 {
+  font-family: Pretendard;
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5rem; /* 24px */
+}
+
+
+.modalpopup_frame {
+  display: flex;
+  width: 400px;
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  background-color: #FFF;
+}
+
+.modalpopup_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  padding: 1rem 0rem;
+  gap: 0.25rem; /* 4px */
+
+  border: 1px solid #28464E;
+  border-radius: 0.5rem; /* 8px */
+}
+
+.text3 {
+  font-family: Pretendard;
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.text4 {
+  font-family: Pretendard;
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.text5 {
+  font-family: Pretendard;
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+}
+
+
+.length_limit {
+  max-width: 100%;
+  word-wrap: break-word;
 }
 
 
@@ -164,12 +303,24 @@
   color: #28464E;
 }
 
-.color_00 {
-  color: #000;
-}
-
 .color_17 {
   color: #17363F;
+}
+
+.color_61 {
+  color: #616161;
+}
+
+.color_FF {
+  color: #FFF;
+}
+
+.color_9D {
+  color: #9D9D9D;
+}
+
+.color_00 {
+  color: #000;
 }
 
 .color_DB {

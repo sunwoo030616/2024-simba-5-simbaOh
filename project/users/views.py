@@ -95,8 +95,9 @@ def edit_portfolio(request):
 
     return render(request, 'users/edit_portfolio.html', {'portfolio': portfolio})
 
-def view_portfolio(request):
-    user = request.user
+def view_portfolio(request, id):
+    user = get_object_or_404(User, pk=id)
+    portfolio, created = Portfolio.objects.get_or_create(user=user)
     portfolio = get_object_or_404(Portfolio, user=user)
     education = portfolio.education.all()
     experience = portfolio.experience.all()
@@ -222,4 +223,28 @@ def ci_bms(request, careerinfo_id):
         careerinfo.cibm_count +=1
         careerinfo.save()
     return redirect('users:cibm_list')
+
+def cp_bms(request, careerprogram_id):
+    careerprogram = get_object_or_404(Careerprogram, id=careerprogram_id)
+    if request.user in careerprogram.cp_bm.all():
+        careerprogram.cp_bm.remove(request.user)
+        careerprogram.cpbm_count-=1
+        careerprogram.save()
+    else:
+        careerprogram.cp_bm.add(request.user)
+        careerprogram.cpbm_count +=1
+        careerprogram.save()
+    return redirect('users:cpbm_list')
+
+def ei_bms(request, eduinfo_id):
+    eduinfo = get_object_or_404(Eduinfo, id=eduinfo_id)
+    if request.user in eduinfo.ei_bm.all():
+        eduinfo.ei_bm.remove(request.user)
+        eduinfo.eibm_count-=1
+        eduinfo.save()
+    else:
+        eduinfo.ei_bm.add(request.user)
+        eduinfo.eibm_count +=1
+        eduinfo.save()
+    return redirect('users:eibm_list')
 
