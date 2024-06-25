@@ -20,6 +20,7 @@
           <p class="color_28 title_text" style="text-align: center;">커뮤니티 글 수정</p>
           <div style="width: 32px;"></div>
         </div>
+        
         <div class="border1 row1">
           <p class="title_text2 color_00">게시판 구분</p>
           <div class="row">
@@ -58,18 +59,18 @@
               <div class="emoji" onclick="addEmoji(this.innerHTML)">✨</div>
               <div class="emoji" onclick="addEmoji(this.innerHTML)">📢</div>
             </div>
-            <input type="hidden" id="emoji" name="emoji"> <!-- 숨겨진 입력 필드 -->
+            <input type="hidden " id="emoji" name="emoji"> <!-- 숨겨진 입력 필드 -->
           </div>
           <div class="row2 mar">
             <div class="color_17 title_text2">제목</div>
             <p class="color_DB">*</p>
           </div>
-          <input class="mar" type="text" name="title" value="{{ move.title }}" placeholder="제목을 입력해주세요." required>
+          <input class="mar bot_border" type="text" name="title" value="{{ move.title }}" placeholder="제목을 입력해주세요." required>
           <div class="row2 mar">
             <div class="color_17 title_text2">내용</div>
             <p class="color_DB">*</p>
           </div>
-          <select class="mar" id="field" name="field" value="{{ move.field }}" placeholder="내용을 입력해주세요." required>
+          <select class="mar bot_border" id="field" name="field" value="{{ move.field }}" placeholder="내용을 입력해주세요." required>
             <option value="인사/노무">인사/노무</option>
             <option value="IT개발/데이터">IT개발/데이터</option>
             <option value="디자인">디자인</option>
@@ -89,12 +90,12 @@
             <div class="color_17 title_text2">분야</div>
             <p class="color_DB">*</p>
           </div>
-          <input class="mar" id="content" name="content" value="{{ move.content }}" placeholder="내용을 입력해주세요." required></input>
+          <input class="mar bot_border" id="content" name="content" value="{{ move.content }}" placeholder="내용을 입력해주세요." required></input>
           <div class="row2 mar">
             <div class="color_17 title_text2">태그</div>
             <p class="color_DB">*</p>
           </div>
-          <input class='tag mar' type="text" name="ftcontent" value="{{ move.ftcontent }}" placeholder="#태그" required/>
+          <input class='tag mar bot_border' type="text" name="ftcontent" value="{{ move.ftcontent }}" placeholder="#태그" required/>
 
         </div>
         <button id="btn_edit" type="button" class="btn_submit">수정완료</button>

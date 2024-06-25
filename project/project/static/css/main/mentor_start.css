@@ -451,3 +451,7 @@ font-weight: 200;
   font-weight: 200;
   line-height: normal;
 }
+
+input:focus-visible {
+  outline: none;
+}

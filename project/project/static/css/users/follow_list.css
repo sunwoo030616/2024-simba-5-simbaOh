@@ -142,3 +142,7 @@
 .color_8E {
   color: #8E8E8E;
 }
+
+input:focus-visible {
+  outline: none;
+}

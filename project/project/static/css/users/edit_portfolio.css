@@ -314,3 +314,7 @@ line-height: 22px; /* 146.667% */
 .color_FF {
   color: #FFF;
 }
+
+input:focus-visible {
+  outline: none;
+}

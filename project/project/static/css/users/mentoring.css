@@ -211,3 +211,8 @@ line-height: normal;
   line-height: normal;
   color: #28464e;
 }
+
+
+input:focus-visible {
+  outline: none;
+}

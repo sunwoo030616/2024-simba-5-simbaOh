@@ -267,3 +267,7 @@ letter-spacing: -0.32px;
 .color_28 {
   color: #28464E;
 }
+
+input:focus-visible {
+  outline: none;
+}

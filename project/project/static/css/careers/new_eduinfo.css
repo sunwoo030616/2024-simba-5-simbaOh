@@ -185,3 +185,7 @@
   position: absolute;
   transform: translate(130px,610px);
 }
+
+input:focus-visible {
+  outline: none;
+}

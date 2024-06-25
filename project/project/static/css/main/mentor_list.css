@@ -216,3 +216,7 @@ input[type="checkbox"]:checked + label {
 }
 
 /* 아이콘 설정 */
+
+input:focus-visible {
+  outline: none;
+}
