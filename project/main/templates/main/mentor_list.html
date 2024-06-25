@@ -101,7 +101,6 @@
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     const form = document.getElementById('mentor-filter-form');
     
-
     checkboxes.forEach(checkbox => {
       const checkboxState = localStorage.getItem(checkbox.id);
       if (checkboxState === 'checked') {

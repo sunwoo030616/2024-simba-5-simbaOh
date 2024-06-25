@@ -221,7 +221,8 @@ def move_update(request, id):
         if request.FILES.get('image'):
             update_move.image = request.FILES['image']
 
-
+        if request.POST.get('emoji'):
+            update_move.emoji = request.POST['emoji']
         update_move.save()
 
         return redirect('community:move-detail', update_move.id)
