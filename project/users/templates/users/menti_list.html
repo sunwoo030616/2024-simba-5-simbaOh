@@ -109,7 +109,7 @@
         <p class="context_text color_9D">- 수락을 누른 후 다시 철회가 불가능합니다.<br>- 수락을 누른 직후, 멘티에게 알림이 갑니다.</p>
         <div class="row6">
           <button id="btn_accept_return" type="button" class="modal_box1">다시 확인하기</button>
-          <button id="btn_accept_ask" type="button" class="modal_box2" onclick="handleAction('{{ m.id }}', 'accepted')">신청하기</button>
+          <button id="btn_accept_ask" type="button" class="modal_box2" onclick="handleAction('{{ m.id }}', 'accepted')" style="color: white;">수락하기</button>
         </div>
       </div>
     </div>
@@ -120,7 +120,7 @@
         <p class="context_text color_9D">- 거절을 누른 후 다시 철회가 불가능합니다.<br>- 거절을 누른 직후, 멘티에게 알림이 갑니다.</p>
         <div class="row6">
           <button id="btn_reject_return" type="button" class="modal_box1">다시 확인하기</button>
-          <button id="btn_reject_ask" type="button" class="modal_box2" onclick="handleAction('{{ m.id }}', 'rejected')">신청하기</button>
+          <button id="btn_reject_ask" type="button" class="modal_box2" onclick="handleAction('{{ m.id }}', 'rejected')" style="color: white; background-color: #DB7373;">거절하기</button>
         </div>
       </div>
     </div>
