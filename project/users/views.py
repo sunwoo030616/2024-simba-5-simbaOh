@@ -148,10 +148,20 @@ def menti_list(request, id):
             m = Menti.objects.filter(mentor=mentor)
             menti.extend(m)
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e6715bb8a3d97fa9f231635d3a6f7aa7006eeede
     return render(request, 'users/menti_list.html', {
         'menti':menti,
         'mentor':mentor
         })
+<<<<<<< HEAD
+=======
+=======
+    return render(request, 'users/menti_list.html', {'menti':menti})
+>>>>>>> f451066de61bfdf716ae119adefdae24d64b51b7
+>>>>>>> e6715bb8a3d97fa9f231635d3a6f7aa7006eeede
 
 
 def mentoring_state(request, id):

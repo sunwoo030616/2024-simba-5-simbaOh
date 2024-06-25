@@ -27,41 +27,30 @@
         <a class='topbar1' href="{% url 'community:free-board' %}">자유게시판<div class='line'></div></a>
         <a class='topbar2' href="{% url 'community:move-board' %}">이직게시판<div class='line2'></div></a>
       </div>
-
-      <div class="row">
-        <input type="checkbox" name="categories" id="checkbox1" value="0" class="ckb_white" >
-        <label for="checkbox1">인사/노무</label>
-        <input type="checkbox" name="categories" id="checkbox2" value="1" class="ckb_white">
-        <label for="checkbox2">IT개발/데이터</label>
-        <input type="checkbox" name="categories" id="checkbox3" value="2" class="ckb_white">
-        <label for="checkbox3">디자인</label>
-        <input type="checkbox" name="categories" id="checkbox4" value="3" class="ckb_white">
-        <label for="checkbox4">영상/판매/무역</label>
-        <input type="checkbox" name="categories" id="checkbox5" value="4" class="ckb_white">
-        <label for="checkbox5">상품기획/MD</label>
-        <input type="checkbox" name="categories" id="checkbox6" value="5" class="ckb_white">
-        <label for="checkbox6">서비스</label>
-        <input type="checkbox" name="categories" id="checkbox7" value="6" class="ckb_white">
-        <label for="checkbox7">생산</label>
-        <input type="checkbox" name="categories" id="checkbox8" value="7" class="ckb_white">
-        <label for="checkbox8">의료</label>
-        <input type="checkbox" name="categories" id="checkbox9" value="8" class="ckb_white">
-        <label for="checkbox9">건설/건축</label>
-        <input type="checkbox" name="categories" id="checkbox10" value="9" class="ckb_white">
-        <label for="checkbox10">연구/R&D</label>
-        <input type="checkbox" name="categories" id="checkbox11" value="10" class="ckb_white">
-        <label for="checkbox11">교육</label>
-        <input type="checkbox" name="categories" id="checkbox12" value="11" class="ckb_white">
-        <label for="checkbox12">금융/보험</label>
-        <input type="checkbox" name="categories" id="checkbox13" value="12" class="ckb_white">
-        <label for="checkbox13">미디어/스포츠</label>
-        <input type="checkbox" name="categories" id="checkbox14" value="13" class="ckb_white">
-        <label for="checkbox14">기획</label>
+      <div class="category">
+        <div class="row500">
+          
+          <label for="btn_1"><input type="radio" name="option" id="btn_1">인사/노무</label>
+          <label for="btn_2"><input type="radio" name="option" id="btn_2">IT개발/데이터</label>
+          <label for="btn_3"><input type="radio" name="option" id="btn_3">디자인</label>
+          <label for="btn_4"><input type="radio" name="option" id="btn_4">영업/판매/무역</label>
+          <label for="btn_5"><input type="radio" name="option" id="btn_5">상품기획/MD</label>
+          <label for="btn_6"><input type="radio" name="option" id="btn_6">서비스</label>
+          <label for="btn_7"><input type="radio" name="option" id="btn_7">생산</label>
+          <label for="btn_8"><input type="radio" name="option" id="btn_8">의료</label>
+          <label for="btn_9"><input type="radio" name="option" id="btn_9">건설/건축</label>
+          <label for="btn_10"><input type="radio" name="option" id="btn_10">연구/R&D</label>
+          <label for="btn_11"><input type="radio" name="option" id="btn_11">교육</label>
+          <label for="btn_12"><input type="radio" name="option" id="btn_12">금융/보험</label>
+          <label for="btn_13"><input type="radio" name="option" id="btn_13">미디어/스포츠</label>
+          <label for="btn_14"><input type="radio" name="option" id="btn_14">금융/기획</label>
+        </div>
       </div>
+      
 
       {% for move in moves %}
         <a class="centering" href="{% url 'community:move-detail' move.id %}">
-          <div class='boxes'>
+          <div class='boxes' data-category = "{{ move.field }}">
             <div class='first'>
               <div class='emoji'>{{ move.emoji|safe }}</div>
               <div class='first2'>
@@ -84,6 +73,7 @@
                 {% endfor %}
                 </div>
               </div>
+              <div>{{ move.field }}</div>
               <div class='date'>{{ move.pub_date }}</div>
             </div>
           </div>
@@ -100,5 +90,43 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const btns = document.querySelectorAll('input[type="radio"]');
+    const boxes = document.querySelectorAll('.boxes');
+
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const category = btn.nextSibling.textContent.trim();
+        
+        btns.forEach(otherBtn => {
+          otherBtn.parentElement.style.backgroundColor = "#FFF";
+          otherBtn.parentElement.style.color = "#656565";
+        });
+
+        boxes.forEach(box => {
+          if (box.dataset.category === category) {
+
+            box.style.display = 'block';
+            btn.parentElement.style.backgroundColor = "#359287";
+            btn.parentElement.style.color = "#FFF";
+
+
+          } else {
+            btn.parentElement.style.backgroundColor = "#359287";
+            btn.parentElement.style.color = "#FFF";
+
+            box.style.display = 'none';
+
+
+          }
+        });
+      });
+    });
+  });
+</script>
+
 
 {% endblock %}
