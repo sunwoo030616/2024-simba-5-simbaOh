@@ -45,22 +45,22 @@
         <div class="signup_detail">
           <img src="{% static 'images/signup1.png' %}" width="30%">
           <p class="content">가입한 취트키 멤버</p>
-          <p class="count">33,109 명</p>
+          <p class="count">{{user.count}} 명</p>
         </div>
         <div class="signup_detail">
           <img src="{% static 'images/signup2.png' %}" width="30%">
           <p class="content">등록된 멘토</p>
-          <p class="count">10,597 명</p>
+          <p class="count">{{mentor.count}} 명</p>
         </div>
         <div class="signup_detail">
           <img src="{% static 'images/signup3.png' %}" width="30%">
           <p class="content">이루어진 멘토링</p>
-          <p class="count">6,388 번</p>
+          <p class="count">{{relation.count}} 번</p>
         </div>
         <div class="signup_detail">
           <img src="{% static 'images/signup4.png' %}" width="30%">
           <p class="content">작성된 게시글</p>
-          <p class="count">9,251 개</p>
+          <p class="count">{{board}} 개</p>
         </div>
       </div>
       <div class="credit">

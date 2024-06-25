@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .models import Mentor, Category, Relation_mentor, Menti
 from django.contrib.auth.models import User
+from community.models import Free, Move
 
 
 def intro(request):
@@ -12,7 +13,20 @@ def first_screen(request):
     return render(request, 'main/first_screen.html')
 
 def mainpage(request):
-    return render(request, 'main/mainpage.html')
+    user = User.objects.all()
+    mentor = Mentor.objects.all()
+    relation = Menti.objects.all()
+    free = Free.objects.all()
+    move = Move.objects.all()
+    board = free.count() + move.count()
+
+    content = {
+        'user':user,
+        'mentor':mentor,
+        'relation':relation,
+        'board':board,
+    }
+    return render(request, 'main/mainpage.html', content)
 
 def mentor_start(request):
     return render(request, 'main/mentor_start.html')
@@ -39,9 +53,11 @@ def mentor_list(request):
         if selected_categories:
             selected_category_names = [category_list[int(i)] for i in selected_categories]
             mentors = Mentor.objects.filter(mentor_work__in=selected_category_names)
+            mentors = mentors.order_by('-mentor_at')
             return render(request, 'main/mentor_list.html', {'mentors': mentors})
         else:
             mentors = Mentor.objects.all()
+            mentors = mentors.order_by('-mentor_at')
             return render(request, 'main/mentor_list.html', {'mentors': mentors})
     else:
         mentors = Mentor.objects.all()
