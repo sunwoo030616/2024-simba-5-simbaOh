@@ -82,7 +82,7 @@ def mentor_relation_create(request, id):
     new_relation.menti = user
     new_relation.save()
 
-    return redirect('main:mentor-info', mentor.id)
+    return redirect('users:mentoring', request.user.id)
 
 def mentor_ask(request, id):
     user = request.user

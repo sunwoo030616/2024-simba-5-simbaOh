@@ -1,19 +1,120 @@
-<!-- templates/accounts/update_profile.html -->
-{% extends 'base.html' %}
+{% extends 'base_with_nav.html' %}
 {% load static %}
-
 {% block content %}
-<h2>수정중...</h2>
-<form action="{% url 'accounts:update-profile' profile.id %}" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <p>이름 : <input type="text" name="user_name" value="{{ profile.user_name }}"></p>
-    <p>전화번호 : <input type="text" name="user_phone" value="{{ profile.user_phone }}"></p>
-    <p>전공 : <input type="text" name="user_major" value="{{ profile.user_major }}"></p>
-    <p>재학 여부 : <input type="text" name="user_enroll" value="{{ profile.user_enroll }}"></p>
-    <p>프로필 사진 : <input type="file" name="user_profile"></p>
-    {% if profile.user_profile %}
-        <p><img src="{{ profile.user_profile.url }}" alt="프로필사진" width="100px"></p>
-    {% endif %}
-    <button type="submit">Update Profile</button>
-</form>
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/accounts/update_profile.css' %}" />
+
+<div class='screen'>
+  <div class="main">
+    <div class="body">  
+
+      <div class='nav'>
+        <div class="left" style="z-index: 1;">
+          <a href="{% url 'main:mainpage' %}">
+            <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
+          </a>
+        </div>
+        <div class="right">
+          <h2 class="color_28 title_text" style="text-align: center;">프로필 수정</h2>
+        </div>
+        <div style="width:32px;"></div>
+      </div>
+      <img class="image_set3" src="{% static 'images/플러스.png' %}" width='20px' height='20px'>
+
+      <div class='mainform'>
+        <form action="{% url 'accounts:update-profile' profile.id %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class='set'>
+            {% if profile.user_profile %}
+              <img class="image_set2" id="profile_image" src="{{ profile.user_profile.url }}" width='80px' height='80px'>
+            {% else %}
+              <img class="image_set2" id="profile_image" src="{% static 'images/logo.png' %}" width='80px' height='80px'>
+            {% endif %}
+            <input type="file" name="user_profile" id="file_input" style="display:none;">
+          </div>
+
+          <div class='namearea'>
+            <div class='name'>이름</div>
+            <input class='name2' type="text" name="user_name" value="{{ profile.user_name }}">
+            <div class='content'>이름을 정확하게 입력해주세요.</div>
+          </div>
+          
+          <div class='namearea'>
+            <div class='name'>휴대폰 번호</div>
+            <input class='name2' type="text" name="user_phone" value="{{ profile.user_phone }}">
+            <div class='content'>휴대폰 번호를 13자리 숫자만 입력하세요.</div>
+          </div>
+          
+          <div class='namearea'>
+            <div class='name'>학과/전공</div>
+            <input class='name2' type="text" name="user_major" value="{{ profile.user_major }}">
+          </div>
+
+          <div class='namearea'>
+            <div class='name'>재학여부</div>
+            <div class="status-boxes">
+              <div class="status-box" id="enrolled" data-status="재학">재학</div>
+              <div class="status-box" id="leave" data-status="휴학">휴학</div>
+              <div class="status-box" id="graduated" data-status="졸업">졸업</div>
+              <input type="hidden" name="user_enroll" id="user_enroll" value="{{ profile.user_enroll }}">
+            </div>
+          </div>
+
+          <div class='button-container'>
+            <button class='finish' type="submit">수정완료</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const statusBoxes = document.querySelectorAll('.status-box');
+    const userEnrollInput = document.getElementById('user_enroll');
+    
+    function selectStatusBox(selectedBox) {
+      statusBoxes.forEach(box => {
+        if (box === selectedBox) {
+          box.classList.add('selected');
+        } else {
+          box.classList.remove('selected');
+        }
+      });
+      userEnrollInput.value = selectedBox.dataset.status;
+    }
+    
+    statusBoxes.forEach(box => {
+      box.addEventListener('click', function() {
+        selectStatusBox(box);
+      });
+    });
+
+    // Initialize based on the existing value
+    const initialStatus = userEnrollInput.value;
+    const initialBox = Array.from(statusBoxes).find(box => box.dataset.status === initialStatus);
+    if (initialBox) {
+      selectStatusBox(initialBox);
+    }
+  });
+
+  // Superuser check to set the background color to white
+  {% if user.is_authenticated and user.is_superuser %}
+  document.addEventListener('DOMContentLoaded', function() {
+    const statusBoxes = document.querySelectorAll('.status-box');
+    statusBoxes.forEach(box => {
+      box.style.background = '#FFF';
+    });
+  });
+  {% endif %}
+
+  // Profile image click to upload new image
+  document.getElementById('profile_image').addEventListener('click', function() {
+    document.getElementById('file_input').click();
+  });
+</script>
+
 {% endblock %}
+

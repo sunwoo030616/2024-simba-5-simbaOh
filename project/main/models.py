@@ -49,15 +49,3 @@ class Relation_mentor(models.Model):
     menti = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return self.menti
-
-# class Accept(models.Model):
-#     mentor_ship = models.ForeignKey(Mentor, related_name='menti_ship', on_delete=models.CASCADE, blank=True, null=True, default='0')
-
-# @receiver(post_save, sender=Mentor)
-# def create_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         Profile.objects.create(user=instance)
-
-# @receiver(post_save, sender=Mentor)
-# def save_user_profile(sender, instance, **kwargs):
-#     instance.profile.save()

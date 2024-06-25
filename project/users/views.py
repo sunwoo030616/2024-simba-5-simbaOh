@@ -91,7 +91,7 @@ def edit_portfolio(request):
         print('Projects:', [proj.name for proj in portfolio.projects.all()])
         print('Certifications:', [cert.name for cert in portfolio.certifications.all()])
 
-        return redirect('users:view_portfolio', id=request.user.id)
+        return redirect('users:portfolio', id=request.user.id)
 
     return render(request, 'users/edit_portfolio.html', {'portfolio': portfolio})
 
