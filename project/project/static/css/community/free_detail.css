@@ -108,7 +108,9 @@
   justify-content: center;
 }
 
-
+.bot_border {
+  border-bottom: 1px solid #DBDBDB;
+}
 
 .modalpopup_frame {
   display: flex;
@@ -382,4 +384,8 @@
 
 .color_9D {
   color: #9D9D9D;
+}
+
+input:focus-visible {
+  outline: none;
 }

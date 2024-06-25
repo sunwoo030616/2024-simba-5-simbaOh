@@ -209,6 +209,9 @@ gap: 2px;
   align-items: center;
 }
 
+input:focus-visible {
+  outline: none;
+}
 
 
 /* 폰트 설정 */

@@ -261,3 +261,7 @@ line-height: 21px; /* 161.538% */
 letter-spacing: -0.32px;
 margin-bottom: 10px;
 }
+
+input:focus-visible {
+  outline: none;
+}

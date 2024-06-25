@@ -330,3 +330,6 @@ line-height: normal;
 
 /* 아이콘 설정 */
 
+input:focus-visible {
+  outline: none;
+}

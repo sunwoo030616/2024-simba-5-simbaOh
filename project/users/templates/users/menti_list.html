@@ -81,6 +81,7 @@
     {% csrf_token %}
         {% for m in menti %}
         <div class='menti' id="menti_{{ m.id }}">
+<<<<<<< HEAD
           <div class='first'>
               {% if m.user.profile.user_profile and m.user.profile.user_profile.url %}
                   <img class="image_set2" id="profile_image" src="{{ m.user.profile.user_profile.url }}" width='80px' height='80px'>
@@ -89,6 +90,14 @@
               {% endif %}
           </div>
       </div>
+=======
+        <div class='first'>
+            <img class="image_set2" id="profile_image" src="{{ m.user.profile.user_profile }}" width='80px' height='80px'>
+            <div class='namemajor'>
+            <div class='name'>{{ m.user.profile.user_name }}멘티님이<br> 멘토링을 신청했습니다.</div>
+            <div class='major'>{{ m.user.profile.user_major }}</div>
+            </div>
+>>>>>>> c43572f9e789d74b01d570b0b98efda312a7395d
         </div>
             <div class='class2'>
             <div class='email2'>멘티 이메일</div>

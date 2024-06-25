@@ -322,3 +322,7 @@ padding-bottom: 5px;
 .color_FF {
   color: #FFF;
 }
+
+input:focus-visible {
+  outline: none;
+}

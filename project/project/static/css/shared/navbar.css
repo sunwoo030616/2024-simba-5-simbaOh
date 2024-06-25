@@ -18,7 +18,6 @@
   display: flex;
   flex-direction: column;
   width: 26.875rem; /* 430px */
-  padding-bottom: 0.625rem; /* 10px */
 }
 
 .row {
@@ -63,7 +62,7 @@
   border-radius: 0px 0px 30px 30px;
 
   position: fixed;
-  animation-duration: 2.5s;
+  animation-duration: 1.8s;
   animation-fill-mode: forwards;
 }
 
@@ -83,6 +82,22 @@
   to {
     top: -550px;
   }
+}
+
+input:focus-visible {
+  outline: none;
+}
+
+.wrapping_nav {
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 150%;
+  z-index: 5;
+  overflow: hidden;
+  background-color: rgba(232, 232, 232, 0.05);
 }
 
 .row_space_around {

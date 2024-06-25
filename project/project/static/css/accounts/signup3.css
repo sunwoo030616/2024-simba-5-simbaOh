@@ -213,3 +213,7 @@ left: 33.9%; */
     /* top: 25.6%;
     left: 33.9%; */
     }
+
+    input:focus-visible {
+        outline: none;
+    }

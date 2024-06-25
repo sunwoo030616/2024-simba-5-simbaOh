@@ -190,3 +190,7 @@ background: #EDEDED;
 .color_28 {
   color: #28464E;
 }
+
+input:focus-visible {
+  outline: none;
+}
