@@ -1,7 +1,7 @@
 {% load static %}
 <link
   rel="stylesheet"
-  type="text/css"
+  type=""
   href="{% static 'css/shared/navbar.css' %}"
 />
 
@@ -56,7 +56,7 @@
             <p class="color_FFF font_3">팔로잉</p>
           </a>
           <a href="{% url 'users:cibm_list' %}" class="column">
-            <p class="color_FFF font_3">12</p>
+            <p class="color_FFF font_3">{{total_bookmark_count}}</p>
             <p class="color_FFF font_3">북마크</p>
           </a>
           <a href="{% url 'users:portfolio' request.user.id %}" class="column">
@@ -91,7 +91,6 @@
 
     </div>
   </div>
-  <div class="wrapping_nav" id="wrapping_nav" style="display: none;"></div>
 </div>
 
 <script>
@@ -99,26 +98,17 @@
     const btn_open_mypage = document.getElementById('btn_open_mypage');
     const btn_close_mypage = document.getElementById('btn_close_mypage');
     const navbar2 = document.getElementById('navbar2');
-    const wrapping_nav = document.getElementById('wrapping_nav');
-
     let x = false;
 
     function Navbar() {
       if (x) {
         navbar2.style.animationName = 'move_navbar_up';
-        wrapping_nav.style.display = "none";
       } else {
         navbar2.style.animationName = 'move_navbar_down';
-        wrapping_nav.style.display ="";
       }
       x = !x;
       navbar2.style.zIndex = x ? "10" : "2";
     }
-
-    wrapping_nav.onclick = function() {
-      navbar2.style.animationName = 'move_navbar_up';
-      wrapping_nav.style.display = "none";
-    };
 
     btn_open_mypage.onclick = Navbar;
     btn_close_mypage.onclick = Navbar;
