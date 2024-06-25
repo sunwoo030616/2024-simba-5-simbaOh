@@ -59,7 +59,7 @@
         </a>
       {% endfor %}
     </div>
-    <div class='superwrite'>
+    <div class='superwrite' position='fixed'>
       {% if user.is_authenticated %}
       <a href="{% url 'community:free-create' %}" width='17px' height='17px'>
         <img src="{% static 'images/realplus.png' %}" alt="">

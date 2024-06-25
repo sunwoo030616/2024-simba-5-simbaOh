@@ -13,7 +13,11 @@
     align-items: center;
   }
 }
-
+.class2{
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+}
 .main {
   display: flex;
   flex-direction: column;

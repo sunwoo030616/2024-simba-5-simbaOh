@@ -18,9 +18,9 @@
       </div>
       <form id="mentor-filter-form" class="control" action="{% url 'main:mentor-list' %}" method="POST">
         {% csrf_token %}
-        <div class="search_bar_zone">
+        {% comment %} <div class="search_bar_zone">
           <input type="text" placeholder="기업, 직무, 커뮤니티 키워드로 검색" name="search" class="search">
-        </div>
+        </div> {% endcomment %}
         <div class="filter">
           <div class="row1">
             <input type="checkbox" name="categories" id="checkbox1" value="0" class="ckb_white" >
@@ -76,7 +76,7 @@
               {% if mentor.user.profile.user_profile %}
               <img class="image_set" src="{{ mentor.user.profile.user_profile.url }}" width="50px" height="50px">
               {% else %}
-              <img class="image_set" src="{% static 'images/logo.png' %}" width='50px' height='50px'>
+              <img class="image_set" src="{% static 'images/arrow-24.png' %}" width='50px' height='50px'>
               {% endif %}
               <div class="mentor_card_name_font color_00">
                 {{ mentor.user.profile.user_name }}
@@ -100,7 +100,7 @@
   document.addEventListener('DOMContentLoaded', function() {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     const form = document.getElementById('mentor-filter-form');
-
+    
 
     checkboxes.forEach(checkbox => {
       const checkboxState = localStorage.getItem(checkbox.id);
@@ -120,8 +120,6 @@
       });
     });
   });
-
-
 </script>
 
 {% endblock %}

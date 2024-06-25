@@ -132,8 +132,7 @@ background: #359287;
 
 .superwrite{
   position: fixed;
-  bottom: 50px;
-  right: 50px;
+  transform: translate(155px,550px);
 }
 .midbar{
   display: flex;
@@ -255,7 +254,7 @@ letter-spacing: -0.32px;
   background: #fff;
   position: absolute;
   z-index: 1000;
-  width: 200px;
+  width: 200px; 
 }
 
 .emoji {

@@ -148,9 +148,22 @@
 }
 
 .signup_list {
+  padding:20px 0px 20px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 55px;
+  justify-content: center;
+  align-items: center;
+}
+.membermentor{
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* 32px */
+  gap: 55px;
+}
+.membermentor2{
+  display: flex;
+  flex-direction: column;
+  gap: 55px;
 }
 
 .signup_detail {
