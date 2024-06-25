@@ -143,6 +143,7 @@ line-height: 22px;
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
+    padding-top: 3.5rem;
 }
 
 .left {

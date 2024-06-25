@@ -28,6 +28,37 @@
         <a class='topbar2' href="{% url 'community:move-board' %}">이직게시판<div class='line2'></div></a>
       </div>
 
+      <div class="row">
+        <input type="checkbox" name="categories" id="checkbox1" value="0" class="ckb_white" >
+        <label for="checkbox1">인사/노무</label>
+        <input type="checkbox" name="categories" id="checkbox2" value="1" class="ckb_white">
+        <label for="checkbox2">IT개발/데이터</label>
+        <input type="checkbox" name="categories" id="checkbox3" value="2" class="ckb_white">
+        <label for="checkbox3">디자인</label>
+        <input type="checkbox" name="categories" id="checkbox4" value="3" class="ckb_white">
+        <label for="checkbox4">영상/판매/무역</label>
+        <input type="checkbox" name="categories" id="checkbox5" value="4" class="ckb_white">
+        <label for="checkbox5">상품기획/MD</label>
+        <input type="checkbox" name="categories" id="checkbox6" value="5" class="ckb_white">
+        <label for="checkbox6">서비스</label>
+        <input type="checkbox" name="categories" id="checkbox7" value="6" class="ckb_white">
+        <label for="checkbox7">생산</label>
+        <input type="checkbox" name="categories" id="checkbox8" value="7" class="ckb_white">
+        <label for="checkbox8">의료</label>
+        <input type="checkbox" name="categories" id="checkbox9" value="8" class="ckb_white">
+        <label for="checkbox9">건설/건축</label>
+        <input type="checkbox" name="categories" id="checkbox10" value="9" class="ckb_white">
+        <label for="checkbox10">연구/R&D</label>
+        <input type="checkbox" name="categories" id="checkbox11" value="10" class="ckb_white">
+        <label for="checkbox11">교육</label>
+        <input type="checkbox" name="categories" id="checkbox12" value="11" class="ckb_white">
+        <label for="checkbox12">금융/보험</label>
+        <input type="checkbox" name="categories" id="checkbox13" value="12" class="ckb_white">
+        <label for="checkbox13">미디어/스포츠</label>
+        <input type="checkbox" name="categories" id="checkbox14" value="13" class="ckb_white">
+        <label for="checkbox14">기획</label>
+      </div>
+
       {% for move in moves %}
         <a class="centering" href="{% url 'community:move-detail' move.id %}">
           <div class='boxes'>
