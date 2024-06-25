@@ -140,6 +140,7 @@ def mentoring(request, id):
 def menti_list(request, id):
     user = get_object_or_404(User, pk=id)
     mentors = Mentor.objects.all()
+    mentor = Menti.objects.filter(user=user)
     # mentors = Mentor.objects.filter(user_id=id)
     menti = []
     for mentor in mentors:
@@ -147,30 +148,10 @@ def menti_list(request, id):
             m = Menti.objects.filter(mentor=mentor)
             menti.extend(m)
 
-    return render(request, 'users/menti_list.html', {'menti':menti})
-    # user = get_object_or_404(User, pk=id)
-    # mentors = Mentor.objects.filter(user_id=id)
-    # user_profiles = []  # Initialize list to store Profile objects
-    # mentor_lists = []  # Initialize list to store Relation_mentor objects
-
-    # for mentor in mentors:
-    #     mentor_list = Relation_mentor.objects.filter(mentor=mentor)
-    #     mentor_lists.extend(mentor_list)
-    #     for relation in mentor_list:
-    #         profiles = Profile.objects.filter(user=relation.menti)  # Get all Profile objects for this menti
-    #         user_profiles.extend(profiles)
-    
-    # if not user_profiles:
-    #     return redirect('users:mentoring', id)
-    # else:
-    #     menti_list = Relation_mentor.objects.filter(menti_id=user.id)
-    #     context = {
-    #         'mentors': mentors,
-    #         'user_profiles': user_profiles,
-    #         'mentor_lists': mentor_lists,
-    #         'menti_lists': menti_list.all()
-    #     }
-    #     return render(request, 'users/menti_list.html', context)
+    return render(request, 'users/menti_list.html', {
+        'menti':menti,
+        'mentor':mentor
+        })
 
 
 def mentoring_state(request, id):
@@ -246,5 +227,5 @@ def ei_bms(request, eduinfo_id):
         eduinfo.ei_bm.add(request.user)
         eduinfo.eibm_count +=1
         eduinfo.save()
-    return redirect('users:eibm_list')
+    return redirect('users:eibm_list') 
 
