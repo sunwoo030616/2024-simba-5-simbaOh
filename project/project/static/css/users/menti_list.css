@@ -165,3 +165,225 @@ line-height: 24px; /* 120% */
   border-radius: 20px;
   background: url(<path-to-image>) lightgray 50% / cover no-repeat;
 }
+
+
+.row5 {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem; /* 4px */
+}
+
+.row6 {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem; /* 16px */
+  justify-content: center;
+}
+
+.modalpopup_frame {
+  display: flex;
+  width: 400px;
+  position: absolute;
+  z-index: 20;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  background-color: #FFF;
+}
+
+.modalpopup_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  padding: 1rem 0rem;
+  gap: 0.25rem; /* 4px */
+
+  border: 1px solid #28464E;
+  border-radius: 0.5rem; /* 8px */
+}
+
+.modal_box1 {
+  display: flex;
+  width: 140px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 0.5rem; /* 8px */
+  border: 1px solid #359287;
+  background-color: #FFF;
+}
+
+.modal_box2 {
+  display: flex;
+  width: 140px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+
+  border-radius: 8px;
+  border: 1px solid #FFF;
+  background-color: #359287;
+}
+
+.wrapping {
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  overflow: hidden;
+  background-color: rgba(232, 232, 232, 0.70);
+}
+
+.wrapping2 {
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+  overflow: hidden;
+  background-color: rgba(232, 232, 232, 0.70);
+}
+
+.toast {
+  display: flex;
+  width: 400px;
+  height: 200px;
+  position: absolute;
+  z-index: 50;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  background-color: #FFF;
+}
+
+
+
+
+/* 폰트 설정 */
+
+.title_text {
+  font-family: "Pretendard";
+  font-size: 1.5rem; /* 24px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.title_text2 {
+  font-family: "Pretendard";
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.title_text3 {
+  font-family: "Pretendard";
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.mentor_card_comp_font {
+  font-family: "Pretendard";
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.mentor_card_dept_font {
+  font-family: "Pretendard";
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.mentor_card_name_font {
+  font-family: Pretendard;
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.mentor_card_major_font {
+  font-family: Pretendard;
+  font-size: 0.75rem; /* 12px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.mentor_card_work_font{
+  font-family: Pretendard;
+  font-size: 0.75rem; /* 12px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.context_text {
+  font-family: Pretendard;
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.context3 {
+  font-family: "Noto Sans KR";
+  font-size: 0.75rem; /* 12px */
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+
+
+/* 색상 설정 */
+
+.color_28 {
+  color: #28464E;
+}
+
+.color_00 {
+  color: #000;
+}
+
+.color_00C {
+  color: #00C3AD;
+}
+
+.color_82 {
+  color: #828282;
+}
+
+.color_9D {
+  color: #9D9D9D;
+}
