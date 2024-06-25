@@ -13,6 +13,7 @@
       <div class="small_nav">
         <div class="left">
         </div>
+        <h2 class='main_text_ho color_1E'>CEHAT KEY</h2>
         <div class="right">
         </div>
       </div>
@@ -84,47 +85,81 @@
   </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/1.9.3/countUp.min.js"></script>
 <script>
-  $(document).ready(function() {
-    $("#btn_rec").mousedown(function() {
-      $("#img_rec").attr("src", "{% static 'images/멘토바누를때.png' %}");
-    }).mouseup(function() {
-      $("#img_rec").attr("src", "{% static 'images/멘토바.png' %}");
+  document.addEventListener("DOMContentLoaded", function() {
+    const btnRec = document.getElementById("btn_rec");
+    const imgRec = document.getElementById("img_rec");
+    const btnRho = document.getElementById("btn_rho");
+    const imgRho = document.getElementById("img_rho");
+    const btnCir = document.getElementById("btn_cir");
+    const imgCir = document.getElementById("img_cir");
+
+    btnRec.addEventListener("mousedown", function() {
+      imgRec.src = "{% static 'images/멘토바누를때.png' %}";
     });
 
-    $("#btn_rho").mousedown(function() {
-      $("#img_rho").attr("src", "{% static 'images/커뮤니티누를때.png' %}");
-    }).mouseup(function() {
-      $("#img_rho").attr("src", "{% static 'images/커뮤니티.png' %}");
+    btnRec.addEventListener("mouseup", function() {
+      setTimeout(() => {
+        imgRec.src = "{% static 'images/멘토바.png' %}";
+      }, 300);
     });
 
-    $("#btn_cir").mousedown(function() {
-      $("#img_cir").attr("src", "{% static 'images/커리어누를때.png' %}");
-    }).mouseup(function() {
-      $("#img_cir").attr("src", "{% static 'images/커리어.png' %}");
+    btnRho.addEventListener("mousedown", function() {
+      imgRho.src = "{% static 'images/커뮤니티누를때.png' %}";
+    });
+
+    btnRho.addEventListener("mouseup", function() {
+      setTimeout(() => {
+        imgRho.src = "{% static 'images/커뮤니티.png' %}";
+      }, 300);
+    });
+
+    btnCir.addEventListener("mousedown", function() {
+      imgCir.src = "{% static 'images/커리어누를때.png' %}";
+    });
+
+    btnCir.addEventListener("mouseup", function() {
+      setTimeout(() => {
+        imgCir.src = "{% static 'images/커리어.png' %}";
+      }, 300);
     });
 
     function animateCounts() {
-      var userCount = new CountUp('userCount', 0, {{ user.count }});
-      var boardCount = new CountUp('boardCount', 0, {{ board }});
-      var relationCount = new CountUp('relationCount', 0, {{ relation.count }});
-      var mentorCount = new CountUp('mentorCount', 0, {{ mentor.count }});
-      userCount.start();
-      boardCount.start();
-      relationCount.start();
-      mentorCount.start();
+      const userCount = parseInt("{{ user.count }}", 10);
+      const boardCount = parseInt("{{ board }}", 10);
+      const relationCount = parseInt("{{ relation.count }}", 10);
+      const mentorCount = parseInt("{{ mentor.count }}", 10);
+
+      animateValue("userCount", 0, userCount, 2000);
+      animateValue("boardCount", 0, boardCount, 2000);
+      animateValue("relationCount", 0, relationCount, 2000);
+      animateValue("mentorCount", 0, mentorCount, 2000);
     }
 
-    var animationDelay = 2000;
+    function animateValue(id, start, end, duration) {
+      const range = end - start;
+      const increment = end > start ? 1 : -1;
+      const stepTime = Math.abs(Math.floor(duration / range));
+      let current = start;
+      const obj = document.getElementById(id);
+
+      const timer = setInterval(function() {
+        current += increment;
+        obj.textContent = current;
+        if (current == end) {
+          clearInterval(timer);
+        }
+      }, stepTime);
+    }
+
+    var animationDelay = 1500;
     var lastAnimatedTime = 0;
 
-    $(window).scroll(function() {
-      var oTop = $('.signup_list').offset().top - window.innerHeight;
+    window.addEventListener("scroll", function() {
+      var oTop = document.querySelector('.signup_list').offsetTop - window.innerHeight;
       var currentTime = new Date().getTime();
 
-      if ($(window).scrollTop() > oTop && currentTime - lastAnimatedTime > animationDelay) {
+      if (window.scrollY > oTop && currentTime - lastAnimatedTime > animationDelay) {
         animateCounts();
         lastAnimatedTime = currentTime;
       }
@@ -132,4 +167,3 @@
   });
 </script>
 {% endblock %}
-

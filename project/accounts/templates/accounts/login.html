@@ -119,9 +119,49 @@ href="{% static 'css/accounts/login.css'%}"
         loginButton.style.color = "";
       }
     }
+
+
+    usernameInput.addEventListener('focus', function() {
+        if (usernameInput.value === domain) {
+            usernameInput.value = '';
+            usernameInput.style.color = ''; 
+        }
+    });
+
+    usernameInput.addEventListener('blur', function() {
+        if (usernameInput.value === '') {
+            usernameInput.value = domain;
+            usernameInput.style.color = '#9D9D9D'; 
+        } else {
+            usernameInput.style.color = ''; 
+        }
+    });
+
+    usernameInput.addEventListener('input', function(event) {
+        if (!usernameInput.value.endsWith(domain)) {
+            const pos = usernameInput.value.length - domain.length;
+            usernameInput.value = usernameInput.value.replace(domain, '') + domain;
+            usernameInput.setSelectionRange(pos, pos);
+        }
+        usernameInput.style.color = ''; 
+        updateLoginButton();
+    });
+
+    usernameInput.addEventListener('click', function(event) {
+        const pos = usernameInput.value.length - domain.length;
+        if (usernameInput.selectionStart > pos) {
+            usernameInput.setSelectionRange(pos, pos);
+        }
+    });
+
+    usernameInput.addEventListener('keydown', function(event) {
+        const pos = usernameInput.value.length - domain.length;
+        if (usernameInput.selectionStart > pos) {
+            usernameInput.setSelectionRange(pos, pos);
+        }
+    });
   
-    usernameInput.addEventListener('input', handleInput);
-    usernameInput.addEventListener('focus', handleFocus);
+ 
     passwordInput.addEventListener('input', updateLoginButton);
   
     signupButton.addEventListener('click', function() {
