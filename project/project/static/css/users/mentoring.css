@@ -1,33 +1,42 @@
 .screen {
   display: flex;
   flex-direction: column;
+
   width: 100%;
-  gap: 10px; /* 0.625rem을 10px로 변경 */
+
+  gap: 0.625rem; /* 10px */
+
+  @media (max-width: 430px) {
+    align-items: start;
+  }
+  @media (min-width: 431px) {
+    align-items: center;
+  }
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 430px; /* 26.875rem을 430px로 변경 */
+  width: 26.875rem; /* 430px */
   align-items: center;
   background-color: #FFF;
+  padding-bottom: 0.625rem; /* 10px */
 }
 
 .body {
   display: flex;
-  width: 100%;
-  max-width: 400px; /* 25rem을 400px로 변경 */
+  width: 25rem; /* 400px */
   flex-direction: column;
-  gap: 16px; /* 1rem을 16px로 변경 */
+  gap: 2.5rem; /* 40px */
+  align-items: center;
 }
 
 .nav {
   display: flex;
   width: 100%;
-  height: 32px; /* 2rem을 32px로 변경 */
+  height: 2rem; /* 32px */
   flex-direction: row;
-  padding-top: 56px; /* 3.5rem을 56px로 변경 */
+  padding-top: 3.5rem; /* 56px */
   justify-content: space-between;
   align-items: center;
 }
