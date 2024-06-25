@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib import messages
 from django.db.models import Q
 from .models import Careerinfo, Careerinfotag, Careerprogram, Careerprogramtag, Eduinfo, Eduinfotag, Ciapply, Cpapply, Eiapply
-
+from django.db.models import Sum
 def career_info(request):
     order = request.GET.get('order', 'latest')
     search_query = request.GET.get('search', '')
@@ -348,6 +348,44 @@ def apply_eduinfo(request, id):
             Eiapply.objects.create(user=user, eduinfo=eduinfo)
     
         return redirect('users:eiapply')
+    
+def total(request):
+    # Careerinfo의 ci_bm 개수 세기
+    careerinfos = Careerinfo.objects.all()
+    total_cibm_count = 0
+    for careerinfo in careerinfos:
+        careerinfo.cibm_count = careerinfo.ci_bm.count()
+        total_cibm_count += careerinfo.cibm_count
+        careerinfo.save()
+    
+    # Careerprogram의 cp_bm 개수 세기
+    careerprograms = Careerprogram.objects.all()
+    total_cpbm_count = 0
+    for careerprogram in careerprograms:
+        careerprogram.cpbm_count = careerprogram.cp_bm.count()
+        total_cpbm_count += careerprogram.cpbm_count
+        careerprogram.save()
+
+    # Eduinfo의 ei_bm 개수 세기
+    eduinfos = Eduinfo.objects.all()
+    total_eibm_count = 0
+    for eduinfo in eduinfos:
+        eduinfo.eibm_count = eduinfo.ei_bm.count()
+        total_eibm_count += eduinfo.eibm_count
+        eduinfo.save()
+    
+    # 모든 북마크 개수 합산
+    total_bm_count = total_cibm_count + total_cpbm_count + total_eibm_count
+
+    # 모든 객체를 템플릿으로 전달
+    context = {
+        'careerinfos': careerinfos,
+        'careerprograms': careerprograms,
+        'eduinfos': eduinfos,
+        'total_bm_count': total_bm_count,
+    }
+    return render(request, 'community/free_board.html', context)
+
 
 def total_bookmarks(request):
     user = request.user
