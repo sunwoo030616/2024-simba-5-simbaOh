@@ -56,7 +56,7 @@
             <p class="color_FFF font_3">팔로잉</p>
           </a>
           <a href="{% url 'users:cibm_list' %}" class="column">
-            <p class="color_FFF font_3">{{request.user.profile.total_bm_count}}</p>
+            <p class="color_FFF font_3">{{total_bm_count}}</p>
             <p class="color_FFF font_3">북마크</p>
           </a>
           <a href="{% url 'users:portfolio' request.user.id %}" class="column">
