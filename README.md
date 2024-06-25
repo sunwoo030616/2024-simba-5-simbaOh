@@ -52,3 +52,7 @@
 | <img src="https://github.com/sunwoo030616/Photo/assets/164135983/cc2207ad-4413-4207-aa27-49024c6cbeb0" alt="Group 1385" width="100" height="100"> | <img src="https://github.com/sunwoo030616/Photo/assets/164135983/4f120787-89c6-4c3c-9589-d2bd8e012314" alt="Group 1385" width="100" height="100"> | <img src="https://github.com/sunwoo030616/Photo/assets/164135983/4a7f1ed0-cbe1-4829-abef-cc9d3351f65e" alt="Group 1385" width="100" height="100"> | <img src="https://github.com/sunwoo030616/Photo/assets/164135983/186f3ce0-5696-4dd3-acb1-ada5f194fa50" alt="Group 1385" width="100" height="100"> | <img src="https://github.com/sunwoo030616/Photo/assets/164135983/79cc913a-074d-49d9-aace-ccaa99a8890c" alt="Group 1385" width="100" height="100"> |
 |:---:|:---:|:---:|:---:|:---:|
 | **구도욱** | **최민** | **오태준** | **황채현** | **박선우** |
+| PD | FE | FE | BE | BE |
+| 융합보안학과 | 경영정보학과 | 정보통신공학과 | 전자전기공학부 | 컴퓨터공학과 |
+| ENFJ | ENTJ | INTJ | ISTJ | INFP |
+***
