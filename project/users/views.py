@@ -97,6 +97,7 @@ def edit_portfolio(request):
 
 def view_portfolio(request, id):
     user = get_object_or_404(User, pk=id)
+    portfolio, created = Portfolio.objects.get_or_create(user=user)
     portfolio = get_object_or_404(Portfolio, user=user)
     education = portfolio.education.all()
     experience = portfolio.experience.all()

@@ -10,16 +10,6 @@ href="{% static 'css/users/portfolio.css'%}"
   <div class="main">
     <div class="body">
 
-<<<<<<< HEAD
-    <h2>프로젝트</h2>
-    <ul>
-        {% for proj in portfolio.projects.all %}
-            <li>{{ proj.name }}</li>
-        {% empty %}
-            <li>프로젝트 정보가 없습니다.</li>
-        {% endfor %}
-    </ul>
-=======
       <div class="nav">
         <div class="left" style="z-index: 1;">
             <a href="{% url 'main:mentor-list' %}">
@@ -34,7 +24,6 @@ href="{% static 'css/users/portfolio.css'%}"
         
         <div class="box">
             <p class="text_font1 color_00">내 정보</p>
->>>>>>> 2de212c09592d099c62af91dddde18557383f6dd
 
             <div><hr></div>
         </div>
