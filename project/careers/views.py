@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib import messages
 from django.db.models import Q
 from .models import Careerinfo, Careerinfotag, Careerprogram, Careerprogramtag, Eduinfo, Eduinfotag, Ciapply, Cpapply, Eiapply
-
+from django.db.models import Sum
 def career_info(request):
     order = request.GET.get('order', 'latest')
     search_query = request.GET.get('search', '')
@@ -348,3 +348,4 @@ def apply_eduinfo(request, id):
             Eiapply.objects.create(user=user, eduinfo=eduinfo)
     
         return redirect('users:eiapply')
+    

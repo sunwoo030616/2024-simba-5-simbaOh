@@ -9,7 +9,7 @@ class Profile(models.Model):
     user_phone = models.CharField(max_length=50, default='')
     user_birth = models.DateField(default='2000-01-01')
     user_major = models.CharField(max_length=100, blank=True, null=True, default='')
-    user_profile = models.ImageField(upload_to="profile/", null=True, blank=True, default='default_profile.png')
+    user_profile = models.ImageField(upload_to="profile/", null=True, blank=True)
     ENROLL_CHOICES = [
         ('재학', '재학'),
         ('휴학', '휴학'),
