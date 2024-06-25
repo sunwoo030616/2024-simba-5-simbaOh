@@ -43,26 +43,30 @@
           <p class="text_point">취트키</p><p class="text_sub">와 함께하고 있어요!</p>
         </div>
       </div>
-      <div class="signup_list">
-        <div class="signup_detail">
-          <img src="{% static 'images/signup1.png' %}" width="30%">
-          <p class="content">가입한 취트키 멤버</p>
-          <p class="count">{{user.count}} 명</p>
+      <div class="signup_list"> 
+        <div class='membermentor'>
+          <div class="signup_detail">
+            <img src="{% static 'images/signup1.png' %}" width="120px" height='120px'>
+            <p class="content">가입한 취트키 멤버</p>
+            <p class="count" id="userCount">{{ user.count }}</p>
+          </div>
+          <div class="signup_detail">
+            <img src="{% static 'images/signup3.png' %}" width="120px" height='120px'>
+            <p class="content">작성된 게시글</p>
+            <p class="count" id="boardCount">{{ board }}</p>
+          </div>
         </div>
-        <div class="signup_detail">
-          <img src="{% static 'images/signup2.png' %}" width="30%">
-          <p class="content">등록된 멘토</p>
-          <p class="count">{{mentor.count}} 명</p>
-        </div>
-        <div class="signup_detail">
-          <img src="{% static 'images/signup3.png' %}" width="30%">
-          <p class="content">이루어진 멘토링</p>
-          <p class="count">{{relation.count}} 번</p>
-        </div>
-        <div class="signup_detail">
-          <img src="{% static 'images/signup4.png' %}" width="30%">
-          <p class="content">작성된 게시글</p>
-          <p class="count">{{board}} 개</p>
+        <div class='membermentor2'>
+          <div class="signup_detail">
+            <img src="{% static 'images/signup2.png' %}" width="120px" height='120px'>
+            <p class="content">이루어진 멘토링</p>
+            <p class="count" id="relationCount">{{ relation.count }}</p>
+          </div>
+          <div class="signup_detail">
+            <img src="{% static 'images/signup4.png' %}" width="120px" height='120px'>
+            <p class="content">등록된 멘토</p>
+            <p class="count" id="mentorCount">{{ mentor.count }}</p>
+          </div>
         </div>
       </div>
       <div class="credit">
@@ -81,6 +85,7 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/1.9.3/countUp.min.js"></script>
 <script>
   $(document).ready(function() {
     $("#btn_rec").mousedown(function() {
@@ -100,6 +105,31 @@
     }).mouseup(function() {
       $("#img_cir").attr("src", "{% static 'images/커리어.png' %}");
     });
+
+    function animateCounts() {
+      var userCount = new CountUp('userCount', 0, {{ user.count }});
+      var boardCount = new CountUp('boardCount', 0, {{ board }});
+      var relationCount = new CountUp('relationCount', 0, {{ relation.count }});
+      var mentorCount = new CountUp('mentorCount', 0, {{ mentor.count }});
+      userCount.start();
+      boardCount.start();
+      relationCount.start();
+      mentorCount.start();
+    }
+
+    var animationDelay = 2000;
+    var lastAnimatedTime = 0;
+
+    $(window).scroll(function() {
+      var oTop = $('.signup_list').offset().top - window.innerHeight;
+      var currentTime = new Date().getTime();
+
+      if ($(window).scrollTop() > oTop && currentTime - lastAnimatedTime > animationDelay) {
+        animateCounts();
+        lastAnimatedTime = currentTime;
+      }
+    });
   });
 </script>
 {% endblock %}
+
