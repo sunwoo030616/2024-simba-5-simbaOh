@@ -19,7 +19,7 @@ href="{% static 'css/users/portfolio.css'%}"
         <div class="color_28 title_text">포트폴리오</div>
         <div style="width: 32px;"></div>
         </div>
-        <form action="{% url 'users:portfolio' %}" method="post" class="form_set">
+        <form action="{% url 'users:edit_portfolio' %}" method="post" class="form_set">
         {% csrf_token %}
         
         <div class="box">
