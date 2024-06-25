@@ -97,8 +97,8 @@
                 <div class='content'>{{ m.content }}</div>
                 <div class='buttons'>
                         <input type="hidden" name="mentorship_id" value="{{ m.id }}">
-                        <button type="submit" name="state" value="수락" class="accept-btn">수락</button>
-                        <button type="submit" name="state" value="거절" class="reject-btn">거절</button>
+                        <button type="button" class="accept-btn" onclick="handleAction('{{ m.id }}', 'accepted')">수락</button>
+                        <button type="button" class="reject-btn" onclick="handleAction('{{ m.id }}', 'rejected')">거절</button>
                 </div>
             </div>
         </div>
@@ -114,65 +114,58 @@ document.addEventListener('DOMContentLoaded', function() {
 
     mentiBoxes.forEach(box => {
         box.addEventListener('click', function(event) {
-            if (event.target.closest('.buttons')) return; // 버튼 클릭 시는 무시
+            if (event.target.closest('.buttons')) return; 
 
             const buttons = this.querySelector('.buttons');
             const class2 = this.querySelector('.class2');
             const isExpanded = this.classList.toggle('expanded');
 
             if (isExpanded) {
-                buttons.style.display = 'flex'; // 버튼들을 보이게 함
-                class2.classList.add('visible'); // 상세 정보를 보이게 함
-                this.style.height = `${class2.scrollHeight + 100}px`; // 높이를 자동으로 설정
+                buttons.style.display = 'flex'; 
+                class2.classList.add('visible'); 
+                this.style.height = `${class2.scrollHeight + 100}px`; 
             } else {
-                buttons.style.display = 'none'; // 버튼들을 숨김
-                class2.classList.remove('visible'); // 상세 정보를 숨김
-                this.style.height = '70px'; // 기본 높이로 복원
+                buttons.style.display = 'none'; 
+                class2.classList.remove('visible'); 
+                this.style.height = '70px'; 
             }
         });
     });
-
-    const actionForms = document.querySelectorAll('.action-form');
-
-    actionForms.forEach(form => {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // 기본 동작 중단
-            
-            const mentiBox = this.closest('.menti');
-            const formData = new FormData(this);
-            const state = formData.get('state');
-
-            // AJAX 요청을 보냄
-            fetch(this.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-CSRFToken': '{{ csrf_token }}'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                // 요청 성공 시 실행할 로직
-                if (state === '수락') {
-                    mentiBox.classList.add('accepted');
-                    mentiBox.classList.remove('rejected'); // 다른 상태 클래스 제거
-                } else if (state === '거절') {
-                    mentiBox.classList.add('rejected');
-                    mentiBox.classList.remove('accepted'); // 다른 상태 클래스 제거
-                }
-
-                // 상세 정보를 숨기고 높이를 기본 값으로 복원
-                mentiBox.querySelector('.class2').classList.remove('visible');
-                mentiBox.querySelector('.buttons').style.display = 'none';
-                mentiBox.style.height = '70px';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
-    });
 });
+
+function handleAction(mentiId, action) {
+    const mentiBox = document.getElementById(`menti_${mentiId}`);
+    
+
+    if (action === 'accepted') {
+        mentiBox.classList.add('accepted');
+        mentiBox.classList.remove('rejected');
+    } else if (action === 'rejected') {
+        mentiBox.classList.add('rejected');
+        mentiBox.classList.remove('accepted');
+    }
+
+    const formData = new FormData();
+    formData.append('mentorship_id', mentiId);
+    formData.append('state', action === 'accepted' ? '수락' : '거절');
+    
+    fetch("{% url 'users:mentoring-state' user.id %}", {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-CSRFToken': '{{ csrf_token }}'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
 </script>
 
 {% endblock %}
+
 
