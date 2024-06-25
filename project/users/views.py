@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from .models import Portfolio, Education, Experience, Project, Certification
 from accounts.models import Profile
-from main.models import Mentor, Relation_mentor
+from main.models import Mentor, Relation_mentor, Menti
 from community.models import Free, Move
 from careers.models import Careerinfo, Careerprogram, Eduinfo, Ciapply, Cpapply, Eiapply
 
@@ -91,12 +91,13 @@ def edit_portfolio(request):
         print('Projects:', [proj.name for proj in portfolio.projects.all()])
         print('Certifications:', [cert.name for cert in portfolio.certifications.all()])
 
-        return redirect('users:view_portfolio', id=request.user.id)
+        return redirect('users:portfolio', id=request.user.id)
 
     return render(request, 'users/edit_portfolio.html', {'portfolio': portfolio})
 
-def view_portfolio(request,id):
-    portfolio = get_object_or_404(Portfolio, user=request.user)
+def view_portfolio(request, id):
+    user = get_object_or_404(User, pk=id)
+    portfolio = get_object_or_404(Portfolio, user=user)
     education = portfolio.education.all()
     experience = portfolio.experience.all()
     projects = portfolio.projects.all()
@@ -108,7 +109,6 @@ def view_portfolio(request,id):
         'projects': projects,
         'certifications': certifications
     })
-
 
 def my_writing(request, id):
     user = User.objects.get(pk=id)
@@ -126,37 +126,50 @@ def my_writing(request, id):
 
 def mentoring(request, id):
     user = get_object_or_404(User, pk=id)
+    # mentor_state = Relation_mentor.objects.filter(menti=user)
+    mentor = Menti.objects.filter(user=user)
     mentor_state = Relation_mentor.objects.filter(menti=user)
     context = {
-        'menti_ship': user.menti_ship.all(),
-        'mentor_state':mentor_state.all(),
+        # 'menti_ship': user.menti_ship.all(),
+        # 'mentor_state':mentor_state.all(),
+        'mentor':mentor.all(),
     }
     return render(request, 'users/mentoring.html', context)
 
 def menti_list(request, id):
     user = get_object_or_404(User, pk=id)
-    mentors = Mentor.objects.filter(user_id=id)
-    user_profiles = []  # Initialize list to store Profile objects
-    mentor_lists = []  # Initialize list to store Relation_mentor objects
-
+    mentors = Mentor.objects.all()
+    # mentors = Mentor.objects.filter(user_id=id)
+    menti = []
     for mentor in mentors:
-        mentor_list = Relation_mentor.objects.filter(mentor=mentor)
-        mentor_lists.extend(mentor_list)
-        for relation in mentor_list:
-            profiles = Profile.objects.filter(user=relation.menti)  # Get all Profile objects for this menti
-            user_profiles.extend(profiles)
+        if mentor.user_id == id:
+            m = Menti.objects.filter(mentor=mentor)
+            menti.extend(m)
+
+    return render(request, 'users/menti_list.html', {'menti':menti})
+    # user = get_object_or_404(User, pk=id)
+    # mentors = Mentor.objects.filter(user_id=id)
+    # user_profiles = []  # Initialize list to store Profile objects
+    # mentor_lists = []  # Initialize list to store Relation_mentor objects
+
+    # for mentor in mentors:
+    #     mentor_list = Relation_mentor.objects.filter(mentor=mentor)
+    #     mentor_lists.extend(mentor_list)
+    #     for relation in mentor_list:
+    #         profiles = Profile.objects.filter(user=relation.menti)  # Get all Profile objects for this menti
+    #         user_profiles.extend(profiles)
     
-    if not user_profiles:
-        return redirect('users:mentoring', id)
-    else:
-        menti_list = Relation_mentor.objects.filter(menti_id=user.id)
-        context = {
-            'mentors': mentors,
-            'user_profiles': user_profiles,
-            'mentor_lists': mentor_lists,
-            'menti_lists': menti_list.all()
-        }
-        return render(request, 'users/menti_list.html', context)
+    # if not user_profiles:
+    #     return redirect('users:mentoring', id)
+    # else:
+    #     menti_list = Relation_mentor.objects.filter(menti_id=user.id)
+    #     context = {
+    #         'mentors': mentors,
+    #         'user_profiles': user_profiles,
+    #         'mentor_lists': mentor_lists,
+    #         'menti_lists': menti_list.all()
+    #     }
+    #     return render(request, 'users/menti_list.html', context)
 
 
 def mentoring_state(request, id):
@@ -165,7 +178,7 @@ def mentoring_state(request, id):
         mentorship_id = request.POST.get('mentorship_id')
         state = request.POST.get('state')
         try:
-            mentoring = Relation_mentor.objects.get(pk=mentorship_id)
+            mentoring = Menti.objects.get(pk=mentorship_id)
             if state == '거절':
                 mentoring.state = "거절"
             elif state == '수락':

@@ -36,22 +36,16 @@ class Mentor(models.Model):
     def __str__(self):
         return self.user
 
+class Menti(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    mentor = models.ForeignKey(Mentor, on_delete=models.CASCADE)
+    summary = models.CharField(max_length=50)
+    content = models.CharField(max_length=500)
+    state = models.CharField(max_length=30, null=True, blank=True)
+    mentoring_at = models.DateField(blank=True, null=True)
 
 class Relation_mentor(models.Model):
     mentor = models.ForeignKey(Mentor, on_delete=models.CASCADE)
     menti = models.ForeignKey(User, on_delete=models.CASCADE)
-    state = models.CharField(max_length=30, null=True, blank=True)
     def __str__(self):
         return self.menti
-
-# class Accept(models.Model):
-#     mentor_ship = models.ForeignKey(Mentor, related_name='menti_ship', on_delete=models.CASCADE, blank=True, null=True, default='0')
-
-# @receiver(post_save, sender=Mentor)
-# def create_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         Profile.objects.create(user=instance)
-
-# @receiver(post_save, sender=Mentor)
-# def save_user_profile(sender, instance, **kwargs):
-#     instance.profile.save()

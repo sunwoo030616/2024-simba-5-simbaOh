@@ -5,6 +5,7 @@
   type="text/css"
   href="{% static 'css/community/new_free.css'%}"
 />
+
 <form action="{% url 'community:free-create' %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="screen">
@@ -23,7 +24,7 @@
           <p class="title_text2 color_00">게시판 구분</p>
           <div class="row">
             <a class="select_point" href="{% url 'community:new-free' %}">자유게시판</a>
-            <a href="{% url 'community:new-move' %}">이직게시판</a>
+            <a class="unselect_point" href="{% url 'community:new-move' %}">이직게시판</a>
           </div>
         </div>
         <div class="border2">
@@ -32,7 +33,7 @@
               <p class="color_DB">*</p>
             </div>
             <button class="btn_select" type="button" onclick="toggleEmojiDrawer()">
-              <input style="font-size: 30px;" id="input" type="text" placeholder="😀" size="1" readonly>
+              <input style="font-size: 30px;" id="input" type="text" placeholder="😀" size="1" required>
             </button>
             <div id="drawer" class="emoji-drawer hidden">
               <div class="emoji" onclick="addEmoji(this.innerHTML)">😁</div>
@@ -63,17 +64,19 @@
             <div class="color_17 title_text2">제목</div>
             <p class="color_DB">*</p>
           </div>
-          <input class="mar" type="text" name="title" placeholder="제목을 입력해주세요." required>
+          <input class="mar bot_border" type="text" name="title" placeholder="제목을 입력해주세요." required>
+          
           <div class="row2 mar">
             <div class="color_17 title_text2">내용</div>
             <p class="color_DB">*</p>
           </div>
-          <textarea class="mar" id="content" name="content" placeholder="내용을 입력해주세요." required></textarea>
+          <textarea class="mar bot_border" type="text" id="content" name="content" placeholder="내용을 입력해주세요." required></textarea>
+
           <div class="row2 mar">
             <div class="color_17 title_text2">태그</div>
             <p class="color_DB">*</p>
           </div>
-          <input class='tag mar' type="text" name="ftcontent" placeholder="#태그" required/>
+          <input class='tag mar bot_border' type="text" name="ftcontent" placeholder="#태그" required/>
 
         </div>
         <button type="submit" class="btn_submit">작성완료</button>
