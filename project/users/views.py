@@ -140,6 +140,7 @@ def mentoring(request, id):
 def menti_list(request, id):
     user = get_object_or_404(User, pk=id)
     mentors = Mentor.objects.all()
+    mentor = Menti.objects.filter(user=user)
     # mentors = Mentor.objects.filter(user_id=id)
     menti = []
     for mentor in mentors:
@@ -147,7 +148,10 @@ def menti_list(request, id):
             m = Menti.objects.filter(mentor=mentor)
             menti.extend(m)
 
-    return render(request, 'users/menti_list.html', {'menti':menti})
+    return render(request, 'users/menti_list.html', {
+        'menti':menti,
+        'mentor':mentor
+        })
 
 
 def mentoring_state(request, id):
