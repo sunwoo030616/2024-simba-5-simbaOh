@@ -9,7 +9,7 @@
 />
 
 <div class="screen">
-  <form id="form" class="main" action="{% url 'main:mentor-relation-create' mentor.id %}" method="POST">
+  <form id="form" class="main" action="{% url 'main:create-menti' mentor.id %}" method="POST">
     <div class="body" id="main">
       <div class="nav">
         <div class="left" style="z-index: 1;">
@@ -139,7 +139,7 @@
     };
 
     btn_ask.addEventListener('click',function(evnet) {
-      evnet.preventDefault();
+      event.preventDefault();
 
       wrapping2.style.display = "block";
       modal.style.display = "none";
