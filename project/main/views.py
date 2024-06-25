@@ -61,6 +61,7 @@ def mentor_list(request):
             return render(request, 'main/mentor_list.html', {'mentors': mentors})
     else:
         mentors = Mentor.objects.all()
+        mentors = mentors.order_by('-mentor_at')
     return render(request, 'main/mentor_list.html', {'mentors': mentors})
 
 def mentor_enroll(request):
