@@ -11,5 +11,48 @@
 - 취업관련 프로그램, 공고, 교육 등을 한꺼번에 관리하고 싶은 **교직원**<br><br>
 ## <img src="https://github.com/sunwoo030616/Photo/assets/164135983/55c85488-4ccb-483e-bf85-8fa6db447ae4" alt="image" width="30" height="30"> 메인 기능
 ### 📌 멘토링 
-> 멘토링 재린ㄴ 서비<br>
-> ㅇㄴㄹㄴㅇ
+> #### 현직 동문 선배의 실제 경험과 지식을 통한 맞춤형 멘토링 제공
+> - #### 멘토링 신청, 등록 및 팔로우 기능 ➡️ 멘토 또한 멘티가 될 수 있다!
+
+### 📌 커리어
+> #### 커리어의 모든 것을 한 눈에 파악할 수 있는 종합 정보 게시판
+> - #### 통합적인 지원 및 신청 기능 ➡️ All-in-one Service
+
+### 📌 커뮤니티 
+> #### 동문과 함께하는 소속감 있는 정보 공유 및 네트워킹
+> - #### 에타 취업 게시판과의 차별점❓
+>     - **회사원 인증 시스템을 통한 신뢰성 확보 ✔️**
+>     - **직무 분야별 카테고리 제공으로 더욱 체계적인 정보 ✔️**
+
+### 📌 포트폴리오 
+> #### 사용자가 수정한 정보를 토대로 개인별 포트폴리오 제공
+
+### 📌 사용자 
+> #### 팔로잉, 팔로워 정보, 북마크 한 글, 멘토링 또는 커리어 신청 현황 제공
+>   #### ```➡️ 한번에 모든 것을 한 개의 앱 안에서 할 수 있는 치트키인 서비스!```<br>
+
+
+## <img src="https://github.com/sunwoo030616/Photo/assets/164135983/55c85488-4ccb-483e-bf85-8fa6db447ae4" alt="image" width="30" height="30"> 커밋 규칙<br>
+| 커밋 유형           | 설명                                             |
+|---------------------|--------------------------------------------------|
+| **feat**            | 새로운 기능을 추가할 경우                                 |
+| **fix**             | 버그를 고친 경                                        |
+| **design**          | CSS 등 사용자 UI 디자인 변경                    |
+| **!BREAKING CHANGE**| 커다란 API 변경의 경우                           |
+| **!HOTFIX**         | 급하게 치명적인 버그를 고쳐야 하는 경우          |
+| **style**           | 코드 formatting, 세미콜론 누락, 코드 자체의 변경이 없는 경우 |
+| **refactor**        | 코드 리팩토링                                    |
+| **comment**         | 필요한 주석 추가 및 변경                         |
+| **test**            | 테스트 코드, 리팩토링 테스트 코드 추가           |
+| **rename**          | 파일 또는 폴더 명을 수정하거나 옮기는 작업만인 경우 |
+| **remove**          | 파일을 삭제하는 작업만 수행한 경우               |
+
+## <img src="https://github.com/sunwoo030616/Photo/assets/164135983/55c85488-4ccb-483e-bf85-8fa6db447ae4" alt="image" width="30" height="30"> 팀 소개<br>
+
+| <img src="https://github.com/sunwoo030616/Photo/assets/164135983/cc2207ad-4413-4207-aa27-49024c6cbeb0" alt="Group 1385" width="100" height="100"> | <img src="https://github.com/sunwoo030616/Photo/assets/164135983/4f120787-89c6-4c3c-9589-d2bd8e012314" alt="Group 1385" width="100" height="100"> | <img src="https://github.com/sunwoo030616/Photo/assets/164135983/4a7f1ed0-cbe1-4829-abef-cc9d3351f65e" alt="Group 1385" width="100" height="100"> | <img src="https://github.com/sunwoo030616/Photo/assets/164135983/186f3ce0-5696-4dd3-acb1-ada5f194fa50" alt="Group 1385" width="100" height="100"> | <img src="https://github.com/sunwoo030616/Photo/assets/164135983/79cc913a-074d-49d9-aace-ccaa99a8890c" alt="Group 1385" width="100" height="100"> |
+|:---:|:---:|:---:|:---:|:---:|
+| **구도욱** | **최민** | **오태준** | **황채현** | **박선우** |
+| PD | FE | FE | BE | BE |
+| 융합보안학과 | 경영정보학과 | 정보통신공학과 | 전자전기공학부 | 컴퓨터공학과 |
+| ENFJ | ENTJ | INTJ | ISTJ | INFP |
+***
