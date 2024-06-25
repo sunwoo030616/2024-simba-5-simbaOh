@@ -82,7 +82,11 @@
         {% for m in menti %}
         <div class='menti' id="menti_{{ m.id }}">
         <div class='first'>
-            <img class="image_set2" id="profile_image" src="{{ m.user.profile.user_profile }}" width='80px' height='80px'>
+          {% if profile.user_profile %}
+            <img class="image_set2" id="profile_image" src="{{ m.user.profile.user_profile.url }}" width='80px' height='80px'>
+          {% else %}
+            <img class="photo1" src="{% static 'images/logo.png' %}" width='60px' height='60px'>
+          {% endif %}  
             <div class='namemajor'>
             <div class='name'>{{ m.user.profile.user_name }}멘티님이<br> 멘토링을 신청했습니다.</div>
             <div class='major'>{{ m.user.profile.user_major }}</div>
