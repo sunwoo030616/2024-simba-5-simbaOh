@@ -95,8 +95,8 @@ def edit_portfolio(request):
 
     return render(request, 'users/edit_portfolio.html', {'portfolio': portfolio})
 
-def view_portfolio(request, id):
-    user = get_object_or_404(User, pk=id)
+def view_portfolio(request):
+    user = request.user
     portfolio = get_object_or_404(Portfolio, user=user)
     education = portfolio.education.all()
     experience = portfolio.experience.all()
