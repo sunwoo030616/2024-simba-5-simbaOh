@@ -2,7 +2,8 @@
 <img src="{% static 'images/사진8.png' %}" alt="Group 1385" width="100" height="100">
  &nbsp;&nbsp;&nbsp;&nbsp;<img src="{% static 'images/사진6.png' %}"alt="TEXT (1)" width="300">&nbsp;&nbsp; 심바톤 5조 심바오🐼
 ***
-## <img src="{% static 'images/사진2.png' %}" alt="image" width="30" height="30"> 소개 
+## <img src="https://github.com/LikeLion-at-DGU/2024-simba-5-simbaOh/assets/164135983/846774d3-356d-4d3f-9d06-3075bbb34c13" width="100" height="100">
+ 소개 
 - 동국인을 위한 멘토링부터 커뮤니티, 채용, 프로그램까지 취업의 치트키가 되는 커리어 올인원 플랫폼 **'취트키'**<br>
 ## <img src="{% static 'images/사진2.png' %}" alt="image" width="30" height="30"> 서비스 타겟
 - 가고자 하는 기업의 정보를 얻고 싶은 동국대학교 **재학생/휴학생**<br><br>
