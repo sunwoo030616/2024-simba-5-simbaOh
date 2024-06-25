@@ -23,7 +23,9 @@
         <div class="row">
           {% if move.writer == user %}
           <a href="{% url 'community:move-edit' move.id %}">글 수정하기</a>
-          <a href="{% url 'community:move-delete' move.id %}">글 삭제하기</a>
+          <form id="form" action="{% url 'community:move-delete' move.id %}" method="POST">
+            <button id="deleting" type="button">글 삭제하기</button>
+          </form>
           {% endif %}
         </div>
       </div>
@@ -40,7 +42,7 @@
         </p>
       </div>
       <p class="color_17 text_4">분야</p>
-      <p></p>
+      <p class="color_65 text_5">{{move.field}}</p>
       <p class="color_17 text_4">태그</p>
       <p class="color_65 text_5">
         {% for movetag in move.movetags.all %}
@@ -77,8 +79,73 @@
       </div>
     </div>
   </div>
+
+  <div class="modalpopup_frame" id="modalpopup_frame" style="display: none;">
+    <div class="modalpopup_body">
+      <p class="mentor_card_name_font color_28" style="text-align: center;">게시글을 정말 삭제하시겠습니까?</p>
+      <p class="context_text color_9D">삭제하기를 누르면 글은 영구적으로 삭제됩니다.</p>
+      <div class="row6">
+        <button type="button" class="modal_box1" id="modal_box1">다시 확인하기</button>
+        <button type="button" class="modal_box2" id="modal_box2">신청하기</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapping" id="wrapping"></div>
+  <div class="wrapping2" id="wrapping2"></div>
+  <div class="toast" id="toast" style="align-items: center;">
+    <img src="{% static 'images/complete.png' %}" width="90px" height="90px">
+    <p class="color_28 title_text2">삭제가 완료되었습니다!</p>
+  </div>
+
 </div>
-{{move.field}}
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const deleting = document.getElementById("deleting");
+
+    const form = document.getElementById("form");
+
+    const modal = document.getElementById("modalpopup_frame");
+    const btn_close = document.getElementById("modal_box1");
+    const btn_ask = document.getElementById("modal_box2");
+    const toast = document.getElementById("toast");
+    const wrapping = document.getElementById("wrapping");
+    const wrapping2 = document.getElementById("wrapping2");
+
+    wrapping.style.display = "none";
+    wrapping2.style.display = "none";
+    modal.style.display = "none";
+    toast.style.display = "none";
+
+    deleting.onclick = function () {
+      modal.style.display = "block";
+      wrapping.style.display = "block";
+    }
+
+    btn_close.onclick = function () {
+      modal.style.display = "none";
+      wrapping.style.display = "none";
+    }
+
+    btn_ask.addEventListener('click', function(event) {
+      event.preventDefault();
+
+      wrapping2.style.display = "block";
+      modal.style.display = "none";
+      toast.style.display = "";
+
+      setTimeout(function() {
+        form.submit();
+      }, 1500);
+    });
+
+  });
+</script>
+
+
 {% endblock %}
 
 

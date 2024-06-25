@@ -8,7 +8,6 @@
   href="{% static 'css/main/mentor_ask.css'%}"
 />
 
-
 <div class="screen">
   <form id="form" class="main" action="{% url 'main:create-menti' mentor.id %}" method="POST">
     <div class="body" id="main">
@@ -68,20 +67,22 @@
         <button type="button" class="btn_men" id="btn_men" disabled>멘토링 보내기</button>
       </div>
     </div>
+
     <div class="modalpopup_frame" id="modalpopup_frame" style="display: none;">
       <div class="modalpopup_body">
         <p class="mentor_card_name_font color_28" style="text-align: center;">작성한 내용은 멘토에게 바로 알림이 가며,</p>
-        <div class="row1" style="justify-content: center;">
+        <div class="row5" style="justify-content: center;">
           <p class="mentor_card_name_font color_00">승인직후</p>
           <p class="mentor_card_name_font color_28">프로필이 바로 공개됩니다.</p>
         </div>
         <p class="context_text color_9D">- 한 줄 요약과 내용에 오타가 없는지 확인하세요.<br>- 작성한 내용에 거짓, 비하에 대한 내용이 확인된다면<br>멘토에서 삭제됩니다.<br>- 동일한 내용에 대해 여러 멘토에게 보낸 것이 적발<br>될 경우 제한될 수 있습니다.</p>
-        <div class="row2">
+        <div class="row6">
           <button type="button" class="modal_box1" id="modal_box1">다시 확인하기</button>
           <button type="button" class="modal_box2" id="modal_box2">신청하기</button>
         </div>
       </div>
     </div>
+
   </form>
   <div class="wrapping" id="wrapping"></div>
   <div class="wrapping2" id="wrapping2"></div>
@@ -91,7 +92,6 @@
     <p class="color_9D title_text3">멘토링 신청 현황 화면으로 화면이 전환됩니다.</p>
   </div>
 </div> 
-
 
 
 
@@ -118,7 +118,7 @@
 
     btn_modal.onclick = function () {
       modal.style.display = "block";
-      wrapping.style.display = "block"
+      wrapping.style.display = "block";
     };
 
     btn_close.onclick = function () {
@@ -138,16 +138,23 @@
       }
     };
 
-    btn_ask.onclick = function () {
+    btn_ask.addEventListener('click',function(evnet) {
+      event.preventDefault();
+
       wrapping2.style.display = "block";
       modal.style.display = "none";
       toast.style.display = "";
       setTimeout(function() {
         form.submit();
-
       }, 1500);
-    }
+    });
 
+    window.onclick = function (event) {
+      if(event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+   
 
     context1.addEventListener('input', update_button);
     context2.addEventListener('input', update_button);
@@ -155,3 +162,4 @@
 </script>
 
 {% endblock %}
+

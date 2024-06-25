@@ -186,8 +186,26 @@ def free_update(request, id):
         update_free.pub_date = timezone.now()
         if request.FILES.get('image'):
             update_free.image = request.FILES['image']
-
+        if request.POST.get('emoji'):
+            update_free.emoji = request.POST['emoji']
+        
         update_free.save()
+
+        freewords = update_free.ftcontent.split(' ')
+        freetag_list = []
+        
+
+        for f in freewords:
+            if len(f)>0:
+                if f[0] == '#':
+                    freetag_list.append(f[1:])
+                    print(f)
+
+        for t in freetag_list:
+            freetag, boolean = Freetag.objects.get_or_create(freename=t)
+            update_free.freetags.add(freetag.id)
+
+
         return redirect('community:free-detail', update_free.id)
     return render(request, 'community/free_board.html')
 
