@@ -84,6 +84,10 @@
   }
 }
 
+input:focus-visible {
+  outline: none;
+}
+
 .wrapping_nav {
   display: flex;
   position: absolute;

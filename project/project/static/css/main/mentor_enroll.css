@@ -791,3 +791,7 @@ align-items: center;
   .color_9D {
     color: #9D9D9D;
   }
+
+  input:focus-visible {
+    outline: none;
+}

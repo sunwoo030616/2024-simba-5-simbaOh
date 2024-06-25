@@ -326,3 +326,7 @@ textarea:focus-visible {
 .color_DB {
   color: #DB7373;
 }
+
+input:focus-visible {
+  outline: none;
+}

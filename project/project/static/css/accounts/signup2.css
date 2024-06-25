@@ -280,3 +280,7 @@ position: absolute;
   background: #00C3AD;
   position: absolute;
   }
+
+  input:focus-visible {
+    outline: none;
+  }
