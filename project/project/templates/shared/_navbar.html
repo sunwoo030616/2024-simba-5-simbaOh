@@ -1,7 +1,7 @@
 {% load static %}
 <link
   rel="stylesheet"
-  type="text/css"
+  type=""
   href="{% static 'css/shared/navbar.css' %}"
 />
 
@@ -40,23 +40,23 @@
                 <img class="image_set" src="{% static 'images/logo.png' %}" width="60px" height="60px">
               {% endif %}
               <div class="column">
-                <p class="color_FFF font_1">{{ user.profile.user_name }}</p>
-                <p class="color_FFF font_2">{{ user.profile.user_major }}</p>
+                <p class="color_FFF font_1">{{ request.user.profile.user_name }}</p>
+                <p class="color_FFF font_2">{{ request.user.profile.user_major }}</p>
               </div>
             </div>
             <!-- update-profile address 추후 삽입 -->
-            <a href="{% url 'accounts:update-profile' user.id %}">
+            <a href="{% url 'accounts:update-profile' request.user.id %}">
               <img src="{% static 'images/edit.png' %}" width="32px" height="32px">
             </a>
           </div>
         </div>
         <div class="row_space_around">
-          <a href="{% url 'users:follow-list' user.id %}" class="column">
-            <p class="color_FFF font_3">{{ user.mentor_followings.count }}</p>
+          <a href="{% url 'users:follow-list' request.user.id %}" class="column">
+            <p class="color_FFF font_3">{{ request.user.mentor_followings.count }}</p>
             <p class="color_FFF font_3">팔로잉</p>
           </a>
           <a href="{% url 'users:cibm_list' %}" class="column">
-            <p class="color_FFF font_3">12</p>
+            <p class="color_FFF font_3">{{total_bookmark_count}}</p>
             <p class="color_FFF font_3">북마크</p>
           </a>
           <a href="{% url 'users:portfolio' request.user.id %}" class="column">
@@ -65,14 +65,14 @@
           </a>
         </div>
         <div class="btn_part">
-          <a class="row_space_between round_box" href="{% url 'users:my-writing' user.id %}">
+          <a class="row_space_between round_box" href="{% url 'users:my-writing' request.user.id %}">
             <div class="row">
               <img src="{% static 'images/write_icon.png' %}" width="32px" height="32px">
               <p class="font_5 color_17">내가 쓴 글</p>
             </div>
             <img src="{% static 'images/arrow_forward.png' %}" width="32px" height="32px">
           </a>
-          <a class="row_space_between round_box" href="{% url 'users:mentoring' user.id %}">
+          <a class="row_space_between round_box" href="{% url 'users:mentoring' request.user.id %}">
             <div class="row">
               <img src="{% static 'images/mentoring_icon.png' %}" width="32px" height="32px">
               <p class="font_5 color_17">멘토링 신청 현황</p>
@@ -91,7 +91,6 @@
 
     </div>
   </div>
-  <div class="wrapping_nav" id="wrapping_nav" style="display: none;"></div>
 </div>
 
 <script>
@@ -99,26 +98,17 @@
     const btn_open_mypage = document.getElementById('btn_open_mypage');
     const btn_close_mypage = document.getElementById('btn_close_mypage');
     const navbar2 = document.getElementById('navbar2');
-    const wrapping_nav = document.getElementById('wrapping_nav');
-
     let x = false;
 
     function Navbar() {
       if (x) {
         navbar2.style.animationName = 'move_navbar_up';
-        wrapping_nav.style.display = "none";
       } else {
         navbar2.style.animationName = 'move_navbar_down';
-        wrapping_nav.style.display ="";
       }
       x = !x;
       navbar2.style.zIndex = x ? "10" : "2";
     }
-
-    wrapping_nav.onclick = function() {
-      navbar2.style.animationName = 'move_navbar_up';
-      wrapping_nav.style.display = "none";
-    };
 
     btn_open_mypage.onclick = Navbar;
     btn_close_mypage.onclick = Navbar;
