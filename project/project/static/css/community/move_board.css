@@ -94,6 +94,31 @@
   line-height: 24px; /* 120% */
 }
 
+label {
+  margin: 0.25rem;
+  padding: 0.25rem 0.5rem;
+
+  font-size: 1rem;
+  color: #656565;
+  border-radius: 30px;
+  border: 1px solid #D9D9D9;
+  background-color: #FFF;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+.row500 {
+  display: flex;
+  width: 1200px;
+  flex-wrap: wrap;
+}
+
+.category {
+  overflow: auto hidden;
+}
+
 .line2{
   width: 165px;
 height: 2px;
@@ -269,5 +294,9 @@ letter-spacing: -0.32px;
 }
 
 input:focus-visible {
+  outline: none;
+}
+
+.category:focus-visible {
   outline: none;
 }
