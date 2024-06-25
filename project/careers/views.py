@@ -348,6 +348,7 @@ def apply_eduinfo(request, id):
             Eiapply.objects.create(user=user, eduinfo=eduinfo)
     
         return redirect('users:eiapply')
+<<<<<<< HEAD
     
 def total(request):
     # Careerinfo의 ci_bm 개수 세기
@@ -385,3 +386,17 @@ def total(request):
         'total_bm_count': total_bm_count,
     }
     return render(request, 'community/free_board.html', context)
+=======
+
+def total_bookmarks(request):
+    user = request.user
+    total_cibm_count = Careerinfo.objects.filter(ci_bm=user).count()
+    total_cpbm_count = Careerprogram.objects.filter(cp_bm=user).count()
+    total_eibm_count = Eduinfo.objects.filter(ei_bm=user).count()
+    
+    total_bookmark_count = total_cibm_count + total_cpbm_count + total_eibm_count
+    
+    return render(request, 'project/_navbar.html', {
+        'total_bookmark_count': total_bookmark_count
+    })
+>>>>>>> e6715bb8a3d97fa9f231635d3a6f7aa7006eeede
