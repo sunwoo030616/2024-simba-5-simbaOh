@@ -1,0 +1,180 @@
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/careers/careerinfo_detail.css'%}"
+/>
+
+<div class="screen">
+	<div class="main">
+    <div class="body">
+			<div class="nav">
+				<div class="left" style="z-index: 1;">
+					<a href="{% url 'careers:career-info' %}">
+            <img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
+					</a>
+				</div>
+				<div><p class="color_28 title_text" style="text-align: center;">커리어</p></div>
+				<div style="width: 32px;"></div>
+			</div>
+      <p class="color_black title_text2" style="padding-top: 16px;">{{ careerinfo.title }}</p>
+      <div class="box">
+        <div class="column" style="gap: 16px;">
+          {% if careerinfo.image %}
+            <img src="{{ careerinfo.image.url }}" alt="사진" width="100%">
+          {% else %}
+            <img src="{% static 'images/calendar.png' %}" alt="사진" width="100%">
+          {% endif %}
+          <div class="text_board">
+            <div class="row1">
+              <div class="row_100">
+                <img src="{% static 'images/calendar.png' %}" width="20px" height="20px">
+                <p class="text4 color_17">지원일</p>
+              </div>
+              <p class="text5 color_61">{{careerinfo.startline}} - {{careerinfo.deadline}}</p>
+              <form action="{% url 'careers:ci_bms' careerinfo.id %}" method="post">
+                {% csrf_token %}
+                {% if user in careerinfo.ci_bm.all %}
+                  <button type="submit"><img src="{% static 'images/filled_bookmark.png' %}" width="20px" height="20px"></button>
+                {% else %}
+                  <button type="submit"><img src="{% static 'images/unfilled_bookmark.png' %}" width="20px" height="20px"></button>
+                {% endif %}
+              </form>
+            </div>
+            <div class="row1">
+              <div class="row_100">
+                <img src="{% static 'images/location.png' %}" width="20px" height="20px">
+                <p class="text4 color_17 length_limit">기업명</p>
+              </div>
+              <p class="text5 color_61" style="width: 200px;">{{careerinfo.company}}</p>
+              <div style="width: 20px;"></div>
+            </div>
+            <div class="row1">
+              <div class="row_100">
+                <img src="{% static 'images/book.png' %}" width="20px" height="20px">
+                <p class="text4 color_17">분야</p>
+              </div>
+              <p class="text5 color_61" style="width: 200px;">{{careerinfo.field}}</p>
+              <div style="width: 20px;"></div>
+            </div>
+            <hr style="width: 100%;">
+            <div class="context">
+              <p class="color_17 context_text">내용</p>
+              <p class="color_61 context_text2">{{careerinfo.content}}</p>
+            </div>
+            <div style="width: 20px;"></div>
+          </div>
+        </div>
+        {% for careerinfotag in careerinfo.careerinfotags.all %}
+          <a href="{% url 'careers:careerinfotag-careerinfos' careerinfotag.id %}">#{{ careerinfotag.name }} </a>
+        {% endfor %}
+      </div>
+      {% if not has_applied %}
+        <form id="form_app" style="display: flex; justify-content: center;" method="post" action="{% url 'careers:apply_careerinfo' careerinfo.id %}">
+          {% csrf_token %}
+          <button style="position: fixed; bottom: 10px;" class="btn_ask color_FF" type="button" id="btn_app">지원하기</button>
+        </form>
+      {% else %}
+        <form id="form_noapp" style="display: flex; justify-content: center;" method="post" action="{% url 'careers:apply_careerinfo' careerinfo.id %}">
+          {% csrf_token %}
+          <button style="position: fixed; bottom: 10px;"  class="btn_ask2 color_FF" type="button" id="btn_noapp">지원취소</button>
+        </form>
+      {% endif %}
+
+      {% if careerinfo.writer == user %}
+        <a href="{% url 'careers:careerinfo-delete' careerinfo.id %}">삭제하기</a>
+      {% endif %}
+		</div>
+	</div>
+  <div class="wrapping" id="wrapping"></div>
+  <div class="wrapping" id="wrapping2"></div>
+  <div class="toast" id="toast" style="align-items: center;">
+    <img src="{% static 'images/complete.png' %}" width="90px" height="90px">
+    <p class="color_28 title_text2">지원이 완료되었습니다.</p>
+    <p class="color_9D title_text3">커리어 신청 현황 화면으로 화면이 전환됩니다.</p>
+  </div>
+  <div class="toast" id="toast2" style="align-items: center;">
+    <img src="{% static 'images/complete_red.png' %}" width="90px" height="90px">
+    <p class="color_28 title_text2">지원이 취소되었습니다.</p>
+    <p class="color_9D title_text3">커리어 신청 현황 화면으로 화면이 전환됩니다.</p>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const toast = document.getElementById("toast");
+    const toast2 = document.getElementById("toast2");
+
+    const wrapping = document.getElementById("wrapping");
+    const wrapping2 = document.getElementById("wrapping2");
+
+    const btn_app = document.getElementById("btn_app");
+    const btn_noapp = document.getElementById("btn_noapp");
+
+    const form_app = document.getElementById("form_app");
+    const form_noapp = document.getElementById("form_noapp");
+
+    wrapping.style.display = "none";
+    wrapping2.style.display = "none";
+    toast.style.display = "none";
+    toast2.style.display = "none";
+
+    if (btn_app) {
+      btn_app.onclick = function () {
+        wrapping2.style.display = "block";
+        toast.style.display = "";
+        setTimeout(function() {
+          form_app.submit();
+        }, 1500);
+      };
+    }
+
+    if (btn_noapp) {
+      btn_noapp.onclick = function () {
+        wrapping2.style.display = "block";
+        toast2.style.display = "";
+        setTimeout(function() {
+          form_noapp.submit();
+        }, 1500);
+      };
+    }
+
+  });
+  
+</script>
+
+
+
+{% endblock %}
+
+<!-- <h3>{{careerinfo.title}}</h3>
+지원일 : {{careerinfo.startline}} - {{careerinfo.deadline}}
+기업명 : {{careerinfo.company}}
+분야: {{careerinfo.field}} -->
+<!-- <p>
+    {% for careerinfotag in careerinfo.careerinfotags.all %}
+        <a href="{% url 'careers:careerinfotag-careerinfos' careerinfotag.id %}">#{{ careerinfotag.name }} </a>
+    {% endfor %}
+</p>
+<hr/> -->
+
+<!-- <form action="{% url 'careers:ci_bms' careerinfo.id %}" method="post">
+    {% csrf_token %}
+    {% if user in careerinfo.ci_bm.all %}
+        <button type="submit">북마크 취소</button>
+    {% else %}
+        <button type="submit">북마크 추가</button>
+    {% endif %}
+    </form>
+
+{{careerinfo.cibm_count}}개
+{% if careerinfo.image %}
+    <p><img src="{{ careerinfo.image.url }}" alt="사진" width="100px"></p>
+{% endif %}
+
+<p>{{careerinfo.content}}</p>
+{% if careerinfo.writer == user %}
+<a href="{% url 'careers:careerinfo-delete' careerinfo.id %}">삭제하기</a>
+{% endif %}
+<br> -->

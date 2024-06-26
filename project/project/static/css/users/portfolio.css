@@ -1,0 +1,328 @@
+/* portfolio page - CSS */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 0.625rem; /* 10px */
+
+  @media (max-width: 430px) {
+    align-items: start;
+  }
+  @media (min-width: 431px) {
+    align-items: center;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 26.875rem; /* 430px */
+  align-items: center;
+  padding-bottom: 0.625rem; /* 10px */
+}
+
+.body {
+  display: flex;
+  width: 25rem; /* 400px */
+  flex-direction: column;
+  gap: 1.25rem; /* 20px */
+}
+
+.nav {
+  display: flex;
+  width: 100%;
+  height: 2rem; /* 32px */
+  padding-top: 3rem; /* 48px */
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form_set {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem; /* 8px */
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* 여기부터 추가 */
+.origin{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.originuser{
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  gap: 17px;
+  align-items: center;
+}
+.photo1{
+  display: flex;
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
+  background: lightgray 50% / cover no-repeat;
+}
+.photoname{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  gap:4px;
+}
+.name1{
+  display: flex;
+  width: 47px;
+  padding: 1px 6px;
+  justify-content: center;
+  align-items: center;
+
+  
+  gap: 10px;
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0.50);
+  text-overflow: ellipsis;
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+.major1,.email1,.phone1{
+  display: flex;
+  width: 308px;
+  padding: 1px 6px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0.50);
+  text-overflow: ellipsis;
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 133.333% */
+  justify-content: flex-start;
+}
+.majorphone{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* 여기까지 추가 */
+
+.input_data1 {
+  display: flex;
+  padding: 0.5rem 0.75rem; /* 8px 12px */
+  align-items: center;
+  align-self: stretch;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 0.375rem; /* 6px */
+}
+
+.input_data1::placeholder {
+  display: flex;
+  color: rgba(0, 0, 0, 0.50);
+  font-family: Pretendard;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 22px; /* 146.667% */;
+}
+
+.input_data2 {
+  display: flex;
+  align-items: center;
+  width: 391px;
+  align-self: stretch;
+  padding-left: 8px;
+  height: 37px;
+  border: 1px solid #C5C5C5;
+  background-color: #FFF;
+
+font-family: Pretendard;
+font-size: 13px;
+font-style: normal;
+font-weight: 300;
+line-height: 22px; /* 146.667% */
+}
+
+.input_data2::placeholder {
+  display: flex;
+  color: #939393;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 600;
+}
+
+.btn_submit {
+  display: flex;
+  width: 100%;
+  padding: 0.75rem 1rem; /* 12px 16px */
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 1rem; /* 32px */
+
+  color: #FFF;
+  background-color: #28464E;
+  border-radius: 0.5rem; /* 8px */
+}
+.btn_add_field{
+  font-family: Pretendard;
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 600;
+  height: 30px;
+  display: flex;
+  align-content: center;
+  color:#FFF;
+  width: 300px;
+  padding: 12px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
+  background: #1E3D46;
+}
+.btn_add_field2{
+  font-family: Pretendard;
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 600;
+  height: 30px;
+  display: flex;
+  align-content: center;
+  color:#FFF;
+  width: 300px;
+  padding: 12px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
+  background: #1E3D46;
+
+}
+
+
+
+
+
+
+/* 폰트 설정 */
+
+.title_text {
+  font-family: "noto Sans KR";
+  font-size: 1.5rem; /* 24px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.text_font1 {
+font-family: Pretendard;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: 20px; /* 111.111% */
+}
+.text_font1_1 {
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25rem; /* 20px */
+}
+
+.text_font2 {
+  font-family: Pretendard;
+  font-size: 0.625rem; /* 10px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem; /* 20px */
+}
+
+.text_font3 {
+  font-family: Pretendard;
+  font-size: 0.75rem; /* 12p */
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.25rem; /* 20px */
+}
+
+.text_font4 {
+  color: rgba(0, 0, 0, 0.50);
+  font-family: Roboto;
+  font-size: 0.75rem; /* 12px */
+  font-style: normal;
+  font-weight: 400;
+}
+
+.text_font5 {
+  font-family: Pretendard;
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 800;
+}
+.c{
+  color: #656565;
+font-family: Pretendard;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+width: 403px;
+padding-bottom: 5px;
+}
+
+
+/* 색상 설정 */
+
+.color_28 {
+  color: #17363F;
+}
+
+.color_00 {
+  color: #000;
+}
+
+.color_F0 {
+  color: #F00;
+}
+
+.color_71 {
+  color: #717171;
+}
+
+.color_FF {
+  color: #FFF;
+}
+
+input:focus-visible {
+  outline: none;
+}

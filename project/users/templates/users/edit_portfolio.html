@@ -1,0 +1,147 @@
+{% extends 'base_with_nav.html' %} 
+{% load static %}
+{% block content %} 
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/users/edit_portfolio.css'%}"
+/>
+
+<div class="screen">
+  <div class="main">
+    <div class="body">
+      <div class="nav">
+        <div class="left" style="z-index: 1;">
+          <a href="{% url 'main:mentor-list' %}">
+            <img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
+          </a>
+        </div>
+        <div class="color_28 title_text">포트폴리오</div>
+        <div style="width: 32px;"></div>
+      </div>
+      <form action="{% url 'users:edit_portfolio' %}" method="post" class="form_set">
+        {% csrf_token %}
+        
+        <div class="box">
+          <p class="text_font1 color_00">내 정보</p>
+
+          <div><hr></div>
+        </div>
+        
+        <div class='origin'>
+
+
+          <div class='originuser'>
+            <div class='photoname'> 
+              {% if mentor.user.profile.user_profile %}
+              <img class="photo1" src="{{ user.profile.user_profile.url }}" width="60px" height="60px">
+              {% else %}
+              <img class="photo1" src="{% static 'images/logo.png' %}" width='60px' height='60px'>
+              {% endif %}
+              <div class='name1'>{{user.profile.user_name}}</div>
+            </div>
+            <div class='majorphone'>
+              <div class='major1'>{{user.profile.user_major}}</div>
+              <div class='email1'>{{user.username}}</div>
+              <div class='phone1'>{{user.profile.user_phone}}</div>
+            </div>
+          </div>
+
+        </div>
+        
+        <div class="box">
+          <div class="row1">
+            <p class="text_font1 color_00">제목</p><p class="text_font2 color_F0">필수</p>
+          </div>
+          <div><hr></div>
+          <input type="text" class="input_data1" name="title" id="title" value="{{ portfolio.title }}" placeholder="제목" required>  
+        </div>
+
+        <div class="box">
+          <div class="row1">
+            <p class="text_font1 color_00">소개글</p><p class="text_font2 color_F0">필수</p>
+          </div>
+          <div><hr></div>
+          <textarea class="input_data1" name="introduction" id="introduction" placeholder="소개글을 작성해주세요." required>{{ portfolio.introduction }}</textarea>
+          <p class="text_font4">500자 이내로 입력해주세요.</p>  
+        </div>
+        
+        <div class="box">
+          <div class="row1">
+            <p class="text_font1 color_00">학력</p><p class="text_font2 color_F0">필수</p><p class="text_font3 color_71">최종 학력을 모두 입력해주세요</p>
+          </div>
+          <div><hr></div>
+          <div id="education_fields">
+            {% for education in portfolio.education.all %}
+              <input type="text" class="input_data2" name="education" value="{{ education.name }}" placeholder="+ 입력하기" oninput="checkField(this)" required>
+            {% empty %}
+              <input type="text" class="input_data2" name="education" placeholder="+ 입력하기" oninput="checkField(this)" required>
+            {% endfor %}
+          </div>
+        </div>
+        
+        <div class="box">
+          <div class="row1">
+            <p class="text_font1 color_00">경력</p><p class="text_font3 color_71">정규직/인턴/아르바이트 경력을 입력해주세요.</p>
+          </div>
+          <div><hr></div>
+          <div id="experience_fields">
+            {% for experience in portfolio.experience.all %}
+              <input type="text" class="input_data2" name="experience" value="{{ experience.name }}" placeholder="+ 입력하기" oninput="checkField(this)">
+            {% empty %}
+              <input type="text" class="input_data2" name="experience" placeholder="+ 입력하기" oninput="checkField(this)">
+            {% endfor %}
+          </div>
+        </div>
+          
+        <div class="box">
+          <div class="row1">
+            <p class="text_font1 color_00">프로젝트/교육</p><p class="text_font3 color_71">프로젝트/교육 이력을 입력해주세요.</p>
+          </div>
+          <div><hr></div>
+          <div id="projects_fields">
+            {% for project in portfolio.projects.all %}
+              <input type="text" class="input_data2" name="projects" value="{{ project }}" placeholder="+ 입력하기" oninput="checkField(this)">
+            {% endfor %}
+            <input type="text" class="input_data2" name="projects" placeholder="+ 입력하기" oninput="checkField(this)">
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="row1">
+            <p class="text_font1_1 color_00">자격/어학/수상</p><p class="text_font3 color_71">취득한 자격증/어학성적/수상내역을 입력해주세요.</p>
+          </div>
+          <div><hr></div>
+          <div id="certifications_fields">
+            {% for certification in portfolio.certifications.all %}
+              <input type="text" class="input_data2" name="certifications" value="{{ certification }}" placeholder="+ 입력하기" oninput="checkField(this)">
+            {% endfor %}
+            <input type="text" class="input_data2" name="certifications" placeholder="+ 입력하기" oninput="checkField(this)">
+          </div>
+        </div>
+      
+        <button type="submit" class="btn_submit text_font5">저장하기</button>
+
+      </form>
+    </div> 
+  </div>
+</div>
+
+<script>
+  function checkField(input) {
+    if (input.value.length > 0 && (!input.nextElementSibling || input.nextElementSibling.tagName !== 'INPUT')) {
+      var newInput = document.createElement('input');
+      newInput.type = 'text';
+      newInput.className = 'input_data2';
+      newInput.name = input.name;
+      newInput.placeholder = '+ 입력하기';
+      newInput.oninput = function() { checkField(newInput); };
+      input.parentNode.appendChild(newInput);
+    } else if (input.value.length === 0 && input.nextElementSibling && input.nextElementSibling.tagName === 'INPUT') {
+      input.parentNode.removeChild(input.nextElementSibling);
+    }
+  }
+</script>
+
+{% endblock %}

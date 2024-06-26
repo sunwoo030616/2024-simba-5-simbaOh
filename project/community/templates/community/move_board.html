@@ -1,0 +1,132 @@
+{% extends 'base_with_nav.html' %}
+{% load static %}
+{% block content %}
+
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'css/community/move_board.css' %}"
+/>
+
+<div class='screen'>
+  <div class="main">
+    <div class="body"> 
+      <div class='nav'>
+        <div class="left" style="z-index: 1;">
+          <a href="{% url 'main:mainpage' %}">
+            <img src="{% static 'images/arrow-24.png' %}" alt='but' width='32px'>
+          </a>
+        </div>
+        <div class="right">
+          <h2 class="color_28 title_text" style="text-align: center;">커뮤니티</h2>
+        </div>
+        <div style="width:32px;"></div>
+      </div>
+
+      <div class='topbar'>
+        <a class='topbar1' href="{% url 'community:free-board' %}">자유게시판<div class='line'></div></a>
+        <a class='topbar2' href="{% url 'community:move-board' %}">이직게시판<div class='line2'></div></a>
+      </div>
+      <div class="category">
+        <div class="row500">
+          
+          <label for="btn_1"><input type="radio" name="option" id="btn_1">인사/노무</label>
+          <label for="btn_2"><input type="radio" name="option" id="btn_2">IT개발/데이터</label>
+          <label for="btn_3"><input type="radio" name="option" id="btn_3">디자인</label>
+          <label for="btn_4"><input type="radio" name="option" id="btn_4">영업/판매/무역</label>
+          <label for="btn_5"><input type="radio" name="option" id="btn_5">상품기획/MD</label>
+          <label for="btn_6"><input type="radio" name="option" id="btn_6">서비스</label>
+          <label for="btn_7"><input type="radio" name="option" id="btn_7">생산</label>
+          <label for="btn_8"><input type="radio" name="option" id="btn_8">의료</label>
+          <label for="btn_9"><input type="radio" name="option" id="btn_9">건설/건축</label>
+          <label for="btn_10"><input type="radio" name="option" id="btn_10">연구/R&D</label>
+          <label for="btn_11"><input type="radio" name="option" id="btn_11">교육</label>
+          <label for="btn_12"><input type="radio" name="option" id="btn_12">금융/보험</label>
+          <label for="btn_13"><input type="radio" name="option" id="btn_13">미디어/스포츠</label>
+          <label for="btn_14"><input type="radio" name="option" id="btn_14">기획</label>
+        </div>
+      </div>
+      
+
+      {% for move in moves %}
+        <a class="centering" href="{% url 'community:move-detail' move.id %}">
+          <div class='boxes' data-category = "{{ move.field }}">
+            <div class='first'>
+              <div class='emoji'>{{ move.emoji|safe }}</div>
+              <div class='first2'>
+                <div class='title'>{{ move.title }}</div>
+                <div class='names'>
+                  <div class='name'>{{ move.writer.profile.user_name }} |</div>
+                  <div class='major'>{{ move.writer.profile.user_major }}</div>
+                </div>
+              </div>
+            </div>
+            <div class='second'>
+              <div class='second2'>
+                <div class='imaplus'>
+                  <img src="{% static 'images/ima.png' %}" alt="Example Image" class="ima">
+                  <div class='comentcount'>{{ move.movecomments_count }}</div>
+                </div>
+                <div class='tag'>
+                {% for movetag in move.movetags.all %}
+                  #{{ movetag.movename }}
+                {% endfor %}
+                </div>
+              </div>
+              <div>{{ move.field }}</div>
+              <div class='date'>{{ move.pub_date }}</div>
+            </div>
+          </div>
+        </a>    
+      {% endfor %}
+      </div>
+    </div>
+    <div class='superwrite'>
+      {% if user.is_authenticated %}
+      <a href="{% url 'community:move-create' %}" width='17px' height='17px'>
+        <img src="{% static 'images/realplus.png' %}" alt="">
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const btns = document.querySelectorAll('input[type="radio"]');
+    const boxes = document.querySelectorAll('.boxes');
+
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const category = btn.nextSibling.textContent.trim();
+        
+        btns.forEach(otherBtn => {
+          otherBtn.parentElement.style.backgroundColor = "#FFF";
+          otherBtn.parentElement.style.color = "#656565";
+        });
+
+        boxes.forEach(box => {
+          if (box.dataset.category === category) {
+
+            box.style.display = 'block';
+            btn.parentElement.style.backgroundColor = "#359287";
+            btn.parentElement.style.color = "#FFF";
+
+
+          } else {
+            btn.parentElement.style.backgroundColor = "#359287";
+            btn.parentElement.style.color = "#FFF";
+
+            box.style.display = 'none';
+
+
+          }
+        });
+      });
+    });
+  });
+</script>
+
+
+{% endblock %}

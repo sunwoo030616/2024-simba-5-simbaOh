@@ -1,0 +1,9 @@
+<div>
+    <h1>해시태그 목록</h1>
+    <hr>
+    {% for f in freetags %}
+    <div>
+        <h2><a href="{% url 'community:freetag-frees' f.id %}">#{{f.freename}}</a>/h2>
+    </div>
+    {% endfor %}
+</div>

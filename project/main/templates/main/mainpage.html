@@ -1,0 +1,169 @@
+{% extends 'base_with_nav.html' %} 
+{% block content %} 
+{% load static %}
+<link 
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/main/mainpage.css'%}"
+/>
+
+<div class="screen">
+  <div class="main">
+    <div class="body">
+      <div class="small_nav">
+        <div class="left">
+        </div>
+        <h2 class='main_text_ho color_1E'>CEHAT KEY</h2>
+        <div class="right">
+        </div>
+      </div>
+      <div class="btn_list">
+        <a href="{% url 'main:mentor-start' %}" class="btn_rec" id="btn_rec">
+          <img src="{% static 'images/멘토바.png' %}" width='260px' height='210px' id="img_rec">
+          <p class="text_set1 font_VIT color_F">멘토</p>
+          <p class="text_set2 font_21 color_28">동문선배가 다 모였다<br>멘토링 매칭하기</p>
+        </a>
+        <div class="btn_rho" id="btn_rho">
+          <img src="{% static 'images/커뮤니티.png' %}" width='160px' height='155px' id="img_rho">
+          <a href="{% url 'community:free-board' %}" class="box_set2">
+            <p class="text_set3 font_VIT_2 color_F">커뮤니티</p>
+            <p class="text_set4 font_21 color_28">자유게시판<br>이직게시판</p>
+          </a>
+        </div>
+        <div class="btn_cir" id="btn_cir">
+          <img src="{% static 'images/커리어.png' %}" width='350px' height='110px' id="img_cir">
+          <a href="{% url 'careers:career-info' %}" class="box_set3">
+            <p class="text_set5 font_CORE color_F">커리어</p>
+            <p class="text_set6 font_21 color_28">채용, 취업, 교육<br>프로그램</p>
+          </a>
+        </div>
+      </div>
+      <div class="text_dongguk">
+        <p class="text_sub">벌써 많은 동국인이</p>
+        <div style="display: flex; flex-direction: row;">
+          <p class="text_point">취트키</p><p class="text_sub">와 함께하고 있어요!</p>
+        </div>
+      </div>
+      <div class="signup_list"> 
+        <div class='membermentor'>
+          <div class="signup_detail">
+            <img src="{% static 'images/signup1.png' %}" width="120px" height='120px'>
+            <p class="content">가입한 취트키 멤버</p>
+            <p class="count" id="userCount">{{ user.count }}</p>
+          </div>
+          <div class="signup_detail">
+            <img src="{% static 'images/signup3.png' %}" width="120px" height='120px'>
+            <p class="content">작성된 게시글</p>
+            <p class="count" id="boardCount">{{ board }}</p>
+          </div>
+        </div>
+        <div class='membermentor2'>
+          <div class="signup_detail">
+            <img src="{% static 'images/signup2.png' %}" width="120px" height='120px'>
+            <p class="content">이루어진 멘토링</p>
+            <p class="count" id="relationCount">{{ relation.count }}</p>
+          </div>
+          <div class="signup_detail">
+            <img src="{% static 'images/signup4.png' %}" width="120px" height='120px'>
+            <p class="content">등록된 멘토</p>
+            <p class="count" id="mentorCount">{{ mentor.count }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="credit">
+        <div class="webname">
+          <p class="webname_bold">CHEAT KEY</p>
+          <p class="font_400">취트키 CHEAT KEY</p>
+        </div>
+        <div class="maker">
+          <p class="font_500">Product Designer | 구도욱<br>Front End | 오태준, 최민<br>Back End | 박선우, 황채현</p>
+        </div>
+        <div class="instayoutube_icon"></div>
+        <div class="copyright font_200">Copyright ⓒ 2024 심바오 Team. All Rights Reserved.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const btnRec = document.getElementById("btn_rec");
+    const imgRec = document.getElementById("img_rec");
+    const btnRho = document.getElementById("btn_rho");
+    const imgRho = document.getElementById("img_rho");
+    const btnCir = document.getElementById("btn_cir");
+    const imgCir = document.getElementById("img_cir");
+
+    btnRec.addEventListener("mousedown", function() {
+      imgRec.src = "{% static 'images/멘토바누를때.png' %}";
+    });
+
+    btnRec.addEventListener("mouseup", function() {
+      setTimeout(() => {
+        imgRec.src = "{% static 'images/멘토바.png' %}";
+      }, 300);
+    });
+
+    btnRho.addEventListener("mousedown", function() {
+      imgRho.src = "{% static 'images/커뮤니티누를때.png' %}";
+    });
+
+    btnRho.addEventListener("mouseup", function() {
+      setTimeout(() => {
+        imgRho.src = "{% static 'images/커뮤니티.png' %}";
+      }, 300);
+    });
+
+    btnCir.addEventListener("mousedown", function() {
+      imgCir.src = "{% static 'images/커리어누를때.png' %}";
+    });
+
+    btnCir.addEventListener("mouseup", function() {
+      setTimeout(() => {
+        imgCir.src = "{% static 'images/커리어.png' %}";
+      }, 300);
+    });
+
+    function animateCounts() {
+      const userCount = parseInt("{{ user.count }}", 10);
+      const boardCount = parseInt("{{ board }}", 10);
+      const relationCount = parseInt("{{ relation.count }}", 10);
+      const mentorCount = parseInt("{{ mentor.count }}", 10);
+
+      animateValue("userCount", 0, userCount, 2000);
+      animateValue("boardCount", 0, boardCount, 2000);
+      animateValue("relationCount", 0, relationCount, 2000);
+      animateValue("mentorCount", 0, mentorCount, 2000);
+    }
+
+    function animateValue(id, start, end, duration) {
+      const range = end - start;
+      const increment = end > start ? 1 : -1;
+      const stepTime = Math.abs(Math.floor(duration / range));
+      let current = start;
+      const obj = document.getElementById(id);
+
+      const timer = setInterval(function() {
+        current += increment;
+        obj.textContent = current;
+        if (current == end) {
+          clearInterval(timer);
+        }
+      }, stepTime);
+    }
+
+    var animationDelay = 1500;
+    var lastAnimatedTime = 0;
+
+    window.addEventListener("scroll", function() {
+      var oTop = document.querySelector('.signup_list').offsetTop - window.innerHeight;
+      var currentTime = new Date().getTime();
+
+      if (window.scrollY > oTop && currentTime - lastAnimatedTime > animationDelay) {
+        animateCounts();
+        lastAnimatedTime = currentTime;
+      }
+    });
+  });
+</script>
+{% endblock %}

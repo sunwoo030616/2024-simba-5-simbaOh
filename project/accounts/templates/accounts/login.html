@@ -1,0 +1,178 @@
+{% extends 'base.html' %} 
+{% block content %} 
+{% load static %}
+
+<link
+rel="stylesheet"
+type="text/css"
+href="{% static 'css/accounts/login.css'%}"
+/>
+
+<div class="container">
+  <div class='container2'> 
+    <div class='container-top'>
+      <div class="small_nav">
+        <div class="left" style="z-index: 1;">
+          <a href="{% url 'main:first-screen' %}">
+            <img src="{% static 'images/arrow-24.png' %}" width="32px">
+          </a>
+        </div>
+        <a class="row" style="flex-direction: row;" href="{% url 'accounts:login' %}">
+          <img src="{% static 'images/profile_key.png' %}" width="32px" height="32px">
+          <p class="color_1E title_font">CHEAT KEY</p>
+        </a>
+        <div class="right">
+          <div style="width: 32px;"></div>
+        </div>
+      </div>
+      
+      {% comment %} <h2 class='signup-main'>로그인</h2> {% endcomment %}
+      <form id="loginForm" action="{% url 'accounts:login' %}" method="post">
+        {% csrf_token %}
+
+        <div class='inputlist'>
+          <div class='id'>
+            <input class='same' placeholder="아이디를 입력해주세요." type='text' name='user_id' id='user_id' required />
+          </div>
+
+          <div class='id'>
+            <input class='same' placeholder="비밀번호를 입력해주세요." type='password' name='user_pw' id='user_pw' required/>
+          </div>
+          <div class='auto'>
+            <label  for='check'>
+              <input type='checkbox' name='check_group' id='check' checked/>
+                자동 로그인
+            </label>
+          </div>
+
+          <button class='submit' type='submit' id='loginButton' disabled>로그인</button>
+
+            <!-- <div class='search'> 
+              <button class='submit3' type='button'>아이디 찾기</button>
+              <button class='submit3' type='button'>비밀번호 찾기</button> -->
+          <button class='submit3' type='button' id='signupButton'>회원가입</button>
+            <!-- </div class='search'> -->
+
+            <!-- <div class='midbar'>
+                <div class='line'></div>
+                <span class='hrtext'>소셜 계정 로그인</span>
+                <div class='line'></div>
+            </div> -->
+            <!-- <img src="{% static 'images/image 38.png' %}" alt='google' width='50px'> -->
+        
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const usernameInput = document.getElementById('user_id');
+    const passwordInput = document.getElementById('user_pw');
+    const loginButton = document.getElementById('loginButton');
+    const signupButton = document.getElementById('signupButton');
+    const domain = '@dgu.ac.kr';
+    let hasStartedTyping = false;
+  
+    function setCursorPosition(input, pos) {
+      input.setSelectionRange(pos, pos);
+    }
+
+    function handleInput(event) {
+      if (!hasStartedTyping) {
+        hasStartedTyping = true;
+        usernameInput.value = '';
+      }
+
+      let value = usernameInput.value;
+      if (!value.includes(domain)) {
+        usernameInput.value = domain;
+      } else {
+        let userPart = value.split(domain)[0];
+        userPart = userPart.replace(/[^a-zA-Z0-9]/g, '');
+        usernameInput.value = userPart + domain;
+      }
+      setCursorPosition(usernameInput, usernameInput.value.indexOf(domain));
+      updateLoginButton();
+    }
+
+    function handleFocus(event) {
+      let pos = usernameInput.value.indexOf(domain);
+      setCursorPosition(usernameInput, pos);
+    }
+  
+    function validateLoginForm() {
+      const usernameValid = usernameInput.value.trim() !== domain;
+      const passwordValid = passwordInput.value.trim() !== '';
+      return usernameValid && passwordValid;
+    }
+  
+    function updateLoginButton() {
+      if (validateLoginForm()) {
+        loginButton.disabled = false;
+        loginButton.style.backgroundColor = "#1E3D46";
+        loginButton.style.color = "#ffffff";
+      } else {
+        loginButton.disabled = true;
+        loginButton.style.backgroundColor = "";
+        loginButton.style.color = "";
+      }
+    }
+
+
+    usernameInput.addEventListener('focus', function() {
+        if (usernameInput.value === domain) {
+            usernameInput.value = '';
+            usernameInput.style.color = ''; 
+        }
+    });
+
+    usernameInput.addEventListener('blur', function() {
+        if (usernameInput.value === '') {
+            usernameInput.value = domain;
+            usernameInput.style.color = '#9D9D9D'; 
+        } else {
+            usernameInput.style.color = ''; 
+        }
+    });
+
+    usernameInput.addEventListener('input', function(event) {
+        if (!usernameInput.value.endsWith(domain)) {
+            const pos = usernameInput.value.length - domain.length;
+            usernameInput.value = usernameInput.value.replace(domain, '') + domain;
+            usernameInput.setSelectionRange(pos, pos);
+        }
+        usernameInput.style.color = ''; 
+        updateLoginButton();
+    });
+
+    usernameInput.addEventListener('click', function(event) {
+        const pos = usernameInput.value.length - domain.length;
+        if (usernameInput.selectionStart > pos) {
+            usernameInput.setSelectionRange(pos, pos);
+        }
+    });
+
+    usernameInput.addEventListener('keydown', function(event) {
+        const pos = usernameInput.value.length - domain.length;
+        if (usernameInput.selectionStart > pos) {
+            usernameInput.setSelectionRange(pos, pos);
+        }
+    });
+  
+ 
+    passwordInput.addEventListener('input', updateLoginButton);
+  
+    signupButton.addEventListener('click', function() {
+      window.location.href = "{% url 'accounts:signup' %}";
+    });
+  });
+</script>
+
+  
+
+{% if error %}
+<div style="color: red">{{ error }}</div>
+{% endif %}
+{% endblock %}

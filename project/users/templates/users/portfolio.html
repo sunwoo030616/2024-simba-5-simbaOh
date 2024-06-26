@@ -1,0 +1,131 @@
+{% extends 'base_with_nav.html' %} {% load static %} {% block content %} 
+
+<link
+rel="stylesheet"
+type="text/css"
+href="{% static 'css/users/portfolio.css'%}"
+/>
+
+<div class="screen">
+  <div class="main">
+    <div class="body">
+
+      <div class="nav">
+        <div class="left" style="z-index: 1;">
+            <a href="{% url 'main:mentor-list' %}">
+            <img src="{% static 'images/arrow-24.png' %}" width='32px' height='32px'>
+            </a>
+        </div>
+        <div class="color_28 title_text">포트폴리오</div>
+        <div style="width: 32px;"></div>
+        </div>
+        <form action="{% url 'users:edit_portfolio' %}" method="post" class="form_set">
+        {% csrf_token %}
+        
+        <div class="box">
+            <p class="text_font1 color_00">내 정보</p>
+
+            <div><hr></div>
+        </div>
+      
+      <div class='origin'>
+
+          <div class='originuser'>
+          <div class='photoname'> 
+              {% if mentor.user.profile.user_profile %}
+              <img class="image_set" src="{{ user.profile.user_profile.url }}" width="50px" height="50px">
+              {% else %}
+              <img class="image_set" src="{% static 'images/logo.png' %}" width='50px' height='50px'>
+              {% endif %}
+              <div class='name1'>{{user.profile.user_name}}</div>
+          </div>
+          <div class='majorphone'>
+              <div class='major1'>{{user.profile.user_major}}</div>
+              <div class='email1'>{{user.username}}</div>
+              <div class='phone1'>{{user.profile.user_phone}}</div>
+          </div>
+          </div>
+
+      </div>
+
+          <div class="box">
+            <div class="row1">
+              <p class="text_font1 color_00">제목</p>
+            </div>
+            <div><hr></div>
+            <div class='c'>
+            {{ portfolio.title }}  
+            </div>
+          </div>
+
+          <div class="box">
+            <div class="row1">
+              <p class="text_font1 color_00">소개글</p>
+            </div>
+            <div><hr></div>
+            <div class='c'>
+            {{ portfolio.introduction }}  
+            </div>
+          </div>
+            
+          <div class="box">
+            <div class="row1">
+              <p class="text_font1 color_00">학력</p>
+            </div>
+            <div><hr></div>
+            <ul class='c'>
+              {% for edu in portfolio.education.all %}
+                  <li> ·  {{ edu.name }}</li>
+              {% empty %}
+                  <li>학력 정보가 없습니다.</li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="box">
+            <div class="row1">
+              <p class="text_font1 color_00">경력</p>
+            </div>
+            <div><hr></div>
+            <ul class='c'>
+              {% for exp in portfolio.experience.all %}
+                  <li> ·  {{ exp.name }}</li>
+              {% empty %}
+                  <li>경력 정보가 없습니다.</li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="box">
+            <div class="row1">
+              <p class="text_font1 color_00">프로젝트/교육</p>
+            </div>
+            <div><hr></div>
+            <ul class='c'>
+              {% for proj in portfolio.projects.all %}
+                  <li> · {{ proj.name }}</li>
+              {% empty %}
+                  <li>프로젝트 정보가 없습니다.</li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="box">
+            <div class="row1">
+              <p class="text_font1 color_00">자격/어학/수상</p>
+            </div>
+            <div><hr></div>
+            <ul class='c'>
+              {% for cert in portfolio.certifications.all %}
+                  <li>·  {{ cert.name }}</li>
+              {% empty %}
+                  <li>자격/어학/수상 정보가 없습니다.</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% comment %} <a href="{% url 'users:edit-portfolio' user.id %}">에디트 폴리오 이동</a> {% endcomment %}
+    </div>
+  </div>
+</div>
+<a href="{% url 'users:edit_portfolio' %}">에디트 폴리오 이동</a>
+{% endblock %}

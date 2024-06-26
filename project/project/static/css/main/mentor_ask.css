@@ -1,0 +1,345 @@
+/* mentor ask page - CSS */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 0.625rem; /* 10px */
+
+  @media (max-width: 430px) {
+    align-items: start;
+  }
+  @media (min-width: 431px) {
+    align-items: center;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 26.875rem; /* 430px */
+  height: 100%;
+  align-items: center;
+  padding-bottom: 0.625rem; /* 10px */
+}
+
+.body {
+  display: flex;
+  width: 25rem; /* 400px */
+  flex-direction: column;
+  gap: 1rem; /* 16px */
+}
+
+.nav {
+  display: flex;
+  width: 100%;
+  height: 2rem; /* 32px */
+  padding-top: 3.5rem; /* 56px */
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mentor_card {
+  display: flex;
+  width: 334px; /* 334px padding 64px line 2px */
+  flex-direction: column;
+  padding: 1rem 2rem;
+
+  gap: 0.5rem;
+
+  border: 1px solid #00C3AD;
+  border-radius: 1.25rem; /* 20px */
+  background: rgba(212, 237, 231, 0.15);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.centering {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 0.25rem; /* 4px */
+}
+
+.mentoring {
+  display: flex;
+  padding: 0.25rem 1rem; /* 16px */
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 0.625rem; /* 10px */
+  color: #FFF;
+  border: 1px solid #000;
+  background-color: #1E3E46;
+}
+
+.circuling {
+  border-radius: 3.125rem; /* 50px */
+}
+
+.text_box {
+  display: flex;
+  width: 24rem; /* 384px */
+  flex-direction: column;
+
+  padding: 0.5rem;
+  
+  border-radius: 0.25rem; /* 4px */
+  background-color: #EBEBEB;
+}
+
+input[type="text"] {
+  display: flex;
+  width: 23.375rem; /* 374px */
+  align-items: center;
+  padding: 0.5rem 0.75rem; /* 8px 12px */
+  gap: 0.25rem; /* 4px */
+
+  border: 1px solid rgba(12, 157, 122, 0.50);
+  border-radius: 0.375rem; /* 6px */
+}
+
+
+.gapping {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.btn_men {
+  display: flex;
+  padding: 0.625rem 0.75rem; /* 10px 12px */
+  justify-content: center;
+
+  background-color: #28464E;
+
+  border-radius: 0.5rem; /* 8px */
+  color: #FFF;
+}
+
+.row5 {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem; /* 4px */
+}
+
+.row6 {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem; /* 16px */
+  justify-content: center;
+}
+
+.modalpopup_frame {
+  display: flex;
+  width: 400px;
+  position: absolute;
+  z-index: 20;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  background-color: #FFF;
+}
+
+.modalpopup_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  padding: 1rem 0rem;
+  gap: 0.25rem; /* 4px */
+
+  border-radius: 0.5rem; /* 8px */
+}
+
+.modal_box1 {
+  display: flex;
+  width: 140px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 0.5rem; /* 8px */
+  border: 1px solid #359287;
+  background-color: #FFF;
+}
+
+.modal_box2 {
+  display: flex;
+  width: 140px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+
+  border-radius: 8px;
+  border: 1px solid #FFF;
+  background-color: #359287;
+}
+
+.wrapping {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  overflow: hidden;
+  background-color: rgba(232, 232, 232, 0.70);
+}
+
+.wrapping2 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+  overflow: hidden;
+  background-color: rgba(232, 232, 232, 0.70);
+}
+
+.toast {
+  display: flex;
+  width: 400px;
+  height: 200px;
+  position: absolute;
+  z-index: 50;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  background-color: #FFF;
+}
+
+
+
+
+
+
+/* 폰트 설정 */
+
+.title_text {
+  font-family: "Pretendard";
+  font-size: 1.5rem; /* 24px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.title_text2 {
+  font-family: "Pretendard";
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.title_text3 {
+  font-family: "Pretendard";
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.mentor_card_comp_font {
+  font-family: "Pretendard";
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.mentor_card_dept_font {
+  font-family: "Pretendard";
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.mentor_card_name_font {
+  font-family: Pretendard;
+  font-size: 1.25rem; /* 20px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.mentor_card_major_font {
+  font-family: Pretendard;
+  font-size: 0.75rem; /* 12px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.mentor_card_work_font{
+  font-family: Pretendard;
+  font-size: 0.75rem; /* 12px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.context_text {
+  font-family: Pretendard;
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+.context3 {
+  font-family: "Noto Sans KR";
+  font-size: 0.75rem; /* 12px */
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.3125rem; /* 21px */
+  letter-spacing: -0.32px;
+}
+
+
+
+/* 색상 설정 */
+
+.color_28 {
+  color: #28464E;
+}
+
+.color_00 {
+  color: #000;
+}
+
+.color_00C {
+  color: #00C3AD;
+}
+
+.color_82 {
+  color: #828282;
+}
+
+.color_9D {
+  color: #9D9D9D;
+}
+
+input:focus-visible {
+  outline: none;
+}
