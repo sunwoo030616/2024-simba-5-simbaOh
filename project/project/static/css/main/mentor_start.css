@@ -455,3 +455,15 @@ font-weight: 200;
 input:focus-visible {
   outline: none;
 }
+
+.color_28 {
+  color: #28464E;
+}
+
+.title_text {
+  font-family: "noto Sans KR";
+  font-size: 1.5rem; /* 24px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}

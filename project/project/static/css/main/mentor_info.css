@@ -102,8 +102,29 @@ label {
   display: flex;
 }
 
+.btn-info {
+  display: flex;
+  width: 150px;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
 
+  border: 1px solid #000;
+  border-radius: 10px;
+  background-color: #1E3D46;
+}
 
+.btn-outline-info {
+  display: flex;
+  width: 150px;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid #000;
+  border-radius: 10px;
+  background-color: #FFF;
+}
 
 
 /* 폰트 설정 */
@@ -178,6 +199,25 @@ label {
   white-space: pre-wrap;
   max-width: 100%; /* 최대 너비 설정 */
   word-wrap: break-word;
+}
+
+.font_1 {
+  color: #1E3D46;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+
+.font_2 {
+  color: #FFF;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
 }
 
 /* 색상 설정 */

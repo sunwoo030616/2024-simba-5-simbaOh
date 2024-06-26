@@ -73,17 +73,17 @@
       {% if not has_applied %}
       <form id="form_app" style="display: flex; justify-content: center;" method="post" action="{% url 'careers:apply_careerprogram' careerprogram.id %}">
             {% csrf_token %}
-            <button style="position: fixed; bottom: 10px;" class="btn_ask color_FF" type="button" id="btn_app">지원하기</button>
+            <button style="margin-top: 20px;" class="btn_ask color_FF" type="button" id="btn_app">지원하기</button>
         </form>
       {% else %}
       <form id="form_noapp" style="display: flex; justify-content: center;" method="post" action="{% url 'careers:apply_careerprogram' careerprogram.id %}">
             {% csrf_token %}
-            <button style="position: fixed; bottom: 10px;"  class="btn_ask2 color_FF" type="button" id="btn_noapp">지원취소</button>
+            <button style="margin-top: 20px;" class="btn_ask2 color_FF" type="button" id="btn_noapp">지원취소</button>
         </form>
       {% endif %}
 
       {% if careerprogram.writer == user %}
-        <a href="{% url 'careers:careerprogram-delete' careerprogram.id %}">삭제하기</a>
+        <a class="btn_ask2" style="width: 286px;" href="{% url 'careers:careerprogram-delete' careerprogram.id %}">삭제하기</a>
       {% endif %}
 		</div>
 	</div>
