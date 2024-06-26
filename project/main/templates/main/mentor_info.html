@@ -53,24 +53,23 @@
               {% if request.user != mentor %}
               {% if user in mentor.followers.all %}
                 <a href="{% url 'main:follow' mentor.id %}">
-                  <button type="button" class="btn btn-outline-info">언팔로우</button>
+                  <button type="button"><img src="{% static 'images/unfollow.png' %}" width="36px" height="36px"></button>
                 </a>
               {% else %}
                 <a href="{% url 'main:follow' mentor.id %}">
-                  <button type="button" class="btn btn-info">팔로우</button>
+                  <button type="button"><img src="{% static 'images/follow.png' %}" width="36px" height="36px"></button>
                 </a>
               {% endif %}
             {% endif %}
-            {{mentor.followers.count}}
             
           {% if request.user != mentor %}
               {% if user in mentor.mentor_ship.all %}
                 <a href="{% url 'main:mentor-ask' mentor.id %}">
-                  <button type="button" class="btn btn-outline-info">취소하기</button>
+                  <button type="button" class="btn btn-outline-info font_1">멘토링 취소하기</button>
                 </a>
               {% else %}
                 <a href="{% url 'main:mentor-ask' mentor.id %}">
-                  <button type="button" class="btn btn-info">멘토링 신청하기</button>
+                  <button type="button" class="btn btn-info font_2">멘토링 신청하기</button>
                 </a>
               {% endif %}
             {% endif %}
