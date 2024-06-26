@@ -7,7 +7,7 @@
 
 <div class="screen">
   <div class="main">
-    <div class="column">
+    <div class="column"> 
       <div class="navbar" id="navbar">
         <div class="row_space_between">
           <div style="width: 32px;"></div>
@@ -21,7 +21,11 @@
       </div>
       <div class="navbar2" id="navbar2">
         <div class="row_space_between">
-          <div style="width: 32px;"></div>
+          <div style="width: 32px;"> 
+            <a href="{% url 'accounts:logout' %}" position='fixed'>
+            <img class='logout' src="{% static 'images/로그아웃2.png' %}" width="24px" height="24px">
+          </a>
+          </div>
           <a class="row" href="{% url 'main:mainpage' %}">
             <img src="{% static 'images/profile_key.png' %}" width="32px" height="32px">
             <p class="color_1E title_font">MY PAGE</p>

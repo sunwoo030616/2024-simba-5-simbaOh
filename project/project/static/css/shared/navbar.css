@@ -12,7 +12,7 @@
   @media (min-width: 431px) {
     align-items: center;
   }
-}
+} 
 
 .main {
   display: flex;
@@ -136,7 +136,10 @@ input:focus-visible {
   background-color: #FFF;
 }
 
-
+.logout{
+  position: fixed;
+  transform: translate(15px,-13px);
+}
 
 /* 폰트 설정 */
 
