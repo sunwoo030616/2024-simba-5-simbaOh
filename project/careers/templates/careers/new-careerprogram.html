@@ -25,7 +25,7 @@ href="{% static 'css/careers/new_careerprogram.css'%}"
       {{ user.profile.user_name }}님, 안녕하세요 :)
       </div>
 
-      <div class='main'>
+
       <div class='box'>
         <form action="{% url 'careers:careerprogram-create' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -48,6 +48,7 @@ href="{% static 'css/careers/new_careerprogram.css'%}"
             <p class='end_'>활동 마감일 *<input class='end' type="date" name="deadline" min="2024-06-16" max="2024-07-16" required/></p>
             <p class='company_'>기업명 *<input class='company' type="text" name="place" required/></p>
             <!-- 회사가 아니고 장소로 class 수정?부탁 -->
+            <img class='click' src="{% static 'images/이미지.png' %}" alt="" onclick="" >
             <p class='area_'>분야 *
               <select class='area' name='field' id='field' required/>
                 <option value=''>--- 선택 ---</option>
@@ -74,8 +75,6 @@ href="{% static 'css/careers/new_careerprogram.css'%}"
 
         </form>
       </div>
-      </div>
-      <img class='click' src="{% static 'images/이미지.png' %}" alt="" onclick="" >
     </div>
   </div>
 </div>

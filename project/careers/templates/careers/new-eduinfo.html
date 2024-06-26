@@ -25,7 +25,7 @@ href="{% static 'css/careers/new_eduinfo.css'%}"
       {{ user.profile.user_name }}님, 안녕하세요 :)
       </div>
 
-      <div class='main'>
+    
       <div class='box'>
         <form action="{% url 'careers:eduinfo-create' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -43,10 +43,11 @@ href="{% static 'css/careers/new_eduinfo.css'%}"
               </div>
             </div>
 
-            <p class='title_'>취업 프로그램명 *<input class='title' type="text" name="title" required/></p>
+            <p class='title_'>교육 프로그램명 *<input class='title' type="text" name="title" required/></p>
             <p class='start_'>활동 시작일 *<input class='start' type="date" name="startline" min="2024-06-15" max="2024-07-15" required/></p>
             <p class='end_'>활동 마감일 *<input class='end' type="date" name="deadline" min="2024-06-16" max="2024-07-16" required/></p>
             <p class='company_'>기업명 *<input class='company' type="text" name="place" required/></p>
+            <img class='click' src="{% static 'images/이미지.png' %}" alt="" onclick="" >
             <!-- 회사가 아니고 장소로 class 수정?부탁 -->
             <p class='area_'>분야 *
               <select class='area' name='field' id='field' required/>
@@ -74,8 +75,7 @@ href="{% static 'css/careers/new_eduinfo.css'%}"
 
         </form>
       </div>
-      </div>
-      <img class='click' src="{% static 'images/이미지.png' %}" alt="" onclick="" >
+      
     </div>
   </div>
 </div>
