@@ -183,7 +183,7 @@
 }
 .click{
   position: absolute;
-  transform: translate(130px,610px);
+  transform: translate(275px,100px);
 }
 
 input:focus-visible {
