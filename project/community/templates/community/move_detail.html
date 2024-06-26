@@ -42,15 +42,15 @@
         </p>
       </div>
       <p class="color_17 text_4">분야</p>
-      <p class="color_65 text_5">{{move.field}}</p>
+      <p class="color_65 text_5 bot_border">{{move.field}}</p>
       <p class="color_17 text_4">태그</p>
-      <p class="color_65 text_5">
+      <p class="color_65 text_5 bot_border">
         {% for movetag in move.movetags.all %}
           <a href="{% url 'community:movetag-moves' movetag.id %}">#{{ movetag.movename }}</a>
         {% endfor %}
       </p>
       <p class="color_17 text_4">내용</p>
-      <p class="color_61 text_5">{{ move.content }}</p>
+      <p class="color_61 text_5 bot_border">{{ move.content }}</p>
       <p class="color_17 text_4">댓글</p>
       {% for movecomment in movecomments %}
       <p class="color_61 text_5 comment_box">{{movecomment.content}}</p>
