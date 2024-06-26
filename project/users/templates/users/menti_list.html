@@ -80,7 +80,7 @@
     <form id="form" action="{% url 'users:mentoring-state' user.id %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
         {% for m in menti %}
-        <div class='menti' id="menti_{{ m.id }}">
+        <div class='menti' id="menti_{{ m.id }}" data-state="{{ m.state }}">
         <div class='first'>
           {% if m.user.profile.user_profile %}
             <img class="image_set2" id="profile_image" src="{{ m.user.profile.user_profile.url }}" width='80px' height='80px'>
@@ -89,7 +89,7 @@
           {% endif %}
             <div class='namemajor'>
             <div class='name'>{{ m.user.profile.user_name }}멘티님이<br> 멘토링을 신청했습니다.</div>
-            <div class='major'>{{ m.user.profile.user_major }}</div>
+            <div class='major'>{{ m.user.profile.user_major }} {{ m.state }}</div>
             </div>
         </div>
             <div class='class2'>
@@ -106,7 +106,7 @@
                 </div>
             </div>
         </div>
-    {% endfor %}
+        {% endfor %}
     <div class="modalpopup_frame" id="modalpopup_frame" style="display: none;">
       <div class="modalpopup_body">
         <p class="mentor_card_name_font color_28" style="text-align: center;">멘토링을 수락하시겠습니까?</p>
@@ -156,7 +156,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const btn_accept_ask = document.getElementById("btn_accept_ask");
   const btn_reject_return = document.getElementById("btn_reject_return");
   const btn_reject_ask = document.getElementById("btn_reject_ask");
+  const mentis = document.querySelectorAll("menti");
 
+  const state = mentis.dataset.state;
+  console.log(state);
+  
   wrapping.style.display = "none";
   wrapping2.style.display = "none";
   modal1.style.display = "none";

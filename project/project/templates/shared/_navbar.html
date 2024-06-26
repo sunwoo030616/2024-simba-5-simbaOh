@@ -92,7 +92,7 @@
           </a>
         </div>
       </div>
-
+      <div class="wrapping_nav" id="wrapping_nav"></div>
     </div>
   </div>
 </div>
@@ -102,16 +102,26 @@
     const btn_open_mypage = document.getElementById('btn_open_mypage');
     const btn_close_mypage = document.getElementById('btn_close_mypage');
     const navbar2 = document.getElementById('navbar2');
+    const wrapping_nav = document.getElementById('wrapping_nav');
+
     let x = false;
+    wrapping_nav.style.display = "none";
 
     function Navbar() {
       if (x) {
         navbar2.style.animationName = 'move_navbar_up';
+        wrapping_nav.style.display = "none";
       } else {
         navbar2.style.animationName = 'move_navbar_down';
+        wrapping_nav.style.display = "block";
       }
       x = !x;
       navbar2.style.zIndex = x ? "10" : "2";
+    }
+
+    wrapping_nav.onclick = function () {
+      navbar2.style.animationName = 'move_navbar_up';
+      wrapping_nav.style.display = "none";
     }
 
     btn_open_mypage.onclick = Navbar;
