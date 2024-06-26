@@ -24,7 +24,7 @@ def login(request):
 # 로그아웃 뷰
 def logout(request):
     auth.logout(request)
-    return redirect('main:first_screen')
+    return redirect('main:first-screen')
 
 # 회원가입 뷰 (1단계)
 def signup(request):

@@ -15,7 +15,10 @@
     align-items: center;
   }
 }
-
+.pencil{
+  position: fixed;
+  transform: translate(-42px,-80px);
+}
 .main {
   display: flex;
   flex-direction: column;

@@ -152,8 +152,6 @@ def menti_list(request, id):
         'mentor':mentor
         })
 
-
-
 def mentoring_state(request, id):
     user = get_object_or_404(User, pk=id)
     if request.method == 'POST':
