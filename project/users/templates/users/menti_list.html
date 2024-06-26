@@ -156,10 +156,21 @@ document.addEventListener('DOMContentLoaded', function() {
   const btn_accept_ask = document.getElementById("btn_accept_ask");
   const btn_reject_return = document.getElementById("btn_reject_return");
   const btn_reject_ask = document.getElementById("btn_reject_ask");
-  const mentis = document.querySelectorAll("menti");
+  const mentis = document.querySelectorAll(".menti");
 
-  const state = mentis.dataset.state;
-  console.log(state);
+  mentis.forEach(menti => {
+
+    if (menti.dataset.state == "수락") {
+      menti.style.backgroundColor = "#00C3AD";
+    }
+    else if (menti.dataset.state == "거절") {
+      menti.style.backgroundColor = "#DB7373";
+    }
+    else {
+      menti.style.backgroundColor = "rgba(212, 237, 231, 0.30)";
+    }
+  });
+
   
   wrapping.style.display = "none";
   wrapping2.style.display = "none";
@@ -182,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
       } else {
         toast2.style.display = "none";
       }
-    }, 1500);
+    }, 700);
   }
 
   function handleAction(mentiId, action) {
@@ -275,3 +286,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 {% endblock %}
+
+

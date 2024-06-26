@@ -45,8 +45,9 @@ href="{% static 'css/careers/new_careerinfo.css'%}"
           <p class='start_'>지원 시작일 *<input class='start' type="date" name="startline" min="2024-06-15" max="2024-07-15" required/></p>
           <p class='end_'>지원 마감일 *<input class='end' type="date" name="deadline" min="2024-06-16" max="2024-07-16" required/></p>
           <p class='company_'>기업명 *<input class='company' type="text" name="company" required/></p>
+          <img class='click' src="{% static 'images/이미지.png' %}" alt="" onclick="" >
           <p class='area_'>분야 *
-            <select class='area' name='field' id='field' required/>
+            <select class='area' name='field' id='field' required>
               <option value=''>--- 선택 ---</option>
               <option value='인사/노무'>인사/노무</option>
               <option value='IT개발/데이터'>IT개발/데이터</option>
@@ -63,6 +64,8 @@ href="{% static 'css/careers/new_careerinfo.css'%}"
               <option value='미디어/스포츠'>미디어/스포츠</option>
               <option value='기획'>기획</option>
             </select>
+          </p>
+      
           <p class='image_'>이미지 *<input class='image' type="file" name="image" required/></p>
           <p class='tag_'>태그 *<input class='tag'placeholder='#을 이용하여 적어주세요.' type="text" name="careerinfotag" required/></p>
           <p class='comment_'>내용<input class='comment' type="text" name="content"></p>
@@ -71,7 +74,6 @@ href="{% static 'css/careers/new_careerinfo.css'%}"
 
         </form>
       </div>
-      <img class='click' src="{% static 'images/이미지.png' %}" alt="" onclick="" >
     </div>
   </div>
 </div>
