@@ -218,6 +218,7 @@ def move_update(request, id):
         update_move.title = request.POST['title']
         update_move.content = request.POST['content']
         update_move.pub_date = timezone.now()
+        update_move.field = request.POST['field']
         if request.FILES.get('image'):
             update_move.image = request.FILES['image']
 
