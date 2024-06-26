@@ -147,11 +147,19 @@ def menti_list(request, id):
         if mentor.user_id == id:
             m = Menti.objects.filter(mentor=mentor)
             menti.extend(m)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 64d1feeac7dedb74cd2ccc0d1f77efcbe9c37eb6
     return render(request, 'users/menti_list.html', {
         'menti':menti,
         'mentor':mentor
         })
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 64d1feeac7dedb74cd2ccc0d1f77efcbe9c37eb6
 
 def mentoring_state(request, id):
     user = get_object_or_404(User, pk=id)

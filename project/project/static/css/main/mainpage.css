@@ -326,6 +326,15 @@ line-height: normal;
   line-height: normal;
 }
 
+.main_text_ho {
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: STHupo;
+  font-size: 1.875rem; /* 30px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 /* 색상 설정 */
 
 .color_D4 {
@@ -340,6 +349,9 @@ line-height: normal;
   color: #28464E;
 }
 
+.color_1E {
+  color: #1E3D46;
+}
 
 /* 아이콘 설정 */
 
