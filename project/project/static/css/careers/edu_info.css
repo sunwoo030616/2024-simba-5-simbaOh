@@ -232,7 +232,7 @@ text-overflow: ellipsis;
 .superwrite{
   position: fixed;
   bottom: 50px;
-  transform: translateX(150px);
+  transform: translateX(330px);
 }
 
 .midbar{
