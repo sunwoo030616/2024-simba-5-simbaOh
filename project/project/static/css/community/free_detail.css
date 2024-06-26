@@ -133,7 +133,6 @@
   padding: 1rem 0rem;
   gap: 0.25rem; /* 4px */
 
-  border: 1px solid #28464E;
   border-radius: 0.5rem; /* 8px */
 }
 
@@ -163,8 +162,7 @@
 }
 
 .wrapping {
-  display: flex;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
@@ -175,8 +173,7 @@
 }
 
 .wrapping2 {
-  display: flex;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
