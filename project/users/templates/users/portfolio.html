@@ -29,7 +29,6 @@ href="{% static 'css/users/portfolio.css'%}"
         </div>
       
       <div class='origin'>
-
           <div class='originuser'>
           <div class='photoname'> 
               {% if mentor.user.profile.user_profile %}
@@ -44,8 +43,10 @@ href="{% static 'css/users/portfolio.css'%}"
               <div class='email1'>{{user.username}}</div>
               <div class='phone1'>{{user.profile.user_phone}}</div>
           </div>
+          <a href="{% url 'users:edit_portfolio' %}" position='fixed'>
+            <img class="pencil" src="{% static 'images/연필22.png' %}" width="20px" height="20px">
+          </a>
           </div>
-
       </div>
 
           <div class="box">
@@ -123,9 +124,9 @@ href="{% static 'css/users/portfolio.css'%}"
               {% endfor %}
             </ul>
           </div>
-          {% comment %} <a href="{% url 'users:edit-portfolio' user.id %}">에디트 폴리오 이동</a> {% endcomment %}
+
     </div>
   </div>
 </div>
-<a href="{% url 'users:edit_portfolio' %}">에디트 폴리오 이동</a>
+
 {% endblock %}

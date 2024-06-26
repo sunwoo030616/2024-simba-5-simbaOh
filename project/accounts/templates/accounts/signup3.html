@@ -40,7 +40,7 @@
           <div class='phone1'>
             <label class='user' for='user_phone'>휴대폰 번호</label>
             <input class='same' placeholder="'-' 제외하고 숫자만 입력" type='text' name='user_phone' id='user_phone' required />
-            <div class='inputlist_text'>휴대폰 번호를 13자리 숫자만 입력해주세요</div>
+            <div class='inputlist_text'>휴대폰 번호를 11자리 숫자만 입력해주세요</div>
           </div>
           <div class='submitcenter'>
             <button class='submit2' type='submit' id='submit'>완료</button>
@@ -66,7 +66,7 @@
     function validateForm() {
       const nameValid = nameInput.value.trim() !== '';
       const birthValid = /^[0-9]{8}$/.test(birthInput.value.trim());
-      const phoneValid = /^[0-9]{10,13}$/.test(phoneInput.value.trim());
+      const phoneValid = /^[0-9]{11}$/.test(phoneInput.value.trim());
 
       return nameValid && birthValid && phoneValid;
     }

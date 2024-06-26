@@ -170,7 +170,6 @@ line-height: 24px; /* 120% */
   background: url(<path-to-image>) lightgray 50% / cover no-repeat;
 }
 
-
 .row5 {
   display: flex;
   flex-direction: row;
