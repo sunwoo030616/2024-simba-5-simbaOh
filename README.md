@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-g
-=======
 ![header](https://capsule-render.vercel.app/api?type=waving&color=0:A4DACD,100:00C3AD&height=150&section=header&*text=Cheat%20Key&*fontSize=80)<br>
 <img src="https://github.com/LikeLion-at-DGU/2024-simba-5-simbaOh/assets/164135983/846774d3-356d-4d3f-9d06-3075bbb34c13" width="100" height="100">&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="https://github.com/LikeLion-at-DGU/2024-simba-5-simbaOh/assets/164135983/eefd9ccf-9fed-4a20-a56e-cd3be5064cbd" width="300">   심바톤 5조 심바오🐼
@@ -69,4 +66,3 @@ g
 ***
 
 ![footer](https://capsule-render.vercel.app/api?type=waving&color=0:A4DACD,100:00C3AD&height=150&section=footer&*text=Cheat%20Key&*fontSize=80)
->>>>>>> 54878a4264955ace358573d579eab119ab0edd69
