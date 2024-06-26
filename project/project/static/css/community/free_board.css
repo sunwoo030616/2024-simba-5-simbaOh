@@ -133,7 +133,7 @@ background: #359287;
 .superwrite{
   position: fixed;
   bottom: 50px;
-  transform: translateX(330px);
+  transform: translateX(150px);
 }
 .midbar{
   display: flex;

@@ -151,7 +151,7 @@
   letter-spacing: -0.32px;
 }
 .careerinfo{
-  width: 430px;
+  width: 410px;
   display: flex;
   flex-direction: column;
   height: 55px;
@@ -214,8 +214,9 @@ text-overflow: ellipsis;
 }
 .update{
   display: flex;
-  width: 120px;
+  width: 130px;
   height: 21px;
+  padding-right: 20px;
   flex-direction: column;
   justify-content: flex-end;
   flex-shrink: 0;
@@ -233,7 +234,7 @@ text-overflow: ellipsis;
   position: fixed;
   bottom: 50px;
   transform: translateX(330px);
-}
+} 
 
 .midbar{
   display: flex;
