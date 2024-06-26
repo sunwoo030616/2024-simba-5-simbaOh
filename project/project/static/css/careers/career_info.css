@@ -233,8 +233,9 @@
 .superwrite{
   position: fixed;
   bottom: 50px;
-  right: 50px;
+  transform: translateX(150px);
 }
+
 .midbar{
   display: flex;
   width: 430px;
